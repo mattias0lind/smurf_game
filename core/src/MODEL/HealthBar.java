@@ -5,7 +5,7 @@ public class HealthBar {
     private final float maxHP; // procent 1 = 100%
     private boolean isAlive;
 
-    public HealthBar (int HP) {
+    public HealthBar (float HP) {
         this.HP = HP;
         this.maxHP = HP;
         this.isAlive = true;
