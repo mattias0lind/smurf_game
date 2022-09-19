@@ -9,8 +9,8 @@ public class movementTesting {
     @Test
     public void testStartingPlayerPosition(){
         player_movement player = new player_movement();
-        player.setStartingPlayerPosition(0,0);
-        assertTrue(player.getPlayerXPosition()+player.getPlayerYPosition() == 0);
+        player.updatePlayerPosition(1,1);
+        assertTrue(player.getPlayerXPosition()+player.getPlayerYPosition() == 2);
     }
 
 }

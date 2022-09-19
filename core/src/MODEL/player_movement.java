@@ -13,14 +13,10 @@ public class player_movement implements movement {
     }
 
     @Override
-    public void setStartingPlayerPosition(int playerXPosition, int playerYPosition) {
+    public void updatePlayerPosition(int playerXPosition, int playerYPosition) {
         this.playerXPosition = playerXPosition;
         this.playerYPosition = playerYPosition;
     }
 
-    @Override
-    public void updatePlayerPosition(int playerXPosition, int playerYPosition) {
-        //TODO FIND OUT SMART WAY TO UPDATE DOWN AND UP
-    }
 }
 
