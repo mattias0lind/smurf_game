@@ -14,8 +14,8 @@ public class Smurf_Game extends ApplicationAdapter {
 
 
 	public static final String TITLE = "Smurf Game";
-	public static final int gameWidth = 1280;
-	public static final int gameHeigth = 720;
+	public static final int gameWidth = 962;
+	public static final int gameHeigth = 654;
 
 	private gameStateManager gsm; //vrf funkar detta inte utan importen?
 	private SpriteBatch batch;
