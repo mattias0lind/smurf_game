@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
+import CONTROLLER.InputProcessor;
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -18,6 +20,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		InputProcessor inputProcessor = new InputProcessor();
+		Gdx.input.setInputProcessor(inputProcessor);
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
 		batch.draw(img, 0, 0);
