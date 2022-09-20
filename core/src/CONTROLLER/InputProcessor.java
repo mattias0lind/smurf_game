@@ -11,31 +11,27 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private boolean isMovingRight = false;
     private InputProcessor inputProcessor;
     private player_movement player;
-
-    public void setSprite(Sprite sprite) {
-        this.sprite = sprite;
-    }
-
     public boolean getIsMovingRight(){
         return isMovingRight;
     }
 
 
+    public void logic(player_movement player){
+        this.player = player;
+    }
 
     @Override
     public boolean keyDown(int i) {
         if((i == Input.Keys.A)){
-            player.updatePlayerPosition();
+            player.moveLeft(true);
         }else if(i == Input.Keys.D){
-            sprite.translateX(5f);
+            player.moveRight(true);
         }
         else if(i == Input.Keys.W){
-            sprite.translateY(5f);
-            return true;
+            player.moveUp(true);
         }
         else if(i == Input.Keys.S){
-            sprite.translateY(-5f);
-            return true;
+            player.moveDown(true);
         }
         return false;
     }
@@ -43,7 +39,15 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     @Override
     public boolean keyUp(int i) {
         if(i == Input.Keys.A){
-            isMovingRight = false;
+            player.moveLeft(false);
+        }else if(i == Input.Keys.D){
+            player.moveRight(false);
+        }
+        else if(i == Input.Keys.W){
+            player.moveUp(false);
+        }
+        else if(i == Input.Keys.S){
+            player.moveDown(false);
         }
         return false;
     }
