@@ -2,7 +2,7 @@ package MODEL;
 
 public class Attack {
     private int HP;
-    private final int maxHP;
+    //private final int maxHP;
     private int StandardAttackDamage = 10;
     private boolean isAlive;
 
@@ -23,11 +23,11 @@ public class Attack {
      */
 
 
-    public HealthBar (int HP) {
+    /*public HealthBar (int HP) {
         this.HP = HP;
         this.maxHP = HP;
         this.isAlive = true;
-    }
+    }*/
 
     public void takeDamage (){
         HP = HP-StandardAttackDamage;

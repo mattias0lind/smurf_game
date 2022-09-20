@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import CONTROLLER.InputProcessor;
+import MODEL.player_movement;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -12,8 +13,11 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MyGdxGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Texture img;
-	private Sprite sprite;
+	public Sprite sprite,sprite2;
 	private int keyPressed;
+	private player_movement player = new player_movement();
+	private player_movement player2 = new player_movement();
+	private InputProcessor inputProcessor = new InputProcessor();
 
 
 
@@ -22,15 +26,21 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 		sprite = new Sprite(img);
-		InputProcessor inputProcessor = new InputProcessor();
-		Gdx.input.setInputProcessor(inputProcessor);
+		sprite2 = new Sprite(img);
+		inputProcessor.logic(player,player2);
 	}
 
 	@Override
 	public void render () {
+		Gdx.input.setInputProcessor(inputProcessor);
+		if(player.getmoveLeft()){sprite.translateX(-1f);}
+		else if(player.getmoveRight()){sprite.translateX(1f);}
+		else if(player.getmoveUp()){sprite.translateY(1f);}
+		else if(player.getmoveDown()){sprite.translateY(-1f);}
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
 		batch.draw(sprite,sprite.getX(),sprite.getY());
+		batch.draw(sprite2,sprite2.getX(),sprite2.getY());
 		batch.end();
 	}
 	
