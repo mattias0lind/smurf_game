@@ -1,42 +1,49 @@
 package CONTROLLER;
 
 
+import MODEL.player_movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.mygdx.game.MyGdxGame;
 
 /*Hanterar inputs */
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private Sprite sprite;
-    private boolean movingRight = false;
+    private boolean isMovingRight = false;
+    private InputProcessor inputProcessor;
+    private player_movement player;
 
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }
 
+    public boolean getIsMovingRight(){
+        return isMovingRight;
+    }
+
+
+
     @Override
     public boolean keyDown(int i) {
-        if(i == Input.Keys.A){
-            sprite.translateX(-1f);
-            return true;
+        if((i == Input.Keys.A)){
+            player.updatePlayerPosition();
         }else if(i == Input.Keys.D){
-            sprite.translateX(1f);
+            sprite.translateX(5f);
         }
         else if(i == Input.Keys.W){
-            sprite.translateY(1f);
+            sprite.translateY(5f);
+            return true;
         }
         else if(i == Input.Keys.S){
-            sprite.translateY(-1f);
+            sprite.translateY(-5f);
+            return true;
         }
-
-
         return false;
     }
 
     @Override
     public boolean keyUp(int i) {
-        if(i == Input.Keys.D){
-            sprite.translateX(0);
+        if(i == Input.Keys.A){
+            isMovingRight = false;
         }
         return false;
     }
