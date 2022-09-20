@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class character{
 
-    private int gravity = -15; //tog bort final ifall man i framtiden vill göra en power-up som förändrar gravitation.
-    private Vector2 position; // kanske inte ens bör vara i karaktär klassen.
+    private static final int gravity = -15; //tog bort final ifall man i framtiden vill göra en power-up som förändrar gravitation.
+    private Vector2 position; // "gravity" kanske inte ens bör vara i karaktär klassen.
     private Vector2 velocity;
     private Texture characterImage;
 
@@ -23,12 +23,18 @@ public class character{
 
         velocity.scl(1 / dt); //dt är står för deltatime alltså har med tidsuppfattning att göra
     }
-        public Vector2 getPosition(){
-            return position;
+    public Vector2 getPosition(){
+        return position;
 
     }
 
-        public Texture getCharacterImage(){
-            return characterImage;
+    public Texture getCharacterImage(){
+        return characterImage;
         }
+    public void jump(){
+        if(velocity.y == 0){//man kan enbart hoppa om man står på marken
+        velocity.y = 250;
+        }
+    }
+
 }
