@@ -13,9 +13,10 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MyGdxGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Texture img;
-	public Sprite sprite;
+	public Sprite sprite,sprite2;
 	private int keyPressed;
 	private player_movement player = new player_movement();
+	private player_movement player2 = new player_movement();
 	private InputProcessor inputProcessor = new InputProcessor();
 
 
@@ -25,7 +26,8 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 		sprite = new Sprite(img);
-		inputProcessor.logic(player);
+		sprite2 = new Sprite(img);
+		inputProcessor.logic(player,player2);
 	}
 
 	@Override
@@ -38,6 +40,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
 		batch.draw(sprite,sprite.getX(),sprite.getY());
+		batch.draw(sprite2,sprite2.getX(),sprite2.getY());
 		batch.end();
 	}
 	
