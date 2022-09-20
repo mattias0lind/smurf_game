@@ -8,4 +8,6 @@ public interface Istate {
     void update(float dt);
 
     void render(SpriteBatch db);
+
+    void dispose();
 }

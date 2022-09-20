@@ -14,7 +14,7 @@ public class character{
     public character(int x, int y){
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
-        this.characterImage = characterImage;
+        characterImage = new Texture("smurf.png");
     }
     public void update(float dt) {
         velocity.add(0, gravity);
