@@ -9,7 +9,7 @@ public class movementTesting {
     @Test
     public void testStartingPlayerPosition(){
         player_movement player = new player_movement();
-        player.updatePlayerPosition(1,1);
+        player.setPlayerPosition(1,1);
         assertTrue(player.getPlayerXPosition()+player.getPlayerYPosition() == 2);
     }
 
