@@ -58,8 +58,8 @@ public class player_movement implements movement {
 
     @Override
     public void setPlayerPosition(int playerXPosition, int playerYPosition){
-        this.playerXPosition = playerXPosition;
-        this.playerYPosition = playerYPosition;
+        position = new Vector2(playerXPosition, playerYPosition);
+        velocity = new Vector2(0, 0);
     }
 
     public void updatePlayerPosition() {

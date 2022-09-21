@@ -1,5 +1,6 @@
 package MODEL;
 
+import CONTROLLER.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 //import com.badlogic.gdx.math.Vector3;
@@ -7,13 +8,16 @@ import com.badlogic.gdx.math.Vector2;
 public class Character{
     private int currentHealthPoints;
     private int characterXPosition;
-    private Vector2 position;
-    private Vector2 velocity;
+    private player_movement playerMovement = new player_movement();
+    private String name;
 
 
-    public Character(int x, int y, String smurf){
-        position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
+    public Character(String nameOfCharacter){
+        this.name = nameOfCharacter;
+    }
+
+    public void SetInitialPosition(int x, int y){
+        playerMovement.setPlayerPosition(x,y);
     }
 
 

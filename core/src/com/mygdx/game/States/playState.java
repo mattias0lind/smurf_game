@@ -13,7 +13,8 @@ public class playState extends abstractState {
 
     public playState(gameStateManager gsm){
     super(gsm);
-    smurf = new SmurfCharacter(200,200);
+   smurf = new SmurfCharacter();
+   smurf.SetInitialPosition(200,200);
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
 
     }
