@@ -31,8 +31,8 @@ public class menuState extends abstractState {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(background, 0,0, MyGdxGame.gameWidth, MyGdxGame.gameHeigth);
-        sb.draw(playButton, (MyGdxGame.gameWidth / 2)-(playButton.getWidth() / 2), MyGdxGame.gameHeigth / 4);
+        sb.draw(background, 0,0, 1280, 720);
+        sb.draw(playButton, (1280 / 2)-(playButton.getWidth() / 2), 720 / 4);
         sb.end();
     }
 

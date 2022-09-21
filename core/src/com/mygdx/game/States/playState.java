@@ -1,5 +1,6 @@
 package com.mygdx.game.States;
 
+import CONTROLLER.InputProcessor;
 import MODEL.Character;
 import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
@@ -7,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class playState extends abstractState {
     private SmurfCharacter smurf;
+    private InputProcessor inputProcessor = new InputProcessor();
+
 
     public playState(gameStateManager gsm){
     super(gsm);
@@ -17,14 +20,15 @@ public class playState extends abstractState {
 
     @Override
     public void handleInput() {
-        if(Gdx.input.isKeyPressed(62))
-        smurf.jump();
+        Gdx.input.setInputProcessor(inputProcessor);
+
+
     }
 
     @Override
     public void update(float dt) {
         handleInput();
-        smurf.update(dt);
+        //smurf.update(dt);
     }
 
     @Override

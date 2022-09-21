@@ -5,7 +5,7 @@ public class Attack {
     //private final int maxHP;
     private int StandardAttackDamage = 10;
 
-    public void doHit(Character currentCharacter) {
+   /* public void doHit(Character currentCharacter) {
         Character enemyCharacter;
         for(int x=-1; x<2; x++ ) {
             for(int y=-1; y<2; y++){
@@ -19,7 +19,7 @@ public class Attack {
             }
         }
 
-    }
+    }*/
 
     private Character getCharacterAt(int x, int y) {
         return null;

@@ -1,10 +1,16 @@
 package MODEL;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 
 public class player_movement implements movement {
     private float playerXPosition;
     private float playerYPosition;
+    private static final int gravity = -15;
+    private Vector2 position;
+    private Vector2 velocity;
+
+
     private boolean moveLeft,moveRight,moveUp,moveDown;
 
     public float getPlayerXPosition(){
@@ -30,6 +36,24 @@ public class player_movement implements movement {
         return moveUp;
     }
 
+    /*public Character(int x, int y, String smurf){
+        position = new Vector2(x, y);
+        velocity = new Vector2(0, 0);
+    }*/
+
+
+    public void update(float dt) {
+        velocity.add(0, gravity);
+        velocity.scl(dt);
+        position.add(0, velocity.y);
+
+        velocity.scl(1 / dt); //dt är står för deltatime alltså har med tidsuppfattning att göra
+    }
+    public Vector2 getPosition(){
+        return position;
+
+    }
+
 
 
     @Override
@@ -46,7 +70,9 @@ public class player_movement implements movement {
             this.playerXPosition += 31;
         }
         if(moveUp){
-            this.playerYPosition += 31;
+            if(velocity.y == 0){
+                velocity.y = 250;
+            }
         }
         if(moveDown){
             this.playerYPosition -=31;
