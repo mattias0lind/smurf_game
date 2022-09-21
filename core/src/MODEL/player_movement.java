@@ -13,11 +13,11 @@ public class player_movement implements movement {
 
     private boolean moveLeft,moveRight,moveUp,moveDown;
 
-    public float getPlayerXPosition(){
-        return playerXPosition;
+    public Vector2 getPlayerPosition(){
+        return position;
     }
 
-    public float getPlayerYPosition(){return playerYPosition;}
+    public Vector2 getPlayerVelocity(){return velocity;}
 
     public boolean getmoveLeft(){
         return moveLeft;

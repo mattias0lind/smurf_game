@@ -1,7 +1,5 @@
 package MODEL;
 
-import CONTROLLER.InputProcessor;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 //import com.badlogic.gdx.math.Vector3;
 
@@ -18,6 +16,10 @@ public class Character{
 
     public void SetInitialPosition(int x, int y){
         playerMovement.setPlayerPosition(x,y);
+    }
+
+    public Vector2 getPosition(){
+       return playerMovement.getPlayerPosition();
     }
 
 
