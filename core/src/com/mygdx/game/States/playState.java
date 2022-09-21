@@ -5,17 +5,24 @@ import MODEL.Character;
 import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 
 public class playState extends abstractState {
     private SmurfCharacter smurf;
     private InputProcessor inputProcessor = new InputProcessor();
+    private World world = new World(new Vector2(0,-10), true);
 
 
     public playState(gameStateManager gsm){
-    super(gsm);
-   smurf = new SmurfCharacter();
-   smurf.SetInitialPosition(200,200);
+        super(gsm);
+        smurf = new SmurfCharacter(world);
+        smurf.SetInitialPosition(200,200);
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
+
+    }
+
+    private void PopulateWorld(){
 
     }
 

@@ -2,16 +2,27 @@ package MODEL;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.World;
 
 public class player_movement implements movement {
     private float playerXPosition;
     private float playerYPosition;
     private static final int gravity = -15;
-    private Vector2 position;
+    private Vector2 position = new Vector2(0,0);
     private Vector2 velocity;
+    private BodyDef bodyDef;
+    private Body body;
 
 
     private boolean moveLeft,moveRight,moveUp,moveDown;
+
+    public player_movement(World world) {
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set(position);
+        this.body = world.createBody(bodyDef);
+    }
 
     public Vector2 getPlayerPosition(){
         return position;
@@ -36,10 +47,15 @@ public class player_movement implements movement {
         return moveUp;
     }
 
+    public Body getBody(){
+        return body;
+    }
+
     /*public Character(int x, int y, String smurf){
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
     }*/
+
 
 
     public void update(float dt) {
@@ -58,8 +74,8 @@ public class player_movement implements movement {
 
     @Override
     public void setPlayerPosition(int playerXPosition, int playerYPosition){
-        position = new Vector2(playerXPosition, playerYPosition);
-        velocity = new Vector2(0, 0);
+        position.set(playerXPosition, playerYPosition);
+        velocity.set(0,0);
     }
 
     public void updatePlayerPosition() {
