@@ -5,8 +5,8 @@ public class Attack {
     //private final int maxHP;
     private int StandardAttackDamage = 10;
 
-    public void doHit(character currentCharacter) {
-        character enemyCharacter;
+    public void doHit(Character currentCharacter) {
+        Character enemyCharacter;
         for(int x=-1; x<2; x++ ) {
             for(int y=-1; y<2; y++){
                 if(x==0 && y==0){
@@ -21,7 +21,7 @@ public class Attack {
 
     }
 
-    private character getCharacterAt(int x, int y) {
+    private Character getCharacterAt(int x, int y) {
         return null;
         //To be implemented in the gameboard class//
     }
