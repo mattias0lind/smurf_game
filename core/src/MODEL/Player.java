@@ -2,6 +2,8 @@ package MODEL;
 
 public class Player {
     private HealthBar healthBar;
+    private Character character;
+    private Powerups powerups;
 
 
     public Player() { //konstruktorn
