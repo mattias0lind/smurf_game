@@ -3,7 +3,7 @@ package com.mygdx.game.States;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.Smurf_Game;
+import com.mygdx.game.MyGdxGame;
 
 public class menuState extends abstractState {
     private Texture background;
@@ -31,8 +31,8 @@ public class menuState extends abstractState {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(background, 0,0, Smurf_Game.gameWidth, Smurf_Game.gameHeigth);
-        sb.draw(playButton, (Smurf_Game.gameWidth / 2)-(playButton.getWidth() / 2), Smurf_Game.gameHeigth / 4);
+        sb.draw(background, 0,0, MyGdxGame.gameWidth, MyGdxGame.gameHeigth);
+        sb.draw(playButton, (MyGdxGame.gameWidth / 2)-(playButton.getWidth() / 2), MyGdxGame.gameHeigth / 4);
         sb.end();
     }
 
