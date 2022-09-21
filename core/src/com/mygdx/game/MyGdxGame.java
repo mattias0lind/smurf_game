@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.States.gameStateManager;
+import com.mygdx.game.States.menuState;
 
 public class MyGdxGame extends ApplicationAdapter {
 	private SpriteBatch batch;
@@ -18,13 +20,15 @@ public class MyGdxGame extends ApplicationAdapter {
 	private player_movement player = new player_movement();
 	private player_movement player2 = new player_movement();
 	private InputProcessor inputProcessor = new InputProcessor();
+	private gameStateManager gsm;
 
 
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		gsm = new gameStateManager();
+		gsm.push(new menuState(gsm));
 		sprite = new Sprite(img);
 		sprite2 = new Sprite(img);
 		inputProcessor.logic(player,player2);

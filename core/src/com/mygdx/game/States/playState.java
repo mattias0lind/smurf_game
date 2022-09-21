@@ -1,15 +1,16 @@
 package com.mygdx.game.States;
 
-import MODEL.character;
+import MODEL.Character;
+import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class playState extends abstractState {
-    private character smurf;
+    private SmurfCharacter smurf;
 
     public playState(gameStateManager gsm){
     super(gsm);
-    smurf = new character(200,200);
+    smurf = new SmurfCharacter(200,200);
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
 
     }
@@ -30,7 +31,6 @@ public class playState extends abstractState {
     public void render(SpriteBatch sb) {
         //sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(smurf.getCharacterImage(), smurf.getPosition().x, smurf.getPosition().y);
         sb.end();
     }
 
