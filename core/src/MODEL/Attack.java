@@ -4,25 +4,24 @@ public class Attack {
     private int HP;
     //private final int maxHP;
     private int StandardAttackDamage = 10;
-    private boolean isAlive;
 
-    public void doHit(Player currentPlayer) {
-        Player enemyPlayer;
+    public void doHit(character currentCharacter) {
+        character enemyCharacter;
         for(int x=-1; x<2; x++ ) {
             for(int y=-1; y<2; y++){
                 if(x==0 && y==0){
                     continue;
                 }
-                enemyPlayer = getPlayerAt(currentPlayer.getPlayerXPosition()+x, currentPlayer.getPlayerYPosition()+y);
-                if(enemyPlayer != null){
-                    enemyPlayer.gotHit();
+                enemyCharacter = getCharacterAt(currentCharacter.getCharacterXPosition()+x, currentCharacter.getCharacterYPosition()+y);
+                if(enemyCharacter != null){
+                    enemyCharacter.gotHit();
                 }
             }
         }
 
     }
 
-    private Player getPlayerAt(int x, int y) {
+    private character getCharacterAt(int x, int y) {
         return null;
         //To be implemented in the gameboard class//
     }
@@ -51,15 +50,6 @@ public class Attack {
         this.maxHP = HP;
         this.isAlive = true;
     }*/
-
-
-
-    public void takeDamage (){
-        HP = HP-StandardAttackDamage;
-        if (HP < 0)
-            isAlive = false;
-    }
-
 
     private void attack() {
 

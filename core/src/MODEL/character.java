@@ -11,6 +11,17 @@ public class character{
     private Vector2 velocity;
     private Texture characterImage;
 
+    private int currentHealthPoints;
+
+    private int characterXPosition;
+    public int getCharacterXPosition() {
+        return characterXPosition;
+    }
+    private int characterYPosition;
+    public int getCharacterYPosition() {
+        return characterYPosition;
+    }
+
     public character(int x, int y){
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
@@ -34,6 +45,23 @@ public class character{
     public void jump(){
         if(velocity.y == 0){//man kan enbart hoppa om man står på marken
         velocity.y = 250;
+        }
+    }
+
+    public void gotHit() {
+        /*Later add what type of hit it was */
+        /*Assume hit = -10hp
+         * Highlight the hit graphically
+         * */
+        currentHealthPoints = currentHealthPoints - 10;
+        checkIfStillAlive();
+    }
+
+    private void checkIfStillAlive() {
+        if (currentHealthPoints <= 0) {
+            /* If not alive then update HealthBar
+            Reset the game round
+             */
         }
     }
 
