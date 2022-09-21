@@ -1,24 +1,23 @@
 package MODEL;
 
 public class HealthBar {
-    private int HP;
-    private final int maxHP;
-    private boolean isAlive;
+    private float HP; // HP i procent
+    private final float maxHP; // Maximalt HP
 
-    public HealthBar (int HP) {
+
+    public HealthBar (float HP) {
         this.HP = HP;
         this.maxHP = HP;
-        this.isAlive = true;
     }
 
-    public void takeDamage (int damage){
+    public void looseHP (float damage){ //skada i procent)
         HP = HP-damage;
         if (HP < 0)
-            isAlive = false;
+            HP = 0;
     }
     public void maxHP(){
         HP = maxHP;
-    }
+    } //HP återställs till max hp
 
 
 
