@@ -1,6 +1,13 @@
 package MODEL;
 
 public class Player {
+    private HealthBar healthBar;
+
+
+    public Player() { //konstruktorn
+
+    }
+
 
     private int playerXPosition;
 
