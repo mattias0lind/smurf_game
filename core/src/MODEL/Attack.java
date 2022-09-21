@@ -6,6 +6,29 @@ public class Attack {
     private int StandardAttackDamage = 10;
     private boolean isAlive;
 
+    public void doHit(Player currentPlayer) {
+        Player enemyPlayer;
+        for(int x=-1; x<2; x++ ) {
+            for(int y=-1; y<2; y++){
+                if(x==0 && y==0){
+                    continue;
+                }
+                enemyPlayer = getPlayerAt(currentPlayer.getPlayerXPosition()+x, currentPlayer.getPlayerYPosition()+y);
+                if(enemyPlayer != null){
+                    enemyPlayer.gotHit();
+                }
+            }
+        }
+
+    }
+
+    private Player getPlayerAt(int x, int y) {
+        return null;
+        //To be implemented in the gameboard class//
+    }
+
+
+
     /*
     Implement a method called isAlive that checks hp of player
 
@@ -28,6 +51,8 @@ public class Attack {
         this.maxHP = HP;
         this.isAlive = true;
     }*/
+
+
 
     public void takeDamage (){
         HP = HP-StandardAttackDamage;
