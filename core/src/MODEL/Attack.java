@@ -2,9 +2,31 @@ package MODEL;
 
 public class Attack {
     private int HP;
-    private final int maxHP;
+    //private final int maxHP;
     private int StandardAttackDamage = 10;
-    private boolean isAlive;
+
+   /* public void doHit(Character currentCharacter) {
+        Character enemyCharacter;
+        for(int x=-1; x<2; x++ ) {
+            for(int y=-1; y<2; y++){
+                if(x==0 && y==0){
+                    continue;
+                }
+                enemyCharacter = getCharacterAt(currentCharacter.getCharacterXPosition()+x, currentCharacter.getCharacterYPosition()+y);
+                if(enemyCharacter != null){
+                    enemyCharacter.gotHit();
+                }
+            }
+        }
+
+    }*/
+
+    private Character getCharacterAt(int x, int y) {
+        return null;
+        //To be implemented in the gameboard class//
+    }
+
+
 
     /*
     Implement a method called isAlive that checks hp of player
@@ -23,18 +45,11 @@ public class Attack {
      */
 
 
-    public HealthBar (int HP) {
+    /*public HealthBar (int HP) {
         this.HP = HP;
         this.maxHP = HP;
         this.isAlive = true;
-    }
-
-    public void takeDamage (){
-        HP = HP-StandardAttackDamage;
-        if (HP < 0)
-            isAlive = false;
-    }
-
+    }*/
 
     private void attack() {
 
