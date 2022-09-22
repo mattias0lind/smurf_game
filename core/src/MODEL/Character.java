@@ -9,6 +9,7 @@ public class Character{
     private int characterXPosition;
     private player_movement playerMovement;
     private String name;
+    private HealthBar healthBar;
 
 
 

@@ -1,15 +1,12 @@
 package MODEL;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 
 public class player_movement implements movement {
-    private float playerXPosition;
-    private float playerYPosition;
-    private static final int gravity = -15;
+
     private Vector2 position = new Vector2(0,0);
     private Vector2 velocity;
     private BodyDef bodyDef;
@@ -22,6 +19,11 @@ public class player_movement implements movement {
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
         this.body = world.createBody(bodyDef);
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape polygonShape = new PolygonShape();
+        polygonShape.setAsBox(16,16);
+        fixtureDef.shape = polygonShape;
+        body.createFixture(fixtureDef);
     }
 
     public Vector2 getPlayerPosition(){
@@ -51,15 +53,12 @@ public class player_movement implements movement {
         return body;
     }
 
-    /*public Character(int x, int y, String smurf){
-        position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
-    }*/
+
 
 
 
     public void update(float dt) {
-        velocity.add(0, gravity);
+        velocity.add(0, 0);
         velocity.scl(dt);
         position.add(0, velocity.y);
 
@@ -80,18 +79,18 @@ public class player_movement implements movement {
 
     public void updatePlayerPosition() {
         if(moveLeft){
-            this.playerXPosition -= 31;
+            this.body.setLinearVelocity(-2,0);
         }
         if(moveRight){
-            this.playerXPosition += 31;
+            this.body.setLinearVelocity(2,0);
         }
         if(moveUp){
-            if(velocity.y == 0){
-                velocity.y = 250;
+            if(body.getLinearVelocity().y == 0){
+                body.applyLinearImpulse(10,0, position.x, position.y, true);
             }
         }
         if(moveDown){
-            this.playerYPosition -=31;
+            this.body.setLinearVelocity(0,-2);
         }
 
     }
