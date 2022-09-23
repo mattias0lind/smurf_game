@@ -1,8 +1,10 @@
 package MODEL;
 
+import com.badlogic.gdx.physics.box2d.World;
+
 public class SmurfCharacter extends Character {
-    public SmurfCharacter(int x, int y) {
-        super(x, y, "Smurf");
+    public SmurfCharacter(World world) {
+        super("Smurf",world);
 
     }
 }

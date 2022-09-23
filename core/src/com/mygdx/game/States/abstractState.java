@@ -8,6 +8,7 @@ public abstract class abstractState implements Istate {
     //protected Vector3 mouse; Behövs väl inte i den abstrakta klassen, mus kanske inte behövs alls?
     protected gameStateManager gsm;
 
+
     protected abstractState(gameStateManager gsm){
         this.gsm = gsm;
         cam = new OrthographicCamera();

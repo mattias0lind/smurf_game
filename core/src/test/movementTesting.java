@@ -1,6 +1,4 @@
 package test;
-import MODEL.movement;
-import MODEL.player_movement;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,9 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class movementTesting {
     @Test
     public void testStartingPlayerPosition(){
-        player_movement player = new player_movement();
-        player.setPlayerPosition(1,1);
-        assertTrue(player.getPlayerXPosition()+player.getPlayerYPosition() == 2);
+        /*Character player = new Character("Smurf");
+        player.SetInitialPosition(200,200);
+        Vector2 vector = player.getPosition();
+        assertTrue(vector.x == 200);
+        assertTrue(vector.y == 200);*/
+
     }
 
 }
