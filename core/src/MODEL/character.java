@@ -4,12 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 //import com.badlogic.gdx.math.Vector3;
 
-public class character{
+public class Character{
 
     private static final int gravity = -15; //tog bort final ifall man i framtiden vill göra en power-up som förändrar gravitation.
     private Vector2 position; // "gravity" kanske inte ens bör vara i karaktär klassen.
     private Vector2 velocity;
     private Texture characterImage;
+    private String characterName;
 
     private int currentHealthPoints;
 
@@ -22,10 +23,12 @@ public class character{
         return characterYPosition;
     }
 
-    public character(int x, int y){
+    public String getCharacterName(){return characterName;}
+
+    public Character(int x, int y, String characterName){
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
-        characterImage = new Texture("smurf.png");
+        this.characterName = characterName;
     }
     public void update(float dt) {
         velocity.add(0, gravity);
@@ -41,10 +44,10 @@ public class character{
 
     public Texture getCharacterImage(){
         return characterImage;
-        }
+    }
     public void jump(){
         if(velocity.y == 0){//man kan enbart hoppa om man står på marken
-        velocity.y = 250;
+            velocity.y = 250;
         }
     }
 

@@ -1,30 +1,28 @@
 package com.mygdx.game.States;
 
+
 import MODEL.Character;
-import MODEL.SmurfCharacter;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class playState extends abstractState {
-    private SmurfCharacter smurf;
+    private Character smurf;
 
     public playState(gameStateManager gsm){
     super(gsm);
-    smurf = new SmurfCharacter(200,200);
+    smurf = new Character(200,200,"smurf");
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
 
     }
 
     @Override
     public void handleInput() {
-        if(Gdx.input.isKeyPressed(62))
-        smurf.jump();
+        //if(Gdx.input.isKeyPressed(62))
+        //smurf.jump();
     }
 
     @Override
     public void update(float dt) {
-        handleInput();
-        smurf.update(dt);
+        //handleInput();
     }
 
     @Override
