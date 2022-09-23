@@ -1,7 +1,7 @@
 package CONTROLLER;
 
 
-import MODEL.player_movement;
+import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
@@ -10,13 +10,13 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private Sprite sprite;
     private boolean isMovingRight = false;
     private InputProcessor inputProcessor;
-    private player_movement player,player2;
+    private Player_Movement player,player2;
     public boolean getIsMovingRight(){
         return isMovingRight;
     }
 
 
-    public void logic(player_movement player,player_movement player2){
+    public void logic(Player_Movement player, Player_Movement player2){
         this.player = player;
         this.player2 = player2;
     }

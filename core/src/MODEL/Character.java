@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Character{
     private int currentHealthPoints;
     private int characterXPosition;
-    private player_movement playerMovement;
+    private Player_Movement playerMovement;
     private String name;
     private HealthBar healthBar;
 
@@ -16,7 +16,7 @@ public class Character{
     public Character(String nameOfCharacter, World world)
     {
         this.name = nameOfCharacter;
-        this.playerMovement = new player_movement(world);
+        this.playerMovement = new Player_Movement(world);
     }
 
     public void SetInitialPosition(int x, int y){

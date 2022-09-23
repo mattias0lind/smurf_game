@@ -1,5 +1,5 @@
 package MODEL;
 
-public interface movement {
+public interface IMovement {
     void setPlayerPosition(int playerXPosition, int playerYPosition);
 }

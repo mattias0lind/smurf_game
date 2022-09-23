@@ -1,11 +1,9 @@
 package MODEL;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
-public class player_movement implements movement {
+public class Player_Movement implements IMovement {
 
     private Vector2 position = new Vector2(0,0);
     private Vector2 velocity;
@@ -15,7 +13,7 @@ public class player_movement implements movement {
 
     private boolean moveLeft,moveRight,moveUp,moveDown;
 
-    public player_movement(World world) {
+    public Player_Movement(World world) {
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
         this.body = world.createBody(bodyDef);

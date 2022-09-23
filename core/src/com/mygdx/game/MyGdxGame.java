@@ -1,5 +1,4 @@
 package com.mygdx.game;
-import MODEL.player_movement;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
