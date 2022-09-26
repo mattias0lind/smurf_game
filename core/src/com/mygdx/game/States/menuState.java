@@ -6,12 +6,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.MyGdxGame;
 
 public class menuState extends abstractState {
-    private Texture background;
+    private Texture menuBackground;
     private Texture playButton;
 
     public menuState(gameStateManager gsm) {
         super(gsm);
-        background = new Texture("smurf_game_background.png");
+        menuBackground = new Texture("smurf_game_background.png");
         playButton = new Texture("play_text.png");
     }
 
@@ -31,14 +31,14 @@ public class menuState extends abstractState {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(background, 0,0, 1280, 720);
+        sb.draw(menuBackground, 0,0, 1280, 720);
         sb.draw(playButton, (1280 / 2)-(playButton.getWidth() / 2), 0);
         sb.end();
     }
 
     @Override
     public void dispose(){
-        background.dispose();
+        menuBackground.dispose();
         playButton.dispose();
     }
 }
