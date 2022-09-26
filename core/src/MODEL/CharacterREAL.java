@@ -42,6 +42,7 @@ public abstract class CharacterREAL {
         if (rectangle.contains(character.getPosition().x, getPosition().y)){
             character.gotHit(AttackDamage);
         }
+        //perform punch animation
     }
 
     public void restoreHP(){
@@ -50,6 +51,7 @@ public abstract class CharacterREAL {
 
     public void gotHit(float attackDamage) {
         healthBar.looseHP(attackDamage);
+        //play sound when hit
         //Later add what type of hit it was//
         /*Assume hit = -10hp
          * Highlight the hit graphically

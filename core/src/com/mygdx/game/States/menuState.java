@@ -20,10 +20,10 @@ public class menuState extends abstractState {
         if(Gdx.input.justTouched()){
             if(Gdx.input.getX() > (1280 / 2)-(playButton.getWidth() / 2)
                     && Gdx.input.getX() < (1280 / 2)-(playButton.getWidth() / 2) + playButton.getWidth()
-                    && Gdx.input.getY() > 280
-                    && Gdx.input.getY() < (280 + playButton.getHeight())){
-                        gsm.set(new CharacterSelectionState(gsm));
-                        dispose();
+                    && Gdx.input.getY() < 440
+                    && Gdx.input.getY() > 330){
+                gsm.set(new CharacterSelectionState(gsm));
+                dispose();
             }
         }
     }
