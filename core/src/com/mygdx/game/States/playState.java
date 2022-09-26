@@ -1,42 +1,28 @@
 package com.mygdx.game.States;
 
-import CONTROLLER.InputProcessor;
+
 import MODEL.Character;
-import MODEL.SmurfCharacter;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 
 public class playState extends abstractState {
-    private SmurfCharacter smurf;
-    private InputProcessor inputProcessor = new InputProcessor();
-    private World world = new World(new Vector2(0,-10), true);
-
+    private Character smurf;
 
     public playState(gameStateManager gsm){
-        super(gsm);
-        smurf = new SmurfCharacter(world);
-        smurf.SetInitialPosition(200,200);
+    super(gsm);
+    smurf = new Character(200,200,"smurf");
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
-
-    }
-
-    private void PopulateWorld(){
 
     }
 
     @Override
     public void handleInput() {
-        Gdx.input.setInputProcessor(inputProcessor);
-
-
+        //if(Gdx.input.isKeyPressed(62))
+        //smurf.jump();
     }
 
     @Override
     public void update(float dt) {
-        handleInput();
-        //smurf.update(dt);
+        //handleInput();
     }
 
     @Override
