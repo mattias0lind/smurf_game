@@ -5,8 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 
-public class CharacterREAL {
-    private int currentHealthPoints;
+public abstract class CharacterREAL {
     private int characterXPosition;
     private Player_Movement playerMovement;
     private String name;
@@ -15,11 +14,11 @@ public class CharacterREAL {
 
 
 
-    public CharacterREAL(String nameOfCharacter, World world)
+    public CharacterREAL(String nameOfCharacter, World world, float hp)
     {
         this.name = nameOfCharacter;
         this.playerMovement = new Player_Movement(world);
-        this.healthBar = new HealthBar(12);
+        this.healthBar = new HealthBar(hp);
     }
 
     public void SetInitialPosition(int x, int y){

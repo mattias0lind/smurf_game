@@ -1,6 +1,8 @@
 package com.mygdx.game.States;
 
 
+import MODEL.EvilSmurfCharacter;
+import MODEL.SmurfCharacter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import MODEL.CharacterREAL;
@@ -12,8 +14,8 @@ public class CharacterSelectionState extends abstractState{
     private Texture characterCard2;
     private World world = new World(new Vector2(-10,0), true);
 
-    private CharacterREAL smurf1 = new CharacterREAL("smurf", world);
-    private CharacterREAL smurf2 = new CharacterREAL("evilSmurf", world);
+    private CharacterREAL smurf1 = new SmurfCharacter(world);
+    private CharacterREAL smurf2 = new EvilSmurfCharacter(world);
 
     public CharacterSelectionState(gameStateManager gsm){
         super(gsm);
