@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.mygdx.game.MyGdxGame;
@@ -12,7 +13,7 @@ public class DesktopLauncher {
 		config.useVsync(true);
 		config.setWindowedMode(1280,720);
 		config.setResizable(false);
-		//
+		config.setWindowIcon("icon.png");
 		config.setTitle("Smurf Game");
 		new Lwjgl3Application(new MyGdxGame(), config);
 
