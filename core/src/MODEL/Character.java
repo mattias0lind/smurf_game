@@ -17,6 +17,7 @@ public class Character{
     {
         this.name = nameOfCharacter;
         this.playerMovement = new Player_Movement(world);
+        this.healthBar = new HealthBar(12);
     }
 
     public void SetInitialPosition(int x, int y){
