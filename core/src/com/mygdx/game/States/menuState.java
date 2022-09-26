@@ -18,8 +18,13 @@ public class menuState extends abstractState {
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()){
-           gsm.set(new CharacterSelectionState(gsm));
-           dispose();
+            if(Gdx.input.getX() > (1280 / 2)-(playButton.getWidth() / 2)
+                    && Gdx.input.getX() < (1280 / 2)-(playButton.getWidth() / 2) + playButton.getWidth()
+                    && Gdx.input.getY() > 280
+                    && Gdx.input.getY() < (280 + playButton.getHeight())){
+                        gsm.set(new CharacterSelectionState(gsm));
+                        dispose();
+            }
         }
     }
 
@@ -32,7 +37,7 @@ public class menuState extends abstractState {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(menuBackground, 0,0, 1280, 720);
-        sb.draw(playButton, (1280 / 2)-(playButton.getWidth() / 2), 0);
+        sb.draw(playButton, (1280 / 2)-(playButton.getWidth() / 2), 280);
         sb.end();
     }
 
