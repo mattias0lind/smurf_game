@@ -44,6 +44,9 @@ public abstract class CharacterREAL {
         }
     }
 
+    public void restoreHP(){
+        healthBar.maxHP();
+    }
 
     public void gotHit(float attackDamage) {
         healthBar.looseHP(attackDamage);
