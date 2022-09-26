@@ -11,6 +11,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.useVsync(true);
 		config.setWindowedMode(1280,720);
+		config.setResizable(false);
 		config.setTitle("Smurf Game");
 		new Lwjgl3Application(new MyGdxGame(), config);
 
