@@ -3,11 +3,13 @@ package com.mygdx.game.States;
 
 import CONTROLLER.InputProcessor;
 import MODEL.SmurfCharacter;
+import MODEL.TileMapHelper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import MODEL.CharacterREAL;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -18,6 +20,9 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 public class playState extends abstractState {
     private CharacterREAL smurf;
     private World world;
+
+    private OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
+    private TileMapHelper tileMapHelper;
     private Stage stage;
     private InputProcessor inputProcessor = new InputProcessor();
     private SpriteBatch batch;
@@ -60,6 +65,9 @@ public class playState extends abstractState {
         stage.addActor(myActor);
         Gdx.input.setInputProcessor(stage);
         stage.addActor(myActor);
+
+        this.tileMapHelper = new TileMapHelper();
+        this.orthogonalTiledMapRenderer = tileMapHelper.setupMap();
 
     }
 
