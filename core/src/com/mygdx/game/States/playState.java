@@ -3,15 +3,15 @@ package com.mygdx.game.States;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
-import MODEL.Character;
+import MODEL.CharacterREAL;
 
 public class playState extends abstractState {
-    private Character smurf;
+    private CharacterREAL smurf;
     private World world;
 
     public playState(gameStateManager gsm){
     super(gsm);
-    smurf = new Character("smurf", world);
+    smurf = new CharacterREAL("smurf", world);
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
 
     }

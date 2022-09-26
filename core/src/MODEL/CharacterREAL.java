@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 
-public class Character{
+public class CharacterREAL {
     private int currentHealthPoints;
     private int characterXPosition;
     private Player_Movement playerMovement;
@@ -13,7 +13,7 @@ public class Character{
 
 
 
-    public Character(String nameOfCharacter, World world)
+    public CharacterREAL(String nameOfCharacter, World world)
     {
         this.name = nameOfCharacter;
         this.playerMovement = new Player_Movement(world);
