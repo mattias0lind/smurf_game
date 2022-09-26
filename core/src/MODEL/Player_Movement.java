@@ -7,9 +7,8 @@ public class Player_Movement implements IMovement {
 
     private Vector2 position = new Vector2(0,0);
     private Vector2 velocity;
-    private BodyDef bodyDef;
+    private BodyDef bodyDef = new BodyDef();
     private Body body;
-
 
     private boolean moveLeft,moveRight,moveUp,moveDown;
 

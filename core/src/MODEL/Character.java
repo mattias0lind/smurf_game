@@ -28,6 +28,8 @@ public class Character{
        return playerMovement.getPlayerPosition();
     }
 
+    public String getNameOfCharacter(){return this.name;}
+
 
     public void gotHit() {
         //Later add what type of hit it was//
