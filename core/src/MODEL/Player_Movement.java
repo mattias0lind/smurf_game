@@ -13,9 +13,9 @@ public class Player_Movement implements IMovement {
     private boolean moveLeft,moveRight,moveUp,moveDown;
 
     public Player_Movement(World world) {
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        this.bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
-        this.body = world.createBody(bodyDef);
+        body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
         polygonShape.setAsBox(16,16);

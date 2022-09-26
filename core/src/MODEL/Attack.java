@@ -21,10 +21,7 @@ public class Attack {
 
     }*/
 
-    private CharacterREAL getCharacterAt(int x, int y) {
-        return null;
-        //To be implemented in the gameboard class//
-    }
+
 
 
 
