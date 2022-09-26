@@ -14,6 +14,7 @@ public class DesktopLauncher {
 		config.setWindowedMode(1280,720);
 		config.setResizable(false);
 		config.setWindowIcon("icon.png");
+
 		config.setTitle("Smurf Game");
 		new Lwjgl3Application(new MyGdxGame(), config);
 

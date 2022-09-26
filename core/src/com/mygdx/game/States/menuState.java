@@ -22,7 +22,7 @@ public class menuState extends abstractState {
                     && Gdx.input.getX() < (1280 / 2)-(playButton.getWidth() / 2) + playButton.getWidth()
                     && Gdx.input.getY() < 440
                     && Gdx.input.getY() > 330){
-                gsm.set(new CharacterSelectionState(gsm));
+                gsm.set(new playState(gsm));
                 dispose();
             }
         }

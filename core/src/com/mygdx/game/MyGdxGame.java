@@ -24,7 +24,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		gsm = new gameStateManager();
 		ScreenUtils.clear(1, 0, 0, 1);
 		gsm.push(new menuState(gsm));
-		//inputProcessor.logic(player,player2);
+
 
 	}
 
