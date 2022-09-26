@@ -3,13 +3,16 @@ package com.mygdx.game.States;
 
 import MODEL.Character;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 
 public class playState extends abstractState {
     private Character smurf;
+    private World world = new World(new Vector2(-10,0),false);
 
     public playState(gameStateManager gsm){
     super(gsm);
-    smurf = new Character(200,200,"smurf");
+    smurf = new Character("Apa",world);
     //cam.setToOrtho(false, Smurf_Game.gameWidth / 2, Smurf_Game.gameHeigth / 2);
 
     }
