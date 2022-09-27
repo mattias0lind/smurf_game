@@ -1,14 +1,8 @@
 package com.mygdx.game.States;
 
-
-import MODEL.EvilSmurfCharacter;
-import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import MODEL.CharacterREAL;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.ArrayList;
 import java.util.List;
