@@ -117,6 +117,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
@@ -134,6 +135,8 @@ public class playState extends abstractState{
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
+    private Texture backgroundTexture;
+    private Sprite backgroundSprite;
 
     private CharacterREAL smurf1 = new SmurfCharacter(world);
     private CharacterREAL smurf2 = new EvilSmurfCharacter(world);
@@ -146,6 +149,8 @@ public class playState extends abstractState{
         healthMeter = new Texture("healthMeter.png");
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         Gdx.input.setInputProcessor(inputProcessor);
+        //backgroundTexture = new Texture("backgroundworld.png");
+        //backgroundSprite = new Sprite(backgroundTexture);
     }
 
     @Override
@@ -167,7 +172,10 @@ public class playState extends abstractState{
     public void render(SpriteBatch sb) {
         System.out.println(smurf2.getPosition().x);
         update((float) 0.016);
+        backgroundTexture = new Texture("backgroundworld.png");
+        backgroundSprite = new Sprite(backgroundTexture);
         sb.begin();
+        sb.draw(backgroundSprite,0,0);
         sb.draw(characterCard1,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
         sb.draw(characterCard2,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
         sb.draw(healthMeter,smurf2.getPlayerMovement().getBody().getPosition().x-15, smurf2.getPlayerMovement().getBody().getPosition().y+55, 100, 8);
