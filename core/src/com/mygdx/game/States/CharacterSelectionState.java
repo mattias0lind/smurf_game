@@ -13,6 +13,8 @@ import com.badlogic.gdx.physics.box2d.World;
 public class CharacterSelectionState extends abstractState{
     private Texture characterCard1;
     private Texture characterCard2;
+    private Texture cardslot1;
+    private Texture cardslot2;
     private Texture characterSelectionBackground;
 
     private Texture leftArrow;
@@ -30,6 +32,8 @@ public class CharacterSelectionState extends abstractState{
         characterSelectionBackground = new Texture("moln.png");
         characterCard1 = new Texture(smurf1.getNameOfCharacter() + "Card.png");
         characterCard2 = new Texture(smurf2.getNameOfCharacter() + "Card.png");
+        cardslot1 = characterCard1;
+        cardslot2 = characterCard2;
         leftArrow = new Texture("leftArrow.png");
         rightArrow = new Texture("rightArrow.png");
         playButton = new Texture("play_text.png");
@@ -47,6 +51,12 @@ public class CharacterSelectionState extends abstractState{
                 gsm.set(new playState(gsm));
                 dispose();
             }
+            if(Gdx.input.getX() > 68
+                    && Gdx.input.getX() < 132
+                    && Gdx.input.getY() < 407
+                    && Gdx.input.getY() > 320) {
+                cardslot1 = characterCard2;
+            }
         }
     }
 
@@ -61,8 +71,8 @@ public class CharacterSelectionState extends abstractState{
 
         sb.begin();
         sb.draw(characterSelectionBackground,0,0,1280,720);
-        sb.draw(characterCard1, 150,330, 135,135);
-        sb.draw(characterCard2, 1020,330, 135,135);
+        sb.draw(cardslot1, 150,330, 135,135);
+        sb.draw(cardslot2, 1020,330, 135,135);
         sb.draw(leftArrow, 100, 375, 32, 32);
         sb.draw(rightArrow, 300, 375, 32, 32);
         sb.draw(playButton, (1280 / 2)-(playButton.getWidth() / 2), 30);
@@ -72,8 +82,8 @@ public class CharacterSelectionState extends abstractState{
     @Override
     public void dispose() {
         characterSelectionBackground.dispose();
-        characterCard1.dispose();
-        characterCard2.dispose();
+        cardslot1.dispose();
+        cardslot2.dispose();
         leftArrow.dispose();
         rightArrow.dispose();
         playButton.dispose();
