@@ -137,8 +137,8 @@ public class playState extends abstractState{
     public playState(gameStateManager gsm){
         super(gsm);
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
-        characterCard1 = new Texture(smurf1.getNameOfCharacter() + "Card.png");
-        characterCard2 = new Texture(smurf2.getNameOfCharacter() + "Card.png");
+        characterCard1 = new Texture(smurf1.getNameOfCharacter() + ".png");
+        characterCard2 = new Texture(smurf2.getNameOfCharacter() + ".png");
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         Gdx.input.setInputProcessor(inputProcessor);
     }
@@ -163,7 +163,8 @@ public class playState extends abstractState{
         System.out.println(smurf2.getPosition().x);
         update((float) 0.016);
         sb.begin();
-        sb.draw(characterCard1,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(characterCard1,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(characterCard2,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
         sb.end();
 
 

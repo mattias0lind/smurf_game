@@ -32,19 +32,19 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
             player2.getBody().setLinearVelocity(player2.getBody().getLinearVelocity().x,20);
         }
         else if(i == Input.Keys.DOWN){
-            player2.getBody().setLinearVelocity(0,-20);;
+            player2.getBody().setLinearVelocity(0,-20);
         }
 
         if((i == Input.Keys.A)){
-            player.moveLeft(true);
+            player.getBody().setLinearVelocity(-20,player.getBody().getLinearVelocity().y);
         }else if(i == Input.Keys.D){
-            player.moveRight(true);
+            player.getBody().setLinearVelocity(20,player.getBody().getLinearVelocity().y);
         }
         else if(i == Input.Keys.W){
-            player.moveUp(true);
+            player.getBody().setLinearVelocity(player.getBody().getLinearVelocity().x,20);
         }
         else if(i == Input.Keys.S){
-            player.moveDown(true);
+            player.getBody().setLinearVelocity(0,-20);
         }
         return false;
     }
