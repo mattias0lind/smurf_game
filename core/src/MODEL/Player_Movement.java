@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.*;
 
 public class Player_Movement implements IMovement {
 
-    private Vector2 position = new Vector2(0,0);
+    private Vector2 position = new Vector2(100,200);
     private BodyDef bodyDef = new BodyDef();
     private Body body;
 
@@ -17,7 +17,7 @@ public class Player_Movement implements IMovement {
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(16,16);
+        polygonShape.setAsBox(16,28);
         fixtureDef.shape = polygonShape;
         body.createFixture(fixtureDef);
     }
