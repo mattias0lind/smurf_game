@@ -54,6 +54,8 @@ public abstract class CharacterREAL {
         healthBar.maxHP();
     }
 
+    public float getHpprocent(){return healthBar.getHpProcentage();}
+
     public void gotHit(float attackDamage) {
         healthBar.looseHP(attackDamage);
         //play sound when hit

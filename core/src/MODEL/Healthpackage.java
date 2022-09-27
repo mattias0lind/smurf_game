@@ -1,9 +1,10 @@
 package MODEL;
 
 public class Healthpackage extends Powerups{
+    private String name;
 
     public Healthpackage(){
-        super();
+        super("healthPackage");
     }
     @Override
     public void CollisionAction(CharacterREAL player){
