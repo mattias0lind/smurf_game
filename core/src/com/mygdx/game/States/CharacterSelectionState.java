@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterSelectionState extends abstractState{
+
     private Texture characterCard1;
     private Texture characterCard2;
     private Texture cardslot1;
@@ -35,10 +36,12 @@ public class CharacterSelectionState extends abstractState{
         characterCards.add(characterCard1);
         characterCards.add(characterCard2);
 
+
         leftArrow1 = new Texture("leftArrow.png");
         rightArrow1 = new Texture("rightArrow.png");
         leftArrow2 = new Texture("leftArrow.png");
         rightArrow2 = new Texture("rightArrow.png");
+
 
         playButton = new Texture("play_text.png");
 

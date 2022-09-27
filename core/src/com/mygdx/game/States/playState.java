@@ -39,10 +39,12 @@ public class playState extends abstractState {
     public class MyActor extends Actor {
 
         private Sprite SmurfTesting = new Sprite (new Texture("smurf.png"));
+        private Sprite healthMeter = new Sprite (new Texture ("evilSmurfCard.png"));
 
         @Override
         public void setBounds(float x, float y, float width, float height) {
             super.setBounds(SmurfTesting.getX(), SmurfTesting.getY(), SmurfTesting.getWidth(), SmurfTesting.getHeight());
+            super.setBounds(healthMeter.getX(), healthMeter.getY(), healthMeter.getWidth(), healthMeter.getHeight());
         }
 
         @Override
@@ -53,6 +55,7 @@ public class playState extends abstractState {
         @Override
         public void draw(Batch batch, float alpha){
             SmurfTesting.draw(batch);
+            healthMeter.draw(batch);
         }
 
         @Override
@@ -125,6 +128,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class playState extends abstractState{
     private Texture characterCard1;
     private Texture characterCard2;
+    private Texture healthMeter;
     private Texture characterSelectionBackground;
     private World world = new World(new Vector2(0,0), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
@@ -139,6 +143,7 @@ public class playState extends abstractState{
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
         characterCard1 = new Texture(smurf1.getNameOfCharacter() + ".png");
         characterCard2 = new Texture(smurf2.getNameOfCharacter() + ".png");
+        healthMeter = new Texture("healthMeter.png");
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         Gdx.input.setInputProcessor(inputProcessor);
     }
@@ -165,6 +170,7 @@ public class playState extends abstractState{
         sb.begin();
         sb.draw(characterCard1,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
         sb.draw(characterCard2,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(healthMeter,smurf2.getPlayerMovement().getBody().getPosition().x-15, smurf2.getPlayerMovement().getBody().getPosition().y+55, 100, 8);
         sb.end();
 
 
@@ -175,6 +181,7 @@ public class playState extends abstractState{
         characterSelectionBackground.dispose();
         characterCard1.dispose();
         characterCard2.dispose();
+        healthMeter.dispose();
 
     }
 }
