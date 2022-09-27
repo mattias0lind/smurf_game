@@ -11,12 +11,12 @@ public class CharacterSelectionState extends abstractState{
 
     private Texture characterCard1;
     private Texture characterCard2;
-    private Texture cardslot1;
-    private Texture cardslot2;
+    private Texture cardSlot1;
+    private Texture cardSlot2;
     private Texture characterSelectionBackground;
     private List<Texture> characterCards = new ArrayList<Texture>();
-    private int slotcounter1 = 0;
-    private int slotcounter2 = 1;
+    private int slotCounter1 = 0;
+    private int slotCounter2 = 1;
 
     private Texture leftArrow1;
     private Texture rightArrow1;
@@ -29,10 +29,10 @@ public class CharacterSelectionState extends abstractState{
     public CharacterSelectionState(gameStateManager gsm){
         super(gsm);
         characterSelectionBackground = new Texture("moln.png");
-        characterCard1 = new Texture(characters.getCharacter(slotcounter1) + "Card.png");
-        characterCard2 = new Texture(characters.getCharacter(slotcounter2) + "Card.png");
-        cardslot1 = characterCard1;
-        cardslot2 = characterCard1;
+        characterCard1 = new Texture(characters.getCharacter(slotCounter1) + "Card.png");
+        characterCard2 = new Texture(characters.getCharacter(slotCounter2) + "Card.png");
+        cardSlot1 = characterCard2;
+        cardSlot2 = characterCard1;
         characterCards.add(characterCard1);
         characterCards.add(characterCard2);
 
@@ -55,40 +55,41 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getX() < 860
                     && Gdx.input.getY() < 683
                     && Gdx.input.getY() > 580){
-                gsm.set(new playState(gsm));
+                System.out.println(slotCounter1);
+                gsm.set(new playState(gsm, characters.getCharacter(slotCounter1), characters.getCharacter(slotCounter2)));
                 dispose();
             }
             if(Gdx.input.getX() > 68
                     && Gdx.input.getX() < 132
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot1 = characterCards.get(slotcounter1);
-                if (slotcounter1 == 0)
-                    slotcounter1 = characterCards.size();
-                slotcounter1 = (slotcounter1 - 1) % 2;
+                cardSlot1 = characterCards.get(slotCounter1);
+                if (slotCounter1 == 0)
+                    slotCounter1 = characterCards.size();
+                slotCounter1 = (slotCounter1 - 1) % 2;
             }
             if(Gdx.input.getX() > 299
                     && Gdx.input.getX() < 330
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot1 = characterCards.get(slotcounter1);
-                slotcounter1 = (slotcounter1 + 1) % 2;
+                cardSlot1 = characterCards.get(slotCounter1);
+                slotCounter1 = (slotCounter1 + 1) % 2;
             }
             if(Gdx.input.getX() > 970
                     && Gdx.input.getX() < 1000
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot2 = characterCards.get(slotcounter2);
-                if (slotcounter2 == 0)
-                    slotcounter2 = characterCards.size();
-                slotcounter2 = (slotcounter2 - 1) % 2;
+                cardSlot2 = characterCards.get(slotCounter2);
+                if (slotCounter2 == 0)
+                    slotCounter2 = characterCards.size();
+                slotCounter2 = (slotCounter2 - 1) % 2;
             }
             if(Gdx.input.getX() > 1168
                     && Gdx.input.getX() < 1200
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot2 = characterCards.get(slotcounter2);
-                slotcounter2 = (slotcounter2 + 1) % 2;
+                cardSlot2 = characterCards.get(slotCounter2);
+                slotCounter2 = (slotCounter2 + 1) % 2;
             }
         }
     }
@@ -104,8 +105,8 @@ public class CharacterSelectionState extends abstractState{
 
         sb.begin();
         sb.draw(characterSelectionBackground,0,0,1280,720);
-        sb.draw(cardslot1, 150,330, 135,135);
-        sb.draw(cardslot2, 1020,330, 135,135);
+        sb.draw(cardSlot1, 150,330, 135,135);
+        sb.draw(cardSlot2, 1020,330, 135,135);
         sb.draw(leftArrow1, 100, 375, 32, 32);
         sb.draw(rightArrow1, 300, 375, 32, 32);
         sb.draw(leftArrow1, 970, 375, 32, 32);
@@ -118,8 +119,8 @@ public class CharacterSelectionState extends abstractState{
     @Override
     public void dispose() {
         characterSelectionBackground.dispose();
-        cardslot1.dispose();
-        cardslot2.dispose();
+        cardSlot1.dispose();
+        cardSlot2.dispose();
         leftArrow1.dispose();
         rightArrow1.dispose();
         leftArrow2.dispose();
