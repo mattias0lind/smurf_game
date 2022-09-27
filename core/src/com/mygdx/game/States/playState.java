@@ -121,9 +121,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2D;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class playState extends abstractState{
@@ -132,7 +130,7 @@ public class playState extends abstractState{
     private Texture healthMeter;
     private Texture healthMeter2;
     private Texture characterSelectionBackground;
-    private World world = new World(new Vector2(0,0), true);
+    private World world = new World(new Vector2(0,-30), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
@@ -152,8 +150,7 @@ public class playState extends abstractState{
         healthMeter2 = new Texture("healthMeter.png");
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         Gdx.input.setInputProcessor(inputProcessor);
-        //backgroundTexture = new Texture("backgroundworld.png");
-        //backgroundSprite = new Sprite(backgroundTexture);
+        createBody();
     }
 
     @Override
@@ -162,7 +159,19 @@ public class playState extends abstractState{
 
     }
 
-
+    private void createBody(){
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.position.set(640,20);
+        Body body;
+        body = world.createBody(bodyDef);
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape polygonShape = new PolygonShape();
+        polygonShape.setAsBox(1280,100);
+        fixtureDef.shape = polygonShape;
+        fixtureDef.density = 100f;
+        body.createFixture(fixtureDef);
+    }
 
 
     @Override
@@ -173,7 +182,6 @@ public class playState extends abstractState{
 
     @Override
     public void render(SpriteBatch sb) {
-        System.out.println(smurf2.getPosition().x);
         update((float) 0.016);
         backgroundTexture = new Texture("backgroundworld.png");
         backgroundSprite = new Sprite(backgroundTexture);
