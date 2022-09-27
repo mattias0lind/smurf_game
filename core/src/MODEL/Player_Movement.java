@@ -52,7 +52,7 @@ public class Player_Movement implements IMovement {
 
 
 
-    public void update(float dt) {
+    public void update() {
         updatePlayerPosition();
     }
     public Vector2 getPosition(){
@@ -63,7 +63,7 @@ public class Player_Movement implements IMovement {
 
 
     @Override
-    public void setPlayerPosition(int playerXPosition, int playerYPosition){
+    public void setPlayerPosition(float playerXPosition, float playerYPosition){
         position.set(playerXPosition, playerYPosition);
     }
 
@@ -72,7 +72,7 @@ public class Player_Movement implements IMovement {
             this.body.setLinearVelocity(-2,0);
         }
         if(moveRight){
-            this.body.setLinearVelocity(2,0);
+            this.body.setLinearVelocity(200,0);
         }
         if(moveUp){
             if(body.getLinearVelocity().y == 0){

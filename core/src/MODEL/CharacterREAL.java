@@ -1,5 +1,6 @@
 package MODEL;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -21,7 +22,7 @@ public abstract class CharacterREAL {
         this.healthBar = new HealthBar(hp);
     }
 
-    public void SetInitialPosition(int x, int y){
+    public void SetInitialPosition(float x, float y){
         playerMovement.setPlayerPosition(x,y);
     }
 
@@ -30,6 +31,10 @@ public abstract class CharacterREAL {
     }
 
     public String getNameOfCharacter(){return this.name;}
+
+    public Player_Movement getPlayerMovement(){
+        return playerMovement;
+    }
 
     public void punch(CharacterREAL character){
         Rectangle rectangle = new Rectangle();

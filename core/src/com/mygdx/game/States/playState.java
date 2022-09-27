@@ -107,20 +107,29 @@ public class playState extends abstractState {
 package com.mygdx.game.States;
 
 
+import CONTROLLER.InputProcessor;
 import MODEL.EvilSmurfCharacter;
 import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2D;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 public class playState extends abstractState{
     private Texture characterCard1;
     private Texture characterCard2;
     private Texture characterSelectionBackground;
-    private World world = new World(new Vector2(-10,0), true);
+    private World world = new World(new Vector2(0,0), true);
+    private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
+    private OrthographicCamera gameCame = new OrthographicCamera();
+    private InputProcessor inputProcessor = new InputProcessor();
 
     private CharacterREAL smurf1 = new SmurfCharacter(world);
     private CharacterREAL smurf2 = new EvilSmurfCharacter(world);
@@ -130,37 +139,31 @@ public class playState extends abstractState{
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
         characterCard1 = new Texture(smurf1.getNameOfCharacter() + "Card.png");
         characterCard2 = new Texture(smurf2.getNameOfCharacter() + "Card.png");
+        inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
+        Gdx.input.setInputProcessor(inputProcessor);
     }
 
     @Override
     public void handleInput() {
-        if(Gdx.input.justTouched()){
-            if(Gdx.input.getX() > (1280 / 2)-(characterCard1.getWidth() / 2)
-                    && Gdx.input.getX() < (1280 / 2)-(characterCard1.getWidth() / 2) + characterCard1.getWidth()
-                    && Gdx.input.getY() < 440
-                    && Gdx.input.getY() > 330){
-                gsm.set(new playState(gsm));
-                dispose();
-            }
-        }
+
+
     }
+
+
 
 
     @Override
     public void update(float dt) {
+        handleInput();
+        world.step(1/60f,6,2);
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        System.out.println("1st print");
+        System.out.println(smurf2.getPosition().x);
+        update((float) 0.016);
         sb.begin();
-        System.out.println("2nd print");
-        sb.draw(characterSelectionBackground,0,0,1280,720);
-        System.out.println("3rd print");
-        sb.draw(characterCard1, 100,30, 135,135);
-        System.out.println("4th print");
-        sb.draw(characterCard2, 1,200, 135,135);
-        System.out.println("555555 print");
+        sb.draw(characterCard1,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
         sb.end();
 
 

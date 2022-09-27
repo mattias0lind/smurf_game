@@ -24,15 +24,15 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     @Override
     public boolean keyDown(int i) {
         if((i == Input.Keys.LEFT)){
-            player2.moveLeft(true);
+            player2.getBody().setLinearVelocity(-20,player2.getBody().getLinearVelocity().y);
         }else if(i == Input.Keys.RIGHT){
-            player2.moveRight(true);
+            player2.getBody().setLinearVelocity(20,player2.getBody().getLinearVelocity().y);
         }
         else if(i == Input.Keys.UP){
-            player2.moveUp(true);
+            player2.getBody().setLinearVelocity(player2.getBody().getLinearVelocity().x,20);
         }
         else if(i == Input.Keys.DOWN){
-            player2.moveDown(true);
+            player2.getBody().setLinearVelocity(0,-20);;
         }
 
         if((i == Input.Keys.A)){

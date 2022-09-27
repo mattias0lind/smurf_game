@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.GL20;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.States.gameStateManager;
 import com.mygdx.game.States.menuState;
@@ -20,6 +21,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void create() {
+		Box2D.init();
 		batch = new SpriteBatch();
 		gsm = new gameStateManager();
 		ScreenUtils.clear(1, 0, 0, 1);
