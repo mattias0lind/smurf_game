@@ -130,6 +130,7 @@ public class playState extends abstractState{
     private Texture characterOneSprite;
     private Texture characterTwoSprite;
     private Texture healthMeter;
+    private Texture healthMeter2;
     private Texture characterSelectionBackground;
     private World world = new World(new Vector2(0,0), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
@@ -148,6 +149,7 @@ public class playState extends abstractState{
         characterOneSprite = new Texture(characterName1 + ".png");
         characterTwoSprite = new Texture(characterName2 + ".png");
         healthMeter = new Texture("healthMeter.png");
+        healthMeter2 = new Texture("healthMeter.png");
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         Gdx.input.setInputProcessor(inputProcessor);
         //backgroundTexture = new Texture("backgroundworld.png");
@@ -180,6 +182,7 @@ public class playState extends abstractState{
         sb.draw(characterOneSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
         sb.draw(characterTwoSprite,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
         sb.draw(healthMeter,smurf2.getPlayerMovement().getBody().getPosition().x-15, smurf2.getPlayerMovement().getBody().getPosition().y+55, 100, 8);
+        sb.draw(healthMeter2,smurf1.getPlayerMovement().getBody().getPosition().x-15, smurf1.getPlayerMovement().getBody().getPosition().y+55, 100, 8);
         sb.end();
 
 
@@ -191,6 +194,7 @@ public class playState extends abstractState{
         characterOneSprite.dispose();
         characterTwoSprite.dispose();
         healthMeter.dispose();
+        healthMeter2.dispose();
 
     }
 }
