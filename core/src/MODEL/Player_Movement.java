@@ -6,7 +6,6 @@ import com.badlogic.gdx.physics.box2d.*;
 public class Player_Movement implements IMovement {
 
     private Vector2 position = new Vector2(0,0);
-    private Vector2 velocity;
     private BodyDef bodyDef = new BodyDef();
     private Body body;
 
@@ -27,7 +26,6 @@ public class Player_Movement implements IMovement {
         return position;
     }
 
-    public Vector2 getPlayerVelocity(){return velocity;}
 
     public boolean getmoveLeft(){
         return moveLeft;
@@ -55,11 +53,7 @@ public class Player_Movement implements IMovement {
 
 
     public void update(float dt) {
-        velocity.add(0, 0);
-        velocity.scl(dt);
-        position.add(0, velocity.y);
-
-        velocity.scl(1 / dt); //dt är står för deltatime alltså har med tidsuppfattning att göra
+        updatePlayerPosition();
     }
     public Vector2 getPosition(){
         return position;
@@ -71,7 +65,6 @@ public class Player_Movement implements IMovement {
     @Override
     public void setPlayerPosition(int playerXPosition, int playerYPosition){
         position.set(playerXPosition, playerYPosition);
-        velocity.set(0,0);
     }
 
     public void updatePlayerPosition() {
