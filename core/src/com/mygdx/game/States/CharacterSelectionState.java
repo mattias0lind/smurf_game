@@ -29,16 +29,13 @@ public class CharacterSelectionState extends abstractState{
     private Texture rightArrow2;
 
     private Texture playButton;
-    private World world = new World(new Vector2(-10,0), true);
-
-    private CharacterREAL smurf1 = new SmurfCharacter(world);
-    private CharacterREAL smurf2 = new EvilSmurfCharacter(world);
+    private CharacterCollection characters = new CharacterCollection();
 
     public CharacterSelectionState(gameStateManager gsm){
         super(gsm);
         characterSelectionBackground = new Texture("moln.png");
-        characterCard1 = new Texture(smurf1.getNameOfCharacter() + "Card.png");
-        characterCard2 = new Texture(smurf2.getNameOfCharacter() + "Card.png");
+        characterCard1 = new Texture(characters.getCharacter(slotcounter1) + "Card.png");
+        characterCard2 = new Texture(characters.getCharacter(slotcounter2) + "Card.png");
         cardslot1 = characterCard1;
         cardslot2 = characterCard1;
         characterCards.add(characterCard1);
