@@ -12,7 +12,7 @@ public class TileMapHelper {
     }
 
     public OrthogonalTiledMapRenderer setupMap() {
-        tiledMap = new TmxMapLoader().load("Maps/Test_bana_klar.tmx");
+        tiledMap = new TmxMapLoader().load("assets/Maps/map1.tmx");
         return new OrthogonalTiledMapRenderer(tiledMap);
     }
 
