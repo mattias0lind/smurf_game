@@ -19,7 +19,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private gameStateManager gsm;
 
 	@Override
-	public void create () {
+	public void create() {
 		batch = new SpriteBatch();
 		gsm = new gameStateManager();
 		ScreenUtils.clear(1, 0, 0, 1);

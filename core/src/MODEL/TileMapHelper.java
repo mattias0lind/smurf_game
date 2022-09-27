@@ -8,11 +8,11 @@ public class TileMapHelper {
 
     private TiledMap tiledMap;
 
-    public void TiledMapHelper() {
+    public TileMapHelper() {
     }
 
     public OrthogonalTiledMapRenderer setupMap() {
-        tiledMap = new TmxMapLoader().load("Maps/Test_bana_klar..tmx");
+        tiledMap = new TmxMapLoader().load("Maps/Test_bana_klar.tmx");
         return new OrthogonalTiledMapRenderer(tiledMap);
     }
 

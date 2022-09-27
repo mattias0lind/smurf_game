@@ -1,5 +1,7 @@
 package com.mygdx.game.States;
 
+import MODEL.GameScreen;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,6 +20,7 @@ public class menuState extends abstractState {
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()){
+            System.out.println("x: " + Gdx.input.getX() + " y: " + Gdx.input.getY());
             if(Gdx.input.getX() > (1280 / 2)-(playButton.getWidth() / 2)
                     && Gdx.input.getX() < (1280 / 2)-(playButton.getWidth() / 2) + playButton.getWidth()
                     && Gdx.input.getY() < 440
@@ -30,6 +33,7 @@ public class menuState extends abstractState {
 
     @Override
     public void update(float dt) {
+        System.out.println("Handle input to be called: " + dt);
         handleInput();
     }
 

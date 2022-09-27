@@ -1,3 +1,5 @@
+/*
+
 package com.mygdx.game.States;
 
 
@@ -99,3 +101,77 @@ public class playState extends abstractState {
 
     }
 }
+*/
+
+
+package com.mygdx.game.States;
+
+
+import MODEL.EvilSmurfCharacter;
+import MODEL.SmurfCharacter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import MODEL.CharacterREAL;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
+
+public class playState extends abstractState{
+    private Texture characterCard1;
+    private Texture characterCard2;
+    private Texture characterSelectionBackground;
+    private World world = new World(new Vector2(-10,0), true);
+
+    private CharacterREAL smurf1 = new SmurfCharacter(world);
+    private CharacterREAL smurf2 = new EvilSmurfCharacter(world);
+
+    public playState(gameStateManager gsm){
+        super(gsm);
+        characterSelectionBackground = new Texture("VSBattlesBackground.png");
+        characterCard1 = new Texture(smurf1.getNameOfCharacter() + "Card.png");
+        characterCard2 = new Texture(smurf2.getNameOfCharacter() + "Card.png");
+    }
+
+    @Override
+    public void handleInput() {
+        if(Gdx.input.justTouched()){
+            if(Gdx.input.getX() > (1280 / 2)-(characterCard1.getWidth() / 2)
+                    && Gdx.input.getX() < (1280 / 2)-(characterCard1.getWidth() / 2) + characterCard1.getWidth()
+                    && Gdx.input.getY() < 440
+                    && Gdx.input.getY() > 330){
+                gsm.set(new playState(gsm));
+                dispose();
+            }
+        }
+    }
+
+
+    @Override
+    public void update(float dt) {
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        System.out.println("1st print");
+        sb.begin();
+        System.out.println("2nd print");
+        sb.draw(characterSelectionBackground,0,0,1280,720);
+        System.out.println("3rd print");
+        sb.draw(characterCard1, 100,30, 135,135);
+        System.out.println("4th print");
+        sb.draw(characterCard2, 1,200, 135,135);
+        System.out.println("555555 print");
+        sb.end();
+
+
+    }
+
+    @Override
+    public void dispose() {
+        characterSelectionBackground.dispose();
+        characterCard1.dispose();
+        characterCard2.dispose();
+
+    }
+}
+
