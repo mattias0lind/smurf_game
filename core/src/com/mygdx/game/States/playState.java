@@ -152,15 +152,15 @@ public class playState extends abstractState{
 
     @Override
     public void render(SpriteBatch sb) {
-        System.out.println("1st print");
+        //System.out.println("1st print");
         sb.begin();
-        System.out.println("2nd print");
+        //System.out.println("2nd print");
         sb.draw(characterSelectionBackground,0,0,1280,720);
-        System.out.println("3rd print");
+        //System.out.println("3rd print");
         sb.draw(characterCard1, 100,30, 135,135);
-        System.out.println("4th print");
+        //System.out.println("4th print");
         sb.draw(characterCard2, 1,200, 135,135);
-        System.out.println("555555 print");
+        //System.out.println("555555 print");
         sb.end();
 
 
