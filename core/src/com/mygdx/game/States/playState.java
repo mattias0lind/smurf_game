@@ -149,6 +149,10 @@ public class playState extends abstractState{
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
+        backgroundTexture = new Texture("backgroundworld.png");
+        backgroundSprite = new Sprite(backgroundTexture);
+
+
     }
 
     @Override
@@ -180,8 +184,6 @@ public class playState extends abstractState{
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
-        backgroundTexture = new Texture("backgroundworld.png");
-        backgroundSprite = new Sprite(backgroundTexture);
         sb.begin();
         sb.draw(backgroundSprite,0,0);
         sb.draw(characterOneSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
