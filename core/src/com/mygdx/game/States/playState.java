@@ -127,8 +127,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import javax.swing.*;
 
 public class playState extends abstractState{
-    private Texture characterOneSprite;
-    private Texture characterTwoSprite;
+    private Texture characterOneSprite,characterOneSpriteLeft;
+    private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch;
     private Texture healthMeter, healthMeter2;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
@@ -149,16 +149,24 @@ public class playState extends abstractState{
         this.world = world;
 
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
+
+        //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
+        characterOneSpriteLeft = new Texture("smurf_look_left.png");
         characterOneSpritePunch = new Texture("punching_smurf.png");
+
+        //char 2
         characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
+        characterTwoSpriteLeft = new Texture("smurf_look_left.png");
+        characterTwoSpritePunch = new Texture("punching_smurf.png");
+
         healthMeter = new Texture("healthMeter.png");
         healthMeter2 = new Texture("healthMeter.png");
         inputProcessor.logic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
-        backgroundTexture = new Texture("BackgroundMap.png");
+        backgroundTexture = new Texture("backgroundworld.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
 
@@ -169,6 +177,35 @@ public class playState extends abstractState{
 
 
     }
+
+    private Texture getSpriteChar1(){
+        if(inputProcessor.getRightPlayer1()){
+            return characterOneSprite ;
+        }
+        if(inputProcessor.getLeftPlayer1()){
+            return characterOneSpriteLeft;
+        }
+        if(inputProcessor.isIfPlayer1_punched()){
+            return characterOneSpritePunch;
+        }
+        return characterOneSprite;
+    }
+
+    private Texture getSpriteChar2(){
+        if(inputProcessor.getRightPlayer2()){
+            return characterTwoSprite ;
+        }
+        else if(inputProcessor.getLeftPlayer2()){
+            return characterTwoSpriteLeft;
+        }
+        else if(inputProcessor.isIfPlayer2_punched()){
+            return characterTwoSpritePunch;
+        }
+        return characterTwoSprite;
+    }
+
+
+
 
     private void createBody(){
         BodyDef bodyDef = new BodyDef();
@@ -195,23 +232,10 @@ public class playState extends abstractState{
         update((float) 0.016);
         sb.begin();
         sb.draw(backgroundSprite,0,0);
-        if(inputProcessor.isIfPlayer1_punched()){
-            sb.draw(characterOneSpritePunch,characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(characterTwoSprite,characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-            sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
-        }
-        if (inputProcessor.isIfPlayer2_punched()){
-            sb.draw(characterOneSpritePunch,characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(characterOneSprite,characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-            sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
-        }
-        else{
-        sb.draw(characterOneSprite,characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
-        sb.draw(characterTwoSprite,characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
         sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-        sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);}
+        sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
         sb.end();
     }
 
