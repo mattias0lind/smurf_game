@@ -1,6 +1,7 @@
 package CONTROLLER;
 
 
+import MODEL.CharacterREAL;
 import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,18 +12,26 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private boolean isMovingRight = false;
     private InputProcessor inputProcessor;
     private Player_Movement player,player2;
+    private CharacterREAL player1_punch,player2_punch;
     public boolean getIsMovingRight(){
         return isMovingRight;
     }
-
+    private boolean ifPlayer1_punched,ifPlayer2_punched;
 
     public void logic(Player_Movement player, Player_Movement player2){
         this.player = player;
         this.player2 = player2;
     }
 
+    public void punchLogic(CharacterREAL player1_punch, CharacterREAL player2_punch){
+        this.player1_punch = player1_punch;
+        this.player2_punch = player2_punch;
+
+    }
+
     @Override
     public boolean keyDown(int i) {
+        ifPlayer1_punched = false;
         if((i == Input.Keys.LEFT)){
             player2.getBody().setLinearVelocity(-20,player2.getBody().getLinearVelocity().y);
         }
@@ -52,6 +61,12 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         if(i == Input.Keys.S){
             player.getBody().setLinearVelocity(0,-20);
         }
+
+        if(i == Input.Keys.F){
+            player1_punch.punch(player2_punch);
+            ifPlayer1_punched = true;
+
+        }
         return false;
     }
 
@@ -68,6 +83,10 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         else if(i == Input.Keys.DOWN){
             player2.moveDown(false);
         }
+        if(i == Input.Keys.F){
+            ifPlayer1_punched = false;
+
+        }
 
 
         if(i == Input.Keys.A){
@@ -82,6 +101,10 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
             player.moveDown(false);
         }
         return false;
+    }
+
+    public boolean isIfPlayer1_punched() {
+        return ifPlayer1_punched;
     }
 
     @Override
