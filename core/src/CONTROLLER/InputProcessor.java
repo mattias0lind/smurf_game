@@ -53,11 +53,13 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         if ((i == Input.Keys.LEFT)) {
             player2.getBody().setLinearVelocity(-20, player2.getBody().getLinearVelocity().y);
             leftPlayer2 = true;
+            rightPlayer2 = false;
 
         }
         if (i == Input.Keys.RIGHT) {
             player2.getBody().setLinearVelocity(20, player2.getBody().getLinearVelocity().y);
             rightPlayer2 = true;
+            leftPlayer2 = false;
         }
         if (i == Input.Keys.UP) {
             if (player2.getBody().getLinearVelocity().y == 0) {
@@ -70,11 +72,13 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         if ((i == Input.Keys.A)) {
             player.getBody().setLinearVelocity(-20, player.getBody().getLinearVelocity().y);
-            rightPlayer1 = true;
+            rightPlayer1 = false;
+            leftPlayer1 = true;
         }
         if (i == Input.Keys.D) {
             player.getBody().setLinearVelocity(20, player.getBody().getLinearVelocity().y);
-            leftPlayer1 = true;
+            leftPlayer1 = false;
+            rightPlayer1 = true;
         }
         if (i == Input.Keys.W) {
             if (player.getBody().getLinearVelocity().y == 0) {
@@ -103,11 +107,17 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     public boolean keyUp(int i) {
         if ((i == Input.Keys.LEFT)) {
             player2.moveLeft(false);
+
             leftPlayer2 = false;
         } else if (i == Input.Keys.RIGHT) {
             player2.moveRight(false);
             rightPlayer2 = false;
         } else if (i == Input.Keys.UP) {
+
+        }else if(i == Input.Keys.RIGHT){
+            player2.moveRight(false);
+        }
+        else if(i == Input.Keys.UP){
             player2.moveUp(false);
         } else if (i == Input.Keys.DOWN) {
             player2.moveDown(false);
@@ -120,12 +130,14 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         if (i == Input.Keys.A) {
             player.moveLeft(false);
-            leftPlayer1 = false;
 
         } else if (i == Input.Keys.D) {
             player.moveRight(false);
             rightPlayer1 = false;
         } else if (i == Input.Keys.W) {
+
+        }
+        else if(i == Input.Keys.W){
             player.moveUp(false);
         } else if (i == Input.Keys.S) {
             player.moveDown(false);

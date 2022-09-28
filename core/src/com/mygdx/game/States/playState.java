@@ -127,8 +127,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import javax.swing.*;
 
 public class playState extends abstractState{
-    private Texture characterOneSprite,characterOneSpriteLeft;
-    private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch;
+    private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
+    private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
     private Texture healthMeter, healthMeter2;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
@@ -138,6 +138,7 @@ public class playState extends abstractState{
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
     private Sprite backgroundSprite;
+    private int x;
 
     private CharacterREAL characterOne;
     private CharacterREAL characterTwo;
@@ -179,29 +180,39 @@ public class playState extends abstractState{
     }
 
     private Texture getSpriteChar1(){
+
+        if(x < 1){
+            currentCharacterOne = characterOneSprite;
+        }
         if(inputProcessor.getRightPlayer1()){
-            return characterOneSprite ;
+            currentCharacterOne = characterOneSprite ;
         }
-        if(inputProcessor.getLeftPlayer1()){
-            return characterOneSpriteLeft;
+        else if(inputProcessor.getLeftPlayer1()){
+            currentCharacterOne = characterOneSpriteLeft;
         }
-        if(inputProcessor.isIfPlayer1_punched()){
-            return characterOneSpritePunch;
+        else if(inputProcessor.isIfPlayer1_punched()){
+            currentCharacterOne = characterOneSpritePunch;
         }
-        return characterOneSprite;
+        return currentCharacterOne;
     }
 
     private Texture getSpriteChar2(){
+
+        if(x < 1){
+            currentCharacterTwo = characterTwoSprite;
+            x++;
+        }
+
         if(inputProcessor.getRightPlayer2()){
-            return characterTwoSprite ;
+            currentCharacterTwo = characterTwoSprite ;
         }
         else if(inputProcessor.getLeftPlayer2()){
-            return characterTwoSpriteLeft;
+            currentCharacterTwo = characterTwoSpriteLeft;
         }
         else if(inputProcessor.isIfPlayer2_punched()){
-            return characterTwoSpritePunch;
+            currentCharacterTwo = characterTwoSpritePunch;
         }
-        return characterTwoSprite;
+        return currentCharacterTwo;
     }
 
 
