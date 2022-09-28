@@ -22,19 +22,19 @@ public class menuState extends abstractState {
 
     @Override
     public void handleInput() {
-        if(Gdx.input.justTouched()){
+        if (Gdx.input.justTouched()) {
             System.out.println("x: " + Gdx.input.getX() + " y: " + Gdx.input.getY());
-            if(Gdx.input.getX() > (1280 / 2)-(playButton.getWidth() / 2)
-                    && Gdx.input.getX() < (1280 / 2)-(playButton.getWidth() / 2) + playButton.getWidth()
+            if (Gdx.input.getX() > (1280 / 2) - (playButton.getWidth() / 2)
+                    && Gdx.input.getX() < (1280 / 2) - (playButton.getWidth() / 2) + playButton.getWidth()
                     && Gdx.input.getY() < 440
-                    && Gdx.input.getY() > 330){
+                    && Gdx.input.getY() > 330) {
                 gsm.set(new CharacterSelectionState(gsm));
                 dispose();
             } else {
                 if (Gdx.input.getX() > 418
                         && Gdx.input.getX() < 862
                         && Gdx.input.getY() < 633
-                        && Gdx.input.getY() > 525){
+                        && Gdx.input.getY() > 525) {
                     System.out.println("Thanks for playing! The game is now shutting down :(");
                     System.exit(0);
                 }
@@ -51,14 +51,14 @@ public class menuState extends abstractState {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(menuBackground, 0,0, 1280, 720);
-        sb.draw(playButton, (1280 / 2)-(playButton.getWidth() / 2), 280);
-        sb.draw(quitButton, (1280 / 2)-(quitButton.getWidth() / 2), -220);
+        sb.draw(menuBackground, 0, 0, 1280, 720);
+        sb.draw(playButton, (1280 / 2) - (playButton.getWidth() / 2), 280);
+        sb.draw(quitButton, (1280 / 2) - (quitButton.getWidth() / 2), -220);
         sb.end();
     }
 
     @Override
-    public void dispose(){
+    public void dispose() {
         menuBackground.dispose();
         playButton.dispose();
         quitButton.dispose();

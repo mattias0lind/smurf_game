@@ -14,47 +14,48 @@ public abstract class CharacterREAL {
     private float AttackDamage = 10;
 
 
-
-    public CharacterREAL(String nameOfCharacter, World world, float hp)
-    {
+    public CharacterREAL(String nameOfCharacter, World world, float hp) {
         this.name = nameOfCharacter;
         this.playerMovement = new Player_Movement(world);
         this.healthBar = new HealthBar(hp);
     }
 
-    public void SetInitialPosition(float x, float y){
-        playerMovement.setPlayerPosition(x,y);
+    public void SetInitialPosition(float x, float y) {
+        playerMovement.setPlayerPosition(x, y);
     }
 
-    public Vector2 getPosition(){
-       return playerMovement.getPlayerPosition();
+    public Vector2 getPosition() {
+        return playerMovement.getPlayerPosition();
     }
 
-    public String getNameOfCharacter(){return this.name;}
+    public String getNameOfCharacter() {
+        return this.name;
+    }
 
-    public Player_Movement getPlayerMovement(){
+    public Player_Movement getPlayerMovement() {
         return playerMovement;
     }
 
-    public void punch(CharacterREAL character){
+    public void punch(CharacterREAL character) {
         Rectangle rectangle = new Rectangle();
-        if(playerMovement.getBody().getLinearVelocity().x > 0){
-            rectangle.set(playerMovement.getPlayerPosition().x+16,playerMovement.getPlayerPosition().y,16,16);
+        if (playerMovement.getBody().getLinearVelocity().x > 0) {
+            rectangle.set(playerMovement.getPlayerPosition().x + 16, playerMovement.getPlayerPosition().y, 16, 16);
+        } else if (playerMovement.getBody().getLinearVelocity().x <= 0) {
+            rectangle.set(playerMovement.getPlayerPosition().x - 16, playerMovement.getPlayerPosition().y, 16, 16);
         }
-        else if(playerMovement.getBody().getLinearVelocity().x <= 0){
-            rectangle.set(playerMovement.getPlayerPosition().x-16,playerMovement.getPlayerPosition().y,16,16);
-        }
-        if (rectangle.contains(character.getPosition().x, getPosition().y)){
+        if (rectangle.contains(character.getPosition().x, getPosition().y)) {
             character.gotHit(AttackDamage);
         }
         //perform punch animation
     }
 
-    public void restoreHP(){
+    public void restoreHP() {
         healthBar.maxHP();
     }
 
-    public float getHpprocent(){return healthBar.getHpProcentage();}
+    public float getHpprocent() {
+        return healthBar.getHpProcentage();
+    }
 
     public void gotHit(float attackDamage) {
         healthBar.looseHP(attackDamage);

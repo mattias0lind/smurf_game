@@ -1,15 +1,17 @@
 package MODEL;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
 public class Player_Movement implements IMovement {
 
-    private Vector2 position = new Vector2(100,200);
+    private Vector2 position = new Vector2(100, 200);
     private BodyDef bodyDef = new BodyDef();
     private Body body;
+    private Sprite sprite;
 
-    private boolean moveLeft,moveRight,moveUp,moveDown;
+    private boolean moveLeft, moveRight, moveUp, moveDown;
 
     public Player_Movement(World world) {
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -17,111 +19,107 @@ public class Player_Movement implements IMovement {
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(16,28);
+        polygonShape.setAsBox(16, 28);
         fixtureDef.shape = polygonShape;
         body.createFixture(fixtureDef);
     }
 
-    public Vector2 getPlayerPosition(){
+    public Vector2 getPlayerPosition() {
         return position;
     }
 
 
-    public boolean getmoveLeft(){
+    public boolean getmoveLeft() {
         return moveLeft;
     }
 
 
-    public boolean getmoveRight(){
+    public boolean getmoveRight() {
         return moveRight;
     }
 
-    public boolean getmoveDown(){
+    public boolean getmoveDown() {
         return moveDown;
     }
 
-    public boolean getmoveUp(){
+    public boolean getmoveUp() {
         return moveUp;
     }
 
-    public Body getBody(){
+    public Body getBody() {
         return body;
     }
-
-
-
 
 
     public void update() {
         updatePlayerPosition();
     }
-    public Vector2 getPosition(){
+
+    public Vector2 getPosition() {
         return position;
 
     }
 
 
-
     @Override
-    public void setPlayerPosition(float playerXPosition, float playerYPosition){
+    public void setPlayerPosition(float playerXPosition, float playerYPosition) {
         position.set(playerXPosition, playerYPosition);
     }
 
     public void updatePlayerPosition() {
-        if(moveLeft){
-            this.body.setLinearVelocity(-2,0);
+        if (moveLeft) {
+            this.body.setLinearVelocity(-2, 0);
         }
-        if(moveRight){
-            this.body.setLinearVelocity(200,0);
+        if (moveRight) {
+            this.body.setLinearVelocity(200, 0);
         }
-        if(moveUp){
-            if(body.getLinearVelocity().y == 0){
-                body.applyLinearImpulse(10,0, position.x, position.y, true);
+        if (moveUp) {
+            if (body.getLinearVelocity().y == 0) {
+                body.applyLinearImpulse(10, 0, position.x, position.y, true);
             }
         }
-        if(moveDown){
-            this.body.setLinearVelocity(0,-2);
+        if (moveDown) {
+            this.body.setLinearVelocity(0, -2);
         }
 
     }
 
     //TODO glöm inte ta bort view saker från här bara för debugging
-    public void moveLeft(boolean t){
-        if(t){
+    public void moveLeft(boolean t) {
+        if (t) {
             moveLeft = true;
-        }else{
+        } else {
             moveLeft = false;
         }
 
     }
 
-    public void moveRight(boolean t){
-        if(t){
+    public void moveRight(boolean t) {
+        if (t) {
             moveRight = true;
-        }else{
+        } else {
             moveRight = false;
         }
 
     }
 
-    public void moveUp(boolean t){
-        if(t){
+    public void moveUp(boolean t) {
+        if (t) {
             moveUp = true;
-        }else{
+        } else {
             moveUp = false;
         }
 
     }
 
-    public void moveDown(boolean t){
-        if(t){
+    public void moveDown(boolean t) {
+        if (t) {
             moveDown = true;
-        }else{
+        } else {
             moveDown = false;
         }
 
     }
-
 
 
 }

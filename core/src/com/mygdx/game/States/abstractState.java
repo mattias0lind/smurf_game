@@ -7,7 +7,7 @@ public abstract class abstractState implements Istate {
     protected gameStateManager gsm;
 
 
-    protected abstractState(gameStateManager gsm){
+    protected abstractState(gameStateManager gsm) {
         this.gsm = gsm;
         cam = new OrthographicCamera();
     }

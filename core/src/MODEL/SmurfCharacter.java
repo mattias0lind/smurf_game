@@ -1,4 +1,5 @@
 package MODEL;
+
 import MODEL.CharacterREAL;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,6 +9,7 @@ public class SmurfCharacter extends CharacterREAL {
 
     public Sprite sprite;
     public Texture img = new Texture("smurf.png");
+
     public SmurfCharacter(World world) {
         super("Smurf", world, 100);
     }

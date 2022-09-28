@@ -16,8 +16,12 @@ public class HealthBar {
             HP = 0;
     }
 
-    public float getHpProcentage() {return HP / maxHP;}
+    public float getHpProcentage() {
+        return HP / maxHP;
+    }
 
 
-    public void maxHP() {HP = maxHP;} //HP återställs till max hp
+    public void maxHP() {
+        HP = maxHP;
+    } //HP återställs till max hp
 }

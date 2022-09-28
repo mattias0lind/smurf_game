@@ -36,19 +36,19 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void update() {
-        world.step(1/60f, 6, 2);
+        world.step(1 / 60f, 6, 2);
         cameraUpdate();
 
         batch.setProjectionMatrix(camera.combined);
         orthogonalTiledMapRenderer.setView(camera);
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
     }
 
     private void cameraUpdate() {
-        camera.position.set(new Vector3(0, 0 ,0 ));
+        camera.position.set(new Vector3(0, 0, 0));
         camera.update();
     }
 
