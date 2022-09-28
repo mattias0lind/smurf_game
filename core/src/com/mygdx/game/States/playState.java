@@ -174,14 +174,13 @@ public class playState extends abstractState{
         PolygonShape polygonShape = new PolygonShape();
         polygonShape.setAsBox(1280,100);
         fixtureDef.shape = polygonShape;
-        fixtureDef.density = 100f;
+        fixtureDef.density = 0.1f;
         body.createFixture(fixtureDef);
     }
 
 
     @Override
     public void update(float dt) {
-        handleInput();
         world.step(1/60f,6,2);
     }
 
