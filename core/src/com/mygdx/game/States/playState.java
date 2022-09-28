@@ -115,6 +115,7 @@ import MODEL.EvilSmurfCharacter;
 import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -144,12 +145,16 @@ public class playState extends abstractState{
     private CharacterREAL characterTwo;
     private CharacterCollection allCharacters1 = new CharacterCollection(world);
     private CharacterCollection allCharacters2 = new CharacterCollection(world);
+    private Music menuMusic;
 
     public playState(gameStateManager gsm, int count1, int count2){
         super(gsm);
         this.characterOne = allCharacters1.getCharacter(count1);
         this.characterTwo = allCharacters2.getCharacter(count2);
 
+        menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
+        menuMusic.setLooping(true);
+        menuMusic.play();
 
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
 
