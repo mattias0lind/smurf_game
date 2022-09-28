@@ -139,7 +139,7 @@ public class playState extends abstractState{
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
     private Sprite backgroundSprite;
-    private int x;
+    private int x,i;
 
     private CharacterREAL characterOne;
     private CharacterREAL characterTwo;
@@ -272,7 +272,13 @@ public class playState extends abstractState{
         drawHealthMeters(sb);
         sb.end();
         if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
-            gsm.set(new CharacterSelectionState(gsm));
+            if(characterOne.getHpprocent() == 0){
+                i = 0;
+            }else{
+                i = 1;
+            }
+            gsm.set(new EndGameState(gsm, i));
+
         }
     }
 
