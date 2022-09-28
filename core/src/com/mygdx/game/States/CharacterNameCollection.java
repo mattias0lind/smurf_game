@@ -2,12 +2,12 @@ package com.mygdx.game.States;
 
 import java.util.*;
 
-public class CharacterCollection {
+public class CharacterNameCollection {
 
     private List<String> allCharacters = new ArrayList<String>();
 
 
-    public CharacterCollection(){
+    public CharacterNameCollection(){
         allCharacters.add("smurf");
         allCharacters.add("evilSmurf");
         allCharacters.add("lillamy");
