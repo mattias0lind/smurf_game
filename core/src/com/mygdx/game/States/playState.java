@@ -124,6 +124,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import javax.swing.*;
+
 public class playState extends abstractState{
     private Texture characterOneSprite;
     private Texture characterTwoSprite;
@@ -197,10 +199,10 @@ public class playState extends abstractState{
             sb.draw(healthMeter,1080, 690, 100*smurf2.getHpprocent(), 20);
         }
         if (inputProcessor.isIfPlayer2_punched()){
-            sb.draw(characterOneSpritePunch,smurf2.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(characterTwoSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(healthMeter,50, 690, 100*smurf2.getHpprocent(), 20);
-            sb.draw(healthMeter,1080, 690, 100*smurf1.getHpprocent(), 20);
+            sb.draw(characterOneSpritePunch,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
+            sb.draw(characterOneSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
+            sb.draw(healthMeter,50, 690, 100*smurf1.getHpprocent(), 20);
+            sb.draw(healthMeter,1080, 690, 100*smurf2.getHpprocent(), 20);
         }
         else{
         sb.draw(characterOneSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
@@ -208,8 +210,6 @@ public class playState extends abstractState{
         sb.draw(healthMeter,50, 690, 100*smurf1.getHpprocent(), 20);
         sb.draw(healthMeter,1080, 690, 100*smurf2.getHpprocent(), 20);}
         sb.end();
-
-
     }
 
     @Override
