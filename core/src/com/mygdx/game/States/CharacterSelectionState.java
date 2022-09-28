@@ -32,8 +32,8 @@ public class CharacterSelectionState extends abstractState{
         characterCard1 = new Texture(characters.getCharacter(0) + "Card.png");
         characterCard2 = new Texture(characters.getCharacter(1) + "Card.png");
         characterCard3 = new Texture(characters.getCharacter(2) + "Card.png");
-        cardslot1 = characterCard3;
-        cardslot2 = characterCard1;
+        cardslot1 = characterCard2;
+        cardslot2 = characterCard3;
         characterCards.add(characterCard1);
         characterCards.add(characterCard2);
         characterCards.add(characterCard3);
@@ -62,33 +62,35 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getX() < 132
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot1 = characterCards.get(slotcounter1);
                 if (slotcounter1 == 0)
                     slotcounter1 = characterCards.size();
                 slotcounter1 = (slotcounter1 - 1) % characters.getLength();
+                cardslot1 = characterCards.get(slotcounter1);
+
             }
             if(Gdx.input.getX() > 299
                     && Gdx.input.getX() < 330
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot1 = characterCards.get(slotcounter1);
                 slotcounter1 = (slotcounter1 + 1) % characters.getLength();
+                cardslot1 = characterCards.get(slotcounter1);
             }
             if(Gdx.input.getX() > 970
                     && Gdx.input.getX() < 1000
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                cardslot2 = characterCards.get(slotcounter2);
+
                 if (slotcounter2 == 0)
                     slotcounter2 = characterCards.size();
                 slotcounter2 = (slotcounter2 - 1) % characters.getLength();
+                cardslot2 = characterCards.get(slotcounter2);
             }
             if(Gdx.input.getX() > 1168
                     && Gdx.input.getX() < 1200
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
+                slotcounter2 = (slotcounter2 + 1) % characters.getLength();
                 cardslot2 = characterCards.get(slotcounter2);
-                slotcounter2 = (slotcounter2 + 1) % 2;
             }
         }
     }
