@@ -1,9 +1,12 @@
 package MODEL;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+
 
 
 public abstract class CharacterREAL {
@@ -12,6 +15,8 @@ public abstract class CharacterREAL {
     private String name;
     private HealthBar healthBar;
     private float AttackDamage = 10;
+
+    Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal("roblox.mp3"));
 
 
     public CharacterREAL(String nameOfCharacter, World world, float hp) {
@@ -45,6 +50,7 @@ public abstract class CharacterREAL {
         }
         if (rectangle.contains(character.getPosition().x, getPosition().y)) {
             character.gotHit(AttackDamage);
+            robloxSound.play(1.0f);
         }
         //perform punch animation
     }
