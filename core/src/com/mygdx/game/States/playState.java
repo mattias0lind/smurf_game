@@ -127,7 +127,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class playState extends abstractState{
     private Texture characterOneSprite;
     private Texture characterTwoSprite;
-    private Texture healthMeter;
+    private Texture healthMeter, healthMeter2;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-30), true);
@@ -148,11 +148,12 @@ public class playState extends abstractState{
         characterOneSpritePunch = new Texture("punching_smurf.png");
         characterTwoSprite = new Texture(characterName2 + ".png");
         healthMeter = new Texture("healthMeter.png");
+        healthMeter2 = new Texture("healthMeter.png");
         inputProcessor.logic(smurf1.getPlayerMovement(), smurf2.getPlayerMovement());
         inputProcessor.punchLogic(smurf1,smurf2);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
-        backgroundTexture = new Texture("backgroundworld.png");
+        backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
 
@@ -192,13 +193,14 @@ public class playState extends abstractState{
         if(inputProcessor.isIfPlayer1_punched()){
             sb.draw(characterOneSpritePunch,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
             sb.draw(characterTwoSprite,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
-            sb.draw(healthMeter,smurf2.getPlayerMovement().getBody().getPosition().x-15, smurf2.getPlayerMovement().getBody().getPosition().y+55, 100, 8);
-
+            sb.draw(healthMeter,50, 690, 100*smurf1.getHpprocent(), 20);
+            sb.draw(healthMeter,1080, 690, 100*smurf2.getHpprocent(), 20);
         }
         else{
         sb.draw(characterOneSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
         sb.draw(characterTwoSprite,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
-        sb.draw(healthMeter,smurf2.getPlayerMovement().getBody().getPosition().x-15, smurf2.getPlayerMovement().getBody().getPosition().y+55, 100, 8);}
+        sb.draw(healthMeter,50, 690, 100*smurf1.getHpprocent(), 20);
+        sb.draw(healthMeter,1080, 690, 100*smurf2.getHpprocent(), 20);}
         sb.end();
 
 
