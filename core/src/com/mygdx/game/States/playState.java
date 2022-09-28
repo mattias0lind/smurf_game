@@ -111,21 +111,16 @@ package com.mygdx.game.States;
 
 
 import CONTROLLER.InputProcessor;
-import MODEL.EvilSmurfCharacter;
-import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.utils.ScreenUtils;
-
-import javax.swing.*;
 
 public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
@@ -146,6 +141,9 @@ public class playState extends abstractState{
     private CharacterCollection allCharacters1 = new CharacterCollection(world);
     private CharacterCollection allCharacters2 = new CharacterCollection(world);
     private Music menuMusic;
+
+    private BitmapFont HpFont;
+
 
     public playState(gameStateManager gsm, int count1, int count2){
         super(gsm);
@@ -170,11 +168,15 @@ public class playState extends abstractState{
 
         healthMeter = new Texture("healthMeter.png");
         healthMeterBG = new Texture("healthmeterbackground.png");
+        HpFont = new BitmapFont();
+
+
+
         inputProcessor.logic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
-        backgroundTexture = new Texture("backgroundworld.png");
+        backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
 
@@ -257,7 +259,17 @@ public class playState extends abstractState{
         sb.draw(healthMeterBG,1080, 690, 100, 20);
         sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
         sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
-        }
+
+
+        CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
+        CharSequence hpText2 =  Math.round(characterTwo.getHpprocent()*100)+"%";
+
+        HpFont.draw(sb, hpText1, 70, 708);
+        HpFont.draw(sb, hpText2, 1100, 708);
+
+
+    }
+
     private void drawCharacters(SpriteBatch sb){
         sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
         sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
