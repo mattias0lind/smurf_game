@@ -227,15 +227,21 @@ public class playState extends abstractState{
         world.step(1/60f,6,2);
     }
 
+    private void drawHealthMeter(SpriteBatch sb){
+            sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
+            sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);}
+    private void drawCharacter(SpriteBatch sb){
+        sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
+    }
+
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
         sb.begin();
         sb.draw(backgroundSprite,0,0);
-        sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
-        sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
-        sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-        sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
+        drawCharacter(sb);
+        drawHealthMeter(sb);
         sb.end();
     }
 
