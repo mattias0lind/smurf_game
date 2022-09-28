@@ -10,6 +10,7 @@ public class CharacterCollection {
     public CharacterCollection(){
         allCharacters.add("smurf");
         allCharacters.add("evilSmurf");
+        allCharacters.add("lillamy");
     }
 
     public String getCharacter(int index){return allCharacters.get(index);}
