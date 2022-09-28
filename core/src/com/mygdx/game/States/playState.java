@@ -132,7 +132,7 @@ public class playState extends abstractState{
     private Texture healthMeter, healthMeter2;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
-    private World world;
+    private World world = new World(new Vector2(0,-30), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
@@ -142,12 +142,14 @@ public class playState extends abstractState{
 
     private CharacterREAL characterOne;
     private CharacterREAL characterTwo;
+    private CharacterCollection allCharacters1 = new CharacterCollection(world);
+    private CharacterCollection allCharacters2 = new CharacterCollection(world);
 
-    public playState(gameStateManager gsm, CharacterREAL characterOne, CharacterREAL characterTwo, World world){
+    public playState(gameStateManager gsm, int count1, int count2){
         super(gsm);
-        this.characterOne = characterOne;
-        this.characterTwo = characterTwo;
-        this.world = world;
+        this.characterOne = allCharacters1.getCharacter(count1);
+        this.characterTwo = allCharacters2.getCharacter(count2);
+
 
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
 
