@@ -129,7 +129,7 @@ import javax.swing.*;
 public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
-    private Texture healthMeter, healthMeter2;
+    private Texture healthMeter, healthMeterBG;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world;
@@ -162,7 +162,7 @@ public class playState extends abstractState{
         characterTwoSpritePunch = new Texture("punching_smurf.png");
 
         healthMeter = new Texture("healthMeter.png");
-        healthMeter2 = new Texture("healthMeter.png");
+        healthMeterBG = new Texture("healthmeterbackground.png");
         inputProcessor.logic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
@@ -238,10 +238,13 @@ public class playState extends abstractState{
         world.step(1/60f,6,2);
     }
 
-    private void drawHealthMeter(SpriteBatch sb){
-            sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-            sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);}
-    private void drawCharacter(SpriteBatch sb){
+    private void drawHealthMeters(SpriteBatch sb){
+        sb.draw(healthMeterBG,50, 690, 100, 20);
+        sb.draw(healthMeterBG,1080, 690, 100, 20);
+        sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
+        sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
+        }
+    private void drawCharacters(SpriteBatch sb){
         sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
         sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
     }
@@ -251,8 +254,8 @@ public class playState extends abstractState{
         update((float) 0.016);
         sb.begin();
         sb.draw(backgroundSprite,0,0);
-        drawCharacter(sb);
-        drawHealthMeter(sb);
+        drawCharacters(sb);
+        drawHealthMeters(sb);
         sb.end();
     }
 
