@@ -4,15 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CharacterSelectionState extends abstractState{
 
     private Texture cardSlot1;
     private Texture cardSlot2;
     private Texture characterSelectionBackground;
-    private List<Texture> characterCards = new ArrayList<Texture>();
     private int slotCounter1 = 0;
     private int slotCounter2 = 0;
 
@@ -58,6 +54,7 @@ public class CharacterSelectionState extends abstractState{
            && Gdx.input.getY() < 340
            && Gdx.input.getY() > 310) {
                 if (slotCounter1 == 0)
+                    slotCounter1 = characterNames.getLength();
                     slotCounter1 = (slotCounter1 - 1) % characterNames.getLength();
                     cardSlot1 = new Texture(characterNames.getCharacter(slotCounter1) + "Card.png");
             }
@@ -73,7 +70,7 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
                 if (slotCounter2 == 0)
-                    slotCounter2 = characterCards.size();
+                    slotCounter2 = characterNames.getLength();
                     slotCounter2 = (slotCounter2 - 1) % characterNames.getLength();
                 cardSlot2 = new Texture(characterNames.getCharacter(slotCounter2) + "Card.png");
             }
