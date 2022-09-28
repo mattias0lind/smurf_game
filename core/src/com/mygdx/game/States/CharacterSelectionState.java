@@ -55,18 +55,18 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getX() < 860
                     && Gdx.input.getY() < 683
                     && Gdx.input.getY() > 580){
-
+                System.out.println(slotCounter1);
                 gsm.set(new playState(gsm, characters.getCharacter(slotCounter1), characters.getCharacter(slotCounter2)));
                 dispose();
             }
-            if(Gdx.input.getX() > 68
-                    && Gdx.input.getX() < 132
-                    && Gdx.input.getY() < 340
-                    && Gdx.input.getY() > 310) {
+        if(Gdx.input.getX() > 68
+           && Gdx.input.getX() < 132
+           && Gdx.input.getY() < 340
+           && Gdx.input.getY() > 310) {
                 if (slotCounter1 == 0)
                     slotCounter1 = characterCards.size();
-                slotCounter1 = (slotCounter1 - 1) % 2;
-                cardSlot1 = characterCards.get(slotCounter1);
+                    slotCounter1 = (slotCounter1 - 1) % 2;
+                    cardSlot1 = characterCards.get(slotCounter1);
             }
             if(Gdx.input.getX() > 299
                     && Gdx.input.getX() < 330
@@ -74,7 +74,6 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() > 310) {
                 slotCounter1 = (slotCounter1 + 1) % 2;
                 cardSlot1 = characterCards.get(slotCounter1);
-                System.out.println(slotCounter1);
             }
             if(Gdx.input.getX() > 970
                     && Gdx.input.getX() < 1000
@@ -82,9 +81,8 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() > 310) {
                 if (slotCounter2 == 0)
                     slotCounter2 = characterCards.size();
-                slotCounter2 = (slotCounter2 - 1) % 2;
+                    slotCounter2 = (slotCounter2 - 1) % 2;
                 cardSlot2 = characterCards.get(slotCounter2);
-                System.out.println(slotCounter2);
             }
             if(Gdx.input.getX() > 1168
                     && Gdx.input.getX() < 1200
