@@ -160,7 +160,7 @@ public class playState extends abstractState{
 
         //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture("smurf_look_left.png");
+        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() +"_look_left.png");
         characterOneSpritePunch = new Texture("punching_smurf.png");
 
         //char 2
@@ -199,7 +199,13 @@ public class playState extends abstractState{
         }
         else if(inputProcessor.isIfPlayer1_punched()){
             currentCharacterOne = characterOneSpritePunch;
+            
         }
+
+
+
+
+
         return currentCharacterOne;
     }
 
@@ -219,6 +225,7 @@ public class playState extends abstractState{
         else if(inputProcessor.isIfPlayer2_punched()){
             currentCharacterTwo = characterTwoSpritePunch;
         }
+
         return currentCharacterTwo;
     }
 
@@ -264,6 +271,9 @@ public class playState extends abstractState{
         drawCharacters(sb);
         drawHealthMeters(sb);
         sb.end();
+        if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
+            gsm.set(new CharacterSelectionState(gsm));
+        }
     }
 
     @Override
