@@ -25,13 +25,13 @@ public class CharacterSelectionState extends abstractState{
 
     private World world = new World(new Vector2(0,-30), true);
     private CharacterCollection allCharactersP1 = new CharacterCollection(world);
-    private CharacterCollection allCharactersP2 = new CharacterCollection(world);
+
 
     public CharacterSelectionState(gameStateManager gsm){
         super(gsm);
         characterSelectionBackground = new Texture("moln.png");
         cardSlot1 = new Texture(allCharactersP1.getCharacter(slotCounter1).getNameOfCharacter() + "Card.png");
-        cardSlot2 = new Texture(allCharactersP2.getCharacter(slotCounter2).getNameOfCharacter() + "Card.png");;
+        cardSlot2 = new Texture(allCharactersP1.getCharacter(slotCounter2).getNameOfCharacter() + "Card.png");;
 
 
         leftArrow1 = new Texture("leftArrow.png");
@@ -53,7 +53,7 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() < 683
                     && Gdx.input.getY() > 580){
                 System.out.println(slotCounter1);
-                gsm.set(new playState(gsm, allCharactersP1.getCharacter(slotCounter1), allCharactersP2.getCharacter(slotCounter2), world));
+                gsm.set(new playState(gsm, slotCounter1, slotCounter2));
                 dispose();
             }
         if(Gdx.input.getX() > 68
@@ -77,16 +77,16 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
                 if (slotCounter2 == 0)
-                    slotCounter2 = allCharactersP2.getLength();
-                    slotCounter2 = (slotCounter2 - 1) % allCharactersP2.getLength();
-                cardSlot2 = new Texture(allCharactersP2.getCharacter(slotCounter2).getNameOfCharacter() + "Card.png");
+                    slotCounter2 = allCharactersP1.getLength();
+                    slotCounter2 = (slotCounter2 - 1) % allCharactersP1.getLength();
+                cardSlot2 = new Texture(allCharactersP1.getCharacter(slotCounter2).getNameOfCharacter() + "Card.png");
             }
             if(Gdx.input.getX() > 1168
                     && Gdx.input.getX() < 1200
                     && Gdx.input.getY() < 340
                     && Gdx.input.getY() > 310) {
-                slotCounter2 = (slotCounter2 + 1) % allCharactersP2.getLength();
-                cardSlot2 = new Texture(allCharactersP2.getCharacter(slotCounter2).getNameOfCharacter() + "Card.png");
+                slotCounter2 = (slotCounter2 + 1) % allCharactersP1.getLength();
+                cardSlot2 = new Texture(allCharactersP1.getCharacter(slotCounter2).getNameOfCharacter() + "Card.png");
             }
         }
     }

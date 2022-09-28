@@ -115,7 +115,6 @@ import MODEL.EvilSmurfCharacter;
 import MODEL.SmurfCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -144,8 +143,6 @@ public class playState extends abstractState{
     private CharacterREAL characterOne;
     private CharacterREAL characterTwo;
 
-    Sound mcSound = Gdx.audio.newSound(Gdx.files.internal("Minecraftsound.mp3"));
-
     public playState(gameStateManager gsm, CharacterREAL characterOne, CharacterREAL characterTwo, World world){
         super(gsm);
         this.characterOne = characterOne;
@@ -153,7 +150,6 @@ public class playState extends abstractState{
         this.world = world;
 
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
-        mcSound.play(0.3f);
 
         //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
@@ -171,7 +167,7 @@ public class playState extends abstractState{
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
-        backgroundTexture = new Texture("BackgroundMap.png");
+        backgroundTexture = new Texture("backgroundworld.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
 
