@@ -196,6 +196,12 @@ public class playState extends abstractState{
             sb.draw(healthMeter,50, 690, 100*smurf1.getHpprocent(), 20);
             sb.draw(healthMeter,1080, 690, 100*smurf2.getHpprocent(), 20);
         }
+        if (inputProcessor.isIfPlayer2_punched()){
+            sb.draw(characterOneSpritePunch,smurf2.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
+            sb.draw(characterTwoSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
+            sb.draw(healthMeter,50, 690, 100*smurf2.getHpprocent(), 20);
+            sb.draw(healthMeter,1080, 690, 100*smurf1.getHpprocent(), 20);
+        }
         else{
         sb.draw(characterOneSprite,smurf1.getPlayerMovement().getBody().getPosition().x,smurf1.getPlayerMovement().getBody().getPosition().y);
         sb.draw(characterTwoSprite,smurf2.getPlayerMovement().getBody().getPosition().x,smurf2.getPlayerMovement().getBody().getPosition().y);
