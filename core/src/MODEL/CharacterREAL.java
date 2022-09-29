@@ -50,6 +50,9 @@ public abstract class CharacterREAL {
         }
         if (rectangle.contains(character.getPlayerMovement().getBody().getPosition().x, character.getPlayerMovement().getBody().getPosition().y)) {
             character.gotHit(AttackDamage);
+            if (character.getHpprocent() <= 0.5){
+                character.getPlayerMovement().getBody().applyForceToCenter(10000000,0,true);
+            }
             robloxSound.play(1.0f);
         }
         //perform punch animation
