@@ -138,6 +138,8 @@ public class playState extends abstractState{
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
     private Texture moonStone;
+
+    private Texture groundMoon;
     private Sprite backgroundSprite;
     private int x,i;
 
@@ -180,6 +182,7 @@ public class playState extends abstractState{
         greyHeartsBackground = new Texture("3greyHearts.png");
         redHeart = new Texture("redHeart.png");
         moonStone = new Texture("moonStone.png");
+        groundMoon = new Texture("groundMoon.png");
         HpFont = new BitmapFont();
 
 
@@ -251,7 +254,7 @@ public class playState extends abstractState{
     private void createBody(){
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(640,20);
+        bodyDef.position.set(640,-20);
         Body body;
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
@@ -284,6 +287,7 @@ public class playState extends abstractState{
     public void drawStone(SpriteBatch sb) {
         sb.draw(moonStone, 200, 140, 160, 100);
         sb.draw(moonStone, 370, 220, 160, 100);
+        sb.draw(groundMoon, 0,0,1280,110);
     }
 
     private void drawFrameBoard(SpriteBatch sb) {
