@@ -146,6 +146,7 @@ public class playState extends abstractState{
     private CharacterCollection allCharacters1 = new CharacterCollection(world);
     private CharacterCollection allCharacters2 = new CharacterCollection(world);
     private Music menuMusic;
+
     private BitmapFont HpFont;
 
     private String score;
@@ -282,12 +283,19 @@ public class playState extends abstractState{
         sb.draw(moonStone, 200, 140, 160, 100);
     }
 
+    private void drawFrameBoard(SpriteBatch sb) {
+        sb.draw(frameboard, -3, 650, 1283, 70);}
     private void drawHealthMeters(SpriteBatch sb){
-        sb.draw(frameboard, -3, 650, 1283, 70);
-        sb.draw(healthMeterBG,50, 690, 100, 20);
-        sb.draw(healthMeterBG,1080, 690, 100, 20);
-        sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-        sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
+        int width = 100;
+        int height = 20;
+        int hmx1 = 65;
+        int hmx2 = 1080;
+        int y = 690;
+
+        sb.draw(healthMeterBG,hmx1, y, width, height);
+        sb.draw(healthMeterBG,hmx2, y, width, height);
+        sb.draw(healthMeter,hmx1, y, width*characterOne.getHpprocent(), height);
+        sb.draw(healthMeter,hmx2, y, width*characterTwo.getHpprocent(),height);
 
 
         CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
@@ -299,6 +307,8 @@ public class playState extends abstractState{
         HpFont.draw(sb, hpText2, 1113, 706);
         HpFont.draw(sb, nameText1, 160, 705);
         HpFont.draw(sb, nameText2, 1020, 705);
+
+
 
     }
 
@@ -325,6 +335,7 @@ public class playState extends abstractState{
         sb.begin();
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);
+        drawFrameBoard(sb);
         drawHealthMeters(sb);
         drawHearts(sb);
         drawStone(sb);
@@ -336,6 +347,7 @@ public class playState extends abstractState{
                 i = 1;
             }
             gsm.set(new EndGameState(gsm, i));
+
         }
     }
 
