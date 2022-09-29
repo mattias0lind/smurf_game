@@ -187,7 +187,8 @@ public class playState extends abstractState{
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
-        createMapElement(240, 140, 56, 32);
+        createMapElement(240, 158, 56, 16);
+        createMapElement(410, 238, 56, 16);
         backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
@@ -281,6 +282,7 @@ public class playState extends abstractState{
 
     public void drawStone(SpriteBatch sb) {
         sb.draw(moonStone, 200, 140, 160, 100);
+        sb.draw(moonStone, 370, 220, 160, 100);
     }
 
     private void drawFrameBoard(SpriteBatch sb) {
