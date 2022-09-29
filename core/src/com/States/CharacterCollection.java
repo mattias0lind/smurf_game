@@ -1,10 +1,9 @@
-package com.mygdx.game.States;
+package com.States;
 
 import MODEL.CharacterREAL;
 import MODEL.EvilSmurfCharacter;
 import MODEL.LillaMyCharacter;
 import MODEL.SmurfCharacter;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-/*package com.mygdx.game.States;
+/*package com.States;
 
 import java.util.*;
 

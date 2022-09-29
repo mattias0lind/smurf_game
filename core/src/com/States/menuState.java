@@ -1,12 +1,8 @@
-package com.mygdx.game.States;
+package com.States;
 
-import MODEL.GameScreen;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.MyGdxGame;
-import org.w3c.dom.Text;
 
 public class menuState extends abstractState {
     private Texture menuBackground;

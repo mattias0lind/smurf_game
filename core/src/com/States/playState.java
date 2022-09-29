@@ -1,6 +1,6 @@
 /*
 
-package com.mygdx.game.States;
+package com.States;
 
 
 import CONTROLLER.InputProcessor;
@@ -107,7 +107,7 @@ public class playState extends abstractState {
 */
 
 
-package com.mygdx.game.States;
+package com.States;
 
 
 import CONTROLLER.InputProcessor;
@@ -250,7 +250,7 @@ public class playState extends abstractState{
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(1280,100);
+        polygonShape.setAsBox(1280,300);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
         body.createFixture(fixtureDef);
