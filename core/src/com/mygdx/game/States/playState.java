@@ -122,6 +122,8 @@ import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
+import java.util.Objects;
+
 public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
@@ -149,8 +151,8 @@ public class playState extends abstractState{
 
     public playState(gameStateManager gsm, int count1, int count2){
         super(gsm);
-        this.characterOne = allCharacters1.getCharacter(count1);
-        this.characterTwo = allCharacters2.getCharacter(count2);
+        this.characterOne = Objects.requireNonNull(allCharacters1.getCharacter(count1));
+        this.characterTwo = Objects.requireNonNull(allCharacters2.getCharacter(count2));
 
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
         menuMusic.setLooping(true);

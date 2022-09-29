@@ -5,16 +5,21 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
+import java.util.Objects;
+
 public class Player_Movement implements IMovement {
 
     private Vector2 position = new Vector2(100, 200);
     private BodyDef bodyDef = new BodyDef();
     private Body body;
     private Sprite sprite;
+    private World world;
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
 
     public Player_Movement(World world) {
+        this.world = Objects.requireNonNull(world);
+
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
         body = world.createBody(bodyDef);
@@ -30,6 +35,7 @@ public class Player_Movement implements IMovement {
     }
 
     public void setSprite(String path){
+
         new Texture(path);
         sprite = new Sprite();
     }

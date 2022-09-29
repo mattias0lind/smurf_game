@@ -13,6 +13,8 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.States.gameStateManager;
 
+import java.util.Objects;
+
 import static MODEL.Constants.PPM;
 
 public class GameScreen extends ScreenAdapter {
@@ -26,7 +28,8 @@ public class GameScreen extends ScreenAdapter {
     private TileMapHelper tileMapHelper;
 
     public GameScreen(OrthographicCamera camera) {
-        this.camera = camera;
+
+        this.camera = Objects.requireNonNull(camera);
         this.batch = new SpriteBatch();
         this.world = new World(new Vector2(0, 0), false);
         this.box2DDebugRenderer = new Box2DDebugRenderer();

@@ -1,13 +1,15 @@
 package MODEL;
 
+import java.util.Objects;
+
 public class HealthBar {
     private float HP;
     private final float maxHP;
 
 
     public HealthBar(float HP) {
-        this.HP = HP;
-        this.maxHP = HP;
+        this.HP = Objects.requireNonNull(HP);
+        this.maxHP = Objects.requireNonNull(HP);
     }
 
     public void looseHP(float damage) {
