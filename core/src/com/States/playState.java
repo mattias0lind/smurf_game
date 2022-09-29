@@ -160,6 +160,7 @@ public class playState extends abstractState{
         menuMusic.setLooping(true);
         menuMusic.play();
 
+
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
 
         //Char 1
