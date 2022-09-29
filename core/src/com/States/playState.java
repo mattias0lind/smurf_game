@@ -122,10 +122,16 @@ import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
+import java.util.Objects;
+
 public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
-    private Texture healthMeter, healthMeterBG;
+
+    private Texture healthMeter, healthMeterBG, frameBoard;
+
+    private Texture greyHeartsBackground;
+    private Texture redHeart;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-30), true);
@@ -147,8 +153,8 @@ public class playState extends abstractState{
 
     public playState(gameStateManager gsm, int count1, int count2){
         super(gsm);
-        this.characterOne = allCharacters1.getCharacter(count1);
-        this.characterTwo = allCharacters2.getCharacter(count2);
+        this.characterOne = Objects.requireNonNull(allCharacters1.getCharacter(count1));
+        this.characterTwo = Objects.requireNonNull(allCharacters2.getCharacter(count2));
 
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
         menuMusic.setLooping(true);
@@ -168,6 +174,9 @@ public class playState extends abstractState{
 
         healthMeter = new Texture("healthMeter.png");
         healthMeterBG = new Texture("healthmeterbackground.png");
+        greyHeartsBackground = new Texture("3greyHearts.png");
+        redHeart = new Texture("redHeart.png");
+        frameBoard = new Texture("frameboard.png");
         HpFont = new BitmapFont();
 
 
@@ -255,18 +264,32 @@ public class playState extends abstractState{
     }
 
     private void drawHealthMeters(SpriteBatch sb){
-        sb.draw(healthMeterBG,50, 690, 100, 20);
+        sb.draw(frameBoard, -3, 650, 1300, 70);
+        sb.draw(healthMeterBG,80, 690, 100, 20);
         sb.draw(healthMeterBG,1080, 690, 100, 20);
-        sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
+        sb.draw(healthMeter,80, 690, 100*characterOne.getHpprocent(), 20);
         sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
 
 
         CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
         CharSequence hpText2 =  Math.round(characterTwo.getHpprocent()*100)+"%";
 
-        HpFont.draw(sb, hpText1, 70, 708);
-        HpFont.draw(sb, hpText2, 1100, 708);
+        HpFont.draw(sb, hpText1, 110, 708);
+        HpFont.draw(sb, hpText2, 1110, 708);
 
+
+    }
+
+    private void drawHearts(SpriteBatch sb) {
+        sb.draw(greyHeartsBackground, 80, 650, 100, 40);
+        sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
+        sb.draw(redHeart, 80, 657, 32, 32);
+        sb.draw(redHeart, 114, 657, 32, 32);
+        sb.draw(redHeart, 148, 657, 32, 32);
+
+        sb.draw(redHeart, 1080, 657, 32, 32);
+        sb.draw(redHeart, 1114, 657, 32, 32);
+        sb.draw(redHeart, 1148, 657, 32, 32);
 
     }
 
@@ -282,6 +305,7 @@ public class playState extends abstractState{
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);
         drawHealthMeters(sb);
+        drawHearts(sb);
         sb.end();
         if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
             if(characterOne.getHpprocent() == 0){
