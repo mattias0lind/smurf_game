@@ -127,7 +127,7 @@ import java.util.Objects;
 public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
-    private Texture healthMeter, healthMeterBG;
+    private Texture healthMeter, healthMeterBG, frameboard;
     private Texture greyHeartsBackground;
     private Texture redHeart;
     private Texture characterSelectionBackground;
@@ -174,6 +174,7 @@ public class playState extends abstractState{
 
         healthMeter = new Texture("healthMeter.png");
         healthMeterBG = new Texture("healthmeterbackground.png");
+        frameboard = new Texture("frameboard.png");
         greyHeartsBackground = new Texture("3greyHearts.png");
         redHeart = new Texture("redHeart.png");
         HpFont = new BitmapFont();
@@ -263,6 +264,7 @@ public class playState extends abstractState{
     }
 
     private void drawHealthMeters(SpriteBatch sb){
+        sb.draw(frameboard, -3, 650, 1283, 70);
         sb.draw(healthMeterBG,50, 690, 100, 20);
         sb.draw(healthMeterBG,1080, 690, 100, 20);
         sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
