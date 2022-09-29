@@ -10,14 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterCollection {
-
         private List<CharacterREAL> allCharacters = new ArrayList<>();
-
 
         public CharacterCollection(World world){
             allCharacters.add(new SmurfCharacter(world));
-            allCharacters.add(new EvilSmurfCharacter(world));
-            allCharacters.add(new LillaMyCharacter(world));
+            //allCharacters.add(new EvilSmurfCharacter(world));
+            //allCharacters.add(new LillaMyCharacter(world));
         }
 
         public CharacterREAL getCharacter(int index){return allCharacters.get(index);}

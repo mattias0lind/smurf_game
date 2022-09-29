@@ -137,6 +137,7 @@ public class playState extends abstractState{
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
+    private Texture moonStone;
     private Sprite backgroundSprite;
     private int x,i;
 
@@ -145,7 +146,6 @@ public class playState extends abstractState{
     private CharacterCollection allCharacters1 = new CharacterCollection(world);
     private CharacterCollection allCharacters2 = new CharacterCollection(world);
     private Music menuMusic;
-
     private BitmapFont HpFont;
 
     private String score;
@@ -177,6 +177,7 @@ public class playState extends abstractState{
         frameboard = new Texture("frameboard.png");
         greyHeartsBackground = new Texture("3greyHearts.png");
         redHeart = new Texture("redHeart.png");
+        moonStone = new Texture("moonStone.png");
         HpFont = new BitmapFont();
 
 
@@ -185,6 +186,7 @@ public class playState extends abstractState{
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
+        createMapElement(240, 140, 56, 32);
         backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
@@ -251,16 +253,33 @@ public class playState extends abstractState{
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(1280,300);
+        polygonShape.setAsBox(1280,100);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
         body.createFixture(fixtureDef);
     }
 
+    private void createMapElement(int posX, int posY, int width, int height){
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.position.set(posX,posY);
+        Body body;
+        body = world.createBody(bodyDef);
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape polygonShape = new PolygonShape();
+        polygonShape.setAsBox(width,height);
+        fixtureDef.shape = polygonShape;
+        fixtureDef.density = 0.1f;
+        body.createFixture(fixtureDef);
+    }
 
     @Override
     public void update(float dt) {
         world.step(1/60f,6,2);
+    }
+
+    public void drawStone(SpriteBatch sb) {
+        sb.draw(moonStone, 200, 140, 160, 100);
     }
 
     private void drawHealthMeters(SpriteBatch sb){
@@ -280,8 +299,6 @@ public class playState extends abstractState{
         HpFont.draw(sb, hpText2, 1113, 706);
         HpFont.draw(sb, nameText1, 160, 705);
         HpFont.draw(sb, nameText2, 1020, 705);
-
-
 
     }
 
@@ -310,6 +327,7 @@ public class playState extends abstractState{
         drawCharacters(sb);
         drawHealthMeters(sb);
         drawHearts(sb);
+        drawStone(sb);
         sb.end();
         if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
             if(characterOne.getHpprocent() == 0){
@@ -318,7 +336,6 @@ public class playState extends abstractState{
                 i = 1;
             }
             gsm.set(new EndGameState(gsm, i));
-
         }
     }
 
