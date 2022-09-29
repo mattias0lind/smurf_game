@@ -129,7 +129,7 @@ public class playState extends abstractState{
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
     private Texture healthMeter, healthMeterBG, frameboard;
     private Texture greyHeartsBackground;
-    private Texture redHeart;
+    private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-30), true);
@@ -141,7 +141,7 @@ public class playState extends abstractState{
 
     private Texture groundMoon;
     private Sprite backgroundSprite;
-    private int x,i;
+    private int x,i,j;
 
     private CharacterREAL characterOne;
     private CharacterREAL characterTwo;
@@ -180,7 +180,12 @@ public class playState extends abstractState{
         healthMeterBG = new Texture("healthmeterbackground.png");
         frameboard = new Texture("frameboard.png");
         greyHeartsBackground = new Texture("3greyHearts.png");
-        redHeart = new Texture("redHeart.png");
+        redHeart1 = new Texture("redHeart.png");
+        redHeart2 = new Texture("redHeart.png");
+        redHeart3 = new Texture("redHeart.png");
+        redHeart4 = new Texture("redHeart.png");
+        redHeart5 = new Texture("redHeart.png");
+        redHeart6 = new Texture("redHeart.png");
         moonStone = new Texture("moonStone.png");
         groundMoon = new Texture("groundMoon.png");
         HpFont = new BitmapFont();
@@ -293,16 +298,17 @@ public class playState extends abstractState{
     private void drawFrameBoard(SpriteBatch sb) {
         sb.draw(frameboard, -3, 650, 1283, 70);}
     private void drawHealthMeters(SpriteBatch sb){
+
         int width = 100;
         int height = 20;
         int hmx1 = 65;
         int hmx2 = 1080;
-        int y = 690;
+        int hmy = 690;
 
-        sb.draw(healthMeterBG,hmx1, y, width, height);
-        sb.draw(healthMeterBG,hmx2, y, width, height);
-        sb.draw(healthMeter,hmx1, y, width*characterOne.getHpprocent(), height);
-        sb.draw(healthMeter,hmx2, y, width*characterTwo.getHpprocent(),height);
+        sb.draw(healthMeterBG,hmx1, hmy, width, height);
+        sb.draw(healthMeterBG,hmx2, hmy, width, height);
+        sb.draw(healthMeter,hmx1, hmy, width*characterOne.getHpprocent(), height);
+        sb.draw(healthMeter,hmx2, hmy, width*characterTwo.getHpprocent(),height);
 
 
         CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
@@ -312,7 +318,7 @@ public class playState extends abstractState{
 
         HpFont.draw(sb, hpText1, 85, 706);
         HpFont.draw(sb, hpText2, 1113, 706);
-        HpFont.draw(sb, nameText1, 160, 705);
+        HpFont.draw(sb, nameText1, 170, 705);
         HpFont.draw(sb, nameText2, 1020, 705);
 
 
@@ -322,13 +328,13 @@ public class playState extends abstractState{
     private void drawHearts(SpriteBatch sb) {
         sb.draw(greyHeartsBackground, 50, 650, 100, 40);
         sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
-        sb.draw(redHeart, 50, 657, 32, 32);
-        sb.draw(redHeart, 84, 657, 32, 32);
-        sb.draw(redHeart, 118, 657, 32, 32);
+        sb.draw(redHeart1, 50, 657, 32, 32);
+        sb.draw(redHeart2, 84, 657, 32, 32);
+        sb.draw(redHeart3, 118, 657, 32, 32);
 
-        sb.draw(redHeart, 1080, 657, 32, 32);
-        sb.draw(redHeart, 1114, 657, 32, 32);
-        sb.draw(redHeart, 1148, 657, 32, 32);
+        sb.draw(redHeart4, 1080, 657, 32, 32);
+        sb.draw(redHeart5, 1114, 657, 32, 32);
+        sb.draw(redHeart6, 1148, 657, 32, 32);
     }
 
     private void drawCharacters(SpriteBatch sb){
@@ -347,15 +353,25 @@ public class playState extends abstractState{
         drawHearts(sb);
         drawStone(sb);
         sb.end();
-        if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
-            if(characterOne.getHpprocent() == 0){
-                i = 0;
+
+        if (characterOne.getHpprocent()== 0 || (characterTwo.getHpprocent()==0)){
+            if(characterOne.getHpprocent()==0){
+                this.i =i+1;
+                if (i==1){redHeart3.dispose();}
+                if (i==2){redHeart2.dispose();}
+                if(i==3){redHeart1.dispose();gsm.set(new EndGameState(gsm, 0));}
+                characterOne.restoreHP();
             }else{
-                i = 1;
-            }
-            gsm.set(new EndGameState(gsm, i));
+                this.j =j+1;
+                if (j==1){redHeart6.dispose();}
+                if (j==2){redHeart5.dispose();}
+                if(j==3){redHeart4.dispose();
+                    gsm.set(new EndGameState(gsm, 1));}
+                characterTwo.restoreHP();}
+
 
         }
+
     }
 
     @Override
@@ -364,7 +380,15 @@ public class playState extends abstractState{
         characterOneSprite.dispose();
         characterTwoSprite.dispose();
         healthMeter.dispose();
-
+        healthMeterBG.dispose();
+        frameboard.dispose();
+        greyHeartsBackground.dispose();
+        redHeart1.dispose();
+        redHeart2.dispose();
+        redHeart3.dispose();
+        redHeart4.dispose();
+        redHeart5.dispose();
+        redHeart6.dispose();
     }
 }
 
