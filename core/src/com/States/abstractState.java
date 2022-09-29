@@ -1,4 +1,4 @@
-package com.mygdx.game.States;
+package com.States;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 

@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.*;
 
 public class Player_Movement implements IMovement {
 
-    private Vector2 position = new Vector2(100, 200);
+    private Vector2 position = new Vector2(100, 400);
     private BodyDef bodyDef = new BodyDef();
     private Body body;
     private Sprite sprite;
