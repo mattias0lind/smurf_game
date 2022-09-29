@@ -137,6 +137,7 @@ public class playState extends abstractState{
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
+    private Texture moonStone;
     private Sprite backgroundSprite;
     private int x,i;
 
@@ -178,6 +179,7 @@ public class playState extends abstractState{
         frameboard = new Texture("frameboard.png");
         greyHeartsBackground = new Texture("3greyHearts.png");
         redHeart = new Texture("redHeart.png");
+        moonStone = new Texture("moonStone.png");
         HpFont = new BitmapFont();
 
 
@@ -186,6 +188,7 @@ public class playState extends abstractState{
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
+        createMapElement(240, 140, 56, 32);
         backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
 
@@ -252,16 +255,33 @@ public class playState extends abstractState{
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(1280,300);
+        polygonShape.setAsBox(1280,100);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
         body.createFixture(fixtureDef);
     }
 
+    private void createMapElement(int posX, int posY, int width, int height){
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.position.set(posX,posY);
+        Body body;
+        body = world.createBody(bodyDef);
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape polygonShape = new PolygonShape();
+        polygonShape.setAsBox(width,height);
+        fixtureDef.shape = polygonShape;
+        fixtureDef.density = 0.1f;
+        body.createFixture(fixtureDef);
+    }
 
     @Override
     public void update(float dt) {
         world.step(1/60f,6,2);
+    }
+
+    public void drawStone(SpriteBatch sb) {
+        sb.draw(moonStone, 200, 140, 160, 100);
     }
 
     private void drawFrameBoard(SpriteBatch sb) {
@@ -284,25 +304,25 @@ public class playState extends abstractState{
         CharSequence nameText1 = ("Player 1");
         CharSequence nameText2 = ("Player 2");
 
-        HpFont.draw(sb, hpText1, 100, 706);
-        HpFont.draw(sb, hpText2, 1110, 706);
-        HpFont.draw(sb, nameText1, 170, 706);
-        HpFont.draw(sb, nameText2, 1020, 706);
+        HpFont.draw(sb, hpText1, 85, 706);
+        HpFont.draw(sb, hpText2, 1113, 706);
+        HpFont.draw(sb, nameText1, 160, 705);
+        HpFont.draw(sb, nameText2, 1020, 705);
 
 
 
     }
 
     private void drawHearts(SpriteBatch sb) {
-        sb.draw(greyHeartsBackground, 60, 650, 100, 40);
-        sb.draw(greyHeartsBackground, 1070, 650, 100, 40);
-        sb.draw(redHeart, 60, 657, 32, 32);
-        sb.draw(redHeart, 94, 657, 32, 32);
-        sb.draw(redHeart, 128, 657, 32, 32);
+        sb.draw(greyHeartsBackground, 50, 650, 100, 40);
+        sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
+        sb.draw(redHeart, 50, 657, 32, 32);
+        sb.draw(redHeart, 84, 657, 32, 32);
+        sb.draw(redHeart, 118, 657, 32, 32);
 
-        sb.draw(redHeart, 1070, 657, 32, 32);
-        sb.draw(redHeart, 1104, 657, 32, 32);
-        sb.draw(redHeart, 1138, 657, 32, 32);
+        sb.draw(redHeart, 1080, 657, 32, 32);
+        sb.draw(redHeart, 1114, 657, 32, 32);
+        sb.draw(redHeart, 1148, 657, 32, 32);
     }
 
     private void drawCharacters(SpriteBatch sb){
@@ -319,6 +339,7 @@ public class playState extends abstractState{
         drawFrameBoard(sb);
         drawHealthMeters(sb);
         drawHearts(sb);
+        drawStone(sb);
         sb.end();
         if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
             if(characterOne.getHpprocent() == 0){

@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterCollection {
-
         private List<CharacterREAL> allCharacters = new ArrayList<>();
-
 
         public CharacterCollection(World world){
             allCharacters.add(new SmurfCharacter(world));
