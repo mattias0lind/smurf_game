@@ -126,6 +126,8 @@ public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
     private Texture healthMeter, healthMeterBG;
+    private Texture greyHeartsBackground;
+    private Texture redHeart;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-30), true);
@@ -168,6 +170,8 @@ public class playState extends abstractState{
 
         healthMeter = new Texture("healthMeter.png");
         healthMeterBG = new Texture("healthmeterbackground.png");
+        greyHeartsBackground = new Texture("3greyHearts.png");
+        redHeart = new Texture("redHeart.png");
         HpFont = new BitmapFont();
 
 
@@ -270,6 +274,19 @@ public class playState extends abstractState{
 
     }
 
+    private void drawHearts(SpriteBatch sb) {
+        sb.draw(greyHeartsBackground, 50, 650, 100, 40);
+        sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
+        sb.draw(redHeart, 50, 657, 32, 32);
+        sb.draw(redHeart, 84, 657, 32, 32);
+        sb.draw(redHeart, 118, 657, 32, 32);
+
+        sb.draw(redHeart, 1080, 657, 32, 32);
+        sb.draw(redHeart, 1114, 657, 32, 32);
+        sb.draw(redHeart, 1148, 657, 32, 32);
+
+    }
+
     private void drawCharacters(SpriteBatch sb){
         sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
         sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
@@ -282,6 +299,7 @@ public class playState extends abstractState{
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);
         drawHealthMeters(sb);
+        drawHearts(sb);
         sb.end();
         if( (characterOne.getHpprocent() == 0) || (characterTwo.getHpprocent() == 0) ){
             if(characterOne.getHpprocent() == 0){
