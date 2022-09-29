@@ -43,10 +43,11 @@ public abstract class CharacterREAL {
 
     public void punch(CharacterREAL character) {
         Rectangle rectangle = new Rectangle();
-        if (playerMovement.getBody().getLinearVelocity().x > 0) {
+        if (playerMovement.getBody().getLinearVelocity().x >= 0) {
             rectangle.set(playerMovement.getBody().getPosition().x + 16, playerMovement.getBody().getPosition().y, 64, 64);
-        } else if (playerMovement.getBody().getLinearVelocity().x <= 0) {
-            rectangle.set(playerMovement.getBody().getPosition().x - 16, playerMovement.getBody().getPosition().y, 64, 64);
+        }
+        if (playerMovement.getBody().getLinearVelocity().x <= 0) {
+            rectangle.set(playerMovement.getBody().getPosition().x - 64, playerMovement.getBody().getPosition().y, 64, 64);
         }
         if (rectangle.contains(character.getPlayerMovement().getBody().getPosition().x, character.getPlayerMovement().getBody().getPosition().y)) {
             character.gotHit(AttackDamage);

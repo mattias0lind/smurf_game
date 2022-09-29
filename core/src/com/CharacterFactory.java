@@ -1,4 +1,4 @@
-package com.mygdx.game.States;
+package com;
 
 import MODEL.CharacterREAL;
 import MODEL.EvilSmurfCharacter;
