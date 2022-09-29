@@ -263,12 +263,19 @@ public class playState extends abstractState{
         world.step(1/60f,6,2);
     }
 
+    private void drawFrameBoard(SpriteBatch sb) {
+        sb.draw(frameboard, -3, 650, 1283, 70);}
     private void drawHealthMeters(SpriteBatch sb){
-        sb.draw(frameboard, -3, 650, 1283, 70);
-        sb.draw(healthMeterBG,50, 690, 100, 20);
-        sb.draw(healthMeterBG,1080, 690, 100, 20);
-        sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
-        sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
+        int width = 100;
+        int height = 20;
+        int hmx1 = 65;
+        int hmx2 = 1080;
+        int y = 690;
+
+        sb.draw(healthMeterBG,hmx1, y, width, height);
+        sb.draw(healthMeterBG,hmx2, y, width, height);
+        sb.draw(healthMeter,hmx1, y, width*characterOne.getHpprocent(), height);
+        sb.draw(healthMeter,hmx2, y, width*characterTwo.getHpprocent(),height);
 
 
         CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
@@ -276,25 +283,25 @@ public class playState extends abstractState{
         CharSequence nameText1 = ("Player 1");
         CharSequence nameText2 = ("Player 2");
 
-        HpFont.draw(sb, hpText1, 85, 706);
-        HpFont.draw(sb, hpText2, 1113, 706);
-        HpFont.draw(sb, nameText1, 160, 705);
-        HpFont.draw(sb, nameText2, 1020, 705);
+        HpFont.draw(sb, hpText1, 100, 706);
+        HpFont.draw(sb, hpText2, 1110, 706);
+        HpFont.draw(sb, nameText1, 170, 706);
+        HpFont.draw(sb, nameText2, 1020, 706);
 
 
 
     }
 
     private void drawHearts(SpriteBatch sb) {
-        sb.draw(greyHeartsBackground, 50, 650, 100, 40);
-        sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
-        sb.draw(redHeart, 50, 657, 32, 32);
-        sb.draw(redHeart, 84, 657, 32, 32);
-        sb.draw(redHeart, 118, 657, 32, 32);
+        sb.draw(greyHeartsBackground, 60, 650, 100, 40);
+        sb.draw(greyHeartsBackground, 1070, 650, 100, 40);
+        sb.draw(redHeart, 60, 657, 32, 32);
+        sb.draw(redHeart, 94, 657, 32, 32);
+        sb.draw(redHeart, 128, 657, 32, 32);
 
-        sb.draw(redHeart, 1080, 657, 32, 32);
-        sb.draw(redHeart, 1114, 657, 32, 32);
-        sb.draw(redHeart, 1148, 657, 32, 32);
+        sb.draw(redHeart, 1070, 657, 32, 32);
+        sb.draw(redHeart, 1104, 657, 32, 32);
+        sb.draw(redHeart, 1138, 657, 32, 32);
     }
 
     private void drawCharacters(SpriteBatch sb){
@@ -308,6 +315,7 @@ public class playState extends abstractState{
         sb.begin();
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);
+        drawFrameBoard(sb);
         drawHealthMeters(sb);
         drawHearts(sb);
         sb.end();
