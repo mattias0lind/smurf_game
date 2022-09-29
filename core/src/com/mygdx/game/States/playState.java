@@ -127,7 +127,9 @@ import java.util.Objects;
 public class playState extends abstractState{
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
-    private Texture healthMeter, healthMeterBG;
+
+    private Texture healthMeter, healthMeterBG, frameBoard;
+
     private Texture greyHeartsBackground;
     private Texture redHeart;
     private Texture characterSelectionBackground;
@@ -174,6 +176,7 @@ public class playState extends abstractState{
         healthMeterBG = new Texture("healthmeterbackground.png");
         greyHeartsBackground = new Texture("3greyHearts.png");
         redHeart = new Texture("redHeart.png");
+        frameBoard = new Texture("frameboard.png");
         HpFont = new BitmapFont();
 
 
@@ -261,27 +264,28 @@ public class playState extends abstractState{
     }
 
     private void drawHealthMeters(SpriteBatch sb){
-        sb.draw(healthMeterBG,50, 690, 100, 20);
+        sb.draw(frameBoard, -3, 650, 1300, 70);
+        sb.draw(healthMeterBG,80, 690, 100, 20);
         sb.draw(healthMeterBG,1080, 690, 100, 20);
-        sb.draw(healthMeter,50, 690, 100*characterOne.getHpprocent(), 20);
+        sb.draw(healthMeter,80, 690, 100*characterOne.getHpprocent(), 20);
         sb.draw(healthMeter,1080, 690, 100*characterTwo.getHpprocent(), 20);
 
 
         CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
         CharSequence hpText2 =  Math.round(characterTwo.getHpprocent()*100)+"%";
 
-        HpFont.draw(sb, hpText1, 70, 708);
-        HpFont.draw(sb, hpText2, 1100, 708);
+        HpFont.draw(sb, hpText1, 110, 708);
+        HpFont.draw(sb, hpText2, 1110, 708);
 
 
     }
 
     private void drawHearts(SpriteBatch sb) {
-        sb.draw(greyHeartsBackground, 50, 650, 100, 40);
+        sb.draw(greyHeartsBackground, 80, 650, 100, 40);
         sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
-        sb.draw(redHeart, 50, 657, 32, 32);
-        sb.draw(redHeart, 84, 657, 32, 32);
-        sb.draw(redHeart, 118, 657, 32, 32);
+        sb.draw(redHeart, 80, 657, 32, 32);
+        sb.draw(redHeart, 114, 657, 32, 32);
+        sb.draw(redHeart, 148, 657, 32, 32);
 
         sb.draw(redHeart, 1080, 657, 32, 32);
         sb.draw(redHeart, 1114, 657, 32, 32);
