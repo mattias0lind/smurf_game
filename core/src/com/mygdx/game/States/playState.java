@@ -148,6 +148,8 @@ public class playState extends abstractState{
 
     private BitmapFont HpFont;
 
+    private String score;
+
 
     public playState(gameStateManager gsm, int count1, int count2){
         super(gsm);
@@ -269,9 +271,14 @@ public class playState extends abstractState{
 
         CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
         CharSequence hpText2 =  Math.round(characterTwo.getHpprocent()*100)+"%";
+        CharSequence nameText1 = ("Player 1");
+        CharSequence nameText2 = ("Player 2");
 
-        HpFont.draw(sb, hpText1, 70, 708);
-        HpFont.draw(sb, hpText2, 1100, 708);
+        HpFont.draw(sb, hpText1, 85, 706);
+        HpFont.draw(sb, hpText2, 1113, 706);
+        HpFont.draw(sb, nameText1, 160, 705);
+        HpFont.draw(sb, nameText2, 1020, 705);
+
 
 
     }
@@ -286,7 +293,6 @@ public class playState extends abstractState{
         sb.draw(redHeart, 1080, 657, 32, 32);
         sb.draw(redHeart, 1114, 657, 32, 32);
         sb.draw(redHeart, 1148, 657, 32, 32);
-
     }
 
     private void drawCharacters(SpriteBatch sb){
