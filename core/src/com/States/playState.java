@@ -125,8 +125,8 @@ import com.badlogic.gdx.physics.box2d.*;
 import java.util.Objects;
 
 public class playState extends abstractState{
-    private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne;
-    private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo;
+    private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
+    private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
     private Texture healthMeter, healthMeterBG, frameboard;
     private Texture greyHeartsBackground;
     private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
@@ -170,11 +170,13 @@ public class playState extends abstractState{
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
         characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() +"_look_left.png");
         characterOneSpritePunch = new Texture("punching_smurf.png");
+        characterOneSpritePunchLeft = new Texture("left_punching_smurf.png");
 
         //char 2
         characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
         characterTwoSpriteLeft = new Texture("smurf_look_left.png");
         characterTwoSpritePunch = new Texture("punching_smurf.png");
+        characterTwoSpritePunchLeft = new Texture("left_punching_smurf.png");
 
         healthMeter = new Texture("healthMeter.png");
         healthMeterBG = new Texture("healthmeterbackground.png");
@@ -221,9 +223,13 @@ public class playState extends abstractState{
         else if(inputProcessor.getLeftPlayer1()){
             currentCharacterOne = characterOneSpriteLeft;
         }
-        else if(inputProcessor.isIfPlayer1_punched()){
-            currentCharacterOne = characterOneSpritePunch;
-            
+        if(inputProcessor.isIfPlayer1_punched()){
+
+            if(inputProcessor.getLeftPlayer1()){
+                currentCharacterOne = characterOneSpritePunchLeft;
+            }else{
+                currentCharacterOne = characterOneSpritePunch;
+            }
         }
 
 
@@ -246,8 +252,13 @@ public class playState extends abstractState{
         else if(inputProcessor.getLeftPlayer2()){
             currentCharacterTwo = characterTwoSpriteLeft;
         }
-        else if(inputProcessor.isIfPlayer2_punched()){
-            currentCharacterTwo = characterTwoSpritePunch;
+        if(inputProcessor.isIfPlayer2_punched()){
+
+            if(inputProcessor.getLeftPlayer2()){
+                currentCharacterTwo = characterTwoSpritePunchLeft;
+            }else{
+                currentCharacterTwo = characterTwoSpritePunch;
+            }
         }
 
         return currentCharacterTwo;

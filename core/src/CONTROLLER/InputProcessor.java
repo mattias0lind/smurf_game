@@ -107,11 +107,8 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     public boolean keyUp(int i) {
         if ((i == Input.Keys.LEFT)) {
             player2.moveLeft(false);
-
-            leftPlayer2 = false;
         } else if (i == Input.Keys.RIGHT) {
             player2.moveRight(false);
-            rightPlayer2 = false;
         } else if (i == Input.Keys.UP) {
 
         }else if(i == Input.Keys.RIGHT){
@@ -133,7 +130,6 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         } else if (i == Input.Keys.D) {
             player.moveRight(false);
-            rightPlayer1 = false;
         } else if (i == Input.Keys.W) {
 
         }
