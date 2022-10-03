@@ -8,7 +8,6 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import static com.States.ImagePaths.CLOUDS;
 
-public class CharacterSelectionState extends abstractState{
 public class CharacterSelectionState extends AbstractState {
 
     private Texture cardSlot1;
