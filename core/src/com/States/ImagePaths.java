@@ -54,7 +54,7 @@ public enum ImagePaths {
     HITSOUND("roblox.mp3");
 
     public final String label;
-    private ImagePaths(String label) {
+    ImagePaths(String label) {
         this.label = label;
     }
 }

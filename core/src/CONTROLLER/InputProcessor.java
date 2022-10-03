@@ -5,7 +5,6 @@ import MODEL.Character;
 import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 
 /*Hanterar inputs */
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
