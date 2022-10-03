@@ -7,8 +7,13 @@ public enum ImagePaths {
     SMURFLOOKLEFT("smurf_look_left.png"),
     BLUESMURFPUNCHINGRIGHT("punching_smurf.png"),
     BLUESMURFPUNCHINGLEFT("left_punching_smurf.png"),
+
     EVILSMURF("evilSmurf.png"),
     EVILSMURFCARD("evilSmurfCard.png"),
+    EVILSMURFLOOKLEFT("evilSmurfLookLeft.png"),
+    EVILSMURFPUNCHINGRIGHT("evilSmurfPunchLeft.png"),
+    EVILSMURFPUNCHINGLEFT("left_punching_smurf.png"),
+
     LILLAMY("lillamy.png"),
     LILLAMYCARD("lillamyCard.png"),
 
