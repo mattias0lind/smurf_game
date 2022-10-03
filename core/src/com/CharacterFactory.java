@@ -1,9 +1,7 @@
 package com;
 
+import MODEL.*;
 import MODEL.Character;
-import MODEL.EvilSmurfCharacter;
-import MODEL.LillaMyCharacter;
-import MODEL.SmurfCharacter;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class CharacterFactory {
@@ -18,7 +16,10 @@ public class CharacterFactory {
 
         } else if(characterName.equalsIgnoreCase("lillamy") ){
             return new LillaMyCharacter(world);
+        } else if(characterName.equalsIgnoreCase("sanic")){
+            return new SanicCharacter(world);
         }
+
 
         return null;
     }
