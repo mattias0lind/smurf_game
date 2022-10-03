@@ -57,49 +57,55 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     @Override
     public boolean keyDown(int i) {
         if ((i == Input.Keys.LEFT)) {
-            i =- 10;
-            player2.getBody().setLinearVelocity(i, player2.getBody().getLinearVelocity().y);
+            //i =- 10;
+            //player2.getBody().setLinearVelocity(i, player2.getBody().getLinearVelocity().y);
+            player2.moveLeft(true);
             leftPlayer2 = true;
             rightPlayer2 = false;
 
         }
         if (i == Input.Keys.RIGHT) {
-            player2.getBody().applyLinearImpulse(new Vector2(10,0),player2.getBody().getPosition(),true);
+            //player2.getBody().applyLinearImpulse(new Vector2(10,0),player2.getBody().getPosition(),true);
+            player2.moveRight(true);
             rightPlayer2 = true;
             leftPlayer2 = false;
         }
         if (i == Input.Keys.UP) {
-            if (player2.getBody().getLinearVelocity().y == 0) {
-                player2.getBody().applyLinearImpulse(0, 80f, player2.getBody().getPosition().x, player2.getBody().getPosition().y, true);
-            }
+            //if (player2.getBody().getLinearVelocity().y == 0) {
+                //player2.getBody().applyLinearImpulse(0, 80f, player2.getBody().getPosition().x, player2.getBody().getPosition().y, true);
+            //}
+            player2.moveUp(true);
         }
         if (i == Input.Keys.DOWN) {
-            player2.getBody().setLinearVelocity(0, -20);
+            //player2.getBody().setLinearVelocity(0, -20);
+            player2.moveDown(true);
         }
 
         if ((i == Input.Keys.A)) {
             player.moveLeft(true);
             isMovingLeft = true;
-            f =- 10;
-            player.getBody().setLinearVelocity(f, player.getBody().getLinearVelocity().y);
+            //f =- 10;
+            //player.getBody().setLinearVelocity(f, player.getBody().getLinearVelocity().y);
          //   player.updatePlayerPosition();
          //   player.getBody();
             rightPlayer1 = false;
             leftPlayer1 = true;
         }
         if (i == Input.Keys.D) {
-            player.getBody().setLinearVelocity(20, player.getBody().getLinearVelocity().y);
+            //player.getBody().setLinearVelocity(20, player.getBody().getLinearVelocity().y);
             player.moveRight(true);
             leftPlayer1 = false;
             rightPlayer1 = true;
         }
         if (i == Input.Keys.W) {
-            if (player.getBody().getLinearVelocity().y == 0) {
+            /*if (player.getBody().getLinearVelocity().y == 0) {
                 player.getBody().applyLinearImpulse(0, 80f, player2.getBody().getPosition().x, player2.getBody().getPosition().y, true);
-            }
+            }*/
+            player.moveUp(true);
         }
         if (i == Input.Keys.S) {
-            player.getBody().setLinearVelocity(0, -20);
+            //player.getBody().setLinearVelocity(0, -20);
+            player.moveDown(true);
         }
 
         if (i == Input.Keys.F) {
@@ -134,7 +140,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
 
         if (i == Input.Keys.A) {
-            player.getBody().setLinearVelocity(0, player.getBody().getLinearVelocity().y);
+            //player.getBody().setLinearVelocity(0, player.getBody().getLinearVelocity().y);
             isMovingLeft = false;
             player.moveLeft(false);
 

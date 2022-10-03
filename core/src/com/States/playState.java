@@ -300,6 +300,8 @@ public class playState extends abstractState{
 
     @Override
     public void update(float dt) {
+        characterOne.getPlayerMovement().updatePlayerPosition();
+        characterTwo.getPlayerMovement().updatePlayerPosition();
         world.step(1/60f,6,2);
     }
 

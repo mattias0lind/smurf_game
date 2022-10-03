@@ -83,8 +83,7 @@ public class Player_Movement implements IMovement {
 
     public void updatePlayerPosition() {
         if (moveLeft) {
-            i =- 20;
-            this.body.setLinearVelocity(i, 0);
+            this.body.setLinearVelocity(-200, 0);
         }
         if (moveRight) {
             this.body.setLinearVelocity(200, 0);
