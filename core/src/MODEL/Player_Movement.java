@@ -83,10 +83,14 @@ public class Player_Movement implements IMovement {
 
     public void updatePlayerPosition() {
         if (moveLeft) {
-            this.body.applyLinearImpulse(-100,0, position.x, position.y, true);
+            if (body.getLinearVelocity().x >= -100) {
+                this.body.applyForceToCenter(100, 0, true);
+            }
         }
         if (moveRight) {
-            this.body.applyLinearImpulse(100,0, position.x, position.y, true);
+            if (body.getLinearVelocity().x <= 100) {
+                this.body.applyForceToCenter(100, 0, true);
+            }
         }
         if (moveUp) {
             if (body.getLinearVelocity().y == 0) {
@@ -94,7 +98,7 @@ public class Player_Movement implements IMovement {
             }
         }
         if (moveDown) {
-            this.body.setLinearVelocity(body.getLinearVelocity().x, -2);
+            this.body.setLinearVelocity(body.getLinearVelocity().x, -200);
         }
 
     }
