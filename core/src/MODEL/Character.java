@@ -14,7 +14,7 @@ public abstract class Character {
     private Player_Movement playerMovement;
     private String name;
     private HealthBar healthBar;
-    private float AttackDamage = 10;
+    private float AttackDamage;
 
     Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal("roblox.mp3"));
 
