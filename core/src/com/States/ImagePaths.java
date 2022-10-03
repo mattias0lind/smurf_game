@@ -1,11 +1,16 @@
 package com.States;
 
 public enum ImagePaths {
-    //Characters
+    //CHARACTERS
     SMURF("smurf.png"),
     SMURFCARD("smurfCard.png"),
     SMURFLOOKLEFT("smurf_look_left.png"),
-    BLUESMURFPUNCHING("punching_smurf.png"),
+    BLUESMURFPUNCHINGRIGHT("punching_smurf.png"),
+    BLUESMURFPUNCHINGLEFT("left_punching_smurf.png"),
+    EVILSMURF("evilSmurf.png"),
+    EVILSMURFCARD("evilSmurfCard.png"),
+    LILLAMY("lillamy.png"),
+    LILLAMYCARD("lillamyCard.png"),
 
     //PLAY & QUIT
     PLAYBUTTON("play_text.png"),
@@ -15,30 +20,33 @@ public enum ImagePaths {
     LEFTARROW("leftArrow.png"),
     RIGHTARROW("rightArrow.png"),
 
-    //HEARTS
+    //HEALTH & HEARTS
     REDHEART("redHeart.png"),
     THREEGREYHEARTS("3greyHearts.png"),
-
-
-
-    EVILSMURF("evilSmurf.png"),
-    EVILSMURFCARD("evilSmurfCard.png"),
-    LILLAMY("lillamy.png"),
-    LILLAMYCARD("lillamyCard.png"),
+    HEALTHMETER("healthMeter.png"),
+    HEALTHMETERBACKGROUND("healthmeterbackground.png"),
 
     //MAP
     BACKGROUND("BackgroundMap.png"),
-
-
+    MOONGROUND("groundMoon.png"),
+    MOONSTONE("moonStone.png"),
     FRAMEBOARD("frameboard.png"),
+
+    //STARTSCREEN & CHARACTER SELECTION
+    CLOUDS("moln.png"),
+    STARTBACKGROUND("smurf_game_background"),
+
+
+    //GAME OVER SCREENS
     GAMEOVERSCREEN1("game_over_screen_player_1.png"),
     GAMEOVERSCREEN2("game_over_screen_player_2.png"),
-    MOONGROUND("groundMoon.png"),
-    HEALTHMETER("healthMeter.png"),
-    HEALTHMETERBACKGROUND("healthmeterbackground.png"),
-    ICON("icon.png");
 
+    //GAME ICON
+    ICON("icon.png"),
 
+    //SOUND
+    GAMESOUND("piano_beat.mp3"),
+    HITSOUND("roblox.mp3");
 
     public final String label;
     private ImagePaths(String label) {
