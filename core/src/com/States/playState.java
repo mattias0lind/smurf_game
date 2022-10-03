@@ -168,7 +168,7 @@ public class playState extends abstractState{
 
         //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() +"_look_left.png");
+        characterOneSpriteLeft = new Texture("smurf_look_left.png");
         characterOneSpritePunch = new Texture("punching_smurf.png");
         characterOneSpritePunchLeft = new Texture("left_punching_smurf.png");
 
