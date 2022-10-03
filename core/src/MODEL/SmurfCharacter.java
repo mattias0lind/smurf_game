@@ -14,7 +14,4 @@ public class SmurfCharacter extends CharacterREAL {
         super("Smurf", world, 100);
     }
 
-    public Texture getImg() {
-        return img;
-    }
 }
