@@ -125,7 +125,7 @@ import com.badlogic.gdx.physics.box2d.*;
 
 import java.util.Objects;
 
-public class playState extends abstractState{
+public class PlayState extends AbstractState {
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
     private Texture greyHeartsBackground;
@@ -158,7 +158,7 @@ public class playState extends abstractState{
     private FrameBoard frameboard;
 
 
-    public playState(gameStateManager gsm, String characterNameOne , String characterNameTwo){
+    public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
         this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world));
         this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world));
