@@ -133,7 +133,7 @@ public class playState extends abstractState{
     private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
-    private World world = new World(new Vector2(0,-30), true);
+    private World world = new World(new Vector2(0,-100), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
@@ -295,7 +295,7 @@ public class playState extends abstractState{
         polygonShape.setAsBox(width,height);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
-        fixtureDef.friction = 10000000.0f;
+        fixtureDef.friction = 0.0f;
         body.createFixture(fixtureDef);
     }
 
