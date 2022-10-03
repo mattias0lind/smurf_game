@@ -5,6 +5,7 @@ import MODEL.CharacterREAL;
 import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 
 /*Hanterar inputs */
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
@@ -57,7 +58,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         }
         if (i == Input.Keys.RIGHT) {
-            player2.getBody().setLinearVelocity(20, player2.getBody().getLinearVelocity().y);
+            player2.getBody().applyLinearImpulse(new Vector2(10,0),player2.getBody().getPosition(),true);
             rightPlayer2 = true;
             leftPlayer2 = false;
         }
