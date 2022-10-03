@@ -1,7 +1,7 @@
 package CONTROLLER;
 
 
-import MODEL.CharacterREAL;
+import MODEL.Character;
 import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -13,7 +13,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private boolean isMovingRight = false;
     private InputProcessor inputProcessor;
     private Player_Movement player, player2;
-    private CharacterREAL player1_punch, player2_punch;
+    private Character player1_punch, player2_punch;
 
     public boolean getIsMovingRight() {
         return isMovingRight;
@@ -27,7 +27,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         this.player2 = player2;
     }
 
-    public void punchLogic(CharacterREAL player1_punch, CharacterREAL player2_punch) {
+    public void punchLogic(Character player1_punch, Character player2_punch) {
         this.player1_punch = player1_punch;
         this.player2_punch = player2_punch;
 

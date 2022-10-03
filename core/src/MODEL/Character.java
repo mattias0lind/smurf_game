@@ -2,7 +2,6 @@ package MODEL;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -10,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import java.util.Objects;
 
 
-public abstract class CharacterREAL {
+public abstract class Character {
     private int characterXPosition;
     private Player_Movement playerMovement;
     private String name;
@@ -20,7 +19,7 @@ public abstract class CharacterREAL {
     Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal("roblox.mp3"));
 
 
-    public CharacterREAL(String nameOfCharacter, World world, float hp) {
+    public Character(String nameOfCharacter, World world, float hp) {
         this.name = Objects.requireNonNull(nameOfCharacter);
         this.playerMovement = Objects.requireNonNull(new Player_Movement(world));
         this.healthBar = Objects.requireNonNull(new HealthBar(hp));
@@ -42,7 +41,7 @@ public abstract class CharacterREAL {
         return playerMovement;
     }
 
-    public void punch(CharacterREAL character) {
+    public void punch(Character character) {
         Rectangle rectangle = new Rectangle();
         if (playerMovement.getBody().getLinearVelocity().x >= 0) {
             rectangle.set(playerMovement.getBody().getPosition().x + 16, playerMovement.getBody().getPosition().y, 64, 64);
