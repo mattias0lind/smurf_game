@@ -126,13 +126,12 @@ import com.badlogic.gdx.physics.box2d.*;
 import java.util.Objects;
 
 public class playState extends abstractState{
-    private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
+    private Texture characterOneSprite,characterOneSpriteLeft,characterOneSpritePunch,currentCharacterOne,characterOneSpritePunchLeft;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
     private Texture healthMeter, healthMeterBG, frameboard;
     private Texture greyHeartsBackground;
     private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
     private Texture characterSelectionBackground;
-    private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-100), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
@@ -170,15 +169,16 @@ public class playState extends abstractState{
 
         //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture("smurf_look_left.png");
-        characterOneSpritePunch = new Texture("punching_smurf.png");
-        characterOneSpritePunchLeft = new Texture("left_punching_smurf.png");
+        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() + "LookLeft.png");
+        characterOneSpritePunch = new Texture(characterOne.getNameOfCharacter() + "PunchRight.png");
+        characterOneSpritePunchLeft = new Texture(characterOne.getNameOfCharacter() + "PunchLeft.png");
 
         //char 2
         characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
-        characterTwoSpriteLeft = new Texture("smurf_look_left.png");
-        characterTwoSpritePunch = new Texture("punching_smurf.png");
-        characterTwoSpritePunchLeft = new Texture("left_punching_smurf.png");
+        characterTwoSpriteLeft = new Texture(characterTwo.getNameOfCharacter() + "LookLeft.png");
+        characterTwoSpritePunch = new Texture(characterTwo.getNameOfCharacter() + "PunchRight.png");
+        characterTwoSpritePunchLeft = new Texture(characterTwo.getNameOfCharacter() + "PunchLeft.png");
+
 
         healthMeter = new Texture(ImagePaths.HEALTHMETER.label);
         healthMeterBG = new Texture(ImagePaths.HEALTHMETERBACKGROUND.label);
@@ -190,7 +190,7 @@ public class playState extends abstractState{
         redHeart4 = new Texture(ImagePaths.REDHEART.label);
         redHeart5 = new Texture(ImagePaths.REDHEART.label);
         redHeart6 = new Texture(ImagePaths.REDHEART.label);
-        moonStone = new Texture("moonStone.png");
+        moonStone = new Texture(ImagePaths.MOONSTONE.label);
         groundMoon = new Texture(ImagePaths.MOONGROUND.label);
         HpFont = new BitmapFont();
 

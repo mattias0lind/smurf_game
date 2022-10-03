@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import static com.States.ImagePaths.CLOUDS;
+
 public class CharacterSelectionState extends abstractState{
 
     private Texture cardSlot1;
@@ -16,9 +18,6 @@ public class CharacterSelectionState extends abstractState{
 
     private Texture leftArrow1;
     private Texture rightArrow1;
-    private Texture leftArrow2;
-    private Texture rightArrow2;
-
     private Texture playButton;
 
 
@@ -28,18 +27,15 @@ public class CharacterSelectionState extends abstractState{
 
     public CharacterSelectionState(gameStateManager gsm){
         super(gsm);
-        characterSelectionBackground = new Texture("moln.png");
+        characterSelectionBackground = new Texture(CLOUDS.label);
         cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
         cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");;
 
 
-        leftArrow1 = new Texture("leftArrow.png");
-        rightArrow1 = new Texture("rightArrow.png");
-        leftArrow2 = new Texture("leftArrow.png");
-        rightArrow2 = new Texture("rightArrow.png");
+        leftArrow1 = new Texture(ImagePaths.LEFTARROW.label);
+        rightArrow1 = new Texture(ImagePaths.RIGHTARROW.label);
 
-
-        playButton = new Texture("play_text.png");
+        playButton = new Texture(ImagePaths.PLAYBUTTON.label);
 
     }
 
@@ -119,8 +115,6 @@ public class CharacterSelectionState extends abstractState{
         cardSlot2.dispose();
         leftArrow1.dispose();
         rightArrow1.dispose();
-        leftArrow2.dispose();
-        rightArrow2.dispose();
         playButton.dispose();
 
     }
