@@ -11,6 +11,7 @@ public class CharacterNameCollection {
         allCharacterNames.add("smurf");
         allCharacterNames.add("evilSmurf");
         allCharacterNames.add("lillamy");
+        allCharacterNames.add("sanic");
     }
 
     public String getCharacter(int index){return allCharacterNames.get(index);}
