@@ -294,7 +294,7 @@ public class playState extends abstractState{
         polygonShape.setAsBox(width,height);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
-        fixtureDef.friction = 0.0f;
+        fixtureDef.friction = 10000000.0f;
         body.createFixture(fixtureDef);
     }
 

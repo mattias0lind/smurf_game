@@ -15,7 +15,6 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private InputProcessor inputProcessor;
     private Player_Movement player, player2;
     private Character player1_punch, player2_punch;
-    private int f = 0;
 
     public boolean getIsMovingRight() {
         return isMovingRight;
