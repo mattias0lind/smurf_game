@@ -84,7 +84,7 @@ public class Player_Movement implements IMovement {
     public void updatePlayerPosition() {
         if (moveLeft) {
             if (body.getLinearVelocity().x >= -100) {
-                this.body.applyForceToCenter(100, 0, true);
+                this.body.applyForceToCenter(-100, 0, true);
             }
         }
         if (moveRight) {

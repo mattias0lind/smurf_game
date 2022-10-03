@@ -361,10 +361,6 @@ public class playState extends abstractState{
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
-        if(characterOne.getPlayerMovement().getmoveLeft()){
-            fff =- 10;
-            characterOne.getPlayerMovement().setPlayerPosition(fff,0);
-        }
 
         sb.begin();
         sb.draw(backgroundSprite,0,0);
