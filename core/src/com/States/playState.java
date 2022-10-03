@@ -138,6 +138,7 @@ public class playState extends abstractState{
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
     private Texture moonStone;
+    private int fff;
 
     private Texture groundMoon;
     private Sprite backgroundSprite;
@@ -356,6 +357,11 @@ public class playState extends abstractState{
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
+        if(characterOne.getPlayerMovement().getmoveLeft()){
+            fff =- 10;
+            characterOne.getPlayerMovement().setPlayerPosition(fff,0);
+        }
+
         sb.begin();
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);

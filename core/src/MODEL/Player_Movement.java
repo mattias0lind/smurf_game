@@ -14,6 +14,7 @@ public class Player_Movement implements IMovement {
     private Body body;
     private Sprite sprite;
     private World world;
+    private int i;
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
 
@@ -76,12 +77,14 @@ public class Player_Movement implements IMovement {
 
     @Override
     public void setPlayerPosition(float playerXPosition, float playerYPosition) {
-        position.set(playerXPosition, playerYPosition);
+        //position.set(playerXPosition, playerYPosition);
+        this.body.setLinearVelocity(playerXPosition,playerYPosition);
     }
 
     public void updatePlayerPosition() {
         if (moveLeft) {
-            this.body.setLinearVelocity(-2, 0);
+            i =- 20;
+            this.body.setLinearVelocity(i, 0);
         }
         if (moveRight) {
             this.body.setLinearVelocity(200, 0);

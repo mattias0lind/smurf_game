@@ -11,9 +11,11 @@ import com.badlogic.gdx.math.Vector2;
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private Sprite sprite;
     private boolean isMovingRight = false;
+    private boolean isMovingLeft = false;
     private InputProcessor inputProcessor;
     private Player_Movement player, player2;
     private Character player1_punch, player2_punch;
+    private int f = 0;
 
     public boolean getIsMovingRight() {
         return isMovingRight;
@@ -33,6 +35,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
     }
 
+
     public boolean getLeftPlayer1(){
         return leftPlayer1;
     }
@@ -49,10 +52,13 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         return rightPlayer2;
     }
 
+    public boolean getIsMovingLeft(){return isMovingLeft;}
+
     @Override
     public boolean keyDown(int i) {
         if ((i == Input.Keys.LEFT)) {
-            player2.getBody().setLinearVelocity(-20, player2.getBody().getLinearVelocity().y);
+            i =- 10;
+            player2.getBody().setLinearVelocity(i, player2.getBody().getLinearVelocity().y);
             leftPlayer2 = true;
             rightPlayer2 = false;
 
@@ -72,12 +78,18 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         }
 
         if ((i == Input.Keys.A)) {
-            player.getBody().setLinearVelocity(-20, player.getBody().getLinearVelocity().y);
+            player.moveLeft(true);
+            isMovingLeft = true;
+            f =- 10;
+            player.getBody().setLinearVelocity(f, player.getBody().getLinearVelocity().y);
+         //   player.updatePlayerPosition();
+         //   player.getBody();
             rightPlayer1 = false;
             leftPlayer1 = true;
         }
         if (i == Input.Keys.D) {
             player.getBody().setLinearVelocity(20, player.getBody().getLinearVelocity().y);
+            player.moveRight(true);
             leftPlayer1 = false;
             rightPlayer1 = true;
         }
@@ -122,6 +134,8 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
 
         if (i == Input.Keys.A) {
+            player.getBody().setLinearVelocity(0, player.getBody().getLinearVelocity().y);
+            isMovingLeft = false;
             player.moveLeft(false);
 
         }if (i == Input.Keys.D) {
