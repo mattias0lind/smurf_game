@@ -2,7 +2,7 @@ package com.States;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
-public abstract class AbstractState implements IState {
+abstract class AbstractState implements IState {
     protected OrthographicCamera cam;
     protected GameStateManager gsm;
 
