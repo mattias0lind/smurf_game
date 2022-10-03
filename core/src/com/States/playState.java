@@ -164,7 +164,6 @@ public class playState extends abstractState{
         menuMusic.setLooping(true);
         menuMusic.play();
 
-
         characterSelectionBackground = new Texture("VSBattlesBackground.png");
 
         //Char 1
@@ -294,6 +293,7 @@ public class playState extends abstractState{
         polygonShape.setAsBox(width,height);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
+        fixtureDef.friction = 0.0f;
         body.createFixture(fixtureDef);
     }
 
@@ -344,7 +344,6 @@ public class playState extends abstractState{
         sb.draw(redHeart1, 50, 657, 32, 32);
         sb.draw(redHeart2, 84, 657, 32, 32);
         sb.draw(redHeart3, 118, 657, 32, 32);
-
         sb.draw(redHeart4, 1080, 657, 32, 32);
         sb.draw(redHeart5, 1114, 657, 32, 32);
         sb.draw(redHeart6, 1148, 657, 32, 32);
