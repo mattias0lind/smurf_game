@@ -1,4 +1,4 @@
-package com.States;
+/*package com.States;
 
 import MODEL.Character;
 import MODEL.SmurfCharacter;
@@ -20,5 +20,5 @@ public class CharacterCollection {
 
         public int getLength(){return allCharacters.size();}
     }
-
+*/
 
