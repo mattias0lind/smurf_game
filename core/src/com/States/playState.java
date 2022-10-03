@@ -141,6 +141,7 @@ public class playState extends abstractState{
     private Texture moonStone;
     private int fff;
 
+
     private Texture groundMoon;
     private Sprite backgroundSprite;
     private int x,i,j;
@@ -179,18 +180,18 @@ public class playState extends abstractState{
         characterTwoSpritePunch = new Texture("punching_smurf.png");
         characterTwoSpritePunchLeft = new Texture("left_punching_smurf.png");
 
-        healthMeter = new Texture("healthMeter.png");
-        healthMeterBG = new Texture("healthmeterbackground.png");
-        frameboard = new Texture("frameboard.png");
-        greyHeartsBackground = new Texture("3greyHearts.png");
-        redHeart1 = new Texture("redHeart.png");
-        redHeart2 = new Texture("redHeart.png");
-        redHeart3 = new Texture("redHeart.png");
-        redHeart4 = new Texture("redHeart.png");
-        redHeart5 = new Texture("redHeart.png");
-        redHeart6 = new Texture("redHeart.png");
+        healthMeter = new Texture(ImagePaths.HEALTHMETER.label);
+        healthMeterBG = new Texture(ImagePaths.HEALTHMETERBACKGROUND.label);
+        frameboard = new Texture(ImagePaths.FRAMEBOARD.label);
+        greyHeartsBackground = new Texture(ImagePaths.THREEGREYHEARTS.label);
+        redHeart1 = new Texture(ImagePaths.REDHEART.label);
+        redHeart2 = new Texture(ImagePaths.REDHEART.label);
+        redHeart3 = new Texture(ImagePaths.REDHEART.label);
+        redHeart4 = new Texture(ImagePaths.REDHEART.label);
+        redHeart5 = new Texture(ImagePaths.REDHEART.label);
+        redHeart6 = new Texture(ImagePaths.REDHEART.label);
         moonStone = new Texture("moonStone.png");
-        groundMoon = new Texture("groundMoon.png");
+        groundMoon = new Texture(ImagePaths.MOONGROUND.label);
         HpFont = new BitmapFont();
 
 
