@@ -1,10 +1,11 @@
 package CONTROLLER;
 
 
-import MODEL.CharacterREAL;
+import MODEL.Character;
 import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 
 /*Hanterar inputs */
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
@@ -12,7 +13,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private boolean isMovingRight = false;
     private InputProcessor inputProcessor;
     private Player_Movement player, player2;
-    private CharacterREAL player1_punch, player2_punch;
+    private Character player1_punch, player2_punch;
 
     public boolean getIsMovingRight() {
         return isMovingRight;
@@ -26,7 +27,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         this.player2 = player2;
     }
 
-    public void punchLogic(CharacterREAL player1_punch, CharacterREAL player2_punch) {
+    public void punchLogic(Character player1_punch, Character player2_punch) {
         this.player1_punch = player1_punch;
         this.player2_punch = player2_punch;
 
@@ -57,7 +58,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         }
         if (i == Input.Keys.RIGHT) {
-            player2.getBody().setLinearVelocity(20, player2.getBody().getLinearVelocity().y);
+            player2.getBody().applyLinearImpulse(new Vector2(10,0),player2.getBody().getPosition(),true);
             rightPlayer2 = true;
             leftPlayer2 = false;
         }
@@ -107,16 +108,11 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     public boolean keyUp(int i) {
         if ((i == Input.Keys.LEFT)) {
             player2.moveLeft(false);
-        } else if (i == Input.Keys.RIGHT) {
+        }if (i == Input.Keys.RIGHT) {
             player2.moveRight(false);
-        } else if (i == Input.Keys.UP) {
-
-        }else if(i == Input.Keys.RIGHT){
-            player2.moveRight(false);
-        }
-        else if(i == Input.Keys.UP){
+        }if (i == Input.Keys.UP) {
             player2.moveUp(false);
-        } else if (i == Input.Keys.DOWN) {
+        }if (i == Input.Keys.DOWN) {
             player2.moveDown(false);
         }
         if (i == Input.Keys.F) {
@@ -128,20 +124,16 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         if (i == Input.Keys.A) {
             player.moveLeft(false);
 
-        } else if (i == Input.Keys.D) {
+        }if (i == Input.Keys.D) {
             player.moveRight(false);
-        } else if (i == Input.Keys.W) {
-
         }
-        else if(i == Input.Keys.W){
+        if(i == Input.Keys.W){
             player.moveUp(false);
-        } else if (i == Input.Keys.S) {
+        }if (i == Input.Keys.S) {
             player.moveDown(false);
-
         }
         if (i == Input.Keys.M) {
             ifPlayer2_punched = false;
-
         }
         return true;
     }

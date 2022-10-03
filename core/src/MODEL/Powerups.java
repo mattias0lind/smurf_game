@@ -18,7 +18,7 @@ public abstract class Powerups {
         return name;
     }
 
-    public void CollisionAction(CharacterREAL player) {
+    public void CollisionAction(Character player) {
     }
     //decide action of collision
 }

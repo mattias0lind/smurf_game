@@ -13,14 +13,14 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import MODEL.CharacterREAL;
+import MODEL.Character;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 public class playState extends abstractState {
-    private CharacterREAL smurf;
+    private Character smurf;
     private World world;
 
     private OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
@@ -111,6 +111,7 @@ package com.States;
 
 
 import CONTROLLER.InputProcessor;
+import MODEL.Character;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -118,7 +119,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import MODEL.CharacterREAL;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
@@ -143,8 +143,8 @@ public class playState extends abstractState{
     private Sprite backgroundSprite;
     private int x,i,j;
 
-    private CharacterREAL characterOne;
-    private CharacterREAL characterTwo;
+    private Character characterOne;
+    private Character characterTwo;
     private CharacterCollection allCharacters1 = new CharacterCollection(world);
     private CharacterCollection allCharacters2 = new CharacterCollection(world);
     private Music menuMusic;
@@ -167,7 +167,7 @@ public class playState extends abstractState{
 
         //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() +"_look_left.png");
+        characterOneSpriteLeft = new Texture("smurf_look_left.png");
         characterOneSpritePunch = new Texture("punching_smurf.png");
         characterOneSpritePunchLeft = new Texture("left_punching_smurf.png");
 
@@ -201,6 +201,7 @@ public class playState extends abstractState{
         createMapElement(410, 238, 56, 16);
         backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
+
 
 
     }
@@ -291,6 +292,7 @@ public class playState extends abstractState{
         polygonShape.setAsBox(width,height);
         fixtureDef.shape = polygonShape;
         fixtureDef.density = 0.1f;
+        fixtureDef.friction = 0.0f;
         body.createFixture(fixtureDef);
     }
 

@@ -22,6 +22,7 @@ public class Player_Movement implements IMovement {
 
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
+        bodyDef.linearDamping = 0.0f;
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
