@@ -14,6 +14,7 @@ public class Player_Movement implements IMovement {
     private Body body;
     private Sprite sprite;
     private World world;
+    private int i;
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
 
@@ -22,7 +23,7 @@ public class Player_Movement implements IMovement {
 
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
-        bodyDef.linearDamping = 0.0f;
+        bodyDef.linearDamping = 1.0f;
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
@@ -76,23 +77,24 @@ public class Player_Movement implements IMovement {
 
     @Override
     public void setPlayerPosition(float playerXPosition, float playerYPosition) {
-        position.set(playerXPosition, playerYPosition);
+        //position.set(playerXPosition, playerYPosition);
+        this.body.setLinearVelocity(playerXPosition,playerYPosition);
     }
 
     public void updatePlayerPosition() {
         if (moveLeft) {
-            this.body.setLinearVelocity(-2, 0);
+            this.body.applyLinearImpulse(-100,0, position.x, position.y, true);
         }
         if (moveRight) {
-            this.body.setLinearVelocity(200, 0);
+            this.body.applyLinearImpulse(100,0, position.x, position.y, true);
         }
         if (moveUp) {
             if (body.getLinearVelocity().y == 0) {
-                body.applyLinearImpulse(10, 0, position.x, position.y, true);
+                body.applyLinearImpulse(0, 100, position.x, position.y, true);
             }
         }
         if (moveDown) {
-            this.body.setLinearVelocity(0, -2);
+            this.body.setLinearVelocity(body.getLinearVelocity().x, -2);
         }
 
     }

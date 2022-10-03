@@ -8,15 +8,15 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class CharacterFactory {
 
-    public Character getCharacter(int index, World world){
+    public Character getCharacter(String characterName, World world){
 
-        if(index == 0){
+        if(characterName.equalsIgnoreCase("smurf") ){
             return new SmurfCharacter(world);
 
-        } else if(index == 1){
+        } else if(characterName.equalsIgnoreCase("evilSmurf") ){
             return new EvilSmurfCharacter(world);
 
-        } else if(index == 2){
+        } else if(characterName.equalsIgnoreCase("lillamy") ){
             return new LillaMyCharacter(world);
         }
 
