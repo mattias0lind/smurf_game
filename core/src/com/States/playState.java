@@ -112,6 +112,7 @@ package com.States;
 
 import CONTROLLER.InputProcessor;
 import MODEL.Character;
+import com.CharacterFactory;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -146,8 +147,8 @@ public class playState extends abstractState{
 
     private Character characterOne;
     private Character characterTwo;
-    private CharacterCollection allCharacters1 = new CharacterCollection(world);
-    private CharacterCollection allCharacters2 = new CharacterCollection(world);
+    private CharacterFactory characterFactory = new CharacterFactory();
+
     private Music menuMusic;
 
     private BitmapFont HpFont;
@@ -155,10 +156,10 @@ public class playState extends abstractState{
     private String score;
 
 
-    public playState(gameStateManager gsm, int count1, int count2){
+    public playState(gameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
-        this.characterOne = Objects.requireNonNull(allCharacters1.getCharacter(count1));
-        this.characterTwo = Objects.requireNonNull(allCharacters2.getCharacter(count2));
+        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world));
+        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world));
 
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
         menuMusic.setLooping(true);

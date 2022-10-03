@@ -1,4 +1,4 @@
-/*package com.States;
+package com.States;
 
 import java.util.*;
 
@@ -17,7 +17,3 @@ public class CharacterNameCollection {
 
     public int getLength(){return allCharacterNames.size();}
 }
-*/
-
-//denna klass användes innan i characterSelectionState men vi använder nu en uppdaterad version där listan
-//innehåller hela karaktärsobjekt och inte bara namnen. Den nya klassen heter CharacterCollection
