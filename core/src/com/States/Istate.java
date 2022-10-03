@@ -2,7 +2,7 @@ package com.States;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public interface Istate {
+public interface IState {
     void handleInput();
 
     void update(float dt);

@@ -4,12 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class menuState extends abstractState {
+public class MenuState extends AbstractState {
     private Texture menuBackground;
     private Texture playButton;
     private Texture quitButton;
 
-    public menuState(gameStateManager gsm) {
+    public MenuState(GameStateManager gsm) {
         super(gsm);
         menuBackground = new Texture("smurf_game_background.png");
         playButton = new Texture("play_text.png");

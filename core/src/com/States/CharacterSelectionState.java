@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import static com.States.ImagePaths.CLOUDS;
 
 public class CharacterSelectionState extends abstractState{
+public class CharacterSelectionState extends AbstractState {
 
     private Texture cardSlot1;
     private Texture cardSlot2;
@@ -25,7 +26,7 @@ public class CharacterSelectionState extends abstractState{
     private World world = new World(new Vector2(0,-30), true);
     private CharacterNameCollection allCharacterNames = new CharacterNameCollection();
 
-    public CharacterSelectionState(gameStateManager gsm){
+    public CharacterSelectionState(GameStateManager gsm){
         super(gsm);
         characterSelectionBackground = new Texture(CLOUDS.label);
         cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
@@ -48,7 +49,7 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() < 683
                     && Gdx.input.getY() > 580){
                 System.out.println(slotCounter1);
-                gsm.set(new playState(gsm, allCharacterNames.getCharacter(slotCounter1), allCharacterNames.getCharacter(slotCounter2)));
+                gsm.set(new PlayState(gsm, allCharacterNames.getCharacter(slotCounter1), allCharacterNames.getCharacter(slotCounter2)));
                 dispose();
             }
         if(Gdx.input.getX() > 68

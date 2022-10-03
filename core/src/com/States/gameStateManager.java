@@ -4,14 +4,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Stack;
 
-public class gameStateManager {
-    private Stack<abstractState> states;
+public class GameStateManager {
+    private Stack<AbstractState> states;
 
-    public gameStateManager() {
-        states = new Stack<abstractState>();
+    public GameStateManager() {
+        states = new Stack<AbstractState>();
     }
 
-    public void push(abstractState state) {
+    public void push(AbstractState state) {
         states.push(state);
     }
 
@@ -19,7 +19,7 @@ public class gameStateManager {
         states.pop();
     }
 
-    public void set(abstractState state) {
+    public void set(AbstractState state) {
         states.pop();
         states.push(state);
     }

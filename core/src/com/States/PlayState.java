@@ -125,13 +125,13 @@ import com.badlogic.gdx.physics.box2d.*;
 
 import java.util.Objects;
 
-public class playState extends abstractState{
-    private Texture characterOneSprite,characterOneSpriteLeft,characterOneSpritePunch,currentCharacterOne,characterOneSpritePunchLeft;
+public class PlayState extends AbstractState {
+    private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
-    private Texture healthMeter, healthMeterBG, frameboard;
     private Texture greyHeartsBackground;
     private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
     private Texture characterSelectionBackground;
+    private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-100), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
@@ -155,8 +155,10 @@ public class playState extends abstractState{
 
     private String score;
 
+    private FrameBoard frameboard;
 
-    public playState(gameStateManager gsm, String characterNameOne , String characterNameTwo){
+
+    public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
         this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world));
         this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world));
@@ -165,24 +167,21 @@ public class playState extends abstractState{
         menuMusic.setLooping(true);
         menuMusic.play();
 
-        characterSelectionBackground = new Texture("VSBattlesBackground.png");
 
         //Char 1
         characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() + "LookLeft.png");
-        characterOneSpritePunch = new Texture(characterOne.getNameOfCharacter() + "PunchRight.png");
-        characterOneSpritePunchLeft = new Texture(characterOne.getNameOfCharacter() + "PunchLeft.png");
+        characterOneSpriteLeft = new Texture("smurf_look_left.png");
+        characterOneSpritePunch = new Texture("punching_smurf.png");
+        characterOneSpritePunchLeft = new Texture("left_punching_smurf.png");
 
         //char 2
         characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
-        characterTwoSpriteLeft = new Texture(characterTwo.getNameOfCharacter() + "LookLeft.png");
-        characterTwoSpritePunch = new Texture(characterTwo.getNameOfCharacter() + "PunchRight.png");
-        characterTwoSpritePunchLeft = new Texture(characterTwo.getNameOfCharacter() + "PunchLeft.png");
+        characterTwoSpriteLeft = new Texture("smurf_look_left.png");
+        characterTwoSpritePunch = new Texture("punching_smurf.png");
+        characterTwoSpritePunchLeft = new Texture("left_punching_smurf.png");
 
+        frameboard = new FrameBoard();
 
-        healthMeter = new Texture(ImagePaths.HEALTHMETER.label);
-        healthMeterBG = new Texture(ImagePaths.HEALTHMETERBACKGROUND.label);
-        frameboard = new Texture(ImagePaths.FRAMEBOARD.label);
         greyHeartsBackground = new Texture(ImagePaths.THREEGREYHEARTS.label);
         redHeart1 = new Texture(ImagePaths.REDHEART.label);
         redHeart2 = new Texture(ImagePaths.REDHEART.label);
@@ -190,7 +189,7 @@ public class playState extends abstractState{
         redHeart4 = new Texture(ImagePaths.REDHEART.label);
         redHeart5 = new Texture(ImagePaths.REDHEART.label);
         redHeart6 = new Texture(ImagePaths.REDHEART.label);
-        moonStone = new Texture(ImagePaths.MOONSTONE.label);
+        moonStone = new Texture("moonStone.png");
         groundMoon = new Texture(ImagePaths.MOONGROUND.label);
         HpFont = new BitmapFont();
 
@@ -312,36 +311,6 @@ public class playState extends abstractState{
         sb.draw(groundMoon, 0,0,1280,110);
     }
 
-    private void drawFrameBoard(SpriteBatch sb) {
-        sb.draw(frameboard, -3, 650, 1283, 70);}
-    private void drawHealthMeters(SpriteBatch sb){
-
-        int width = 100;
-        int height = 20;
-        int hmx1 = 65;
-        int hmx2 = 1080;
-        int hmy = 690;
-
-        sb.draw(healthMeterBG,hmx1, hmy, width, height);
-        sb.draw(healthMeterBG,hmx2, hmy, width, height);
-        sb.draw(healthMeter,hmx1, hmy, width*characterOne.getHpprocent(), height);
-        sb.draw(healthMeter,hmx2, hmy, width*characterTwo.getHpprocent(),height);
-
-
-        CharSequence hpText1 = Math.round(characterOne.getHpprocent()*100)+"%";
-        CharSequence hpText2 =  Math.round(characterTwo.getHpprocent()*100)+"%";
-        CharSequence nameText1 = ("Player 1");
-        CharSequence nameText2 = ("Player 2");
-
-        HpFont.draw(sb, hpText1, 85, 706);
-        HpFont.draw(sb, hpText2, 1113, 706);
-        HpFont.draw(sb, nameText1, 170, 705);
-        HpFont.draw(sb, nameText2, 1020, 705);
-
-
-
-    }
-
     private void drawHearts(SpriteBatch sb) {
         sb.draw(greyHeartsBackground, 50, 650, 100, 40);
         sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
@@ -365,8 +334,7 @@ public class playState extends abstractState{
         sb.begin();
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);
-        drawFrameBoard(sb);
-        drawHealthMeters(sb);
+        frameboard.drawBoard(sb,characterOne,characterTwo);
         drawHearts(sb);
         drawStone(sb);
         sb.end();
@@ -396,16 +364,7 @@ public class playState extends abstractState{
         characterSelectionBackground.dispose();
         characterOneSprite.dispose();
         characterTwoSprite.dispose();
-        healthMeter.dispose();
-        healthMeterBG.dispose();
         frameboard.dispose();
-        greyHeartsBackground.dispose();
-        redHeart1.dispose();
-        redHeart2.dispose();
-        redHeart3.dispose();
-        redHeart4.dispose();
-        redHeart5.dispose();
-        redHeart6.dispose();
     }
 }
 

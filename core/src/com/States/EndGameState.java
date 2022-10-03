@@ -8,12 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Objects;
 
-public class EndGameState extends abstractState{
+public class EndGameState extends AbstractState {
     private Texture winner1Texture,winner2Texture;
     private Sprite winner1Sprite,winner2Sprite;
     private int i;
 
-    protected EndGameState(gameStateManager gsm,int i) {
+    protected EndGameState(GameStateManager gsm, int i) {
         super(gsm);
         winner1Sprite = new Sprite(winner1Texture = new Texture("game_over_screen_player_1.png"));
         winner2Sprite = new Sprite(winner2Texture = new Texture("game_over_screen_player_2.png"));
@@ -26,7 +26,7 @@ public class EndGameState extends abstractState{
     @Override
     public void handleInput() {
         if(Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)){
-            gsm.set(new menuState(gsm));
+            gsm.set(new MenuState(gsm));
             dispose();
 
         }
