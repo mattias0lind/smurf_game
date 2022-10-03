@@ -25,8 +25,6 @@ public class CharacterSelectionState extends abstractState{
 
     private World world = new World(new Vector2(0,-30), true);
     private CharacterNameCollection allCharacterNames = new CharacterNameCollection();
-    private CharacterNameCollection allCharacterNames2 = new CharacterNameCollection();
-
 
     public CharacterSelectionState(gameStateManager gsm){
         super(gsm);
@@ -54,7 +52,7 @@ public class CharacterSelectionState extends abstractState{
                     && Gdx.input.getY() < 683
                     && Gdx.input.getY() > 580){
                 System.out.println(slotCounter1);
-                gsm.set(new playState(gsm, allCharacterNames.getCharacter(slotCounter1), allCharacterNames2.getCharacter(slotCounter2)));
+                gsm.set(new playState(gsm, allCharacterNames.getCharacter(slotCounter1), allCharacterNames.getCharacter(slotCounter2)));
                 dispose();
             }
         if(Gdx.input.getX() > 68
