@@ -43,18 +43,18 @@ public class Player_Movement implements IMovement {
 
     public void updatePlayerPosition() {
         if (moveLeft) {
-            if (body.getLinearVelocity().x >= -100) {
+            if (body.getLinearVelocity().x >= -200) {
                 this.body.applyForceToCenter(-100, 0, true);
             }
         }
         if (moveRight) {
-            if (body.getLinearVelocity().x <= 100) {
+            if (body.getLinearVelocity().x <= 200) {
                 this.body.applyForceToCenter(100, 0, true);
             }
         }
         if (moveUp) {
-            if (body.getLinearVelocity().y == 0) {
-                body.applyLinearImpulse(0, 10000000, position.x, position.y, true);
+            if (body.getLinearVelocity().y <= 10 && body.getLinearVelocity().y >= 0) {
+                body.applyLinearImpulse(0, 100000000, position.x, position.y, true);
             }
         }
         if (moveDown) {
