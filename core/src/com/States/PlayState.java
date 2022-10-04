@@ -54,22 +54,13 @@ public class PlayState extends AbstractState {
         this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world));
         this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world));
 
-        menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
-        menuMusic.setLooping(true);
-        menuMusic.play();
-
+        startGameMusic();
 
         //Char 1
-        characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() + "LookLeft.png");
-        characterOneSpritePunch = new Texture(characterOne.getNameOfCharacter() + "PunchRight.png");
-        characterOneSpritePunchLeft = new Texture(characterOne.getNameOfCharacter() + "PunchLeft.png");
+       createCharacterOneSprites();
 
         //char 2
-        characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
-        characterTwoSpriteLeft = new Texture(characterTwo.getNameOfCharacter() + "LookLeft.png");
-        characterTwoSpritePunch = new Texture(characterTwo.getNameOfCharacter() + "PunchRight.png");
-        characterTwoSpritePunchLeft = new Texture(characterTwo.getNameOfCharacter() + "PunchLeft.png");
+        createCharacterTwoSprites();
 
         frameboard = new FrameBoard();
 
@@ -102,8 +93,28 @@ public class PlayState extends AbstractState {
 
     @Override
     public void handleInput() {
+    }
 
 
+    private void startGameMusic() {
+        menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
+        menuMusic.setLooping(true);
+        menuMusic.play();
+
+    }
+
+    private void createCharacterOneSprites() {
+        characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
+        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() + "LookLeft.png");
+        characterOneSpritePunch = new Texture(characterOne.getNameOfCharacter() + "PunchRight.png");
+        characterOneSpritePunchLeft = new Texture(characterOne.getNameOfCharacter() + "PunchLeft.png");
+    }
+
+    private void createCharacterTwoSprites() {
+        characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
+        characterTwoSpriteLeft = new Texture(characterTwo.getNameOfCharacter() + "LookLeft.png");
+        characterTwoSpritePunch = new Texture(characterTwo.getNameOfCharacter() + "PunchRight.png");
+        characterTwoSpritePunchLeft = new Texture(characterTwo.getNameOfCharacter() + "PunchLeft.png");
     }
 
     private Texture getSpriteChar1(){
