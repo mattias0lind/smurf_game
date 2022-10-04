@@ -1,7 +1,6 @@
 package MODEL;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
@@ -12,14 +11,12 @@ public class Player_Movement implements IMovement {
     private Vector2 position = new Vector2(100, 400);
     private BodyDef bodyDef = new BodyDef();
     private Body body;
-    private Sprite sprite;
-    private World world;
-    private int i;
+
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
 
     public Player_Movement(World world) {
-        this.world = Objects.requireNonNull(world);
+        world = Objects.requireNonNull(world);
 
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(position);
@@ -28,56 +25,24 @@ public class Player_Movement implements IMovement {
         FixtureDef fixtureDef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
         polygonShape.setAsBox(16, 28);
+
         fixtureDef.shape = polygonShape;
         body.createFixture(fixtureDef);
     }
 
-    public Vector2 getPlayerPosition() {
-        return position;
-    }
-
-    public void setSprite(String path){
-
-        new Texture(path);
-        sprite = new Sprite();
-    }
 
 
-    public boolean getmoveLeft() {
-        return moveLeft;
-    }
 
-
-    public boolean getmoveRight() {
-        return moveRight;
-    }
-
-    public boolean getmoveDown() {
-        return moveDown;
-    }
-
-    public boolean getmoveUp() {
-        return moveUp;
-    }
 
     public Body getBody() {
         return body;
     }
 
 
-    public void update() {
-        updatePlayerPosition();
-    }
-
-    public Vector2 getPosition() {
-        return position;
-
-    }
 
 
     @Override
     public void setPlayerPosition(float playerXPosition, float playerYPosition) {
-        //position.set(playerXPosition, playerYPosition);
         this.body.setLinearVelocity(playerXPosition,playerYPosition);
     }
 

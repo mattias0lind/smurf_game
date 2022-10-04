@@ -132,7 +132,7 @@ public class PlayState extends AbstractState {
     private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
-    private World world = new World(new Vector2(0,-100), true);
+    private World world = new World(new Vector2(0,-50), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
