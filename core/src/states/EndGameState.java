@@ -1,4 +1,4 @@
-package com.States;
+package states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

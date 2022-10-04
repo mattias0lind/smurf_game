@@ -1,4 +1,4 @@
-package com.States;
+package states;
 
 public enum ImagePaths {
     //CHARACTERS
