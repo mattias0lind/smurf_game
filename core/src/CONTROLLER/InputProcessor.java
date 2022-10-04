@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  * Class uses Event handling for processing inputs.
  * */
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
-    private boolean isMovingRight = false;
+    private final boolean isMovingRight = false;
     private boolean isMovingLeft = false;
     private InputProcessor inputProcessor;
     private Player_Movement player, player2;

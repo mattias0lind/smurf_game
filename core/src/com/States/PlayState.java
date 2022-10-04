@@ -19,18 +19,18 @@ import java.util.Objects;
 public class PlayState extends AbstractState {
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
-    private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-50), true);
     private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private OrthographicCamera gameCame = new OrthographicCamera();
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
-    private Texture moonStone;
+    private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
+
     private int fff;
 
 
-    private Texture groundMoon;
+    private Texture groundMoon = new Texture(ImagePaths.MOONGROUND.label);
     private Sprite backgroundSprite;
     private int x,i = 3,j = 3;
 
@@ -70,6 +70,7 @@ public class PlayState extends AbstractState {
         createMapElement(410, 238, 56, 16);
         backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
+
 
 
 
@@ -234,7 +235,6 @@ public class PlayState extends AbstractState {
 
     @Override
     public void dispose() {
-        characterSelectionBackground.dispose();
         characterOneSprite.dispose();
         characterTwoSprite.dispose();
         frameboard.dispose();

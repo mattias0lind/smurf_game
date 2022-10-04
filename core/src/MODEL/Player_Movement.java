@@ -8,9 +8,9 @@ import java.util.Objects;
 
 public class Player_Movement implements IMovement {
 
-    private Vector2 position = new Vector2(100, 400);
-    private BodyDef bodyDef = new BodyDef();
-    private Body body;
+    private final Vector2 position = new Vector2(100, 400);
+    private final BodyDef bodyDef = new BodyDef();
+    private final Body body;
 
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
@@ -31,19 +31,14 @@ public class Player_Movement implements IMovement {
     }
 
 
-
-
-
     public Body getBody() {
         return body;
     }
 
 
-
-
     @Override
     public void setPlayerPosition(float playerXPosition, float playerYPosition) {
-        this.body.setLinearVelocity(playerXPosition,playerYPosition);
+        this.body.setLinearVelocity(playerXPosition, playerYPosition);
     }
 
     public void updatePlayerPosition() {
@@ -70,39 +65,31 @@ public class Player_Movement implements IMovement {
 
     //TODO glöm inte ta bort view saker från här bara för debugging
     public void moveLeft(boolean t) {
-        if (t) {
-            moveLeft = true;
-        } else {
-            moveLeft = false;
-        }
+        moveLeft = t;
 
     }
 
     public void moveRight(boolean t) {
-        if (t) {
-            moveRight = true;
-        } else {
-            moveRight = false;
-        }
+        moveRight = t;
 
     }
 
     public void moveUp(boolean t) {
-        if (t) {
-            moveUp = true;
-        } else {
-            moveUp = false;
-        }
+        moveUp = t;
 
     }
 
     public void moveDown(boolean t) {
-        if (t) {
-            moveDown = true;
-        } else {
-            moveDown = false;
-        }
+        moveDown = t;
 
+    }
+
+    public boolean getMoveRight() {
+        return moveRight;
+    }
+
+    public boolean getMoveLeft() {
+        return moveLeft;
     }
 
 

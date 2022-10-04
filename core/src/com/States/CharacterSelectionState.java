@@ -13,24 +13,24 @@ public class CharacterSelectionState extends AbstractState {
 
     private Texture cardSlot1;
     private Texture cardSlot2;
-    private Texture characterSelectionBackground;
+    private final Texture characterSelectionBackground;
     private int slotCounter1 = 0;
     private int slotCounter2 = 0;
 
-    private Texture leftArrow1;
-    private Texture rightArrow1;
-    private Texture playButton;
+    private final Texture leftArrow1;
+    private final Texture rightArrow1;
+    private final Texture playButton;
 
 
 
-    private World world = new World(new Vector2(0,-30), true);
-    private CharacterNameCollection allCharacterNames = new CharacterNameCollection();
+    private final World world = new World(new Vector2(0,-30), true);
+    private final CharacterNameCollection allCharacterNames = new CharacterNameCollection();
 
     public CharacterSelectionState(GameStateManager gsm){
         super(gsm);
         characterSelectionBackground = new Texture(CLOUDS.label);
         cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
-        cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");;
+        cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
 
 
         leftArrow1 = new Texture(ImagePaths.LEFTARROW.label);

@@ -7,7 +7,7 @@ import java.util.Objects;
 public abstract class Powerups {
 
     private Rectangle rectangle;
-    private String name;
+    private final String name;
 
     public Powerups(String name) {
         rectangle.set((float) (Math.random() * 1280), (float) (Math.random() * 720), 16, 16);
