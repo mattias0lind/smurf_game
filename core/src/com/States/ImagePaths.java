@@ -39,7 +39,7 @@ public enum ImagePaths {
 
     //STARTSCREEN & CHARACTER SELECTION
     CLOUDS("moln.png"),
-    STARTBACKGROUND("smurf_game_background"),
+    STARTBACKGROUND("smurf_game_background.png"),
 
 
     //GAME OVER SCREENS

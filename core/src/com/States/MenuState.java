@@ -11,9 +11,9 @@ public class MenuState extends AbstractState {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        menuBackground = new Texture("smurf_game_background.png");
-        playButton = new Texture("play_text.png");
-        quitButton = new Texture("Quitknapp.png");
+        menuBackground = new Texture(ImagePaths.STARTBACKGROUND.label);
+        playButton = new Texture(ImagePaths.PLAYBUTTON.label);
+        quitButton = new Texture(ImagePaths.QUITBUTTON.label);
     }
 
     @Override
@@ -40,7 +40,6 @@ public class MenuState extends AbstractState {
 
     @Override
     public void update(float dt) {
-        //System.out.println("Handle input to be called: " + dt);
         handleInput();
     }
 

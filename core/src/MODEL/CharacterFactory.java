@@ -1,7 +1,5 @@
-package com;
+package MODEL;
 
-import MODEL.*;
-import MODEL.Character;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class CharacterFactory {
