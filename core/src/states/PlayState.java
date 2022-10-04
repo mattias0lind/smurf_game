@@ -21,16 +21,14 @@ public class PlayState extends AbstractState {
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-50), true);
-    private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
-    private OrthographicCamera gameCame = new OrthographicCamera();
+
     private InputProcessor inputProcessor = new InputProcessor();
     private Texture backgroundTexture;
     private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
 
-
-
     private Texture groundMoon = new Texture(ImagePaths.MOONGROUND.label);
     private Sprite backgroundSprite;
+
     private int x,i = 3,j = 3;
 
     private Character characterOne;
@@ -38,10 +36,6 @@ public class PlayState extends AbstractState {
     private CharacterFactory characterFactory = new CharacterFactory();
 
     private Music menuMusic;
-
-    private BitmapFont HpFont;
-
-    private String score;
 
     private FrameBoard frameboard;
 

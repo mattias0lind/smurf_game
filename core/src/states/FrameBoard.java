@@ -20,29 +20,22 @@ public class FrameBoard {
     }
 
 
-    public void heartState(int points1, int points2){
-        if(points1 == 3){heart1 = new Texture(ImagePaths.THREEHEART.label);}
-        if(points1 == 2){heart1 = new Texture(ImagePaths.TWOHEART.label);}
-        if(points1 == 1){heart1 = new Texture(ImagePaths.ONEHEART.label);}
-        if(points2 == 3){heart2 = new Texture(ImagePaths.THREEHEART.label);}
-        if(points2 == 2){heart2 = new Texture(ImagePaths.TWOHEART.label);}
-        if(points2 == 1){heart2 = new Texture(ImagePaths.ONEHEART.label);}
+    public void heartState(int numberOfHearts1, int numberOfHearts2){
+        if(numberOfHearts1 == 3){heart1 = new Texture(ImagePaths.THREEHEART.label);}
+        if(numberOfHearts1 == 2){heart1 = new Texture(ImagePaths.TWOHEART.label);}
+        if(numberOfHearts1 == 1){heart1 = new Texture(ImagePaths.ONEHEART.label);}
+        if(numberOfHearts2 == 3){heart2 = new Texture(ImagePaths.THREEHEART.label);}
+        if(numberOfHearts2 == 2){heart2 = new Texture(ImagePaths.TWOHEART.label);}
+        if(numberOfHearts2 == 1){heart2 = new Texture(ImagePaths.ONEHEART.label);}
+
+        if(numberOfHearts2 == 0){heart2 = new Texture(ImagePaths.THREEGREYHEARTS.label);}
+        if(numberOfHearts2 == 0){heart2 = new Texture(ImagePaths.THREEGREYHEARTS.label);}
 
     }
 
     private void hearts(SpriteBatch sb) {
         sb.draw(heart1, 50, 650, 100, 40);
         sb.draw(heart2, 1080, 650, 100, 40);
-
-        //Player1
-        //sb.draw(redHeart, 50, 657, 32, 32);
-        //sb.draw(redHeart, 84, 657, 32, 32);
-        //sb.draw(redHeart, 118, 657, 32, 32);
-
-        //Player2
-        //sb.draw(redHeart, 1080, 657, 32, 32);
-        //sb.draw(redHeart, 1114, 657, 32, 32);
-        //sb.draw(redHeart, 1148, 657, 32, 32);
     }
 
     private void board(SpriteBatch sb){
