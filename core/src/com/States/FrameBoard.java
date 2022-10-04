@@ -21,24 +21,12 @@ public class FrameBoard {
 
 
     public void heartState(int points1, int points2){
-        if(points1 == 3){
-            heart1 = new Texture(ImagePaths.THREEHEART.label);
-        }
-        if(points1 == 2){
-            heart1 = new Texture(ImagePaths.TWOHEART.label);
-        }
-        if(points1 == 1){
-            heart2 = new Texture(ImagePaths.ONEHEART.label);
-        }
-        if(points2 == 3){
-            heart2 = new Texture(ImagePaths.THREEHEART.label);
-        }
-        if(points2 == 2){
-            heart2 = new Texture(ImagePaths.TWOHEART.label);
-        }
-        if(points2 == 1){
-            heart2 = new Texture(ImagePaths.ONEHEART.label);
-        }
+        if(points1 == 3){heart1 = new Texture(ImagePaths.THREEHEART.label);}
+        if(points1 == 2){heart1 = new Texture(ImagePaths.TWOHEART.label);}
+        if(points1 == 1){heart1 = new Texture(ImagePaths.ONEHEART.label);}
+        if(points2 == 3){heart2 = new Texture(ImagePaths.THREEHEART.label);}
+        if(points2 == 2){heart2 = new Texture(ImagePaths.TWOHEART.label);}
+        if(points2 == 1){heart2 = new Texture(ImagePaths.ONEHEART.label);}
 
     }
 
