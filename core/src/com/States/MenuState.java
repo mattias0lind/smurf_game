@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MenuState extends AbstractState {
-    private Texture menuBackground;
-    private Texture playButton;
-    private Texture quitButton;
+    private final Texture menuBackground;
+    private final Texture playButton;
+    private final Texture quitButton;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);

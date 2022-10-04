@@ -4,17 +4,16 @@ import com.States.ImagePaths;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.Objects;
 
 
 public abstract class Character {
-    private Player_Movement playerMovement;
-    private String name;
-    private HealthBar healthBar;
-    private float attackDamage = 10;
+    private final Player_Movement playerMovement;
+    private final String name;
+    private final HealthBar healthBar;
+    private final float attackDamage = 10;
 
     Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
 
@@ -37,20 +36,16 @@ public abstract class Character {
 
     public void punch(Character character) {
         Rectangle rectangle = new Rectangle();
-        if (playerMovement.getBody().getLinearVelocity().x >= 0) {
+        if (playerMovement.getMoveRight()) {
             rectangle.set(playerMovement.getBody().getPosition().x + 16, playerMovement.getBody().getPosition().y, 64, 64);
         }
-        if (playerMovement.getBody().getLinearVelocity().x <= 0) {
+        else if (playerMovement.getMoveLeft()) {
             rectangle.set(playerMovement.getBody().getPosition().x - 64, playerMovement.getBody().getPosition().y, 64, 64);
         }
         if (rectangle.contains(character.getPlayerMovement().getBody().getPosition().x, character.getPlayerMovement().getBody().getPosition().y)) {
             character.gotHit(this.attackDamage);
-            if (character.getHpprocent() <= 0.5){
-                character.getPlayerMovement().getBody().applyForceToCenter(10000000,0,true);
-            }
             robloxSound.play(1.0f);
         }
-        //perform punch animation
     }
 
     public void restoreHP() {

@@ -9,9 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Objects;
 
 public class EndGameState extends AbstractState {
-    private Texture winner1Texture,winner2Texture;
-    private Sprite winner1Sprite,winner2Sprite;
-    private int i;
+    private final Texture winner1Texture;
+    private final Texture winner2Texture;
+    private final Sprite winner1Sprite;
+    private final Sprite winner2Sprite;
+    private final int i;
 
     protected EndGameState(GameStateManager gsm, int i) {
         super(gsm);
