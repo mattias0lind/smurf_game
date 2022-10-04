@@ -1,5 +1,6 @@
 package MODEL;
 
+import com.States.ImagePaths;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Rectangle;
@@ -15,7 +16,7 @@ public abstract class Character {
     private HealthBar healthBar;
     private float attackDamage = 10;
 
-    Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal("roblox.mp3"));
+    Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
 
 
     public Character(String nameOfCharacter, World world, float hp) {

@@ -14,8 +14,18 @@ public enum ImagePaths {
     EVILSMURFPUNCHINGRIGHT("evilSmurfPunchLeft.png"),
     EVILSMURFPUNCHINGLEFT("left_punching_smurf.png"),
 
+    SANIC("sanic.png"),
+    SANICCARD("sanicCard.png"),
+    SANICLOOKLEFT("sanicLookLeft.png"),
+    SANICPUNCHINGRIGHT("sanicPunchRight.png"),
+    SANICPUNCHINGLEFT("sanicPunchLeft.png"),
+
     LILLAMY("lillamy.png"),
     LILLAMYCARD("lillamyCard.png"),
+    LILLAMYLOOKLEFT("lillamyLookLeft.png"),
+    LILLAMYPUNCHINGRIGHT("lillamyPunchRight.png"),
+    LILLAMYPUNCHINGLEFT("lillamyPunchLeft.png"),
+
 
     //PLAY & QUIT
     PLAYBUTTON("play_text.png"),
