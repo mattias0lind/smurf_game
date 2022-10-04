@@ -19,8 +19,6 @@ import java.util.Objects;
 public class PlayState extends AbstractState {
     private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
     private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
-    private Texture greyHeartsBackground;
-    private Texture redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
     private Texture characterSelectionBackground;
     private Texture characterOneSpritePunch;
     private World world = new World(new Vector2(0,-50), true);
@@ -34,7 +32,7 @@ public class PlayState extends AbstractState {
 
     private Texture groundMoon;
     private Sprite backgroundSprite;
-    private int x,i,j;
+    private int x,i = 3,j = 3;
 
     private Character characterOne;
     private Character characterTwo;
@@ -72,19 +70,6 @@ public class PlayState extends AbstractState {
         characterTwoSpritePunchLeft = new Texture(characterTwo.getNameOfCharacter() + "PunchLeft.png");
 
         frameboard = new FrameBoard();
-
-        greyHeartsBackground = new Texture(ImagePaths.THREEGREYHEARTS.label);
-        redHeart1 = new Texture(ImagePaths.REDHEART.label);
-        redHeart2 = new Texture(ImagePaths.REDHEART.label);
-        redHeart3 = new Texture(ImagePaths.REDHEART.label);
-        redHeart4 = new Texture(ImagePaths.REDHEART.label);
-        redHeart5 = new Texture(ImagePaths.REDHEART.label);
-        redHeart6 = new Texture(ImagePaths.REDHEART.label);
-        moonStone = new Texture("moonStone.png");
-        groundMoon = new Texture(ImagePaths.MOONGROUND.label);
-        HpFont = new BitmapFont();
-
-
 
         inputProcessor.logic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
@@ -202,16 +187,6 @@ public class PlayState extends AbstractState {
         sb.draw(groundMoon, 0,0,1280,110);
     }
 
-    private void drawHearts(SpriteBatch sb) {
-        sb.draw(greyHeartsBackground, 50, 650, 100, 40);
-        sb.draw(greyHeartsBackground, 1080, 650, 100, 40);
-        sb.draw(redHeart1, 50, 657, 32, 32);
-        sb.draw(redHeart2, 84, 657, 32, 32);
-        sb.draw(redHeart3, 118, 657, 32, 32);
-        sb.draw(redHeart4, 1080, 657, 32, 32);
-        sb.draw(redHeart5, 1114, 657, 32, 32);
-        sb.draw(redHeart6, 1148, 657, 32, 32);
-    }
 
     private void drawCharacters(SpriteBatch sb){
         sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
@@ -226,25 +201,20 @@ public class PlayState extends AbstractState {
         sb.draw(backgroundSprite,0,0);
         drawCharacters(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
-        drawHearts(sb);
         drawStone(sb);
         sb.end();
 
         if (characterOne.getHpprocent()== 0 || (characterTwo.getHpprocent()==0)){
             if(characterOne.getHpprocent()==0){
-                this.i =i+1;
-                if (i==1){redHeart3.dispose();}
-                if (i==2){redHeart2.dispose();}
-                if(i==3){redHeart1.dispose();gsm.set(new EndGameState(gsm, 0));}
+                this.i =i-1;
+                if(i==0){gsm.set(new EndGameState(gsm, 0));}
+                frameboard.heartState(i,j);
                 characterOne.restoreHP();
             }else{
-                this.j =j+1;
-                if (j==1){redHeart6.dispose();}
-                if (j==2){redHeart5.dispose();}
-                if(j==3){redHeart4.dispose();
-                    gsm.set(new EndGameState(gsm, 1));}
+                this.j =j-1;
+                if(j==0){gsm.set(new EndGameState(gsm, 1));}
+                frameboard.heartState(i,j);
                 characterTwo.restoreHP();}
-
 
         }
 

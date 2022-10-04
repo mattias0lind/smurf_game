@@ -26,6 +26,9 @@ public enum ImagePaths {
     RIGHTARROW("rightArrow.png"),
 
     //HEALTH & HEARTS
+    ONEHEART("1Heart.png"),
+    TWOHEART("2Heart.png"),
+    THREEHEART("3Heart.png"),
     REDHEART("redHeart.png"),
     THREEGREYHEARTS("3greyHearts.png"),
     HEALTHMETER("healthMeter.png"),
