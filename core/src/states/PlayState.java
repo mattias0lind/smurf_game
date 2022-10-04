@@ -29,7 +29,7 @@ public class PlayState extends AbstractState {
     private Texture groundMoon = new Texture(ImagePaths.MOONGROUND.label);
     private Sprite backgroundSprite;
 
-    private int x,i = 3,j = 3;
+    private int x, i = 3,j = 3;
 
     private Character characterOne;
     private Character characterTwo;
