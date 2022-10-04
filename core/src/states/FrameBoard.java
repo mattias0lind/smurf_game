@@ -1,6 +1,6 @@
-package com.States;
+package states;
 
-import MODEL.Character;
+import model.Character;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
