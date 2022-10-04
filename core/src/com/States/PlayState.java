@@ -27,7 +27,6 @@ public class PlayState extends AbstractState {
     private Texture backgroundTexture;
     private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
 
-    private int fff;
 
 
     private Texture groundMoon = new Texture(ImagePaths.MOONGROUND.label);
@@ -219,14 +218,21 @@ public class PlayState extends AbstractState {
         if (characterOne.getHpprocent()== 0 || (characterTwo.getHpprocent()==0)){
             if(characterOne.getHpprocent()==0){
                 this.i =i-1;
-                if(i==0){gsm.set(new EndGameState(gsm, 0));}
+                if(i==0){
+                    gsm.set(new EndGameState(gsm, 0));
+                    dispose();
+                }
                 frameboard.heartState(i,j);
                 characterOne.restoreHP();
             }else{
                 this.j =j-1;
-                if(j==0){gsm.set(new EndGameState(gsm, 1));}
+                if(j==0){
+                    gsm.set(new EndGameState(gsm, 1));
+                    dispose();
+                }
                 frameboard.heartState(i,j);
                 characterTwo.restoreHP();}
+
 
 
         }
@@ -238,6 +244,8 @@ public class PlayState extends AbstractState {
         characterOneSprite.dispose();
         characterTwoSprite.dispose();
         frameboard.dispose();
+        menuMusic.dispose();
+        
     }
 }
 
