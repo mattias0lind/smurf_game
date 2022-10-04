@@ -1,4 +1,4 @@
-package CONTROLLER;
+package controller;
 
 
 import model.Character;

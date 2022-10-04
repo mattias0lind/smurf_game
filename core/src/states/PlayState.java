@@ -1,7 +1,7 @@
 package states;
 
 
-import CONTROLLER.InputProcessor;
+import controller.InputProcessor;
 import model.Character;
 import model.CharacterFactory;
 import com.badlogic.gdx.Gdx;
