@@ -7,33 +7,54 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FrameBoard {
     private Texture healthMeter, healthMeterBG, board;
-    private Texture greyHeartsBG, redHeart1, redHeart2, redHeart3, redHeart4,redHeart5,redHeart6;
+    private Texture heart1, heart2;
     private BitmapFont font;
 
     public FrameBoard(){
         board = new Texture(ImagePaths.FRAMEBOARD.label);
         healthMeter = new Texture(ImagePaths.HEALTHMETER.label);
         healthMeterBG = new Texture(ImagePaths.HEALTHMETERBACKGROUND.label);
-        greyHeartsBG = new Texture(ImagePaths.THREEGREYHEARTS.label);
-        redHeart1 = new Texture(ImagePaths.REDHEART.label);
-        redHeart2 = new Texture(ImagePaths.REDHEART.label);
-        redHeart3 = new Texture(ImagePaths.REDHEART.label);
-        redHeart4 = new Texture(ImagePaths.REDHEART.label);
-        redHeart5 = new Texture(ImagePaths.REDHEART.label);
-        redHeart6 = new Texture(ImagePaths.REDHEART.label);
+        heart1 = new Texture(ImagePaths.THREEHEART.label);
+        heart2 = new Texture(ImagePaths.THREEHEART.label);
         font = new BitmapFont();
     }
 
 
+    public void heartState(int points1, int points2){
+        if(points1 == 3){
+            heart1 = new Texture(ImagePaths.THREEHEART.label);
+        }
+        if(points1 == 2){
+            heart1 = new Texture(ImagePaths.TWOHEART.label);
+        }
+        if(points1 == 1){
+            heart2 = new Texture(ImagePaths.ONEHEART.label);
+        }
+        if(points2 == 3){
+            heart2 = new Texture(ImagePaths.THREEHEART.label);
+        }
+        if(points2 == 2){
+            heart2 = new Texture(ImagePaths.TWOHEART.label);
+        }
+        if(points2 == 1){
+            heart2 = new Texture(ImagePaths.ONEHEART.label);
+        }
+
+    }
+
     private void hearts(SpriteBatch sb) {
-        sb.draw(greyHeartsBG, 50, 650, 100, 40);
-        sb.draw(greyHeartsBG, 1080, 650, 100, 40);
-        sb.draw(redHeart1, 50, 657, 32, 32);
-        sb.draw(redHeart2, 84, 657, 32, 32);
-        sb.draw(redHeart3, 118, 657, 32, 32);
-        sb.draw(redHeart4, 1080, 657, 32, 32);
-        sb.draw(redHeart5, 1114, 657, 32, 32);
-        sb.draw(redHeart6, 1148, 657, 32, 32);
+        sb.draw(heart1, 50, 650, 100, 40);
+        sb.draw(heart2, 1080, 650, 100, 40);
+
+        //Player1
+        //sb.draw(redHeart, 50, 657, 32, 32);
+        //sb.draw(redHeart, 84, 657, 32, 32);
+        //sb.draw(redHeart, 118, 657, 32, 32);
+
+        //Player2
+        //sb.draw(redHeart, 1080, 657, 32, 32);
+        //sb.draw(redHeart, 1114, 657, 32, 32);
+        //sb.draw(redHeart, 1148, 657, 32, 32);
     }
 
     private void board(SpriteBatch sb){
@@ -47,8 +68,6 @@ public class FrameBoard {
         int hmx2 = 1080;
         int hmy = 690;
 
-        sb.draw(board, -3, 650, 1283, 70);
-
         sb.draw(healthMeterBG,hmx1, hmy, width, height);
         sb.draw(healthMeterBG,hmx2, hmy, width, height);
         sb.draw(healthMeter,hmx1, hmy, width*ch1.getHpprocent(), height);
@@ -56,30 +75,30 @@ public class FrameBoard {
 
         CharSequence hpText1 = Math.round(ch1.getHpprocent()*100)+"%";
         CharSequence hpText2 =  Math.round(ch2.getHpprocent()*100)+"%";
-        CharSequence nameText1 = ("Player 1");
-        CharSequence nameText2 = ("Player 2");
 
         font.draw(sb, hpText1, 85, 706);
         font.draw(sb, hpText2, 1113, 706);
-        font.draw(sb, nameText1, 170, 705);
-        font.draw(sb, nameText2, 1020, 705);
+
     }
+
+    private void drawPlayerNames(SpriteBatch sb){
+        CharSequence nameText1 = ("Player 1");
+        CharSequence nameText2 = ("Player 2");
+
+        font.draw(sb, nameText1, 170, 705);
+        font.draw(sb, nameText2, 1020, 705);}
 
     public void drawBoard(SpriteBatch sb, Character ch1, Character ch2){
         board(sb);
         healthMeter(sb,ch1,ch2);
+        drawPlayerNames(sb);
         hearts(sb);
     }
     public void dispose() {
         board.dispose();
         healthMeterBG.dispose();
         healthMeter.dispose();
-        greyHeartsBG.dispose();
-        redHeart1.dispose();
-        redHeart2.dispose();
-        redHeart3.dispose();
-        redHeart4.dispose();
-        redHeart5.dispose();
-        redHeart6.dispose();
+        heart1.dispose();
+        heart2.dispose();
     }
 }
