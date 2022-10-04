@@ -1,4 +1,4 @@
-package com.States;
+package MODEL;
 
 import java.util.*;
 
