@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.States.GameStateManager;
-import com.States.MenuState;
+import states.GameStateManager;
+import states.MenuState;
 
 public class MyGdxGame extends ApplicationAdapter {
     private SpriteBatch batch;

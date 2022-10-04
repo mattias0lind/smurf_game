@@ -1,6 +1,6 @@
-package MODEL;
+package model;
 
-import com.States.ImagePaths;
+import states.ImagePaths;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Rectangle;

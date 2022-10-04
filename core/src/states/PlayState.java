@@ -1,9 +1,9 @@
-package com.States;
+package states;
 
 
 import CONTROLLER.InputProcessor;
-import MODEL.Character;
-import MODEL.CharacterFactory;
+import model.Character;
+import model.CharacterFactory;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;

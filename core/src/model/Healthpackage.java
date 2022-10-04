@@ -1,4 +1,4 @@
-package MODEL;
+package model;
 
 public class Healthpackage extends Powerups {
     private String name;
