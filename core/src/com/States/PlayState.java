@@ -216,6 +216,7 @@ public class PlayState extends AbstractState {
                 frameboard.heartState(i,j);
                 characterTwo.restoreHP();}
 
+
         }
 
     }
