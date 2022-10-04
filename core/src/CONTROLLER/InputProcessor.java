@@ -6,9 +6,11 @@ import MODEL.Player_Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-/*Hanterar inputs */
+/**
+ * Class for handling Keyboard inputs that controlls the model.
+ * Class uses Event handling for processing inputs.
+ * */
 public class InputProcessor implements com.badlogic.gdx.InputProcessor {
-    private Sprite sprite;
     private boolean isMovingRight = false;
     private boolean isMovingLeft = false;
     private InputProcessor inputProcessor;
@@ -22,89 +24,78 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private boolean ifPlayer1_punched, ifPlayer2_punched;
     private boolean leftPlayer1,rightPlayer1,leftPlayer2,rightPlayer2;
 
-    public void logic(Player_Movement player, Player_Movement player2) {
+    /**
+     * Takes Character 1 and Character 2 and their respective Player_Movement class as parameters
+     * which allows controller to update their respective movement.
+     * */
+    public void movementLogic(Player_Movement player, Player_Movement player2) {
         this.player = player;
         this.player2 = player2;
     }
 
+    /**
+     * Takes Character 1 and Character 2 as parameters so their respective punch method can be called when appropriate.
+     */
     public void punchLogic(Character player1_punch, Character player2_punch) {
         this.player1_punch = player1_punch;
         this.player2_punch = player2_punch;
 
     }
 
-
+    /** Check if player 1 is turned left. */
     public boolean getLeftPlayer1(){
         return leftPlayer1;
     }
+
+    /** Check if player 1 is turned right. */
 
     public boolean getRightPlayer1(){
      return rightPlayer1;
     }
 
+    /** Check if player 2 is turned left. */
     public boolean getLeftPlayer2(){
         return leftPlayer2;
     }
 
+    /**Check if player 2 is turned right. */
     public boolean getRightPlayer2(){
         return rightPlayer2;
     }
 
-    public boolean getIsMovingLeft(){return isMovingLeft;}
 
+    /** Event handler if key was pressed down.  */
     @Override
     public boolean keyDown(int i) {
         if ((i == Input.Keys.LEFT)) {
-            //i =- 10;
-            //player2.getBody().setLinearVelocity(i, player2.getBody().getLinearVelocity().y);
             player2.moveLeft(true);
             leftPlayer2 = true;
             rightPlayer2 = false;
 
         }
         if (i == Input.Keys.RIGHT) {
-            //player2.getBody().applyLinearImpulse(new Vector2(10,0),player2.getBody().getPosition(),true);
             player2.moveRight(true);
             rightPlayer2 = true;
             leftPlayer2 = false;
         }
         if (i == Input.Keys.UP) {
-            //if (player2.getBody().getLinearVelocity().y == 0) {
-                //player2.getBody().applyLinearImpulse(0, 80f, player2.getBody().getPosition().x, player2.getBody().getPosition().y, true);
-            //}
             player2.moveUp(true);
         }
-        if (i == Input.Keys.DOWN) {
-            //player2.getBody().setLinearVelocity(0, -20);
-            player2.moveDown(true);
-        }
+        if (i == Input.Keys.DOWN) {player2.moveDown(true);}
 
         if ((i == Input.Keys.A)) {
             player.moveLeft(true);
             isMovingLeft = true;
-            //f =- 10;
-            //player.getBody().setLinearVelocity(f, player.getBody().getLinearVelocity().y);
-         //   player.updatePlayerPosition();
-         //   player.getBody();
             rightPlayer1 = false;
             leftPlayer1 = true;
         }
         if (i == Input.Keys.D) {
-            //player.getBody().setLinearVelocity(20, player.getBody().getLinearVelocity().y);
             player.moveRight(true);
             leftPlayer1 = false;
             rightPlayer1 = true;
         }
-        if (i == Input.Keys.W) {
-            /*if (player.getBody().getLinearVelocity().y == 0) {
-                player.getBody().applyLinearImpulse(0, 80f, player2.getBody().getPosition().x, player2.getBody().getPosition().y, true);
-            }*/
-            player.moveUp(true);
-        }
-        if (i == Input.Keys.S) {
-            //player.getBody().setLinearVelocity(0, -20);
-            player.moveDown(true);
-        }
+        if (i == Input.Keys.W) {player.moveUp(true);}
+        if (i == Input.Keys.S) {player.moveDown(true);}
 
         if (i == Input.Keys.F) {
             player1_punch.punch(player2_punch);
@@ -120,6 +111,8 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         return true;
     }
 
+
+    /** Event handler to check if the pressed down key is now up. */
     @Override
     public boolean keyUp(int i) {
         if ((i == Input.Keys.LEFT)) {
@@ -156,10 +149,16 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         return true;
     }
 
+    /** Checks if player 1 pressed the F key.
+     * F key in keyDown sets this boolean to true.
+     * F key in keyUp sets this boolean to false.*/
     public boolean isIfPlayer1_punched() {
         return ifPlayer1_punched;
     }
 
+    /** Checks if player 2 pressed the M key.
+     * F key in keyDown sets this boolean to true.
+     * F key in keyUp sets this boolean to false.*/
     public boolean isIfPlayer2_punched() {
         return ifPlayer2_punched;
     }

@@ -86,7 +86,8 @@ public class PlayState extends AbstractState {
 
 
 
-        inputProcessor.logic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
+        inputProcessor.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
+        inputProcessor.punchLogic(characterOne,characterTwo);
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
         createBody();
