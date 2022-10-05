@@ -3,27 +3,27 @@ package model;
 import java.util.Objects;
 
 public class HealthBar {
-    private float HP;
-    private final float maxHP;
+    private float hp;
+    private final float maxHp;
 
 
-    public HealthBar(float HP) {
-        this.HP = Objects.requireNonNull(HP);
-        this.maxHP = Objects.requireNonNull(HP);
+    public HealthBar(float hp) {
+        this.hp = Objects.requireNonNull(hp);
+        this.maxHp = Objects.requireNonNull(hp);
     }
 
     public void looseHP(float damage) {
-        HP = HP - damage;
-        if (HP < 0)
-            HP = 0;
+        hp = hp - damage;
+        if (hp < 0)
+            hp = 0;
     }
 
     public float getHpProcentage() {
-        return HP / maxHP;
+        return hp / maxHp;
     }
 
 
     public void maxHP() {
-        HP = maxHP;
+        hp = maxHp;
     } //HP återställs till max hp
 }

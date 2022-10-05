@@ -10,7 +10,7 @@ import java.util.Objects;
 
 
 public abstract class Character {
-    private final Player_Movement playerMovement;
+    private final PlayerMovement playerMovement;
     private final String name;
     private final HealthBar healthBar;
     private final float attackDamage = 10;
@@ -20,7 +20,7 @@ public abstract class Character {
 
     public Character(String nameOfCharacter, World world, float hp) {
         this.name = Objects.requireNonNull(nameOfCharacter);
-        this.playerMovement = Objects.requireNonNull(new Player_Movement(world));
+        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world));
         this.healthBar = Objects.requireNonNull(new HealthBar(hp));
     }
 
@@ -30,7 +30,7 @@ public abstract class Character {
         return this.name;
     }
 
-    public Player_Movement getPlayerMovement() {
+    public PlayerMovement getPlayerMovement() {
         return playerMovement;
     }
 

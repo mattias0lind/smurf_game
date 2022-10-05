@@ -63,14 +63,13 @@ public class FrameBoard {
         if(numberOfHearts1 == 3){heart1 = new Texture(ImagePaths.THREEHEART.label);}
         if(numberOfHearts1 == 2){heart1 = new Texture(ImagePaths.TWOHEART.label);}
         if(numberOfHearts1 == 1){heart1 = new Texture(ImagePaths.ONEHEART.label);}
+        if(numberOfHearts1 == 0){heart1 = new Texture(ImagePaths.THREEGREYHEARTS.label);}
 
         /** Number of Hearts for Player 2 */
 
         if(numberOfHearts2 == 3){heart2 = new Texture(ImagePaths.THREEHEART.label);}
         if(numberOfHearts2 == 2){heart2 = new Texture(ImagePaths.TWOHEART.label);}
         if(numberOfHearts2 == 1){heart2 = new Texture(ImagePaths.ONEHEART.label);}
-
-        if(numberOfHearts2 == 0){heart2 = new Texture(ImagePaths.THREEGREYHEARTS.label);}
         if(numberOfHearts2 == 0){heart2 = new Texture(ImagePaths.THREEGREYHEARTS.label);}}
 
     public void drawBoard(SpriteBatch sb, Character ch1, Character ch2){
