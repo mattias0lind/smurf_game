@@ -6,7 +6,7 @@ import com.badlogic.gdx.physics.box2d.*;
 
 import java.util.Objects;
 
-public class Player_Movement implements IMovement {
+public class PlayerMovement implements IMovement {
 
     private final Vector2 position = new Vector2(100, 400);
     private final BodyDef bodyDef = new BodyDef();
@@ -15,7 +15,7 @@ public class Player_Movement implements IMovement {
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
 
-    public Player_Movement(World world) {
+    public PlayerMovement(World world) {
         world = Objects.requireNonNull(world);
 
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
