@@ -2,7 +2,7 @@ package controller;
 
 
 import model.Character;
-import model.Player_Movement;
+import model.PlayerMovement;
 import com.badlogic.gdx.Input;
 
 /**
@@ -13,7 +13,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
     private final boolean isMovingRight = false;
     private boolean isMovingLeft = false;
     private InputProcessor inputProcessor;
-    private Player_Movement player, player2;
+    private PlayerMovement player, player2;
     private Character player1_punch, player2_punch;
 
     public boolean getIsMovingRight() {
@@ -27,7 +27,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
      * Takes Character 1 and Character 2 and their respective Player_Movement class as parameters
      * which allows controller to update their respective movement.
      * */
-    public void movementLogic(Player_Movement player, Player_Movement player2) {
+    public void movementLogic(PlayerMovement player, PlayerMovement player2) {
         this.player = player;
         this.player2 = player2;
     }
