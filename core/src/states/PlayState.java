@@ -48,7 +48,7 @@ public class PlayState extends AbstractState {
         startGameMusic();
 
         //Char 1
-       createCharacterOneSprites();
+        createCharacterOneSprites();
 
         //char 2
         createCharacterTwoSprites();
@@ -63,22 +63,16 @@ public class PlayState extends AbstractState {
         createMapElement(410, 238, 56, 16);
         backgroundTexture = new Texture("BackgroundMap.png");
         backgroundSprite = new Sprite(backgroundTexture);
-
-
-
-
     }
 
     @Override
     public void handleInput() {
     }
 
-
     private void startGameMusic() {
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
         menuMusic.setLooping(true);
         menuMusic.play();
-
     }
 
     private void createCharacterOneSprites() {
@@ -114,10 +108,6 @@ public class PlayState extends AbstractState {
                 currentCharacterOne = characterOneSpritePunch;
             }
         }
-
-
-
-
 
         return currentCharacterOne;
     }
