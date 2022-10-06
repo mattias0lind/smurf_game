@@ -7,14 +7,14 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class MoonMap {
 
-    StaticMapElements invisibleWall1,invisibleWall2;
     GroundFloor groundFloor1;
+    StaticMapElements invisibleWall1,invisibleWall2;
     StaticMapElements moonStone1, moonStone2, moonStone3;
 
-    private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
-    private Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
-    private Texture backgroundTexture;
-    private Sprite backgroundSprite;
+    private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
+    private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
+    private final Texture backgroundTexture;
+    private final Sprite backgroundSprite;
 
     public MoonMap(World world){
 
@@ -31,6 +31,7 @@ public class MoonMap {
         moonStone3 = new StaticMapElements(world, 640, 170, 56, 16);
 
     }
+
     public void drawMap(SpriteBatch sb){
         sb.draw(backgroundSprite,0,0);
         sb.draw(moonStone, moonStone1.getPosX()-40,moonStone1.getPosY()-18, moonStone1.getWidth()+104,moonStone1.getHeight()+84);

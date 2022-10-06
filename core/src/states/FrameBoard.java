@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FrameBoard {
     /** A class that draws the top frameboard above the screen */
 
@@ -12,14 +15,23 @@ public class FrameBoard {
     private Texture heart1, heart2;
     private final BitmapFont font;
 
+    private List<ImagePaths> heartState = new ArrayList<>();
 
     public FrameBoard(){
         board = new Texture(ImagePaths.FRAMEBOARD.label);
         healthMeter = new Texture(ImagePaths.HEALTHMETER.label);
         healthMeterBG = new Texture(ImagePaths.HEALTHMETERBACKGROUND.label);
-        heart1 = new Texture(ImagePaths.THREEHEART.label);
-        heart2 = new Texture(ImagePaths.THREEHEART.label);
-        font = new BitmapFont();}
+        font = new BitmapFont();
+
+        heartState.add(ImagePaths.THREEGREYHEARTS);
+        heartState.add(ImagePaths.ONEHEART);
+        heartState.add(ImagePaths.TWOHEART);
+        heartState.add(ImagePaths.THREEHEART);
+        heart1 = new Texture(heartState.get(heartState.size()-1).label);
+        heart2 = new Texture(heartState.get(heartState.size()-1).label);
+
+
+    }
 
 
     private void hearts(SpriteBatch sb) {
@@ -55,22 +67,13 @@ public class FrameBoard {
         font.draw(sb, nameText1, 170, 705);
         font.draw(sb, nameText2, 1020, 705);}
 
-    public void heartState(int numberOfHearts1, int numberOfHearts2){
-        /** Changes the texture for number of hearts that will show.
 
-        Number of hearts for Player 1 */
 
-        if(numberOfHearts1 == 3){heart1 = new Texture(ImagePaths.THREEHEART.label);}
-        if(numberOfHearts1 == 2){heart1 = new Texture(ImagePaths.TWOHEART.label);}
-        if(numberOfHearts1 == 1){heart1 = new Texture(ImagePaths.ONEHEART.label);}
-        if(numberOfHearts1 == 0){heart1 = new Texture(ImagePaths.THREEGREYHEARTS.label);}
-
-        /** Number of Hearts for Player 2 */
-
-        if(numberOfHearts2 == 3){heart2 = new Texture(ImagePaths.THREEHEART.label);}
-        if(numberOfHearts2 == 2){heart2 = new Texture(ImagePaths.TWOHEART.label);}
-        if(numberOfHearts2 == 1){heart2 = new Texture(ImagePaths.ONEHEART.label);}
-        if(numberOfHearts2 == 0){heart2 = new Texture(ImagePaths.THREEGREYHEARTS.label);}}
+    public void heartState(int numberOfHearts1, int numberOfHearts2) {
+        /** Changes the texture for number of hearts that will show.*/
+        heart1 = new Texture(heartState.get(numberOfHearts1).label);
+        heart2 = new Texture(heartState.get(numberOfHearts2).label);
+    }
 
     public void drawBoard(SpriteBatch sb, Character ch1, Character ch2){
         /** Draw out the top frame board with all the information */
