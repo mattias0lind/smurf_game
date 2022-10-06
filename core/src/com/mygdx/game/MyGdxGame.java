@@ -11,6 +11,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import states.GameStateManager;
 import states.MenuState;
 
+
+
 public class MyGdxGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private GameStateManager gsm;
@@ -28,7 +30,6 @@ public class MyGdxGame extends ApplicationAdapter {
 
     @Override
     public void render() {
-        //Gdx.input.setInputProcessor(inputProcessor);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         gsm.update(Gdx.graphics.getDeltaTime());
         gsm.render(batch);
