@@ -1,11 +1,15 @@
 package states;
 
+import CONTROLLER.CharacterSelectionInputProcessor;
+import CONTROLLER.MenuInputProcessor;
 import model.CharacterNameCollection;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+
+import java.util.concurrent.TimeUnit;
 
 import static states.ImagePaths.CLOUDS;
 
@@ -20,72 +24,72 @@ public class CharacterSelectionState extends AbstractState {
     private final Texture leftArrow1;
     private final Texture rightArrow1;
     private final Texture playButton;
+    private final CharacterSelectionInputProcessor characterSelectionInputProcessor = new CharacterSelectionInputProcessor();
 
 
 
-    private final World world = new World(new Vector2(0,-30), true);
+
     private final CharacterNameCollection allCharacterNames = new CharacterNameCollection();
 
     public CharacterSelectionState(GameStateManager gsm){
         super(gsm);
+        Gdx.input.setInputProcessor(characterSelectionInputProcessor);
         characterSelectionBackground = new Texture(CLOUDS.label);
+
         cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
         cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
-
 
         leftArrow1 = new Texture(ImagePaths.LEFTARROW.label);
         rightArrow1 = new Texture(ImagePaths.RIGHTARROW.label);
 
         playButton = new Texture(ImagePaths.PLAYBUTTON.label);
 
+
+
     }
 
+    /** Delay was added because computers iterate too fast through our list with characters. */
     @Override
     public void handleInput() {
-        if(Gdx.input.justTouched()){
-            System.out.println("x: " + Gdx.input.getX() + " y: " + Gdx.input.getY());
-            if(Gdx.input.getX() > 417
-                    && Gdx.input.getX() < 860
-                    && Gdx.input.getY() < 683
-                    && Gdx.input.getY() > 580){
-                System.out.println(slotCounter1);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+            if(Gdx.input.isTouched()){
+
+            if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,0)){
                 gsm.set(new PlayState(gsm, allCharacterNames.getCharacter(slotCounter1), allCharacterNames.getCharacter(slotCounter2)));
                 dispose();
             }
-        if(Gdx.input.getX() > 68
-           && Gdx.input.getX() < 132
-           && Gdx.input.getY() < 340
-           && Gdx.input.getY() > 310) {
+            else if (characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,1)){
                 if (slotCounter1 == 0)
                     slotCounter1 = allCharacterNames.getLength();
-                    slotCounter1 = (slotCounter1 - 1) % allCharacterNames.getLength();
-                    cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
+                slotCounter1 = (slotCounter1 - 1) % allCharacterNames.getLength();
+                cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
             }
-            if(Gdx.input.getX() > 299
-                    && Gdx.input.getX() < 330
-                    && Gdx.input.getY() < 340
-                    && Gdx.input.getY() > 310) {
+
+            else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,2)){
                 slotCounter1 = (slotCounter1 + 1) % allCharacterNames.getLength();
                 cardSlot1 = new Texture (allCharacterNames.getCharacter(slotCounter1) + "Card.png");
             }
-            if(Gdx.input.getX() > 970
-                    && Gdx.input.getX() < 1000
-                    && Gdx.input.getY() < 340
-                    && Gdx.input.getY() > 310) {
-                if (slotCounter2 == 0)
+
+            else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,3)){
+                if(slotCounter2 == 0)
                     slotCounter2 = allCharacterNames.getLength();
-                    slotCounter2 = (slotCounter2 - 1) % allCharacterNames.getLength();
+                slotCounter2 = (slotCounter2 - 1) % allCharacterNames.getLength();
                 cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
+
             }
-            if(Gdx.input.getX() > 1168
-                    && Gdx.input.getX() < 1200
-                    && Gdx.input.getY() < 340
-                    && Gdx.input.getY() > 310) {
+
+            else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,4)){
                 slotCounter2 = (slotCounter2 + 1) % allCharacterNames.getLength();
                 cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
-            }
-        }
+            }}
     }
+
 
 
     @Override
