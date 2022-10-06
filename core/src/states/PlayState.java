@@ -23,12 +23,6 @@ public class PlayState extends AbstractState {
     private World world = new World(new Vector2(0,-50), true);
 
     private InputProcessor inputProcessor = new InputProcessor();
-    private Texture backgroundTexture;
-    private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
-
-    private Texture groundMoon = new Texture(ImagePaths.MOONGROUND.label);
-    private Sprite backgroundSprite;
-
     private int x, i = 3,j = 3;
 
     private Character characterOne;
@@ -38,7 +32,7 @@ public class PlayState extends AbstractState {
     private Music menuMusic;
 
     private FrameBoard frameboard;
-
+    private MoonMap map;
 
     public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
@@ -49,20 +43,16 @@ public class PlayState extends AbstractState {
 
         //Char 1
         createCharacterOneSprites();
-
         //char 2
         createCharacterTwoSprites();
 
         frameboard = new FrameBoard();
+        map = new MoonMap(world);
 
         inputProcessor.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
         Gdx.input.setInputProcessor(inputProcessor);
-        createBody();
-        createMapElement(240, 158, 56, 16);
-        createMapElement(410, 238, 56, 16);
-        backgroundTexture = new Texture("BackgroundMap.png");
-        backgroundSprite = new Sprite(backgroundTexture);
+
     }
 
     @Override
@@ -138,48 +128,11 @@ public class PlayState extends AbstractState {
     }
 
 
-
-        //COMMENT
-    private void createBody(){
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(640,-20);
-        Body body;
-        body = world.createBody(bodyDef);
-        FixtureDef fixtureDef = new FixtureDef();
-        PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(1280,100);
-        fixtureDef.shape = polygonShape;
-        fixtureDef.density = 0.1f;
-        body.createFixture(fixtureDef);
-    }
-
-    private void createMapElement(int posX, int posY, int width, int height){
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(posX,posY);
-        Body body;
-        body = world.createBody(bodyDef);
-        FixtureDef fixtureDef = new FixtureDef();
-        PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(width,height);
-        fixtureDef.shape = polygonShape;
-        fixtureDef.density = 0.1f;
-        fixtureDef.friction = 0.0f;
-        body.createFixture(fixtureDef);
-    }
-
     @Override
     public void update(float dt) {
         characterOne.getPlayerMovement().updatePlayerPosition();
         characterTwo.getPlayerMovement().updatePlayerPosition();
         world.step(1/60f,6,2);
-    }
-
-    public void drawStone(SpriteBatch sb) {
-        sb.draw(moonStone, 200, 140, 160, 100);
-        sb.draw(moonStone, 370, 220, 160, 100);
-        sb.draw(groundMoon, 0,0,1280,110);
     }
 
 
@@ -193,10 +146,9 @@ public class PlayState extends AbstractState {
         update((float) 0.016);
 
         sb.begin();
-        sb.draw(backgroundSprite,0,0);
-        drawCharacters(sb);
+        map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
-        drawStone(sb);
+        drawCharacters(sb);
         sb.end();
 
         if (characterOne.getHpprocent()== 0 || (characterTwo.getHpprocent()==0)){
@@ -212,19 +164,14 @@ public class PlayState extends AbstractState {
                 this.j =j-1;
                 if(j==0){
                     gsm.set(new EndGameState(gsm, 1));
-                    dispose();
-                }
+                    dispose();}
                 frameboard.heartState(i,j);
-                characterTwo.restoreHP();}
-
-
-
-        }
-
+                characterTwo.restoreHP();}}
     }
 
     @Override
     public void dispose() {
+        map.dispose();
         characterOneSprite.dispose();
         characterTwoSprite.dispose();
         frameboard.dispose();
