@@ -53,11 +53,11 @@ public abstract class Character {
     }
 
     public float getHpprocent() {
-        return healthBar.getHpProcentage();
+        return healthBar.getHpPercentage();
     }
 
     public void gotHit(float attackDamage) {
-        healthBar.looseHP(attackDamage);
+        healthBar.loseHP(attackDamage);
 
     }
 }
