@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class PlayerMovement implements IMovement {
 
-    private Vector2 position;
+    private final Vector2 position;
     private final BodyDef bodyDef = new BodyDef();
     private final Body body;
 

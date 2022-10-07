@@ -31,14 +31,17 @@ public class PlayState extends AbstractState {
 
     private Music menuMusic;
 
+    private final Vector2 startPosition1 = new Vector2 (100,100);
+    private final Vector2 startposition2 = new Vector2 (1100, 100);
+
 
     private FrameBoard frameboard;
     private MoonMap map;
 
     public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
-        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world,new Vector2(100,100)));
-        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world, new Vector2(1180,100)));
+        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world, startPosition1));
+        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world, startposition2));
 
         startGameMusic();
 

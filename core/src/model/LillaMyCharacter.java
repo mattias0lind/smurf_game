@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public class LillaMyCharacter extends Character {
 
-    private Vector2 position;
+
 
     public LillaMyCharacter(World world, Vector2 position) {
         super("lillamy", world, 50, position);
