@@ -1,8 +1,9 @@
-package states;
+package model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.*;
+import states.ImagePaths;
 
 public class StaticMapElements {
     private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);

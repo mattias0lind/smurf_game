@@ -1,6 +1,7 @@
-package states;
+package model;
 
 import com.badlogic.gdx.physics.box2d.*;
+import model.StaticMapElements;
 
 public class GroundFloor extends StaticMapElements {
     public GroundFloor(World world) {
