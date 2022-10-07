@@ -1,5 +1,6 @@
 package model;
 
+import com.badlogic.gdx.math.Vector2;
 import states.ImagePaths;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -13,14 +14,16 @@ public abstract class Character {
     private final PlayerMovement playerMovement;
     private final String name;
     private final HealthBar healthBar;
+    private Vector2 postion;
     private final float attackDamage = 10;
 
     Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
 
 
-    public Character(String nameOfCharacter, World world, float hp) {
+    public Character(String nameOfCharacter, World world, float hp, Vector2 position) {
+        this.postion = position;
         this.name = Objects.requireNonNull(nameOfCharacter);
-        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world));
+        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world, this.postion));
         this.healthBar = Objects.requireNonNull(new HealthBar(hp));
     }
 
