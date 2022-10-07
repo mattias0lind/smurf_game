@@ -1,4 +1,4 @@
-package states;
+package view;
 
 public enum ImagePaths {
     //CHARACTERS

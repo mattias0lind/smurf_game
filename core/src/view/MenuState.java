@@ -1,4 +1,4 @@
-package states;
+package view;
 
 import CONTROLLER.MenuInputProcessor;
 import com.badlogic.gdx.Gdx;

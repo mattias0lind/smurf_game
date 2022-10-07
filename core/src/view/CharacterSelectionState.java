@@ -1,17 +1,14 @@
-package states;
+package view;
 
 import CONTROLLER.CharacterSelectionInputProcessor;
-import CONTROLLER.MenuInputProcessor;
 import model.CharacterNameCollection;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.concurrent.TimeUnit;
 
-import static states.ImagePaths.CLOUDS;
+import static view.ImagePaths.CLOUDS;
 
 public class CharacterSelectionState extends AbstractState {
 

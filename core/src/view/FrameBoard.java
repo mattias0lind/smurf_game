@@ -1,4 +1,4 @@
-package states;
+package view;
 
 import model.Character;
 import com.badlogic.gdx.graphics.Texture;
