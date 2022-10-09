@@ -1,7 +1,7 @@
 package view;
 
 
-import CONTROLLER.InputProcessor;
+import controller.InputProcessor;
 import model.Character;
 import model.CharacterFactory;
 import com.badlogic.gdx.Gdx;
@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import model.MapModel;
 
 import java.util.Objects;
 
@@ -33,6 +34,7 @@ public class PlayState extends AbstractState {
 
 
     private FrameBoard frameboard;
+    private MapModel basicMap;
     private MoonMap map;
 
     public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
@@ -48,7 +50,8 @@ public class PlayState extends AbstractState {
         createCharacterTwoSprites();
 
         frameboard = new FrameBoard();
-        map = new MoonMap(world);
+        basicMap = new MapModel(world);
+        map = new MoonMap(basicMap);
 
         inputProcessor.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);

@@ -1,8 +1,8 @@
-package CONTROLLER;
+package controller;
 
 import java.util.concurrent.TimeUnit;
 
-public class CharacterSelectionInputProcessor extends CONTROLLER.InputProcessor{
+public class CharacterSelectionInputProcessor extends controller.InputProcessor{
     @Override
     public boolean touchDown(int screenX, int screenY, int i2, int whichButton) {
 

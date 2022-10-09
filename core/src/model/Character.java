@@ -17,7 +17,8 @@ public abstract class Character {
     private final Vector2 position;
     private final float attackDamage = 10;
 
-    Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
+    //TODO Ifall vi vill ha ljudet så måste det lösas i view.
+    //Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
 
 
     public Character(String nameOfCharacter, World world, float hp, Vector2 position) {
@@ -47,7 +48,7 @@ public abstract class Character {
         }
         if (rectangle.contains(character.getPlayerMovement().getBody().getPosition().x, character.getPlayerMovement().getBody().getPosition().y)) {
             character.gotHit(this.attackDamage);
-            robloxSound.play(1.0f);
+            //robloxSound.play(1.0f);
         }
     }
 

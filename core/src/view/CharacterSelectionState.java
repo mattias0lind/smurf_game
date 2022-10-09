@@ -1,6 +1,6 @@
 package view;
 
-import CONTROLLER.CharacterSelectionInputProcessor;
+import controller.CharacterSelectionInputProcessor;
 import model.CharacterNameCollection;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,7 +45,7 @@ public class CharacterSelectionState extends AbstractState {
 
     }
 
-    /** Delay was added because computers iterate too fast through our list with characters. */
+
     @Override
     public void handleInput() {
 

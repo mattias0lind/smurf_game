@@ -1,7 +1,7 @@
-package CONTROLLER;
+package controller;
 
 
-public class MenuInputProcessor extends CONTROLLER.InputProcessor {
+public class MenuInputProcessor extends controller.InputProcessor {
 
 
 

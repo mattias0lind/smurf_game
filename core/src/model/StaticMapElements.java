@@ -1,12 +1,10 @@
 package model;
 
-import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.physics.box2d.*;
-import view.ImagePaths;
+
 
 public class StaticMapElements {
-    private Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
-    private Texture groundMoon = new Texture(ImagePaths.MOONGROUND.label);
     private World world;
     private BodyDef bodyDef;
     private Body body;
