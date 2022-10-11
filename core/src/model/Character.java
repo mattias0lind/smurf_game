@@ -39,16 +39,15 @@ public abstract class Character {
     }
 
     public void punch(Character character) {
-        Rectangle rectangle = new Rectangle();
-        if (playerMovement.getMoveRight()) {
-            rectangle.set(playerMovement.getBody().getPosition().x + 16, playerMovement.getBody().getPosition().y, 64, 64);
-        }
-        else if (playerMovement.getMoveLeft()) {
-            rectangle.set(playerMovement.getBody().getPosition().x - 64, playerMovement.getBody().getPosition().y, 64, 64);
-        }
-        if (rectangle.contains(character.getPlayerMovement().getBody().getPosition().x, character.getPlayerMovement().getBody().getPosition().y)) {
-            character.gotHit(this.attackDamage);
-            //robloxSound.play(1.0f);
+        float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
+        float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
+        if (-20 <= yDiff && yDiff <= 20){
+            if (0 <= xDiff && xDiff <= 16 && playerMovement.getMoveRight()){
+                character.gotHit(attackDamage);
+            }
+            if (-64 <= xDiff && xDiff <= 0 && playerMovement.getMoveLeft()){
+                character.gotHit(attackDamage);
+            }
         }
     }
 
