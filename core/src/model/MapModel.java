@@ -14,9 +14,9 @@ public class MapModel{
         groundFloor = new GroundFloor(world);
         invisibleWall1 = new StaticMapElements(world, 0, 0, 20, 2000);
         invisibleWall2 = new StaticMapElements(world, 1250, 0, 20, 2000);
-        plattForm1 = new StaticMapElements(world,240,158,56,16);
-        plattForm2 = new StaticMapElements(world, 410, 200, 56, 16);
-        plattForm3 = new StaticMapElements(world, 640, 170, 56, 16);
+        plattForm1 = new StaticMapElements(world,240,158,56,10);
+        plattForm2 = new StaticMapElements(world, 410, 200, 56, 10);
+        plattForm3 = new StaticMapElements(world, 640, 170, 56, 10);
 
 
     }

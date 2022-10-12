@@ -61,7 +61,6 @@ public abstract class Character {
 
     public void gotHit(float attackDamage) {
         healthBar.loseHP(attackDamage);
-
     }
 }
 

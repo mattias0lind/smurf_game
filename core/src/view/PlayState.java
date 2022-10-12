@@ -2,15 +2,14 @@ package view;
 
 
 import controller.InputProcessor;
-import model.Character;
-import model.CharacterFactory;
+import model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import model.MapModel;
+import model.Character;
 
 import java.util.Objects;
 
@@ -52,6 +51,7 @@ public class PlayState extends AbstractState {
         frameboard = new FrameBoard();
         basicMap = new MapModel(world);
         map = new MoonMap(basicMap);
+
 
         inputProcessor.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
@@ -138,6 +138,8 @@ public class PlayState extends AbstractState {
         characterTwo.getPlayerMovement().updatePlayerPosition();
         world.step(1/60f,6,2);
     }
+
+
 
 
     private void drawCharacters(SpriteBatch sb){
