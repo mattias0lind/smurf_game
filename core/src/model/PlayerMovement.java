@@ -17,7 +17,7 @@ public class PlayerMovement implements IMovement {
     private final Body body;
 
 
-    private boolean moveLeft, moveRight, moveUp, moveDown;
+    private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
     public PlayerMovement(World world, Vector2 position) {
         world = Objects.requireNonNull(world);
@@ -39,6 +39,7 @@ public class PlayerMovement implements IMovement {
     public Body getBody() {
         return body;
     }
+
 
 
     @Override
@@ -70,11 +71,13 @@ public class PlayerMovement implements IMovement {
     //TODO glöm inte ta bort view saker från här bara för debugging
     public void moveLeft(boolean t) {
         moveLeft = t;
+        lookingLeft = true;
 
     }
 
     public void moveRight(boolean t) {
         moveRight = t;
+        lookingLeft = false;
 
     }
 
@@ -94,6 +97,9 @@ public class PlayerMovement implements IMovement {
 
     public boolean getMoveLeft() {
         return moveLeft;
+    }
+    public boolean getlookingLeft() {
+        return lookingLeft;
     }
 
 

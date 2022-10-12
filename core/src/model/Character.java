@@ -1,10 +1,6 @@
 package model;
 
 import com.badlogic.gdx.math.Vector2;
-import view.ImagePaths;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.Objects;
@@ -16,6 +12,7 @@ public abstract class Character {
     private final HealthBar healthBar;
     private final Vector2 position;
     private final float attackDamage = 10;
+    private boolean punching = false;
 
     //TODO Ifall vi vill ha ljudet så måste det lösas i view.
     //Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
@@ -41,6 +38,7 @@ public abstract class Character {
     public void punch(Character character) {
         float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
         float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
+
         if (-20 <= yDiff && yDiff <= 20){
             if (0 <= xDiff && xDiff <= 16 && playerMovement.getMoveRight()){
                 character.gotHit(attackDamage);
@@ -49,6 +47,22 @@ public abstract class Character {
                 character.gotHit(attackDamage);
             }
         }
+
+    }
+
+    public void punching(Boolean t){
+        punching = t;
+    }
+
+    public boolean charactersCurrentDirection(){
+        if(playerMovement.getMoveLeft()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean getIsPunching(){
+        return punching;
     }
 
     public void restoreHP() {

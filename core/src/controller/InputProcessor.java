@@ -84,12 +84,14 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         if ((i == Input.Keys.A)) {
             player.moveLeft(true);
+            //player.moveRight(false);
             isMovingLeft = true;
             rightPlayer1 = false;
             leftPlayer1 = true;
         }
         if (i == Input.Keys.D) {
             player.moveRight(true);
+            //player.moveLeft(false);
             leftPlayer1 = false;
             rightPlayer1 = true;
         }
@@ -98,12 +100,13 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
 
         if (i == Input.Keys.F) {
             player1_punch.punch(player2_punch);
-            ifPlayer1_punched = true;
+            player1_punch.punching(true);
 
         }
 
         if (i == Input.Keys.M) {
             player2_punch.punch(player1_punch);
+            player2_punch.punching(true);
             ifPlayer2_punched = true;
 
         }
@@ -124,7 +127,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
             player2.moveDown(false);
         }
         if (i == Input.Keys.F) {
-            ifPlayer1_punched = false;
+            player1_punch.punching(false);
 
         }
 
@@ -135,7 +138,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
             player.moveLeft(false);
 
         }if (i == Input.Keys.D) {
-            player.moveRight(false);
+           player.moveRight(false);
         }
         if(i == Input.Keys.W){
             player.moveUp(false);
@@ -144,6 +147,7 @@ public class InputProcessor implements com.badlogic.gdx.InputProcessor {
         }
         if (i == Input.Keys.M) {
             ifPlayer2_punched = false;
+            player2_punch.punching(false);
         }
         return true;
     }

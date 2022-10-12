@@ -5,7 +5,6 @@ import controller.InputProcessor;
 import model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -14,17 +13,17 @@ import model.Character;
 import java.util.Objects;
 
 public class PlayState extends AbstractState {
-    private Texture characterOneSprite,characterOneSpriteLeft,currentCharacterOne,characterOneSpritePunchLeft;
-    private Texture characterTwoSprite,characterTwoSpriteLeft,characterTwoSpritePunch,currentCharacterTwo,characterTwoSpritePunchLeft;
-    private Texture characterOneSpritePunch;
+
+
     private World world = new World(new Vector2(0,-50), true);
 
     private InputProcessor inputProcessor = new InputProcessor();
-    private int x, i = 3,j = 3;
+    private int i = 3,j = 3;
 
     private Character characterOne;
     private Character characterTwo;
     private CharacterFactory characterFactory = new CharacterFactory();
+
 
     private Music menuMusic;
 
@@ -36,6 +35,9 @@ public class PlayState extends AbstractState {
     private MapModel basicMap;
     private MoonMap map;
 
+    private DrawCharacterSprite drawCharactersSprite1;
+    private DrawCharacterSprite drawCharactersSprite2;
+
     public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
         this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world, startPosition1));
@@ -43,19 +45,21 @@ public class PlayState extends AbstractState {
 
         startGameMusic();
 
-        //Char 1
-        createCharacterOneSprites();
-        //char 2
-        createCharacterTwoSprites();
+
+        drawCharactersSprite1 = new DrawCharacterSprite(characterOne);
+        drawCharactersSprite2 = new DrawCharacterSprite(characterTwo);
+
 
         frameboard = new FrameBoard();
         basicMap = new MapModel(world);
         map = new MoonMap(basicMap);
+        Gdx.input.setInputProcessor(inputProcessor);
 
-
+        //TODO detta kan bryta mot MVC
         inputProcessor.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         inputProcessor.punchLogic(characterOne,characterTwo);
-        Gdx.input.setInputProcessor(inputProcessor);
+
+
 
     }
 
@@ -69,67 +73,7 @@ public class PlayState extends AbstractState {
         menuMusic.play();
     }
 
-    private void createCharacterOneSprites() {
-        characterOneSprite = new Texture(characterOne.getNameOfCharacter() + ".png");
-        characterOneSpriteLeft = new Texture(characterOne.getNameOfCharacter() + "LookLeft.png");
-        characterOneSpritePunch = new Texture(characterOne.getNameOfCharacter() + "PunchRight.png");
-        characterOneSpritePunchLeft = new Texture(characterOne.getNameOfCharacter() + "PunchLeft.png");
-    }
 
-    private void createCharacterTwoSprites() {
-        characterTwoSprite = new Texture(characterTwo.getNameOfCharacter() + ".png");
-        characterTwoSpriteLeft = new Texture(characterTwo.getNameOfCharacter() + "LookLeft.png");
-        characterTwoSpritePunch = new Texture(characterTwo.getNameOfCharacter() + "PunchRight.png");
-        characterTwoSpritePunchLeft = new Texture(characterTwo.getNameOfCharacter() + "PunchLeft.png");
-    }
-
-    private Texture getSpriteChar1(){
-
-        if(x < 1){
-            currentCharacterOne = characterOneSprite;
-        }
-        if(inputProcessor.getRightPlayer1()){
-            currentCharacterOne = characterOneSprite ;
-        }
-        else if(inputProcessor.getLeftPlayer1()){
-            currentCharacterOne = characterOneSpriteLeft;
-        }
-        if(inputProcessor.isIfPlayer1_punched()){
-
-            if(inputProcessor.getLeftPlayer1()){
-                currentCharacterOne = characterOneSpritePunchLeft;
-            }else{
-                currentCharacterOne = characterOneSpritePunch;
-            }
-        }
-
-        return currentCharacterOne;
-    }
-
-    private Texture getSpriteChar2(){
-
-        if(x < 1){
-            currentCharacterTwo = characterTwoSprite;
-            x++;
-        }
-
-        if(inputProcessor.getRightPlayer2()){
-            currentCharacterTwo = characterTwoSprite ;
-        }
-        else if(inputProcessor.getLeftPlayer2()){
-            currentCharacterTwo = characterTwoSpriteLeft;
-        }
-        if(inputProcessor.isIfPlayer2_punched()){
-
-            if(inputProcessor.getLeftPlayer2()){
-                currentCharacterTwo = characterTwoSpritePunchLeft;
-            }else{
-                currentCharacterTwo = characterTwoSpritePunch;
-            }
-        }
-
-        return currentCharacterTwo;
-    }
 
 
     @Override
@@ -143,8 +87,8 @@ public class PlayState extends AbstractState {
 
 
     private void drawCharacters(SpriteBatch sb){
-        sb.draw(getSpriteChar1(),characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
-        sb.draw(getSpriteChar2(),characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(drawCharactersSprite1.getCharacterSprite(), characterOne.getPlayerMovement().getBody().getPosition().x,characterOne.getPlayerMovement().getBody().getPosition().y);
+        sb.draw(drawCharactersSprite2.getCharacterSprite(), characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
     }
 
     @Override
@@ -178,8 +122,6 @@ public class PlayState extends AbstractState {
     @Override
     public void dispose() {
         map.dispose();
-        characterOneSprite.dispose();
-        characterTwoSprite.dispose();
         frameboard.dispose();
         menuMusic.dispose();
         
