@@ -1,6 +1,7 @@
 package view;
 
 
+import controller.GameController;
 import controller.InputProcessor;
 import model.*;
 import com.badlogic.gdx.Gdx;
@@ -17,7 +18,7 @@ public class PlayState extends AbstractState {
 
     private World world = new World(new Vector2(0,-50), true);
 
-    private InputProcessor inputProcessor = new InputProcessor();
+    private GameController gameController = new GameController();
     private int i = 3,j = 3;
 
     private Character characterOne;
@@ -53,11 +54,11 @@ public class PlayState extends AbstractState {
         frameboard = new FrameBoard();
         basicMap = new MapModel(world);
         map = new MoonMap(basicMap);
-        Gdx.input.setInputProcessor(inputProcessor);
+        Gdx.input.setInputProcessor(gameController);
 
         //TODO detta kan bryta mot MVC
-        inputProcessor.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
-        inputProcessor.punchLogic(characterOne,characterTwo);
+        gameController.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
+        gameController.punchLogic(characterOne,characterTwo);
 
 
 
