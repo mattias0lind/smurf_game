@@ -62,6 +62,9 @@ public enum ImagePaths {
     //GAME ICON
     ICON("icon.png"),
 
+    //POWERUPS
+    SPEEDPOWERUP("speedPowerUp.png"),
+
     //SOUND
     GAMESOUND("piano_beat.mp3"),
     HITSOUND("roblox.mp3");
