@@ -12,8 +12,6 @@ import java.util.Objects;
 
 public class PlayerMovement implements IMovement {
 
-    private final Vector2 startPosition;
-    private final BodyDef bodyDef = new BodyDef();
     private final Body body;
 
 
@@ -22,8 +20,8 @@ public class PlayerMovement implements IMovement {
     public PlayerMovement(World world, Vector2 startPosition) {
         world = Objects.requireNonNull(world);
 
-        this.startPosition = startPosition;
-        this.bodyDef.type = BodyDef.BodyType.DynamicBody;
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(startPosition);
         bodyDef.linearDamping = 1.0f;
         body = world.createBody(bodyDef);

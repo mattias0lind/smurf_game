@@ -4,7 +4,7 @@ import java.util.*;
 
 public class CharacterNameCollection {
 
-    private List<String> allCharacterNames = new ArrayList<String>();
+    private final List<String> allCharacterNames = new ArrayList<>();
 
 
     public CharacterNameCollection(){

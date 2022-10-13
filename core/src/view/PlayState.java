@@ -3,7 +3,6 @@ package view;
 
 import com.badlogic.gdx.audio.Sound;
 import controller.GameController;
-import controller.InputProcessor;
 import model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -14,37 +13,34 @@ import model.Character;
 
 import java.util.Objects;
 
-import static java.lang.Boolean.TRUE;
-
 public class PlayState extends AbstractState {
 
 
-    private World world = new World(new Vector2(0,-50), true);
+    private final World world = new World(new Vector2(0,-50), true);
 
-    private GameController gameController = new GameController();
-    private int i = 3,j = 3;
+    private final int i = 3;
+    private final int j = 3;
 
-    private Character characterOne;
-    private Character characterTwo;
-    private CharacterFactory characterFactory = new CharacterFactory();
+    private final Character characterOne;
+    private final Character characterTwo;
     private float playerOneLastKnownHP;
     private float playerTwoLastKnownHP;
-    private Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
+    private final Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
     private Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal(ImagePaths.GAMESOUND.label));
 
     private static final Vector2 startPosition1 = new Vector2 (100,100);
     private static final Vector2 startposition2 = new Vector2 (1100, 100);
 
 
-    private FrameBoard frameboard;
-    private MapModel basicMap;
-    private MoonMap map;
+    private final FrameBoard frameboard;
+    private final MoonMap map;
 
-    private DrawCharacterSprite drawCharactersSprite1;
-    private DrawCharacterSprite drawCharactersSprite2;
+    private final DrawCharacterSprite drawCharactersSprite1;
+    private final DrawCharacterSprite drawCharactersSprite2;
 
     public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
+        CharacterFactory characterFactory = new CharacterFactory();
         this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world, startPosition1));
         this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world, startposition2));
 
@@ -58,8 +54,9 @@ public class PlayState extends AbstractState {
 
 
         frameboard = new FrameBoard();
-        basicMap = new MapModel(world);
+        MapModel basicMap = new MapModel(world);
         map = new MoonMap(basicMap);
+        GameController gameController = new GameController();
         Gdx.input.setInputProcessor(gameController);
 
         //TODO detta kan bryta mot MVC

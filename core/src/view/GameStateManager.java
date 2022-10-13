@@ -8,7 +8,7 @@ public class GameStateManager {
     private final Stack<AbstractState> states;
 
     public GameStateManager() {
-        states = new Stack<AbstractState>();
+        states = new Stack<>();
     }
 
     public void push(AbstractState state) {
