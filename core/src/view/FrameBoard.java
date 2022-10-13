@@ -11,11 +11,13 @@ import java.util.List;
 public class FrameBoard {
     /** A class that draws the top frameboard above the screen */
 
-    private Texture healthMeter, healthMeterBG, board;
+    private final Texture healthMeter;
+    private final Texture healthMeterBG;
+    private final Texture board;
     private Texture heart1, heart2;
     private final BitmapFont font;
 
-    private List<ImagePaths> heartState = new ArrayList<>();
+    private final List<ImagePaths> heartState = new ArrayList<>();
 
     public FrameBoard(){
         board = new Texture(ImagePaths.FRAMEBOARD.label);

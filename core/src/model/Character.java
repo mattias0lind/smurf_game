@@ -10,7 +10,6 @@ public abstract class Character {
     private final PlayerMovement playerMovement;
     private final String name;
     private final HealthBar healthBar;
-    private final Vector2 startPosition;
     private boolean punching = false;
 
     //TODO Ifall vi vill ha ljudet så måste det lösas i view.
@@ -18,9 +17,8 @@ public abstract class Character {
 
 
     public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
-        this.startPosition = startPosition;
         this.name = Objects.requireNonNull(nameOfCharacter);
-        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world, this.startPosition));
+        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world, startPosition));
         this.healthBar = Objects.requireNonNull(new HealthBar(hp));
     }
 

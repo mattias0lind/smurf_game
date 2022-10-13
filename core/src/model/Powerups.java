@@ -1,8 +1,6 @@
 package model;
 
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import view.MoonMap;
 
 import java.util.Objects;
 
