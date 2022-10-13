@@ -72,6 +72,17 @@ public class PlayState extends AbstractState {
 
     @Override
     public void handleInput() {
+        characterOne.getPlayerMovement().updatePlayerPosition();
+        characterTwo.getPlayerMovement().updatePlayerPosition();
+        if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
+            playerOneLastKnownHP = 100;
+            playerTwoLastKnownHP = 100;
+            robloxSound.play();
+        }
+        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
+            playerOneLastKnownHP = characterOne.getHpprocent();
+            playerTwoLastKnownHP = characterTwo.getHpprocent();
+        }
     }
 
     private void startGameMusic() {
@@ -85,17 +96,7 @@ public class PlayState extends AbstractState {
 
     @Override
     public void update(float dt) {
-        characterOne.getPlayerMovement().updatePlayerPosition();
-        characterTwo.getPlayerMovement().updatePlayerPosition();
-        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
-            playerOneLastKnownHP = characterOne.getHpprocent();
-            playerTwoLastKnownHP = characterTwo.getHpprocent();
-            robloxSound.play();
-                if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
-                    playerOneLastKnownHP = 100;
-                    playerTwoLastKnownHP = 100;
-            }
-        }
+        handleInput();
         world.step(dt,6,2);
     }
 
@@ -125,8 +126,8 @@ public class PlayState extends AbstractState {
         drawCharacters(sb);
         sb.end();
 
-        if(characterOne.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 0));}
-        if(characterTwo.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 1));}
+        if(characterOne.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 0));}
+        if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
 
     }
 

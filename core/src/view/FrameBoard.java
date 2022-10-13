@@ -70,7 +70,7 @@ public class FrameBoard {
 
 
 
-    public void heartState(Character ch1, Character ch2){
+    private void heartState(Character ch1, Character ch2){
         /** Changes the texture for number of hearts that will show.*/
         heart1 = new Texture(heartState.get(ch1.getHealthBar().getLives()).label);
         heart2 = new Texture(heartState.get(ch2.getHealthBar().getLives()).label);
