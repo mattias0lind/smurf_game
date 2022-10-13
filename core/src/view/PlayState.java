@@ -81,7 +81,7 @@ public class PlayState extends AbstractState {
     public void update(float dt) {
         characterOne.getPlayerMovement().updatePlayerPosition();
         characterTwo.getPlayerMovement().updatePlayerPosition();
-        world.step(1/60f,6,2);
+        world.step(dt,6,2);
     }
 
 

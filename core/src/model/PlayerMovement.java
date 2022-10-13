@@ -60,7 +60,7 @@ public class PlayerMovement implements IMovement {
         }
         if (moveUp) {
             if (body.getLinearVelocity().y == 0) {
-                body.applyLinearImpulse(0, 10000000, position.x, position.y, true);
+                body.applyLinearImpulse(0, 10000000, 0, 0, true);
             }
         }
         if (moveDown) {
