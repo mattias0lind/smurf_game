@@ -3,6 +3,7 @@ package view;
 
 import com.badlogic.gdx.audio.Sound;
 import controller.GameController;
+import controller.InputProcessor;
 import model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -13,34 +14,37 @@ import model.Character;
 
 import java.util.Objects;
 
+import static java.lang.Boolean.TRUE;
+
 public class PlayState extends AbstractState {
 
 
-    private final World world = new World(new Vector2(0,-50), true);
+    private World world = new World(new Vector2(0,-50), true);
 
-    private final int i = 3;
-    private final int j = 3;
+    private GameController gameController = new GameController();
+    private int i = 3,j = 3;
 
-    private final Character characterOne;
-    private final Character characterTwo;
+    private Character characterOne;
+    private Character characterTwo;
+    private CharacterFactory characterFactory = new CharacterFactory();
     private float playerOneLastKnownHP;
     private float playerTwoLastKnownHP;
-    private final Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
+    private Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
     private Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal(ImagePaths.GAMESOUND.label));
 
     private static final Vector2 startPosition1 = new Vector2 (100,100);
     private static final Vector2 startposition2 = new Vector2 (1100, 100);
 
 
-    private final FrameBoard frameboard;
-    private final MoonMap map;
+    private FrameBoard frameboard;
+    private MapModel basicMap;
+    private MoonMap map;
 
-    private final DrawCharacterSprite drawCharactersSprite1;
-    private final DrawCharacterSprite drawCharactersSprite2;
+    private DrawCharacterSprite drawCharactersSprite1;
+    private DrawCharacterSprite drawCharactersSprite2;
 
     public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
         super(gsm);
-        CharacterFactory characterFactory = new CharacterFactory();
         this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world, startPosition1));
         this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world, startposition2));
 
@@ -54,9 +58,8 @@ public class PlayState extends AbstractState {
 
 
         frameboard = new FrameBoard();
-        MapModel basicMap = new MapModel(world);
+        basicMap = new MapModel(world);
         map = new MoonMap(basicMap);
-        GameController gameController = new GameController();
         Gdx.input.setInputProcessor(gameController);
 
         //TODO detta kan bryta mot MVC
@@ -69,6 +72,17 @@ public class PlayState extends AbstractState {
 
     @Override
     public void handleInput() {
+        characterOne.getPlayerMovement().updatePlayerPosition();
+        characterTwo.getPlayerMovement().updatePlayerPosition();
+        if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
+            playerOneLastKnownHP = 100;
+            playerTwoLastKnownHP = 100;
+            robloxSound.play();
+        }
+        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
+            playerOneLastKnownHP = characterOne.getHpprocent();
+            playerTwoLastKnownHP = characterTwo.getHpprocent();
+        }
     }
 
     private void startGameMusic() {
@@ -82,18 +96,8 @@ public class PlayState extends AbstractState {
 
     @Override
     public void update(float dt) {
-        characterOne.getPlayerMovement().updatePlayerPosition();
-        characterTwo.getPlayerMovement().updatePlayerPosition();
-        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
-            playerOneLastKnownHP = characterOne.getHpprocent();
-            playerTwoLastKnownHP = characterTwo.getHpprocent();
-            robloxSound.play();
-                if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
-                    playerOneLastKnownHP = 100;
-                    playerTwoLastKnownHP = 100;
-            }
-        }
-        world.step(dt,6,9999);
+        handleInput();
+        world.step(dt,6,2);
     }
 
 
@@ -108,14 +112,22 @@ public class PlayState extends AbstractState {
     public void render(SpriteBatch sb) {
         update((float) 0.016);
 
+        if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
+            MoonMap.speedPowerUp.dispose();
+        }
+
+        if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
+            MoonMap.speedPowerUp.dispose();
+        }
+
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawCharacters(sb);
         sb.end();
 
-        if(characterOne.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 0));}
-        if(characterTwo.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 1));}
+        if(characterOne.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 0));}
+        if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
 
     }
 

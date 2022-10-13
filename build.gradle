@@ -62,3 +62,7 @@ project(":core") {
 
     }
 }
+
+dependencies {
+
+}

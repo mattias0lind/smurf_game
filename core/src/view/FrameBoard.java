@@ -11,13 +11,11 @@ import java.util.List;
 public class FrameBoard {
     /** A class that draws the top frameboard above the screen */
 
-    private final Texture healthMeter;
-    private final Texture healthMeterBG;
-    private final Texture board;
+    private Texture healthMeter, healthMeterBG, board;
     private Texture heart1, heart2;
     private final BitmapFont font;
 
-    private final List<ImagePaths> heartState = new ArrayList<>();
+    private List<ImagePaths> heartState = new ArrayList<>();
 
     public FrameBoard(){
         board = new Texture(ImagePaths.FRAMEBOARD.label);
@@ -72,14 +70,14 @@ public class FrameBoard {
 
 
 
-    public void heartState(Character ch1, Character ch2){
-        /* Changes the texture for number of hearts that will show.*/
+    private void heartState(Character ch1, Character ch2){
+        /** Changes the texture for number of hearts that will show.*/
         heart1 = new Texture(heartState.get(ch1.getHealthBar().getLives()).label);
         heart2 = new Texture(heartState.get(ch2.getHealthBar().getLives()).label);
     }
 
     public void drawBoard(SpriteBatch sb, Character ch1, Character ch2){
-        /* Draw out the top frame board with all the information */
+        /** Draw out the top frame board with all the information */
 
         board(sb);
         healthMeter(sb, ch1,ch2);
@@ -87,7 +85,7 @@ public class FrameBoard {
         hearts(sb,ch1,ch2);}
 
     public void dispose() {
-        /* Disposes all the textures created by this class */
+        /** Disposes all the textures created by this class */
 
         board.dispose();
         healthMeterBG.dispose();
