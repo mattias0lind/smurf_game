@@ -1,11 +1,12 @@
 package model;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.ContactListener;
 import view.MoonMap;
 
 import java.util.Objects;
 
-public abstract class Powerups {
+public abstract class Powerups implements ContactListener {
 
     private Rectangle rectangle;
     private final String name;
@@ -20,18 +21,18 @@ public abstract class Powerups {
     }
 
     public void CollisionAction(Character player) {
-
     }
 
-   /* public boolean CheckIfPLayerGotPowerup(Character player) {
-        if(player.getPlayerMovement().getBody().getPosition().x == 430){
-            if (player.getPlayerMovement().getBody().getPosition().y == 400) {
+    public static boolean CheckIfPlayerGotPowerup(Character player) {
+        if(player.getPlayerMovement().getBody().getPosition().x > 200 && player.getPlayerMovement().getBody().getPosition().x < 500){
+            if(player.getPlayerMovement().getBody().getPosition().y > 200 && player.getPlayerMovement().getBody().getPosition().y < 500) {
                 return true;
             }
         }
         return false;
     }
 
-    */
+
+
     //decide action of collision
 }

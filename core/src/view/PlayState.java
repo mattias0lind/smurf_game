@@ -13,6 +13,8 @@ import model.Character;
 
 import java.util.Objects;
 
+import static java.lang.Boolean.TRUE;
+
 public class PlayState extends AbstractState {
 
 
@@ -95,6 +97,14 @@ public class PlayState extends AbstractState {
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
+
+        if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
+            MoonMap.speedPowerUp.dispose();
+        }
+
+        if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
+            MoonMap.speedPowerUp.dispose();
+        }
 
         sb.begin();
         map.drawMap(sb);
