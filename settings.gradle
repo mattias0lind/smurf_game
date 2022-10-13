@@ -1,1 +1,6 @@
 include 'desktop', 'core'
+include 'Test'
+findProject(':Test')?.name = 'test'
+include 'test'
+include 'test'
+

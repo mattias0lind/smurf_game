@@ -6,14 +6,12 @@ import com.badlogic.gdx.physics.box2d.World;
 import java.util.Objects;
 
 
-public abstract class Character {
+public class Character {
     private final PlayerMovement playerMovement;
     private final String name;
     private final HealthBar healthBar;
     private boolean punching = false;
 
-    //TODO Ifall vi vill ha ljudet så måste det lösas i view.
-    //Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
 
 
     public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
