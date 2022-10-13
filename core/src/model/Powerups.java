@@ -6,7 +6,7 @@ import view.MoonMap;
 
 import java.util.Objects;
 
-public abstract class Powerups implements ContactListener {
+public abstract class Powerups {
 
     private Rectangle rectangle;
     private final String name;
