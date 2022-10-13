@@ -14,6 +14,8 @@ import model.Character;
 
 import java.util.Objects;
 
+import static java.lang.Boolean.TRUE;
+
 public class PlayState extends AbstractState {
 
 
@@ -70,6 +72,17 @@ public class PlayState extends AbstractState {
 
     @Override
     public void handleInput() {
+        characterOne.getPlayerMovement().updatePlayerPosition();
+        characterTwo.getPlayerMovement().updatePlayerPosition();
+        if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
+            playerOneLastKnownHP = 100;
+            playerTwoLastKnownHP = 100;
+            robloxSound.play();
+        }
+        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
+            playerOneLastKnownHP = characterOne.getHpprocent();
+            playerTwoLastKnownHP = characterTwo.getHpprocent();
+        }
     }
 
     private void startGameMusic() {
@@ -83,17 +96,7 @@ public class PlayState extends AbstractState {
 
     @Override
     public void update(float dt) {
-        characterOne.getPlayerMovement().updatePlayerPosition();
-        characterTwo.getPlayerMovement().updatePlayerPosition();
-        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
-            playerOneLastKnownHP = characterOne.getHpprocent();
-            playerTwoLastKnownHP = characterTwo.getHpprocent();
-            robloxSound.play();
-                if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
-                    playerOneLastKnownHP = 100;
-                    playerTwoLastKnownHP = 100;
-            }
-        }
+        handleInput();
         world.step(dt,6,2);
     }
 
@@ -108,6 +111,14 @@ public class PlayState extends AbstractState {
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
+
+        if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
+            MoonMap.speedPowerUp.dispose();
+        }
+
+        if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
+            MoonMap.speedPowerUp.dispose();
+        }
 
         sb.begin();
         map.drawMap(sb);
