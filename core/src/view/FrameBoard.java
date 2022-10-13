@@ -34,7 +34,8 @@ public class FrameBoard {
     }
 
 
-    private void hearts(SpriteBatch sb) {
+    private void hearts(SpriteBatch sb, Character ch1, Character ch2) {
+        heartState(ch1,ch2);
         sb.draw(heart1, 50, 650, 100, 40);
         sb.draw(heart2, 1080, 650, 100, 40);}
 
@@ -69,10 +70,10 @@ public class FrameBoard {
 
 
 
-    public void heartState(int numberOfHearts1, int numberOfHearts2) {
+    public void heartState(Character ch1, Character ch2){
         /** Changes the texture for number of hearts that will show.*/
-        heart1 = new Texture(heartState.get(numberOfHearts1).label);
-        heart2 = new Texture(heartState.get(numberOfHearts2).label);
+        heart1 = new Texture(heartState.get(ch1.getHealthBar().getLives()).label);
+        heart2 = new Texture(heartState.get(ch2.getHealthBar().getLives()).label);
     }
 
     public void drawBoard(SpriteBatch sb, Character ch1, Character ch2){
@@ -81,7 +82,7 @@ public class FrameBoard {
         board(sb);
         healthMeter(sb, ch1,ch2);
         drawPlayerNames(sb);
-        hearts(sb);}
+        hearts(sb,ch1,ch2);}
 
     public void dispose() {
         /** Disposes all the textures created by this class */
