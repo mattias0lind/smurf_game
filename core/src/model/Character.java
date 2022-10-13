@@ -10,7 +10,7 @@ public abstract class Character {
     private final PlayerMovement playerMovement;
     private final String name;
     private final HealthBar healthBar;
-    private final Vector2 position;
+    private final Vector2 startPosition;
     private final float attackDamage = 10;
     private boolean punching = false;
 
@@ -18,10 +18,10 @@ public abstract class Character {
     //Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
 
 
-    public Character(String nameOfCharacter, World world, float hp, Vector2 position) {
-        this.position = position;
+    public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
+        this.startPosition = startPosition;
         this.name = Objects.requireNonNull(nameOfCharacter);
-        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world, this.position));
+        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world, this.startPosition));
         this.healthBar = Objects.requireNonNull(new HealthBar(hp));
     }
 
