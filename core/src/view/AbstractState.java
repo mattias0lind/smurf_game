@@ -12,6 +12,6 @@ abstract class AbstractState implements IState {
         cam = new OrthographicCamera();
     }
 
-    public void update(float dt){handleInput();};
+    public void update(float dt){handleInput();}
 
 }
