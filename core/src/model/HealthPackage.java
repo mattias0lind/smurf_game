@@ -1,9 +1,9 @@
 package model;
 
-public class Healthpackage extends Powerups {
+public class HealthPackage extends Powerups {
     private String name;
 
-    public Healthpackage() {
+    public HealthPackage() {
         super("healthPackage");
     }
 
