@@ -1,6 +1,7 @@
 package view;
 
 
+import com.badlogic.gdx.audio.Sound;
 import controller.GameController;
 import controller.InputProcessor;
 import model.*;
@@ -26,12 +27,13 @@ public class PlayState extends AbstractState {
     private Character characterOne;
     private Character characterTwo;
     private CharacterFactory characterFactory = new CharacterFactory();
+    private float playerOneLastKnownHP;
+    private float playerTwoLastKnownHP;
+    private Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
+    private Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal(ImagePaths.GAMESOUND.label));
 
-
-    private Music menuMusic;
-
-    private final Vector2 startPosition1 = new Vector2 (100,100);
-    private final Vector2 startposition2 = new Vector2 (1100, 100);
+    private static final Vector2 startPosition1 = new Vector2 (100,100);
+    private static final Vector2 startposition2 = new Vector2 (1100, 100);
 
 
     private FrameBoard frameboard;
@@ -47,6 +49,8 @@ public class PlayState extends AbstractState {
         this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world, startposition2));
 
         startGameMusic();
+        playerOneLastKnownHP = characterOne.getHpprocent();
+        playerTwoLastKnownHP = characterTwo.getHpprocent();
 
 
         drawCharactersSprite1 = new DrawCharacterSprite(characterOne);
@@ -83,7 +87,16 @@ public class PlayState extends AbstractState {
     public void update(float dt) {
         characterOne.getPlayerMovement().updatePlayerPosition();
         characterTwo.getPlayerMovement().updatePlayerPosition();
-        world.step(1/60f,6,2);
+        if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
+            playerOneLastKnownHP = characterOne.getHpprocent();
+            playerTwoLastKnownHP = characterTwo.getHpprocent();
+            robloxSound.play();
+                if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
+                    playerOneLastKnownHP = 100;
+                    playerTwoLastKnownHP = 100;
+            }
+        }
+        world.step(dt,6,2);
     }
 
 
@@ -112,22 +125,9 @@ public class PlayState extends AbstractState {
         drawCharacters(sb);
         sb.end();
 
-        if (characterOne.getHpprocent()== 0 || (characterTwo.getHpprocent()==0)){
-            if(characterOne.getHpprocent()==0){
-                this.i =i-1;
-                if(i==0){
-                    gsm.set(new EndGameState(gsm, 0));
-                    dispose();
-                }
-                frameboard.heartState(i,j);
-                characterOne.restoreHP();
-            }else{
-                this.j =j-1;
-                if(j==0){
-                    gsm.set(new EndGameState(gsm, 1));
-                    dispose();}
-                frameboard.heartState(i,j);
-                characterTwo.restoreHP();}}
+        if(characterOne.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 0));}
+        if(characterTwo.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 1));}
+
     }
 
     @Override
@@ -135,7 +135,8 @@ public class PlayState extends AbstractState {
         map.dispose();
         frameboard.dispose();
         menuMusic.dispose();
-        
+        robloxSound.dispose();
+
     }
 }
 

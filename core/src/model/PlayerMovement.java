@@ -12,19 +12,19 @@ import java.util.Objects;
 
 public class PlayerMovement implements IMovement {
 
-    private final Vector2 position;
+    private final Vector2 startPosition;
     private final BodyDef bodyDef = new BodyDef();
     private final Body body;
 
 
     private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
-    public PlayerMovement(World world, Vector2 position) {
+    public PlayerMovement(World world, Vector2 startPosition) {
         world = Objects.requireNonNull(world);
 
-        this.position = position;
+        this.startPosition = startPosition;
         this.bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(position);
+        bodyDef.position.set(startPosition);
         bodyDef.linearDamping = 1.0f;
         body = world.createBody(bodyDef);
         FixtureDef fixtureDef = new FixtureDef();
@@ -60,7 +60,7 @@ public class PlayerMovement implements IMovement {
         }
         if (moveUp) {
             if (body.getLinearVelocity().y == 0) {
-                body.applyLinearImpulse(0, 10000000, position.x, position.y, true);
+                body.applyLinearImpulse(0, 10000000, 0, 0, true);
             }
         }
         if (moveDown) {
