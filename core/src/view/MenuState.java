@@ -32,10 +32,7 @@ public class MenuState extends AbstractState {
         }
     }
 
-    @Override
-    public void update(float dt) {
-        handleInput();
-    }
+
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
