@@ -3,8 +3,8 @@ package view;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 abstract class AbstractState implements IState {
-    protected OrthographicCamera cam;
-    protected GameStateManager gsm;
+    protected final OrthographicCamera cam;
+    protected final GameStateManager gsm;
 
 
     protected AbstractState(GameStateManager gsm) { //This is the parental class to all states. It has a few attributes
@@ -12,6 +12,6 @@ abstract class AbstractState implements IState {
         cam = new OrthographicCamera();
     }
 
-    public void update(float dt){handleInput();};
+    public void update(float dt){handleInput();}
 
 }

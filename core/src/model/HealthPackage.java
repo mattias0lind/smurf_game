@@ -11,4 +11,5 @@ public class HealthPackage extends Powerups {
     public void CollisionAction(Character player) {
         player.restoreHP();
     }
+
 }
