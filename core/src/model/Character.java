@@ -35,6 +35,8 @@ public abstract class Character {
         return playerMovement;
     }
 
+    public HealthBar getHealthBar(){return healthBar;}
+
     public void punch(Character character) {
         float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
         float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;

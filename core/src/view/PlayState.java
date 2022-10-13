@@ -14,6 +14,8 @@ import model.Character;
 
 import java.util.Objects;
 
+import static java.lang.Boolean.TRUE;
+
 public class PlayState extends AbstractState {
 
 
@@ -110,28 +112,23 @@ public class PlayState extends AbstractState {
     public void render(SpriteBatch sb) {
         update((float) 0.016);
 
+        if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
+            MoonMap.speedPowerUp.dispose();
+        }
+
+        if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
+            MoonMap.speedPowerUp.dispose();
+        }
+
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawCharacters(sb);
         sb.end();
 
-        if (characterOne.getHpprocent()== 0 || (characterTwo.getHpprocent()==0)){
-            if(characterOne.getHpprocent()==0){
-                this.i =i-1;
-                if(i==0){
-                    gsm.set(new EndGameState(gsm, 0));
-                    dispose();
-                }
-                frameboard.heartState(i,j);
-                characterOne.restoreHP();
-            }else{
-                this.j =j-1;
-                if(j==0){
-                    gsm.set(new EndGameState(gsm, 1));
-                    dispose();}
-                frameboard.heartState(i,j);
-                characterTwo.restoreHP();}}
+        if(characterOne.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 0));}
+        if(characterTwo.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 1));}
+
     }
 
     @Override
