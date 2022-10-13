@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MenuState extends AbstractState {
     private final Texture menuBackground,playButton,quitButton;
-    private MenuInputProcessor menuInputProcessor = new MenuInputProcessor() ;
+    private final MenuInputProcessor menuInputProcessor = new MenuInputProcessor() ;
 
     /** Menustate constructor, images are collected from ENUM class ImagePaths and then assigned. */
     public MenuState(GameStateManager gsm) {

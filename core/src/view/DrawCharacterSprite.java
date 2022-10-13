@@ -5,8 +5,12 @@ import com.badlogic.gdx.graphics.Texture;
 import model.Character;
 
 public class DrawCharacterSprite {
-    private Character character;
-    private Texture characterSpriteRight,characterSpriteLeft,characterSpritePunchLeft,characterSpritePunchRight,currentCharacterSprite;
+    private final Character character;
+    private final Texture characterSpriteRight;
+    private final Texture characterSpriteLeft;
+    private final Texture characterSpritePunchLeft;
+    private final Texture characterSpritePunchRight;
+    private Texture currentCharacterSprite;
 
     DrawCharacterSprite( Character character){
         this.character = character;

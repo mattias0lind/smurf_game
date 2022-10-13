@@ -33,7 +33,6 @@ public class GameController extends controller.InputProcessor {
         }
         if (i == Input.Keys.RIGHT) {
             player2.moveRight(true);
-            ;
         }
         if (i == Input.Keys.UP) {
             player2.moveUp(true);

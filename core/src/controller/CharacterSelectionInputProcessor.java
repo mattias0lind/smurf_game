@@ -6,7 +6,7 @@ public class CharacterSelectionInputProcessor extends controller.InputProcessor{
     @Override
     public boolean touchDown(int screenX, int screenY, int i2, int whichButton) {
 
-        if((((screenY>580)&&(screenY<683))&&((screenX>417)&&(screenX<860)))&&(whichButton == 0)){
+        if(((screenY>580)&&(screenY<683)&&((screenX>417)&&(screenX<860)))&&(whichButton == 0)){
             return true;
         }
 
@@ -22,14 +22,7 @@ public class CharacterSelectionInputProcessor extends controller.InputProcessor{
             return true;
         }
 
-        if (((screenY>310)&&(screenY<340))&&((screenX>1170)&&(screenX<1200))&&(whichButton == 4)){
-            return true;
-        }
-        return false;
-
-
-
-
+        return ((screenY > 310) && (screenY < 340)) && ((screenX > 1170) && (screenX < 1200)) && (whichButton == 4);
 
 
     }

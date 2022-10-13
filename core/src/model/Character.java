@@ -11,7 +11,6 @@ public abstract class Character {
     private final String name;
     private final HealthBar healthBar;
     private final Vector2 startPosition;
-    private final float attackDamage = 10;
     private boolean punching = false;
 
     //TODO Ifall vi vill ha ljudet så måste det lösas i view.
@@ -42,6 +41,7 @@ public abstract class Character {
         float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
 
         if (-20 <= yDiff && yDiff <= 20){
+            float attackDamage = 10;
             if (0 <= xDiff && xDiff <= 64 && playerMovement.getMoveRight()){
                 character.gotHit(attackDamage);
             }
@@ -57,10 +57,7 @@ public abstract class Character {
     }
 
     public boolean charactersCurrentDirection(){
-        if(playerMovement.getMoveLeft()){
-            return true;
-        }
-        return false;
+        return playerMovement.getMoveLeft();
     }
 
     public boolean getIsPunching(){

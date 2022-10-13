@@ -1,7 +1,6 @@
 package model;
 
 import com.badlogic.gdx.math.Rectangle;
-import view.MoonMap;
 
 import java.util.Objects;
 
@@ -23,15 +22,5 @@ public abstract class Powerups {
 
     }
 
-   /* public boolean CheckIfPLayerGotPowerup(Character player) {
-        if(player.getPlayerMovement().getBody().getPosition().x == 430){
-            if (player.getPlayerMovement().getBody().getPosition().y == 400) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    */
     //decide action of collision
 }
