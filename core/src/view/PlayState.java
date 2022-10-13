@@ -115,8 +115,8 @@ public class PlayState extends AbstractState {
         drawCharacters(sb);
         sb.end();
 
-        if(characterOne.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 0));}
-        if(characterTwo.getHealthBar().getLives() == 0){gsm.set(new EndGameState(gsm, 1));}
+        if(characterOne.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 0));}
+        if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
 
     }
 
