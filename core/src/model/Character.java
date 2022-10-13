@@ -40,7 +40,7 @@ public abstract class Character {
         float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
 
         if (-20 <= yDiff && yDiff <= 20){
-            if (0 <= xDiff && xDiff <= 16 && playerMovement.getMoveRight()){
+            if (0 <= xDiff && xDiff <= 64 && playerMovement.getMoveRight()){
                 character.gotHit(attackDamage);
             }
             if (-64 <= xDiff && xDiff <= 0 && playerMovement.getMoveLeft()){
