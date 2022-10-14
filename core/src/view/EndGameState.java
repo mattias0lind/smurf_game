@@ -20,7 +20,7 @@ public class EndGameState extends AbstractState {
         super(gsm);
         winner1Sprite = new Sprite(winner1Texture = new Texture("game_over_screen_player_1.png"));
         winner2Sprite = new Sprite(winner2Texture = new Texture("game_over_screen_player_2.png"));
-        this.numberOfPlayerThatWon = Objects.requireNonNull(numberOfPlayerThatWon);
+        this.numberOfPlayerThatWon = numberOfPlayerThatWon;
 
 
 

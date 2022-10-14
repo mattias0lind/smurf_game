@@ -10,7 +10,6 @@ public class DrawCharacterSprite {
     private final Texture characterSpriteLeft;
     private final Texture characterSpritePunchLeft;
     private final Texture characterSpritePunchRight;
-    private Texture currentCharacterSprite;
 
     DrawCharacterSprite( Character character){
         this.character = character;

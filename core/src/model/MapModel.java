@@ -2,7 +2,6 @@ package model;
 
 import com.badlogic.gdx.physics.box2d.World;
 
-import java.util.Objects;
 
 public class MapModel{
     private final GroundFloor groundFloor;

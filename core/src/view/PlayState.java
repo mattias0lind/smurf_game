@@ -34,7 +34,7 @@ public class PlayState extends AbstractState {
 
     private final FrameBoard frameboard;
     private final MoonMap map;
-    private float time = 10;
+
 
     private RoundTimer roundTimer;
 
