@@ -3,6 +3,7 @@ package view;
 
 import com.badlogic.gdx.audio.Sound;
 import controller.GameController;
+import controller.RoundTimer;
 import model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -18,8 +19,7 @@ public class PlayState extends AbstractState {
 
     private final World world = new World(new Vector2(0,-50), true);
 
-    private final int i = 3;
-    private final int j = 3;
+
 
     private final Character characterOne;
     private final Character characterTwo;
@@ -36,9 +36,11 @@ public class PlayState extends AbstractState {
     private final MoonMap map;
     private float time = 10;
 
+    private RoundTimer roundTimer;
 
     private final DrawCharacterSprite drawCharactersSprite1;
     private final DrawCharacterSprite drawCharactersSprite2;
+
 
     public PlayState(GameStateManager gsm, int count1 , int count2){
         super(gsm);
@@ -65,7 +67,7 @@ public class PlayState extends AbstractState {
         gameController.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         gameController.punchLogic(characterOne,characterTwo);
 
-
+        roundTimer = new RoundTimer();
 
     }
 
@@ -99,6 +101,7 @@ public class PlayState extends AbstractState {
     public void update(float dt) {
         handleInput();
         world.step(dt,6,2);
+
     }
 
 
@@ -113,16 +116,11 @@ public class PlayState extends AbstractState {
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
+
+
         float deltaTime = Gdx.graphics.getDeltaTime();
-        time -= deltaTime;
 
-        if(time < 0){
-            if(characterOne.getHpprocent() < characterTwo.getHpprocent()){
-
-            }
-
-            time = 10;
-        }
+        roundTimer.RoundTimer(deltaTime,characterOne,characterTwo);
 
 
 
@@ -139,6 +137,8 @@ public class PlayState extends AbstractState {
         drawCharacters(sb);
         sb.end();
     }
+
+
 
     @Override
     public void dispose() {
