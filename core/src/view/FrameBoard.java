@@ -84,7 +84,9 @@ public class FrameBoard {
         board(sb);
         healthMeter(sb, ch1,ch2);
         drawPlayerNames(sb);
-        hearts(sb,ch1,ch2);}
+        hearts(sb,ch1,ch2);
+
+    }
 
     public void dispose() {
         /** Disposes all the textures created by this class */

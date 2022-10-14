@@ -2,6 +2,8 @@ package view;
 
 
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import controller.GameController;
 import controller.RoundTimer;
 import model.*;
@@ -34,6 +36,9 @@ public class PlayState extends AbstractState {
 
     private final FrameBoard frameboard;
     private final MoonMap map;
+    private float Time;
+    private int intTime;
+    private final BitmapFont font;
 
 
     private RoundTimer roundTimer;
@@ -69,6 +74,7 @@ public class PlayState extends AbstractState {
 
         roundTimer = new RoundTimer();
 
+        font = new BitmapFont();
     }
 
     @Override
@@ -105,7 +111,13 @@ public class PlayState extends AbstractState {
     }
 
 
+    private void drawTimer(SpriteBatch sb,float Time){
+        intTime = Math.round(Time);
+        CharSequence Timer = (String.valueOf(intTime));
+        font.draw(sb,Timer,630,690);
 
+
+    }
 
 
     private void drawCharacters(SpriteBatch sb){
@@ -119,8 +131,7 @@ public class PlayState extends AbstractState {
 
 
         float deltaTime = Gdx.graphics.getDeltaTime();
-
-        roundTimer.RoundTimer(deltaTime,characterOne,characterTwo);
+        Time = roundTimer.RoundTimer(deltaTime,characterOne,characterTwo);
 
 
 
@@ -134,6 +145,7 @@ public class PlayState extends AbstractState {
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
+        drawTimer(sb,Time);
         drawCharacters(sb);
         sb.end();
     }
