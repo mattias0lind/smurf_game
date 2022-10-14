@@ -3,11 +3,16 @@ package controller;
 
 import model.Character;
 
+import java.util.Objects;
+
 public class RoundTimer{
     private float Time = 10;
-    Character character1,character2;
+
 
     public float RoundTimer(float Timer,Character character1, Character character2){
+        Objects.requireNonNull(character1);
+        Objects.requireNonNull(character2);
+
         Time -= Timer;
         System.out.println(Time);
 

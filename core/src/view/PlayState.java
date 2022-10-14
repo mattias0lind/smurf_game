@@ -114,7 +114,7 @@ public class PlayState extends AbstractState {
     private void drawTimer(SpriteBatch sb,float Time){
         intTime = Math.round(Time);
         CharSequence Timer = (String.valueOf(intTime));
-        font.draw(sb,Timer,630,690);
+        font.draw(sb,Timer,635,690);
 
 
     }
