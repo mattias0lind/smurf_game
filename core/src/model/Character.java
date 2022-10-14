@@ -16,8 +16,8 @@ public class Character {
 
     public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
         this.name = Objects.requireNonNull(nameOfCharacter);
-        this.playerMovement = Objects.requireNonNull(new PlayerMovement(world, startPosition));
-        this.healthBar = Objects.requireNonNull(new HealthBar(hp));
+        this.playerMovement = new PlayerMovement(world, startPosition);
+        this.healthBar = new HealthBar(hp);
     }
 
 
