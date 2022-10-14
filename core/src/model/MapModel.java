@@ -10,7 +10,6 @@ public class MapModel{
     private final StaticMapElements plattForm1, plattForm2, plattForm3;
 
     public MapModel(World world){
-        world = Objects.requireNonNull(world);
         groundFloor = new GroundFloor(world);
         invisibleWall1 = new StaticMapElements(world, 0, 0, 20, 2000);
         invisibleWall2 = new StaticMapElements(world, 1250, 0, 20, 2000);

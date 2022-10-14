@@ -13,7 +13,13 @@ public class Character {
     private boolean punching = false;
 
 
-
+    /**
+     *
+     * @param nameOfCharacter
+     * @param world
+     * @param hp
+     * @param startPosition
+     */
     public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
         this.name = Objects.requireNonNull(nameOfCharacter);
         this.playerMovement = new PlayerMovement(world, startPosition);
@@ -21,17 +27,32 @@ public class Character {
     }
 
 
-
+    /**
+     *
+     * @return
+     */
     public String getNameOfCharacter() {
         return this.name;
     }
 
+    /**
+     *
+     * @return
+     */
     public PlayerMovement getPlayerMovement() {
         return playerMovement;
     }
 
+    /**
+     *
+     * @return
+     */
     public HealthBar getHealthBar(){return healthBar;}
 
+    /**
+     *
+     * @param character
+     */
     public void punch(Character character) {
         float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
         float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
@@ -48,26 +69,49 @@ public class Character {
 
     }
 
+    /**
+     *
+     * @param t
+     */
     public void punching(Boolean t){
         punching = t;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean charactersCurrentDirection(){
         return playerMovement.getMoveLeft();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getIsPunching(){
         return punching;
     }
 
+    /**
+     *
+     */
     public void restoreHP() {
         healthBar.maxHP();
     }
 
+    /**
+     *
+     * @return
+     */
     public float getHpprocent() {
         return healthBar.getHpPercentage();
     }
 
+    /**
+     *
+     * @param attackDamage
+     */
     public void gotHit(float attackDamage) {
         healthBar.loseHP(attackDamage);
     }

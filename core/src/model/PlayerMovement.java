@@ -18,7 +18,6 @@ public class PlayerMovement implements IMovement {
     private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
     public PlayerMovement(World world, Vector2 startPosition) {
-        world = Objects.requireNonNull(world);
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;

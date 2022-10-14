@@ -16,7 +16,6 @@ public class HealthBar {
 
     /** Called when you want your player to lose HP depending on the damage taken. */
     public void loseHP(float damage) {
-        damage = Objects.requireNonNull(damage);
         hp = hp - damage;
         if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
             if(lives < 0){lives = 0;}

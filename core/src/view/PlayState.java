@@ -16,7 +16,7 @@ import java.util.Objects;
 public class PlayState extends AbstractState {
 
 
-    private final World world = new World(new Vector2(0,-50), true);
+    private final World world = new World(new Vector2(0,-100), true);
 
 
     private final Character characterOne;
