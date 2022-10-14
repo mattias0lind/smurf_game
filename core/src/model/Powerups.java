@@ -4,13 +4,13 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Objects;
 
-public abstract class Powerups {
+public class Powerups {
 
     private Rectangle rectangle;
     private final String name;
 
     public Powerups(String name) {
-        rectangle.set((float) (Math.random() * 1280), (float) (Math.random() * 720), 16, 16);
+       // rectangle.set((float) (Math.random() * 1280), (float) (Math.random() * 720), 16, 16);
         this.name = Objects.requireNonNull(name);
     }
 
@@ -19,6 +19,7 @@ public abstract class Powerups {
     }
 
     public void CollisionAction(Character player) {
+        CheckIfPlayerGotPowerup(player);
     }
 
     public static boolean CheckIfPlayerGotPowerup(Character player) {
@@ -32,5 +33,5 @@ public abstract class Powerups {
 
 
 
-    //decide action of collision
+
 }
