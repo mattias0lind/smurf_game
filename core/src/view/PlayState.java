@@ -16,8 +16,10 @@ import java.util.Objects;
 public class PlayState extends AbstractState {
 
 
-    private final World world = new World(new Vector2(0,-100), true);
+    private final World world = new World(new Vector2(0,-50), true);
 
+    private final int i = 3;
+    private final int j = 3;
 
     private final Character characterOne;
     private final Character characterTwo;
@@ -38,11 +40,11 @@ public class PlayState extends AbstractState {
     private final DrawCharacterSprite drawCharactersSprite1;
     private final DrawCharacterSprite drawCharactersSprite2;
 
-    public PlayState(GameStateManager gsm, String characterNameOne , String characterNameTwo){
+    public PlayState(GameStateManager gsm, int count1 , int count2){
         super(gsm);
         CharacterFactory characterFactory = new CharacterFactory();
-        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(characterNameOne, world, startPosition1));
-        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(characterNameTwo, world, startposition2));
+        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(count1, world, startPosition1));
+        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(count2, world, startposition2));
 
         startGameMusic();
         playerOneLastKnownHP = characterOne.getHpprocent();
@@ -51,7 +53,6 @@ public class PlayState extends AbstractState {
 
         drawCharactersSprite1 = new DrawCharacterSprite(characterOne);
         drawCharactersSprite2 = new DrawCharacterSprite(characterTwo);
-
 
 
         frameboard = new FrameBoard();
@@ -72,19 +73,21 @@ public class PlayState extends AbstractState {
     public void handleInput() {
         characterOne.getPlayerMovement().updatePlayerPosition();
         characterTwo.getPlayerMovement().updatePlayerPosition();
-        if(playerOneLastKnownHP == 0 || playerTwoLastKnownHP == 0){
-            playerOneLastKnownHP = 100;
-            playerTwoLastKnownHP = 100;
-            robloxSound.play();
-        }
+        if(playerOneLastKnownHP < characterOne.getHpprocent()){playerOneLastKnownHP = 110;}
+        if(playerTwoLastKnownHP < characterTwo.getHpprocent()){playerTwoLastKnownHP = 110;}
         if(playerOneLastKnownHP > characterOne.getHpprocent() || playerTwoLastKnownHP > characterTwo.getHpprocent()){
             playerOneLastKnownHP = characterOne.getHpprocent();
             playerTwoLastKnownHP = characterTwo.getHpprocent();
+            robloxSound.play();
         }
+        if(characterOne.getHealthBar().getLives() == 0){
+            dispose();
+            gsm.set(new EndGameState(gsm, 0));
+        }
+        if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
     }
 
     private void startGameMusic() {
-        menuMusic = Gdx.audio.newMusic(Gdx.files.internal("piano_beat.mp3"));
         menuMusic.setLooping(true);
         menuMusic.play();
     }
@@ -96,8 +99,9 @@ public class PlayState extends AbstractState {
     public void update(float dt) {
         handleInput();
         world.step(dt,6,2);
-
     }
+
+
 
 
 
@@ -129,19 +133,11 @@ public class PlayState extends AbstractState {
         if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
             MoonMap.speedPowerUp.dispose();
         }
-
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawCharacters(sb);
         sb.end();
-
-        if(characterOne.getHealthBar().getLives() == 0){
-            dispose();
-            gsm.set(new EndGameState(gsm, 0));
-        }
-        if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
-
     }
 
     @Override

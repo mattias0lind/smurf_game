@@ -1,11 +1,11 @@
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import model.MapModel;
-import model.SmurfCharacter;
 import model.StaticMapElements;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.Assert.assertTrue;
 
 public class MapTest {
 

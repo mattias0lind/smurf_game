@@ -2,7 +2,7 @@ package view;
 
 import com.badlogic.gdx.Input;
 import controller.CharacterSelectionInputProcessor;
-import model.CharacterNameCollection;
+import model.CharacterFactory;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,19 +23,15 @@ public class CharacterSelectionState extends AbstractState {
     private final Texture rightArrow1;
     private final Texture playButton;
     private final CharacterSelectionInputProcessor characterSelectionInputProcessor = new CharacterSelectionInputProcessor();
-
-
-
-
-    private final CharacterNameCollection allCharacterNames = new CharacterNameCollection();
+    private final CharacterFactory characterNames = new CharacterFactory();
 
     public CharacterSelectionState(GameStateManager gsm){
         super(gsm);
         Gdx.input.setInputProcessor(characterSelectionInputProcessor);
         characterSelectionBackground = new Texture(CLOUDS.label);
 
-        cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
-        cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
+        cardSlot1 = new Texture(characterNames.getCharacterName(slotCounter1) + "Card.png");
+        cardSlot2 = new Texture(characterNames.getCharacterName(slotCounter2) + "Card.png");
 
         leftArrow1 = new Texture(ImagePaths.LEFTARROW.label);
         rightArrow1 = new Texture(ImagePaths.RIGHTARROW.label);
@@ -56,35 +52,35 @@ public class CharacterSelectionState extends AbstractState {
             e.printStackTrace();
         }
 
-            if((Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) || Gdx.input.isTouched() ){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) || Gdx.input.isTouched() ){
 
             if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,0)){
-                gsm.set(new PlayState(gsm, allCharacterNames.getCharacter(slotCounter1), allCharacterNames.getCharacter(slotCounter2)));
+                gsm.set(new PlayState(gsm, slotCounter1, slotCounter2));
                 dispose();
             }
             else if (characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,1)){
                 if (slotCounter1 == 0)
-                    slotCounter1 = allCharacterNames.getLength();
-                slotCounter1 = (slotCounter1 - 1) % allCharacterNames.getLength();
-                cardSlot1 = new Texture(allCharacterNames.getCharacter(slotCounter1) + "Card.png");
+                    slotCounter1 = characterNames.getLength();
+                slotCounter1 = (slotCounter1 - 1) % characterNames.getLength();
+                cardSlot1 = new Texture(characterNames.getCharacterName(slotCounter1) + "Card.png");
             }
 
             else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,2)){
-                slotCounter1 = (slotCounter1 + 1) % allCharacterNames.getLength();
-                cardSlot1 = new Texture (allCharacterNames.getCharacter(slotCounter1) + "Card.png");
+                slotCounter1 = (slotCounter1 + 1) % characterNames.getLength();
+                cardSlot1 = new Texture (characterNames.getCharacterName(slotCounter1) + "Card.png");
             }
 
             else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,3)){
                 if(slotCounter2 == 0)
-                    slotCounter2 = allCharacterNames.getLength();
-                slotCounter2 = (slotCounter2 - 1) % allCharacterNames.getLength();
-                cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
+                    slotCounter2 = characterNames.getLength();
+                slotCounter2 = (slotCounter2 - 1) % characterNames.getLength();
+                cardSlot2 = new Texture(characterNames.getCharacterName(slotCounter2) + "Card.png");
 
             }
 
             else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,4)){
-                slotCounter2 = (slotCounter2 + 1) % allCharacterNames.getLength();
-                cardSlot2 = new Texture(allCharacterNames.getCharacter(slotCounter2) + "Card.png");
+                slotCounter2 = (slotCounter2 + 1) % characterNames.getLength();
+                cardSlot2 = new Texture(characterNames.getCharacterName(slotCounter2) + "Card.png");
             }}
     }
 

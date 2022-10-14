@@ -1,13 +1,11 @@
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
-import model.EvilSmurfCharacter;
-import model.LillaMyCharacter;
-import model.SanicCharacter;
-import model.SmurfCharacter;
-import org.junit.jupiter.api.Test;
+import model.Character;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.Assert.assertTrue;
 
 public class SpecificGameCharactersTest {
 
@@ -15,7 +13,7 @@ public class SpecificGameCharactersTest {
     public void testSmurfCharacter() {
         Vector2 position = new Vector2();
         World world = new World(position,false);
-        SmurfCharacter smurf = new SmurfCharacter(world,position);
+        Character smurf = new Character("smurf",world,100,position);
         assertTrue(smurf.getNameOfCharacter() == "Smurf");
     }
 
@@ -23,7 +21,7 @@ public class SpecificGameCharactersTest {
     public void testSanicCharacter() {
         Vector2 position = new Vector2();
         World world = new World(position,false);
-        SanicCharacter sanic = new SanicCharacter(world,position);
+        Character sanic = new Character("sanic",world,100 ,position);
         assertTrue(sanic.getNameOfCharacter() == "sanic");
     }
 
@@ -31,7 +29,7 @@ public class SpecificGameCharactersTest {
     public void testLillayMyCharacter() {
         Vector2 position = new Vector2();
         World world = new World(position,false);
-        LillaMyCharacter lillamy = new LillaMyCharacter(world,position);
+        Character lillamy = new Character("lillamy", world, 100,position);
         assertTrue(lillamy.getNameOfCharacter() == "lillamy");
     }
 
@@ -39,7 +37,7 @@ public class SpecificGameCharactersTest {
     public void testEvilSmurfCharacter() {
         Vector2 position = new Vector2();
         World world = new World(position,false);
-        EvilSmurfCharacter evilsmurf = new EvilSmurfCharacter(world,position);
+        Character evilsmurf = new Character("evilsmurf",world,100,position);
         assertTrue(evilsmurf.getNameOfCharacter() == "evilsmurf");
     }
 

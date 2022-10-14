@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 import java.util.*;
 
@@ -17,4 +17,4 @@ public class CharacterNameCollection {
     public String getCharacter(int index){return allCharacterNames.get(index);}
 
     public int getLength(){return allCharacterNames.size();}
-}
+}*/
