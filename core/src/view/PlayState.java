@@ -18,8 +18,6 @@ public class PlayState extends AbstractState {
 
     private final World world = new World(new Vector2(0,-50), true);
 
-    private final int i = 3;
-    private final int j = 3;
 
     private final Character characterOne;
     private final Character characterTwo;
@@ -34,6 +32,8 @@ public class PlayState extends AbstractState {
 
     private final FrameBoard frameboard;
     private final MoonMap map;
+    private float time = 10;
+
 
     private final DrawCharacterSprite drawCharactersSprite1;
     private final DrawCharacterSprite drawCharactersSprite2;
@@ -51,6 +51,7 @@ public class PlayState extends AbstractState {
 
         drawCharactersSprite1 = new DrawCharacterSprite(characterOne);
         drawCharactersSprite2 = new DrawCharacterSprite(characterTwo);
+
 
 
         frameboard = new FrameBoard();
@@ -95,8 +96,8 @@ public class PlayState extends AbstractState {
     public void update(float dt) {
         handleInput();
         world.step(dt,6,2);
-    }
 
+    }
 
 
 
@@ -108,6 +109,18 @@ public class PlayState extends AbstractState {
     @Override
     public void render(SpriteBatch sb) {
         update((float) 0.016);
+        float deltaTime = Gdx.graphics.getDeltaTime();
+        time -= deltaTime;
+
+        if(time < 0){
+            if(characterOne.getHpprocent() < characterTwo.getHpprocent()){
+
+            }
+
+            time = 10;
+        }
+
+
 
         if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
             MoonMap.speedPowerUp.dispose();
@@ -123,7 +136,10 @@ public class PlayState extends AbstractState {
         drawCharacters(sb);
         sb.end();
 
-        if(characterOne.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 0));}
+        if(characterOne.getHealthBar().getLives() == 0){
+            dispose();
+            gsm.set(new EndGameState(gsm, 0));
+        }
         if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
 
     }

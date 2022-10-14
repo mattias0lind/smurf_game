@@ -1,6 +1,13 @@
 package view;
 
-import com.badlogic.gdx.utils.Timer;
 
-public class RoundTimer extends Timer {
+
+public class RoundTimer{
+    private float Time;
+
+    public void RoundTimer(float Time){
+        this.Time = Time;
+
+    }
+
 }
