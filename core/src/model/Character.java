@@ -9,8 +9,12 @@ import java.util.Objects;
 public class Character {
     private final PlayerMovement playerMovement;
     private final String name;
-    private final HealthBar healthBar;
     private boolean punching = false;
+
+    private float hp;
+    private final float maxHp;
+    private int lives;
+
 
 
     /**
@@ -23,7 +27,9 @@ public class Character {
     public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
         this.name = Objects.requireNonNull(nameOfCharacter);
         this.playerMovement = new PlayerMovement(world, startPosition);
-        this.healthBar = new HealthBar(hp);
+        this.lives = 3;
+        this.hp = hp;
+        this.maxHp = hp;
     }
 
 
@@ -43,11 +49,7 @@ public class Character {
         return playerMovement;
     }
 
-    /**
-     *
-     * @return
-     */
-    public HealthBar getHealthBar(){return healthBar;}
+
 
     /**
      *
@@ -97,7 +99,7 @@ public class Character {
      *
      */
     public void restoreHP() {
-        healthBar.maxHP();
+        hp = maxHp;
     }
 
     /**
@@ -105,7 +107,7 @@ public class Character {
      * @return
      */
     public float getHpprocent() {
-        return healthBar.getHpPercentage();
+       return hp/maxHp;
     }
 
     /**
@@ -113,8 +115,30 @@ public class Character {
      * @param attackDamage
      */
     public void gotHit(float attackDamage) {
-        healthBar.loseHP(attackDamage);
+        hp = hp - attackDamage;
+        if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
+        if(lives < 0){lives = 0;}
     }
+
+    /** Called when you want your player to lose HP depending on the damage taken. */
+    public void loseHP(float damage) {
+        hp = hp - damage;
+        if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
+        if(lives < 0){lives = 0;}
+    }
+
+
+    public int getLives(){return lives;}
+
+    public float getHpPercentage() {return hp / maxHp;}
+
+
+    /** Restores your character HP to max. */
+    public void maxHP() {
+        hp = maxHp;
+    }
+
+
 }
 
 

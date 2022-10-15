@@ -88,11 +88,11 @@ public class PlayState extends AbstractState {
             playerTwoLastKnownHP = characterTwo.getHpprocent();
             robloxSound.play();
         }
-        if(characterOne.getHealthBar().getLives() == 0){
+        if(characterOne.getLives() == 0){
             dispose();
             gsm.set(new EndGameState(gsm, 0));
         }
-        if(characterTwo.getHealthBar().getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
+        if(characterTwo.getLives() == 0){dispose(); gsm.set(new EndGameState(gsm, 1));}
     }
 
     private void startGameMusic() {
