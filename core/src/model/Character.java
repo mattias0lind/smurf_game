@@ -102,6 +102,10 @@ public class Character {
         hp = maxHp;
     }
 
+    public float getHP(){
+        return hp;
+    }
+
     /**
      *
      * @return
@@ -120,17 +124,17 @@ public class Character {
         if(lives < 0){lives = 0;}
     }
 
-    /** Called when you want your player to lose HP depending on the damage taken. */
+   /* /** Called when you want your player to lose HP depending on the damage taken.
     public void loseHP(float damage) {
         hp = hp - damage;
         if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
         if(lives < 0){lives = 0;}
-    }
+    }*/
 
 
     public int getLives(){return lives;}
 
-    public float getHpPercentage() {return hp / maxHp;}
+
 
 
     /** Restores your character HP to max. */
