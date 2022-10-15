@@ -63,11 +63,12 @@ public enum ImagePaths {
     ICON("icon.png"),
 
     //POWERUPS
-    SPEEDPOWERUP("speedPowerUp.png"),
+    HEALTHPOWERUP("healthPowerUp.png"),
 
     //SOUND
     GAMESOUND("piano_beat.mp3"),
     HITSOUND("roblox.mp3");
+
 
     public final String label;
     ImagePaths(String label) {

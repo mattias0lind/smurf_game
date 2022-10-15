@@ -12,7 +12,8 @@ public class MoonMap {
     private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
     private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
 
-    public static final Texture speedPowerUp = new Texture(ImagePaths.SPEEDPOWERUP.label);
+    public static final Texture speedPowerUp = new Texture(ImagePaths.HEALTHPOWERUP.label);
+
     private final Texture backgroundTexture;
     private final Sprite backgroundSprite;
     private final MapModel mapModel;

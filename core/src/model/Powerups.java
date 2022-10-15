@@ -23,8 +23,8 @@ public class Powerups {
     }
 
     public static boolean CheckIfPlayerGotPowerup(Character player) {
-        if(player.getPlayerMovement().getBody().getPosition().x > 200 && player.getPlayerMovement().getBody().getPosition().x < 500){
-            if(player.getPlayerMovement().getBody().getPosition().y > 200 && player.getPlayerMovement().getBody().getPosition().y < 500) {
+        if(player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){
+            if(player.getPlayerMovement().getBody().getPosition().y > 230 && player.getPlayerMovement().getBody().getPosition().y < 250) {
                 return true;
             }
         }

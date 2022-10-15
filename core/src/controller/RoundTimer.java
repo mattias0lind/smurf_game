@@ -6,29 +6,32 @@ import model.Character;
 import java.util.Objects;
 
 public class RoundTimer{
-    private float Time = 10;
+    private float time = 10;
 
 
-    public float RoundTimer(float Timer,Character character1, Character character2){
+    public float RoundTimer(float timer,Character character1, Character character2){
         Objects.requireNonNull(character1);
         Objects.requireNonNull(character2);
 
-        Time -= Timer;
-        System.out.println(Time);
+        time -= timer;
+        System.out.println(time);
 
-        if(Time < 0){
-            if(character1.getHpprocent() > character2.getHpprocent()){
+        if(time < 0){
+            if (character1.getHpprocent() > character2.getHpprocent()) {
                 character2.gotHit(100);
                 character1.restoreHP();
-            }else{
+            }
+            else if(character1.getHpprocent() < character2.getHpprocent()){
                 character1.gotHit(100);
                 character2.restoreHP();
             }
-
-
-            Time = 10 ;
+            else {
+                character1.restoreHP();
+                character2.restoreHP();
+            }
+            time = 10;
         }
-        return Time;
+        return time;
 
 
     }
