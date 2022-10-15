@@ -6,7 +6,7 @@ import model.PlayerMovement;
 
 public class GameController extends controller.InputProcessor {
     private PlayerMovement player, player2;
-    private Character player1_punch, player2_punch;
+    private Character player1Punch, player2_punch;
 
 
     public void movementLogic(PlayerMovement player, PlayerMovement player2) {
@@ -15,9 +15,9 @@ public class GameController extends controller.InputProcessor {
     }
 
 
-    public void punchLogic(Character player1_punch, Character player2_punch) {
-        this.player1_punch = player1_punch;
-        this.player2_punch = player2_punch;
+    public void punchLogic(Character player1Punch, Character player2Punch) {
+        this.player1Punch = player1Punch;
+        this.player2_punch = player2Punch;
 
     }
 
@@ -52,13 +52,13 @@ public class GameController extends controller.InputProcessor {
         if (i == Input.Keys.S) {player.moveDown(true);}
 
         if (i == Input.Keys.F) {
-            player1_punch.punch(player2_punch);
-            player1_punch.punching(true);
+            player1Punch.punch(player2_punch);
+            player1Punch.punching(true);
 
         }
 
         if (i == Input.Keys.M) {
-            player2_punch.punch(player1_punch);
+            player2_punch.punch(player1Punch);
             player2_punch.punching(true);
 
 
@@ -80,7 +80,7 @@ public class GameController extends controller.InputProcessor {
             player2.moveDown(false);
         }
         if (i == Input.Keys.F) {
-            player1_punch.punching(false);
+            player1Punch.punching(false);
 
         }
 

@@ -29,13 +29,13 @@ public class PlayState extends AbstractState {
     private final Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
     private Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal(ImagePaths.GAMESOUND.label));
 
-    private static final Vector2 startPosition1 = new Vector2 (100,100);
-    private static final Vector2 startposition2 = new Vector2 (1100, 100);
+    private static final Vector2 START_POSITION_1 = new Vector2 (100,100);
+    private static final Vector2 STARTPOSITION_2 = new Vector2 (1100, 100);
 
 
     private final FrameBoard frameboard;
     private final MoonMap map;
-    private float Time;
+    private float time;
     private int intTime;
     private final BitmapFont font;
 
@@ -49,8 +49,8 @@ public class PlayState extends AbstractState {
     public PlayState(GameStateManager gsm, int count1 , int count2){
         super(gsm);
         CharacterFactory characterFactory = new CharacterFactory();
-        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(count1, world, startPosition1));
-        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(count2, world, startposition2));
+        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(count1, world, START_POSITION_1));
+        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(count2, world, STARTPOSITION_2));
 
         startGameMusic();
         playerOneLastKnownHP = characterOne.getHpprocent();
@@ -110,10 +110,10 @@ public class PlayState extends AbstractState {
     }
 
 
-    private void drawTimer(SpriteBatch sb,float Time){
-        intTime = Math.round(Time);
-        CharSequence Timer = (String.valueOf(intTime));
-        font.draw(sb,Timer,635,690);
+    private void drawTimer(SpriteBatch sb,float time){
+        intTime = Math.round(time);
+        CharSequence timer = (String.valueOf(intTime));
+        font.draw(sb,timer,635,690);
 
 
     }
@@ -130,22 +130,22 @@ public class PlayState extends AbstractState {
 
 
         float deltaTime = Gdx.graphics.getDeltaTime();
-        Time = roundTimer.RoundTimer(deltaTime,characterOne,characterTwo);
+        time = roundTimer.roundTimer(deltaTime,characterOne,characterTwo);
 
 
-        if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
-            Powerups.CollisionAction(characterOne);
-            MoonMap.healthPowerUp.dispose();
+        if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
+            Powerups.collisionAction(characterOne);
+            MoonMap.HEALTH_POWER_UP.dispose();
         }
 
-        if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
-            Powerups.CollisionAction(characterTwo);
-            MoonMap.healthPowerUp.dispose();
+        if(Powerups.checkIfPlayerGotPowerup(characterTwo)) {
+            Powerups.collisionAction(characterTwo);
+            MoonMap.HEALTH_POWER_UP.dispose();
         }
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
-        drawTimer(sb,Time);
+        drawTimer(sb, time);
         drawCharacters(sb);
         sb.end();
     }

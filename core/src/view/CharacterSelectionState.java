@@ -59,8 +59,9 @@ public class CharacterSelectionState extends AbstractState {
                 dispose();
             }
             else if (characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,1)){
-                if (slotCounter1 == 0)
+                if (slotCounter1 == 0){
                     slotCounter1 = characterNames.getLength();
+                }
                 slotCounter1 = (slotCounter1 - 1) % characterNames.getLength();
                 cardSlot1 = new Texture(characterNames.getCharacterName(slotCounter1) + "Card.png");
             }
@@ -71,8 +72,9 @@ public class CharacterSelectionState extends AbstractState {
             }
 
             else if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,3)){
-                if(slotCounter2 == 0)
+                if(slotCounter2 == 0){
                     slotCounter2 = characterNames.getLength();
+                }
                 slotCounter2 = (slotCounter2 - 1) % characterNames.getLength();
                 cardSlot2 = new Texture(characterNames.getCharacterName(slotCounter2) + "Card.png");
 

@@ -1,6 +1,5 @@
 package model;
 
-import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Objects;
 
@@ -17,11 +16,11 @@ public class Powerups {
         return name;
     }
 
-    public static void CollisionAction(Character player) {
+    public static void collisionAction(Character player) {
         player.restoreHP();
     }
 
-    public static boolean CheckIfPlayerGotPowerup(Character player) {
+    public static boolean checkIfPlayerGotPowerup(Character player) {
             if(player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){
                 if(player.getPlayerMovement().getBody().getPosition().y > 230 && player.getPlayerMovement().getBody().getPosition().y < 250) {
                     return true;

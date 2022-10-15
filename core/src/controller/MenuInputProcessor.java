@@ -12,7 +12,9 @@ public class MenuInputProcessor extends controller.InputProcessor {
         }
 
 
-        else return (((screenY > 500) && (screenY < 635)) && ((screenX > 420) && (screenX < 850))) && (whichmenubutton == 1);
+        else{
+            return (((screenY > 500) && (screenY < 635)) && ((screenX > 420) && (screenX < 850))) && (whichmenubutton == 1);
+        }
 
 
     }

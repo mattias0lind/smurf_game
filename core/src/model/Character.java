@@ -56,8 +56,8 @@ public class Character {
      * @param character
      */
     public void punch(Character character) {
-        float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
-        float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
+        final float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
+        final float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
 
         if (-20 <= yDiff && yDiff <= 20){
             float attackDamage = 10;

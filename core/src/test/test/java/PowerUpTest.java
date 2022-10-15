@@ -16,8 +16,8 @@ public class PowerUpTest {
         World world = new World(vector2,false);
         Character character = new Character("Test",world,1,vector2);
         Character character2 = new Character("TestingWrongPos",world,1,vectorWrongPos);
-        powerUp.CollisionAction(character);
-        powerUp.CollisionAction(character2);
+        powerUp.collisionAction(character);
+        powerUp.collisionAction(character2);
         assertTrue(powerUp.getName() == "Test");
     }
 
