@@ -28,7 +28,7 @@ public class EndGameState extends AbstractState {
 
     @Override
     public void handleInput() {
-        if((Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) || (Gdx.input.isTouched()) ){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY) || Gdx.input.isTouched() ){
             gsm.set(new MenuState(gsm));
             dispose();
 

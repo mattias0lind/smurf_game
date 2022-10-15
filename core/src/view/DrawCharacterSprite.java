@@ -22,14 +22,14 @@ public class DrawCharacterSprite {
 
 
     public Texture getCharacterSprite(){
-        if(character.getPlayerMovement().getlookingLeft()){
-            if(character.getIsPunching()){
+        if(character.getPlayerMovement().isLookingLeft()){
+            if(character.isPunching()){
              return characterSpritePunchLeft;
             }
             return characterSpriteLeft;
 
         }else{
-            if(character.getIsPunching()){return characterSpritePunchRight;}return characterSpriteRight;}
+            if(character.isPunching()){return characterSpritePunchRight;}return characterSpriteRight;}
 
 
 

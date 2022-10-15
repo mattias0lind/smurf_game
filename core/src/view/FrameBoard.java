@@ -64,8 +64,8 @@ public class FrameBoard {
 
 
     private void drawPlayerNames(SpriteBatch sb){
-        CharSequence nameText1 = ("Player 1");
-        CharSequence nameText2 = ("Player 2");
+        CharSequence nameText1 = "Player 1";
+        CharSequence nameText2 = "Player 2";
 
         font.draw(sb, nameText1, 170, 705);
         font.draw(sb, nameText2, 1020, 705);}

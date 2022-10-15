@@ -44,13 +44,14 @@ public class PlayerMovement implements IMovement {
     }
 
     public void updatePlayerPosition() {
+        float speed = 100;
         if (moveLeft) {
-            if (body.getLinearVelocity().x >= -100) {
+            if (body.getLinearVelocity().x >= -speed) {
                 this.body.applyForceToCenter(-100, 0, true);
             }
         }
         if (moveRight) {
-            if (body.getLinearVelocity().x <= 100) {
+            if (body.getLinearVelocity().x <= speed) {
                 this.body.applyForceToCenter(100, 0, true);
             }
         }
@@ -87,14 +88,14 @@ public class PlayerMovement implements IMovement {
 
     }
 
-    public boolean getMoveRight() {
+    public boolean isMovingRight() {
         return moveRight;
     }
 
-    public boolean getMoveLeft() {
+    public boolean isMovingLeft() {
         return moveLeft;
     }
-    public boolean getlookingLeft() {
+    public boolean isLookingLeft() {
         return lookingLeft;
     }
 

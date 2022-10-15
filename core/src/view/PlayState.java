@@ -112,7 +112,7 @@ public class PlayState extends AbstractState {
 
     private void drawTimer(SpriteBatch sb,float time){
         intTime = Math.round(time);
-        CharSequence timer = (String.valueOf(intTime));
+        CharSequence timer = String.valueOf(intTime);
         font.draw(sb,timer,635,690);
 
 
@@ -126,10 +126,11 @@ public class PlayState extends AbstractState {
 
     @Override
     public void render(SpriteBatch sb) {
-        update((float) 0.016);
 
 
         float deltaTime = Gdx.graphics.getDeltaTime();
+        update(deltaTime);
+
         time = roundTimer.roundTimer(deltaTime,characterOne,characterTwo);
 
 

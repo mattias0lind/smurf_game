@@ -56,15 +56,15 @@ public class Character {
      * @param character
      */
     public void punch(Character character) {
-        final float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
-        final float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
+        float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
+        float xDiff = character.getPlayerMovement().getBody().getPosition().x - playerMovement.getBody().getPosition().x;
 
         if (-20 <= yDiff && yDiff <= 20){
             float attackDamage = 10;
-            if (0 <= xDiff && xDiff <= 64 && playerMovement.getMoveRight()){
+            if (0 <= xDiff && xDiff <= 64 && playerMovement.isMovingRight()){
                 character.gotHit(attackDamage);
             }
-            if (-64 <= xDiff && xDiff <= 0 && playerMovement.getMoveLeft()){
+            if (-64 <= xDiff && xDiff <= 0 && playerMovement.isMovingLeft()){
                 character.gotHit(attackDamage);
             }
         }
@@ -84,14 +84,14 @@ public class Character {
      * @return
      */
     public boolean charactersCurrentDirection(){
-        return playerMovement.getMoveLeft();
+        return playerMovement.isMovingLeft();
     }
 
     /**
      *
      * @return
      */
-    public boolean getIsPunching(){
+    public boolean isPunching(){
         return punching;
     }
 

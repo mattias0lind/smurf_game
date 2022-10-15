@@ -4,9 +4,9 @@ import com.badlogic.gdx.Input;
 import model.Character;
 import model.PlayerMovement;
 
-public class GameController extends controller.InputProcessor {
+public class GameController extends InputProcessor {
     private PlayerMovement player, player2;
-    private Character player1Punch, player2_punch;
+    private Character player1Punch, player2Punch;
 
 
     public void movementLogic(PlayerMovement player, PlayerMovement player2) {
@@ -17,7 +17,7 @@ public class GameController extends controller.InputProcessor {
 
     public void punchLogic(Character player1Punch, Character player2Punch) {
         this.player1Punch = player1Punch;
-        this.player2_punch = player2Punch;
+        this.player2Punch = player2Punch;
 
     }
 
@@ -52,14 +52,14 @@ public class GameController extends controller.InputProcessor {
         if (i == Input.Keys.S) {player.moveDown(true);}
 
         if (i == Input.Keys.F) {
-            player1Punch.punch(player2_punch);
+            player1Punch.punch(player2Punch);
             player1Punch.punching(true);
 
         }
 
         if (i == Input.Keys.M) {
-            player2_punch.punch(player1Punch);
-            player2_punch.punching(true);
+            player2Punch.punch(player1Punch);
+            player2Punch.punching(true);
 
 
         }
@@ -100,7 +100,7 @@ public class GameController extends controller.InputProcessor {
         }
         if (i == Input.Keys.M) {
 
-            player2_punch.punching(false);
+            player2Punch.punching(false);
         }
         return true;
     }

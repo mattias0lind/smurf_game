@@ -52,7 +52,7 @@ public class CharacterSelectionState extends AbstractState {
             e.printStackTrace();
         }
 
-        if((Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) || Gdx.input.isTouched() ){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY) || Gdx.input.isTouched() ){
 
             if(characterSelectionInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(), 0,0)){
                 gsm.set(new PlayState(gsm, slotCounter1, slotCounter2));

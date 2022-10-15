@@ -22,7 +22,7 @@ public class RoundTimer{
 
         time -= timer;
 
-        if((character1.getLives() < char1AmountOfLives)) {
+        if(character1.getLives() < char1AmountOfLives) {
             char1AmountOfLives = character1.getLives();
             time = 15;
         }else if(character2.getLives() < char2amountOfLives){

@@ -26,7 +26,6 @@ public class MenuState extends AbstractState {
                 gsm.set(new CharacterSelectionState(gsm));
                 dispose();
             } else if (menuInputProcessor.touchDown(Gdx.input.getX(), Gdx.input.getY(),0,1)) {
-                System.out.println("Thanks for playing! The game is now shutting down :(");
                 System.exit(0);
             }
         }

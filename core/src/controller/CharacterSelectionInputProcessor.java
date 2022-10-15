@@ -2,7 +2,7 @@ package controller;
 
 
 
-public class CharacterSelectionInputProcessor extends controller.InputProcessor{
+public class CharacterSelectionInputProcessor extends InputProcessor{
     @Override
     public boolean touchDown(int screenX, int screenY, int i2, int whichButton) {
 
