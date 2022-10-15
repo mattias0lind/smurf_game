@@ -7,9 +7,9 @@ public class HealthPackage extends Powerups {
         super("healthPackage");
     }
 
-    @Override
+    /*@Override
     public void CollisionAction(Character player) {
         player.restoreHP();
-    }
+    } */
 
 }

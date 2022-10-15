@@ -134,13 +134,14 @@ public class PlayState extends AbstractState {
         Time = roundTimer.RoundTimer(deltaTime,characterOne,characterTwo);
 
 
-
         if(Powerups.CheckIfPlayerGotPowerup(characterOne)) {
-            MoonMap.speedPowerUp.dispose();
+            Powerups.CollisionAction(characterOne);
+            MoonMap.healthPowerUp.dispose();
         }
 
         if(Powerups.CheckIfPlayerGotPowerup(characterTwo)) {
-            MoonMap.speedPowerUp.dispose();
+            Powerups.CollisionAction(characterTwo);
+            MoonMap.healthPowerUp.dispose();
         }
         sb.begin();
         map.drawMap(sb);

@@ -6,7 +6,7 @@ import model.Character;
 import java.util.Objects;
 
 public class RoundTimer{
-    private float time = 10;
+    private float time = 15;
 
 
     public float RoundTimer(float timer,Character character1, Character character2){
@@ -29,7 +29,7 @@ public class RoundTimer{
                 character1.restoreHP();
                 character2.restoreHP();
             }
-            time = 10;
+            time = 15;
         }
         return time;
 

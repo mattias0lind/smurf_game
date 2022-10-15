@@ -18,16 +18,16 @@ public class Powerups {
         return name;
     }
 
-    public void CollisionAction(Character player) {
-        CheckIfPlayerGotPowerup(player);
+    public static void CollisionAction(Character player) {
+        player.restoreHP();
     }
 
     public static boolean CheckIfPlayerGotPowerup(Character player) {
-        if(player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){
-            if(player.getPlayerMovement().getBody().getPosition().y > 230 && player.getPlayerMovement().getBody().getPosition().y < 250) {
-                return true;
+            if(player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){
+                if(player.getPlayerMovement().getBody().getPosition().y > 230 && player.getPlayerMovement().getBody().getPosition().y < 250) {
+                    return true;
+                }
             }
-        }
         return false;
     }
 

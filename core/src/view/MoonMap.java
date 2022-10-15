@@ -12,7 +12,7 @@ public class MoonMap {
     private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
     private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
 
-    public static final Texture speedPowerUp = new Texture(ImagePaths.HEALTHPOWERUP.label);
+    public static final Texture healthPowerUp = new Texture(ImagePaths.HEALTHPOWERUP.label);
 
     private final Texture backgroundTexture;
     private final Sprite backgroundSprite;
@@ -30,7 +30,7 @@ public class MoonMap {
         sb.draw(moonStone, mapModel.getPlattForm2().getPosX()-40,mapModel.getPlattForm2().getPosY()-18, mapModel.getPlattForm2().getWidth()+104,mapModel.getPlattForm2().getHeight()+84);
         sb.draw(moonStone, mapModel.getplattForm3().getPosX()-40,mapModel.getplattForm3().getPosY()-18, mapModel.getplattForm3().getWidth()+104,mapModel.getplattForm3().getHeight()+84);
         sb.draw(groundFloor, 0, mapModel.getGroundFloor().getPosY(),mapModel.getGroundFloor().getWidth(),mapModel.getGroundFloor().getHeight()+30);
-        sb.draw(speedPowerUp, 430, mapModel.getPlattForm2().getPosY()+43);
+        sb.draw(healthPowerUp, 430, mapModel.getPlattForm2().getPosY()+43);
     }
 
     public void dispose(){
