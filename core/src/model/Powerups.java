@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class Powerups {
 
-    private Rectangle rectangle;
     private final String name;
 
     public Powerups(String name) {

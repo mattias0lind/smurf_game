@@ -3,7 +3,6 @@ package view;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import controller.GameController;
 import controller.RoundTimer;
 import model.*;
