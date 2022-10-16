@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/** A class for accessing all objects in map.
+ *
+ */
 public class MapModel{
     private final GroundFloor groundFloor;
     private final StaticMapElements invisibleWall1,invisibleWall2;
@@ -13,6 +16,9 @@ public class MapModel{
     List<StaticMapElements> platForms = new ArrayList<>();
     List<StaticMapElements> invisibleWall = new ArrayList<>();
 
+    /**
+     * @param world passed as to initialise created objects in simulated world
+     */
     public MapModel(World world){
         groundFloor = new GroundFloor(world);
         invisibleWall1 = new StaticMapElements(world, 0, 0, 20, 2000);
@@ -32,19 +38,22 @@ public class MapModel{
 
     }
 
+    /**
+     * @return list of platforms with type staticmapelement
+     */
     public List<StaticMapElements> getPlatForms() {return platForms;}
+
+    /**
+     * @return list of invisible walls with type staticmapelement
+     */
     public List<StaticMapElements> getInvisibleWall() {return invisibleWall;}
 
+    /**
+     * @return ground floor
+     */
     public GroundFloor getGroundFloor() {return groundFloor;}
 
-    // public StaticMapElements getInvisibleWall1() {return invisibleWall1;}
-    // public StaticMapElements getInvisibleWall2() {return invisibleWall2;}
 
-    // public StaticMapElements getPlattForm1() {return plattForm1;}
-
-    // public StaticMapElements getPlattForm2() {return plattForm2;}
-
-    // public StaticMapElements getplattForm3() {return plattForm3;}
 
 }
 

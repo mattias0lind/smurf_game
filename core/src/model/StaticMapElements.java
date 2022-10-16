@@ -7,10 +7,20 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 
+/**
+ * class for creating a static object in world.
+ */
 public class StaticMapElements {
 
     private final int posX, posY, width, height;
 
+    /**
+     * @param world Box2D world, creates instance of static object in this world. initialises physics
+     * @param posX position x coordinate
+     * @param posY position y coordinate
+     * @param width self-explanatory
+     * @param height self-explanatory
+     */
     public StaticMapElements(World world, int posX, int posY, int width, int height) {
 
         BodyDef bodyDef = new BodyDef();
@@ -31,6 +41,10 @@ public class StaticMapElements {
         this.height = height;
 
     }
+
+    /*
+    getters for position and dimensions of mapobject
+     */
     public int getPosX() {return posX;}
     public int getPosY() {return posY;}
     public int getWidth() {return width;}
