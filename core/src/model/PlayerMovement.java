@@ -9,6 +9,9 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 
 
+/**
+ * Class for initialising physics and handle movement for character
+ */
 public class PlayerMovement implements IMovement {
 
     private final Body body;
@@ -16,6 +19,11 @@ public class PlayerMovement implements IMovement {
 
     private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
+    /**constructor for creating movement and physics for character.
+     *
+     * @param world passed as parameter to initialize body in world, box2d
+     * @param startPosition initalises starting position in world
+     */
     public PlayerMovement(World world, Vector2 startPosition) {
 
         BodyDef bodyDef = new BodyDef();
@@ -32,17 +40,17 @@ public class PlayerMovement implements IMovement {
     }
 
 
+    /**
+     * @return return box2d body. used to modify its physical properties
+     */
     public Body getBody() {
         return body;
     }
 
 
-
-    @Override
-    public void setPlayerPosition(float playerXPosition, float playerYPosition) {
-        this.body.setLinearVelocity(playerXPosition, playerYPosition);
-    }
-
+    /**
+     * modifies position of body, calls on every step of game and decided by controller
+     */
     public void updatePlayerPosition() {
         float speed = 100;
         if (moveLeft) {
@@ -65,36 +73,58 @@ public class PlayerMovement implements IMovement {
         }
 
     }
-    //TODO glöm inte ta bort view saker från här bara för debugging
+
+    /**
+     * @param t sets moveleft to t. decides movement from controller
+     */
     public void moveLeft(boolean t) {
         moveLeft = t;
         lookingLeft = true;
 
     }
 
+    /**
+     * @param t sets moveleft to t. decides movement from controller
+     */
     public void moveRight(boolean t) {
         moveRight = t;
         lookingLeft = false;
 
     }
 
+    /**
+     * @param t sets moveleft to t. decides movement from controller
+     */
     public void moveUp(boolean t) {
         moveUp = t;
 
     }
 
+    /**
+     * @param t sets moveleft to t. decides movement from controller
+     */
     public void moveDown(boolean t) {
         moveDown = t;
 
     }
 
+    /** used in punching to decide where to punch
+     * @return returns state of right movement
+     */
     public boolean isMovingRight() {
         return moveRight;
     }
 
+    /**used in punching to decide where to punch
+     * @return returns state of left movement
+     */
     public boolean isMovingLeft() {
         return moveLeft;
     }
+
+    /** helps in drawing direction of texture
+     * @return state of looking
+     */
     public boolean isLookingLeft() {
         return lookingLeft;
     }

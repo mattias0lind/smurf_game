@@ -6,6 +6,9 @@ import com.badlogic.gdx.physics.box2d.World;
 import java.util.Objects;
 
 
+/** Character class, used to handle all things necessary for a character
+ *
+ */
 public class Character {
     private final PlayerMovement playerMovement;
     private final String name;
@@ -17,12 +20,12 @@ public class Character {
 
 
 
-    /**
+    /**Constructor for character used in game.
      *
-     * @param nameOfCharacter
-     * @param world
-     * @param hp
-     * @param startPosition
+     * @param nameOfCharacter name of character, used in selection and image processing
+     * @param world World is used to place the physcial body in the world, creates physics relation
+     * @param hp sets the amount of healthpoints a character has
+     * @param startPosition initialises position at start of game
      */
     public Character(String nameOfCharacter, World world, float hp, Vector2 startPosition) {
         this.name = Objects.requireNonNull(nameOfCharacter);
@@ -33,17 +36,17 @@ public class Character {
     }
 
 
-    /**
+    /** getter for name, used in drawing of textures
      *
-     * @return
+     * @return returns name of character
      */
     public String getNameOfCharacter() {
         return this.name;
     }
 
-    /**
+    /**getter for playermovement, stores all physical properties as well as logic for movement. used to access it
      *
-     * @return
+     * @return returns the object
      */
     public PlayerMovement getPlayerMovement() {
         return playerMovement;
@@ -51,9 +54,9 @@ public class Character {
 
 
 
-    /**
+    /** has punch logic. compares position and deals damage with local variable. calls gotHit method of second character
      *
-     * @param character
+     * @param character takes other character as parameter so compare position and deal damage
      */
     public void punch(Character character) {
         float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
@@ -71,68 +74,54 @@ public class Character {
 
     }
 
-    /**
+    /** used when displaying sprites, sets punch.
      *
-     * @param t
+     * @param t true or false
      */
     public void punching(Boolean t){
         punching = t;
     }
 
-    /**
+    /** checks if punching to know what sprite to display.
      *
-     * @return
+     * @return returns true or false punching
      */
     public boolean isPunching(){
         return punching;
     }
 
-    /**
+    /** used in combination with health powerup to restore hp
      *
      */
     public void restoreHP() {
         hp = maxHp;
     }
 
-    public float getHP(){
-        return hp;
-    }
-
-    /**
+    /** gives percent of hp left
      *
-     * @return
+     * @return returns float in percent for display
      */
     public float getHpprocent() {
        return hp/maxHp;
     }
 
-    /**
+    /** deals damage to player along with handling logic for lives and what happens when
+     * hp gets to 0
      *
-     * @param attackDamage
+     * @param attackDamage what is used when subtracting damage
      */
     public void gotHit(float attackDamage) {
         hp = hp - attackDamage;
-        if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
+        if (hp < 0 || hp == 0) {restoreHP(); lives = lives - 1;}
         if(lives < 0){lives = 0;}
     }
 
-   /* /** Called when you want your player to lose HP depending on the damage taken.
-    public void loseHP(float damage) {
-        hp = hp - damage;
-        if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
-        if(lives < 0){lives = 0;}
-    }*/
 
-
+    /**
+     * @return returns amount of lives left
+     */
     public int getLives(){return lives;}
 
-
-
-
-    /** Restores your character HP to max. */
-    public void maxHP() {
-        hp = maxHp;
-    }
 
 
 }

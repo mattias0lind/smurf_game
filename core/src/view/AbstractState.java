@@ -1,6 +1,5 @@
 package view;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 
 abstract class AbstractState implements IState {
     protected final GameStateManager gsm;
