@@ -113,20 +113,14 @@ public class Character {
     public void gotHit(float attackDamage) {
         hp = hp - attackDamage;
         if (hp < 0 || hp == 0) {
-            maxHP();
+            restoreHP();
             lives = lives - 1;
 
         }
         if(lives < 0){lives = 0;}
     }
 
-   /* /** Called when you want your player to lose HP depending on the damage taken.
-    public void loseHP(float damage) {
-        hp = hp - damage;
-        if (hp < 0 || hp == 0) {maxHP(); lives = lives - 1;}
-        if (hp < 0 || hp == 0) {restoreHP(); lives = lives - 1;}
-        if(lives < 0){lives = 0;}
-    }
+
 
 
     /**
