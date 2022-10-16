@@ -17,15 +17,14 @@ import java.util.Objects;
 
 public class PlayState extends AbstractState {
 
-
     private final World world = new World(new Vector2(0,-50), true);
-
-
 
     private final Character characterOne;
     private final Character characterTwo;
     private float playerOneLastKnownHP;
     private float playerTwoLastKnownHP;
+
+
     private final Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
     private Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal(ImagePaths.GAMESOUND.label));
 
@@ -98,8 +97,6 @@ public class PlayState extends AbstractState {
     }
 
 
-
-
     @Override
     public void update(float dt) {
         handleInput();
@@ -125,27 +122,30 @@ public class PlayState extends AbstractState {
     @Override
     public void render(SpriteBatch sb) {
 
+        boolean removePowerup = false;
 
         float deltaTime = Gdx.graphics.getDeltaTime();
         update(deltaTime);
 
         float time = roundTimer.roundTimer(deltaTime, characterOne, characterTwo);
 
-
         if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
             Powerups.collisionAction(characterOne);
-            MoonMap.HEALTH_POWER_UP.dispose();
+            MoonMap.powerUpExists = false;
         }
 
         if(Powerups.checkIfPlayerGotPowerup(characterTwo)) {
             Powerups.collisionAction(characterTwo);
-            MoonMap.HEALTH_POWER_UP.dispose();
+            MoonMap.powerUpExists = false;
         }
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawTimer(sb, time);
         drawCharacters(sb);
+        /*if(removePowerup){
+            map.redrawPowerupRemoved(sb);
+        } */
         sb.end();
     }
 

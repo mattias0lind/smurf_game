@@ -12,7 +12,9 @@ public class MoonMap {
     private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
     private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
 
-    public static final Texture HEALTH_POWER_UP = new Texture(ImagePaths.HEALTHPOWERUP.label);
+    public static final Texture healthPowerup = new Texture(ImagePaths.HEALTHPOWERUP.label);
+
+    public static Boolean powerUpExists = true;
 
     private final Texture backgroundTexture;
     private final Sprite backgroundSprite;
@@ -47,7 +49,11 @@ public class MoonMap {
         drawPlatforms(sb);
 
         sb.draw(groundFloor, 0, mapModel.getGroundFloor().getPosY(),mapModel.getGroundFloor().getWidth(),mapModel.getGroundFloor().getHeight()+30);
-        sb.draw(HEALTH_POWER_UP, 430, mapModel.getPlatForms().get(2).getPosY()+63);
+        if(MoonMap.powerUpExists) {
+            sb.draw(healthPowerup, 430, mapModel.getPlatForms().get(2).getPosY()+70);
+        }
+
+
     }
 
     public void dispose(){

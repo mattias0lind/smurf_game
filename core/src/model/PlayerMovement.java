@@ -16,7 +16,6 @@ public class PlayerMovement implements IMovement {
 
     private final Body body;
 
-
     private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
     /**constructor for creating movement and physics for character.
