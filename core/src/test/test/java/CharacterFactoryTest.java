@@ -24,21 +24,6 @@ public class CharacterFactoryTest {
         assertTrue(names.getCharacterName(3) == "sanic");
     }
 
-    @Test
-    public void characterFactoryTest(){
-        Vector2 vector2 = new Vector2(0,0);
-        World world = new World(vector2,false);
-        Character character = new Character("sanic",world,1,vector2);
-        CharacterFactory characterFactory = new CharacterFactory();
-        characterFactory.getCharacter(0,world,vector2);
-        characterFactory.getCharacter(1,world,vector2);
-        characterFactory.getCharacter(2,world,vector2);
-        characterFactory.getCharacter(3,world,vector2);
-        character = characterFactory.getCharacter(0,world,vector2);
-
-        assertTrue(character.getNameOfCharacter() == "sanic");
-
-    }
 
 
 }

@@ -41,11 +41,6 @@ public class MoonMap {
     public void drawMap(SpriteBatch sb){
         sb.draw(backgroundSprite,0,0);
 
-
-        //sb.draw(moonStone, mapModel.getPlattForm1().getPosX()-40,mapModel.getPlattForm1().getPosY()-18, mapModel.getPlattForm1().getWidth()+104,mapModel.getPlattForm1().getHeight()+84);
-        //sb.draw(moonStone, mapModel.getPlattForm2().getPosX()-40,mapModel.getPlattForm2().getPosY()-18, mapModel.getPlattForm2().getWidth()+104,mapModel.getPlattForm2().getHeight()+84);
-        //sb.draw(moonStone, mapModel.getplattForm3().getPosX()-40,mapModel.getplattForm3().getPosY()-18, mapModel.getplattForm3().getWidth()+104,mapModel.getplattForm3().getHeight()+84);
-
         drawPlatforms(sb);
 
         sb.draw(groundFloor, 0, mapModel.getGroundFloor().getPosY(),mapModel.getGroundFloor().getWidth(),mapModel.getGroundFloor().getHeight()+30);

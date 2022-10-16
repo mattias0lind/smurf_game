@@ -122,7 +122,7 @@ public class PlayState extends AbstractState {
     @Override
     public void render(SpriteBatch sb) {
 
-        boolean removePowerup = false;
+
 
         float deltaTime = Gdx.graphics.getDeltaTime();
         update(deltaTime);
@@ -143,9 +143,6 @@ public class PlayState extends AbstractState {
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawTimer(sb, time);
         drawCharacters(sb);
-        /*if(removePowerup){
-            map.redrawPowerupRemoved(sb);
-        } */
         sb.end();
     }
 

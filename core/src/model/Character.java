@@ -64,10 +64,10 @@ public class Character {
 
         if (-20 <= yDiff && yDiff <= 20){
             float attackDamage = 10;
-            if (0 <= xDiff && xDiff <= 64 && playerMovement.isMovingRight()){
+            if (0 <= xDiff && xDiff <= 64 ){
                 character.gotHit(attackDamage);
             }
-            if (-64 <= xDiff && xDiff <= 0 && playerMovement.isMovingLeft()){
+            if (-64 <= xDiff && xDiff <= 0 && playerMovement.isLookingLeft()){
                 character.gotHit(attackDamage);
             }
         }
@@ -117,7 +117,9 @@ public class Character {
             lives = lives - 1;
 
         }
-        if(lives < 0){lives = 0;}
+        if(lives < 0){
+            lives = 0;
+        }
     }
 
 

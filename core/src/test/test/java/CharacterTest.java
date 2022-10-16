@@ -14,9 +14,6 @@ public class CharacterTest {
         World world = new World(vector,false);
         Character character = new Character("Test",world,100,vector);
         character.getPlayerMovement();
-
-
-
         assertTrue(character.getNameOfCharacter() == "Test");  // The logical check
     }
 
@@ -29,6 +26,39 @@ public class CharacterTest {
         character.restoreHP();
         assertTrue(character.getHpprocent() == 1 );
 
+
+    }
+
+    @Test
+    public void testingCharacterLives() {
+        Vector2 vector = new Vector2(0,0);
+        World world = new World(vector,false);
+        Character character = new Character("Test",world,100,vector);
+        assertTrue(character.getLives() == 3);
+
+    }
+
+    @Test
+    public void testingPunchingGetter() {
+        Vector2 vector = new Vector2(0,0);
+        World world = new World(vector,false);
+        Character character = new Character("Test",world,100,vector);
+        character.punching(true);
+        assertTrue(character.isPunching());
+
+    }
+
+
+    @Test
+    public void testingPunchingLogic() {
+    Vector2 vector = new Vector2(0,0);
+    Vector2 character1Position = new Vector2(50,50);
+    Vector2 character2Position = new Vector2(51,50);
+    World world = new World(vector,false);
+    Character character1 = new Character("Test",world,100,character1Position);
+    Character character2 = new Character("Test",world,100,character2Position);
+    character1.punch(character2);
+    assertTrue(character2.getHpprocent() != 1 );
 
     }
 
