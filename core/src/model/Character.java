@@ -64,7 +64,7 @@ public class Character {
 
         if (-20 <= yDiff && yDiff <= 20){
             float attackDamage = 10;
-            if (0 <= xDiff && xDiff <= 64 ){
+            if (0 <= xDiff && xDiff <= 64 && !playerMovement.isLookingLeft()){
                 character.gotHit(attackDamage);
             }
             if (-64 <= xDiff && xDiff <= 0 && playerMovement.isLookingLeft()){

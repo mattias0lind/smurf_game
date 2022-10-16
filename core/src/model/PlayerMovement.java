@@ -107,19 +107,7 @@ public class PlayerMovement {
 
     }
 
-    /** used in punching to decide where to punch
-     * @return returns state of right movement
-     */
-    public boolean isMovingRight() {
-        return moveRight;
-    }
 
-    /**used in punching to decide where to punch
-     * @return returns state of left movement
-     */
-    public boolean isMovingLeft() {
-        return moveLeft;
-    }
 
     /** helps in drawing direction of texture
      * @return state of looking
