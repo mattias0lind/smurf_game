@@ -12,7 +12,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 /**
  * Class for initialising physics and handle movement for character
  */
-public class PlayerMovement implements IMovement {
+public class PlayerMovement {
 
     private final Body body;
 
