@@ -129,29 +129,23 @@ public class PlayState extends AbstractState {
 
         float time = roundTimer.roundTimer(deltaTime, characterOne, characterTwo);
 
-
         if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
             Powerups.collisionAction(characterOne);
-            MoonMap.healthPowerup.dispose();
-            removePowerup = true;
             MoonMap.powerUpExists = false;
         }
 
         if(Powerups.checkIfPlayerGotPowerup(characterTwo)) {
             Powerups.collisionAction(characterTwo);
-            MoonMap.healthPowerup.dispose();
-            removePowerup = true;
             MoonMap.powerUpExists = false;
-
         }
         sb.begin();
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawTimer(sb, time);
         drawCharacters(sb);
-        if(removePowerup){
+        /*if(removePowerup){
             map.redrawPowerupRemoved(sb);
-        }
+        } */
         sb.end();
     }
 

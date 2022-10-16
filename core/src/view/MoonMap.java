@@ -49,11 +49,11 @@ public class MoonMap {
         drawPlatforms(sb);
 
         sb.draw(groundFloor, 0, mapModel.getGroundFloor().getPosY(),mapModel.getGroundFloor().getWidth(),mapModel.getGroundFloor().getHeight()+30);
-        sb.draw(healthPowerup, 430, mapModel.getPlatForms().get(2).getPosY()+43);
-    }
+        if(MoonMap.powerUpExists) {
+            sb.draw(healthPowerup, 430, mapModel.getPlatForms().get(2).getPosY()+70);
+        }
 
-    public void redrawPowerupRemoved(SpriteBatch sb){
-        sb.draw(moonStone, 430, mapModel.getPlatForms().get(2).getPosY()+43);
+
     }
 
     public void dispose(){
