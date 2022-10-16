@@ -76,4 +76,22 @@ public class CharacterTest {
 
     }
 
+    @Test
+    public void testMovement(){
+        Vector2 vector = new Vector2(0,0);
+        Vector2 character1Position = new Vector2(0,0);
+        World world = new World(vector,false);
+        Character character1 = new Character("Test",world,100,character1Position);
+        character1.getPlayerMovement().moveRight(true);
+        character1.getPlayerMovement().updatePlayerPosition();
+        character1.getPlayerMovement().moveDown(true);
+        character1.getPlayerMovement().updatePlayerPosition();
+        character1.getPlayerMovement().moveUp(true);
+        character1.getPlayerMovement().updatePlayerPosition();
+        character1.getPlayerMovement().moveLeft(true);
+        character1.getPlayerMovement().updatePlayerPosition();
+        assertTrue(character1.getPlayerMovement().isLookingLeft());
+
+    }
+
 }
