@@ -2,11 +2,16 @@ package model;
 
 import com.badlogic.gdx.physics.box2d.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MapModel{
     private final GroundFloor groundFloor;
     private final StaticMapElements invisibleWall1,invisibleWall2;
     private final StaticMapElements plattForm1, plattForm2, plattForm3;
+    List<StaticMapElements> platForms = new ArrayList<>();
+    List<StaticMapElements> invisibleWall = new ArrayList<>();
 
     public MapModel(World world){
         groundFloor = new GroundFloor(world);
@@ -16,27 +21,30 @@ public class MapModel{
         plattForm2 = new StaticMapElements(world, 410, 200, 56, 10);
         plattForm3 = new StaticMapElements(world, 640, 170, 56, 10);
 
+        platForms.add((plattForm1));
+        platForms.add((plattForm2));
+        platForms.add((plattForm3));
+        invisibleWall.add(invisibleWall1);
+        invisibleWall.add(invisibleWall2);
+
+
+
 
     }
+
+    public List<StaticMapElements> getPlatForms() {return platForms;}
+    public List<StaticMapElements> getInvisibleWall() {return invisibleWall;}
 
     public GroundFloor getGroundFloor() {return groundFloor;}
 
-    public StaticMapElements getInvisibleWall1() {return invisibleWall1;}
+    // public StaticMapElements getInvisibleWall1() {return invisibleWall1;}
+    // public StaticMapElements getInvisibleWall2() {return invisibleWall2;}
 
-    public StaticMapElements getInvisibleWall2() {
-        return invisibleWall2;
-    }
+    // public StaticMapElements getPlattForm1() {return plattForm1;}
 
-    public StaticMapElements getPlattForm1() {
-        return plattForm1;
-    }
+    // public StaticMapElements getPlattForm2() {return plattForm2;}
 
-    public StaticMapElements getPlattForm2() {
-        return plattForm2;
-    }
+    // public StaticMapElements getplattForm3() {return plattForm3;}
 
-    public StaticMapElements getplattForm3() {
-        return plattForm3;
-    }
 }
 
