@@ -16,11 +16,11 @@ public class MapTest {
         MapModel mapModel = new MapModel(world);
         StaticMapElements mapElements = new StaticMapElements(world,100,100,100,100);
         mapModel.getGroundFloor();
-        mapModel.getplattForm3();
-        mapModel.getPlattForm2();
-        mapModel.getPlattForm1();
-        mapModel.getInvisibleWall1();
-        mapModel.getInvisibleWall2();
+        mapModel.getPlatForms().get(3);
+        mapModel.getPlatForms().get(2);
+        mapModel.getPlatForms().get(1);
+        mapModel.getInvisibleWall().get(1);
+        mapModel.getInvisibleWall().get(1);
         assertTrue(mapElements.getWidth()+mapElements.getHeight()+mapElements.getPosY()+mapElements.getPosX() == 400);
     }
 
