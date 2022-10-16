@@ -8,6 +8,7 @@ import java.util.Objects;
 public class Powerups {
 
     private final String name;
+
     public Powerups(String name) {
        // rectangle.set((float) (Math.random() * 1280), (float) (Math.random() * 720), 16, 16);
         this.name = Objects.requireNonNull(name);

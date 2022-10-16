@@ -83,14 +83,6 @@ public class Character {
      *
      * @return
      */
-    public boolean charactersCurrentDirection(){
-        return playerMovement.isMovingLeft();
-    }
-
-    /**
-     *
-     * @return
-     */
     public boolean isPunching(){
         return punching;
     }

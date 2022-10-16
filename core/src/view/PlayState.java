@@ -34,8 +34,6 @@ public class PlayState extends AbstractState {
 
     private final FrameBoard frameboard;
     private final MoonMap map;
-    private float time;
-    private int intTime;
     private final BitmapFont font;
 
 
@@ -108,7 +106,7 @@ public class PlayState extends AbstractState {
 
 
     private void drawTimer(SpriteBatch sb,float time){
-        intTime = Math.round(time);
+        int intTime = Math.round(time);
         CharSequence timer = String.valueOf(intTime);
         font.draw(sb,timer,635,690);
 
@@ -129,7 +127,7 @@ public class PlayState extends AbstractState {
         float deltaTime = Gdx.graphics.getDeltaTime();
         update(deltaTime);
 
-        time = roundTimer.roundTimer(deltaTime,characterOne,characterTwo);
+        float time = roundTimer.roundTimer(deltaTime, characterOne, characterTwo);
 
 
         if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
