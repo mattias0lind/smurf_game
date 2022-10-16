@@ -13,7 +13,6 @@ public class PlayerMovement implements IMovement {
 
     private final Body body;
 
-
     private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
     public PlayerMovement(World world, Vector2 startPosition) {
@@ -36,14 +35,12 @@ public class PlayerMovement implements IMovement {
         return body;
     }
 
-
-
     @Override
     public void setPlayerPosition(float playerXPosition, float playerYPosition) {
         this.body.setLinearVelocity(playerXPosition, playerYPosition);
     }
 
-    public void updatePlayerPosition() {
+    public void updatePlayerPosition(){
         float speed = 100;
         if (moveLeft) {
             if (body.getLinearVelocity().x >= -speed) {

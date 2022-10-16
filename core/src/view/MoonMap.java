@@ -11,7 +11,9 @@ public class MoonMap {
     private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
     private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
 
-    public static final Texture HEALTH_POWER_UP = new Texture(ImagePaths.HEALTHPOWERUP.label);
+    public static final Texture healthPowerup = new Texture(ImagePaths.HEALTHPOWERUP.label);
+
+    public static Boolean powerUpExists = true;
 
     private final Texture backgroundTexture;
     private final Sprite backgroundSprite;
@@ -29,7 +31,11 @@ public class MoonMap {
         sb.draw(moonStone, mapModel.getPlattForm2().getPosX()-40,mapModel.getPlattForm2().getPosY()-18, mapModel.getPlattForm2().getWidth()+104,mapModel.getPlattForm2().getHeight()+84);
         sb.draw(moonStone, mapModel.getplattForm3().getPosX()-40,mapModel.getplattForm3().getPosY()-18, mapModel.getplattForm3().getWidth()+104,mapModel.getplattForm3().getHeight()+84);
         sb.draw(groundFloor, 0, mapModel.getGroundFloor().getPosY(),mapModel.getGroundFloor().getWidth(),mapModel.getGroundFloor().getHeight()+30);
-        sb.draw(HEALTH_POWER_UP, 430, mapModel.getPlattForm2().getPosY()+43);
+        sb.draw(healthPowerup, 430, mapModel.getPlattForm2().getPosY()+43);
+    }
+
+    public void redrawPowerupRemoved(SpriteBatch sb){
+        sb.draw(moonStone, 430, mapModel.getPlattForm2().getPosY()+43);
     }
 
     public void dispose(){
