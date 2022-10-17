@@ -39,12 +39,9 @@ public class MoonMap {
 
     private void drawPlatforms(SpriteBatch sb){
 
-        for(int index = 0; index < mapModel.getPlatForms().size(); index++) {
-            mapModel.getPlatForms().get(index);
-            sb.draw(moonStone, mapModel.getPlatForms().get(index).getPosX()-40,
-                    mapModel.getPlatForms().get(index).getPosY()-18,
-                    mapModel.getPlatForms().get(index).getWidth()+104,
-                    mapModel.getPlatForms().get(index).getHeight()+84);}
+        for (StaticMapElements platform : mapModel.getPlatForms()){
+            sb.draw(moonStone, platform.getPosX()-40,platform.getPosY()-18,platform.getWidth()+104,platform.getHeight()+84);
+        }
     }
 
 

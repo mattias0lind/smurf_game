@@ -1,7 +1,6 @@
 package view;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,7 +38,6 @@ public class EndGameState extends AbstractState {
         if(Gdx.input.isTouched() ){
             gsm.set(new MenuState(gsm));
             dispose();
-            //Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY) || (old part of if)
         }
 
     }
