@@ -4,17 +4,30 @@ import com.badlogic.gdx.Input;
 import model.Character;
 import model.PlayerMovement;
 
+/**
+ * Class used to check for player input
+ */
 public class GameController extends InputProcessor {
     private PlayerMovement player, player2;
     private Character player1Punch, player2Punch;
 
 
-    public void movementLogic(PlayerMovement player, PlayerMovement player2) {
-        this.player = player;
+    /**
+     * Method used to to set class attributes using players movement
+     * @param player1 Player 1 movement
+     * @param player2 Player 2 movement
+     */
+    public void movementLogic(PlayerMovement player1, PlayerMovement player2) {
+        this.player = player1;
         this.player2 = player2;
     }
 
 
+    /**
+     * Method used to set class attributes using players punching
+     * @param player1Punch Player 1 punching
+     * @param player2Punch Player 2 punching
+     */
     public void punchLogic(Character player1Punch, Character player2Punch) {
         this.player1Punch = player1Punch;
         this.player2Punch = player2Punch;
@@ -67,7 +80,7 @@ public class GameController extends InputProcessor {
     }
 
 
-
+    /** Event handler if key is not pressed down.  */
     @Override
     public boolean keyUp(int i) {
         if ((i == Input.Keys.LEFT)) {

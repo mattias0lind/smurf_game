@@ -1,8 +1,18 @@
 package controller;
 
 
-
+/**
+ * A class used to check if an arrow or the play button were pressed in the CharacterSelectionState
+ */
 public class CharacterSelectionInputProcessor extends InputProcessor{
+
+    /** Method to check if the user clicked on a button somewhere in the CharacterSelectionState
+     * @param screenX The x coordinate of where the screen was pressed, origin is in the upper left corner
+     * @param screenY The y coordinate of where the screen was pressed, origin is in the upper left corner
+     * @param i2 the pointer for the event.
+     * @param whichButton the button that was pressed
+     * @return returns true if the coordinates correspond to the button
+     */
     @Override
     public boolean touchDown(int screenX, int screenY, int i2, int whichButton) {
 
