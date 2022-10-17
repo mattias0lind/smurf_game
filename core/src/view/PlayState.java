@@ -15,6 +15,11 @@ import model.Character;
 
 import java.util.Objects;
 
+/**
+ * The PlayState is the second state in the program and is accessed by pressing "Play"
+ * in the previous state.
+ * The class is used to update the game and render dynamic graphics
+ */
 public class PlayState extends AbstractState {
 
     private final World world = new World(new Vector2(0,-50), true);
@@ -42,7 +47,13 @@ public class PlayState extends AbstractState {
     private final DrawCharacterSprite drawCharactersSprite1;
     private final DrawCharacterSprite drawCharactersSprite2;
 
-
+    /**
+     * Constructor used to set up a CharacterSelectionState
+     * @param gsm the GameStateManager to handle logic of states
+     * @param count1 Character 1
+     * @param count2 Character 2
+     * The method sets up characters, the sound, the map, the frame board and some more
+     */
     public PlayState(GameStateManager gsm, int count1 , int count2){
         super(gsm);
         CharacterFactory characterFactory = new CharacterFactory();
@@ -73,6 +84,11 @@ public class PlayState extends AbstractState {
         font = new BitmapFont();
     }
 
+    /**
+     * Method used to update the players position, health and total lives
+     * If a character has lost all three lives then the PlayState is disposed and a new
+     * EndGameState is instantiated.
+     */
     @Override
     public void handleInput() {
         characterOne.getPlayerMovement().updatePlayerPosition();
@@ -96,7 +112,10 @@ public class PlayState extends AbstractState {
         menuMusic.play();
     }
 
-
+    /**
+     * Method used to update the game
+     * @param dt Delta Time, the amount of time simulated
+     */
     @Override
     public void update(float dt) {
         handleInput();
@@ -119,10 +138,13 @@ public class PlayState extends AbstractState {
         sb.draw(drawCharactersSprite2.getCharacterSprite(), characterTwo.getPlayerMovement().getBody().getPosition().x,characterTwo.getPlayerMovement().getBody().getPosition().y);
     }
 
+    /**
+     * Method used to dynamically draw graphical elements of the map
+     * Draws the Timer, Frameboard, Characters and if the PowerUp has been picked up acts accordingly.
+     * @param sb the spritebatch
+     */
     @Override
     public void render(SpriteBatch sb) {
-
-
 
         float deltaTime = Gdx.graphics.getDeltaTime();
         update(deltaTime);
@@ -147,7 +169,9 @@ public class PlayState extends AbstractState {
     }
 
 
-
+    /**
+     * Disposes of the drawn elements in the current state when called.
+     */
     @Override
     public void dispose() {
         map.dispose();

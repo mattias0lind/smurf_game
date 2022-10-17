@@ -17,6 +17,7 @@ public class MapModel{
     List<StaticMapElements> invisibleWall = new ArrayList<>();
 
     /**
+     * Method used to add static objects to the game
      * @param world passed as to initialise created objects in simulated world
      */
     public MapModel(World world){

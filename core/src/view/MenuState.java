@@ -5,11 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+/**
+ * The MenuState is the first state when the program is started. The class is used
+ * to draw the GUI of the menu and to check for simple user input
+ */
 public class MenuState extends AbstractState {
     private final Texture menuBackground,playButton,quitButton;
     private final MenuInputProcessor menuInputProcessor = new MenuInputProcessor() ;
 
-    /** Menustate constructor, images are collected from ENUM class ImagePaths and then assigned. */
+    /** MenuState constructor, images are collected from ENUM class ImagePaths and then assigned. */
     public MenuState(GameStateManager gsm) {
         super(gsm);
         menuBackground = new Texture(ImagePaths.STARTBACKGROUND.label);
@@ -19,6 +23,11 @@ public class MenuState extends AbstractState {
 
     }
 
+    /**
+     * A method used to check if the user pressed the Play or Quit buttons.
+     * If Play is pressed then the next state is instantiated.
+     * If Quit is pressed then the program shuts down
+     */
     @Override
     public void handleInput() {
         if(Gdx.input.isTouched()) {
@@ -32,6 +41,10 @@ public class MenuState extends AbstractState {
     }
 
 
+    /**
+     * Renders the Menu background and the buttons
+     * @param sb the spritebatch
+     */
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
@@ -41,6 +54,9 @@ public class MenuState extends AbstractState {
         sb.end();
     }
 
+    /**
+     * Disposes of the drawn elements in the current state when called.
+     */
     @Override
     public void dispose() {
         menuBackground.dispose();

@@ -11,6 +11,11 @@ import java.util.concurrent.TimeUnit;
 
 import static view.ImagePaths.CLOUDS;
 
+/**
+ * The CharacterSelectionState is the second state in the program and is accessed by pressing "Play"
+ * in the previous state.
+ * The class is used to choose what character each player wants to play with
+ */
 public class CharacterSelectionState extends AbstractState {
 
     private Texture cardSlot1;
@@ -25,6 +30,10 @@ public class CharacterSelectionState extends AbstractState {
     private final CharacterSelectionInputProcessor characterSelectionInputProcessor = new CharacterSelectionInputProcessor();
     private final CharacterFactory characterNames = new CharacterFactory();
 
+    /**
+     * Constructor used to set up a CharacterSelectionState
+     * @param gsm the GameStateManager to handle logic of states
+     */
     public CharacterSelectionState(GameStateManager gsm){
         super(gsm);
         Gdx.input.setInputProcessor(characterSelectionInputProcessor);
@@ -43,6 +52,12 @@ public class CharacterSelectionState extends AbstractState {
     }
 
 
+    /**
+     * Handles player input based on where on the screen the player clicked.
+     * If the player pressed "Play" then the current state is disposed and a new PlayState is instantiated
+     * with the two characters chosen.
+     * If one of the arrows is pressed then another character is displayed in the corresponding CardSlot
+     */
     @Override
     public void handleInput() {
 
@@ -86,6 +101,11 @@ public class CharacterSelectionState extends AbstractState {
             }}
     }
 
+
+    /**
+     * Draws the graphical elements that are shown during the Character selection state
+     * @param sb the spritebatch
+     */
     @Override
     public void render(SpriteBatch sb) {
 
@@ -102,6 +122,9 @@ public class CharacterSelectionState extends AbstractState {
         sb.end();
     }
 
+    /**
+     * Disposes of the drawn elements in the current state when called.
+     */
     @Override
     public void dispose() {
         characterSelectionBackground.dispose();

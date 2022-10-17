@@ -8,18 +8,29 @@ import model.StaticMapElements;
 
 import java.util.Objects;
 
+
+/**
+ * Class used to set up map objects and render graphics of the map
+ */
 public class MoonMap {
     private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
     private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
 
-    public static final Texture healthPowerup = new Texture(ImagePaths.HEALTHPOWERUP.label);
+    private static final Texture healthPowerup = new Texture(ImagePaths.HEALTHPOWERUP.label);
 
+    /**
+     * Boolean to check if the powerup still exists on the map
+     */
     public static Boolean powerUpExists = true;
 
     private final Texture backgroundTexture;
     private final Sprite backgroundSprite;
     private final MapModel mapModel;
 
+    /**
+     * The constructor for the class
+     * @param mapModel the map model to be used
+     */
     public MoonMap(MapModel mapModel){
         this.mapModel = Objects.requireNonNull(mapModel);
         backgroundTexture = new Texture(ImagePaths.BACKGROUND.label);
@@ -37,7 +48,11 @@ public class MoonMap {
     }
 
 
-
+    /**
+     * Draws the elements of the map. The background, platforms and the floor are always drawn. The
+     * powerup is only drawn if it has not been picked up yet.
+     * @param sb the sprite batch
+     */
     public void drawMap(SpriteBatch sb){
         sb.draw(backgroundSprite,0,0);
 
@@ -51,6 +66,7 @@ public class MoonMap {
 
     }
 
+    /** Disposes all the textures created by this class */
     public void dispose(){
         moonStone.dispose();
         groundFloor.dispose();

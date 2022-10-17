@@ -15,7 +15,7 @@ public class Powerups {
 
     /**
      * Checks if a player is at the powerup and returns a boolean, true if the player is at the powerup
-     * @param player is passed to check which player is at the powerup
+     * @param player is passed to check if that player is at the powerup
      */
     public static boolean checkIfPlayerGotPowerup(Character player) {
             if(player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){

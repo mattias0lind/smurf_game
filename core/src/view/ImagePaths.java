@@ -1,5 +1,9 @@
 package view;
 
+/**
+ * Enum class containing all the image-paths to pictures used
+ * Can easily add more pictures later
+ */
 public enum ImagePaths {
     //CHARACTERS
     SMURF("smurf.png"),
@@ -70,7 +74,12 @@ public enum ImagePaths {
     HITSOUND("roblox.mp3");
 
 
+
     public final String label;
+
+    /**
+     * @param label is the image-path. Each enum has the attribute label
+     */
     ImagePaths(String label) {
         this.label = label;
     }
