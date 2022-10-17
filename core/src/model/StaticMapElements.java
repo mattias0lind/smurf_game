@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 
 /**
- * class for creating a static object in world.
+ * Class for creating a static object in world.
  */
 public class StaticMapElements {
 
@@ -42,8 +42,8 @@ public class StaticMapElements {
 
     }
 
-    /*
-    getters for position and dimensions of mapobject
+    /**
+    Getters for position and dimensions of mapobject
      */
     public int getPosX() {return posX;}
     public int getPosY() {return posY;}

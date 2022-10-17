@@ -130,12 +130,12 @@ public class PlayState extends AbstractState {
         float time = roundTimer.roundTimer(deltaTime, characterOne, characterTwo);
 
         if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
-            Powerups.collisionAction(characterOne);
+            Powerups.playerGotHpPowerup(characterOne);
             MoonMap.powerUpExists = false;
         }
 
         if(Powerups.checkIfPlayerGotPowerup(characterTwo)) {
-            Powerups.collisionAction(characterTwo);
+            Powerups.playerGotHpPowerup(characterTwo);
             MoonMap.powerUpExists = false;
         }
         sb.begin();

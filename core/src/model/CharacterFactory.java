@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * produces a character based on choice of user
+ * Produces a character based on choice of user
  */
 public class CharacterFactory {
 
     private final List<String> allCharacterNames = new ArrayList<>();
 
     /**
-     * constructor, can add new names if desired
+     * Constructor, can add new names if desired
      */
     public CharacterFactory(){
         allCharacterNames.add("smurf");
@@ -34,14 +34,14 @@ public class CharacterFactory {
     }
 
 
-    /**used when displaying choice
+    /**Used when displaying choice
      *
      * @param index specify which character name it should return from place in list
      * @return name of character
      */
     public String getCharacterName(int index){return allCharacterNames.get(index);}
 
-    /**used in selectionstate
+    /**Used in selectionstate
      *
      * @return length of list
      */

@@ -17,7 +17,7 @@ public class PowerUpTest {
         World world = new World(vector2,false);
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
-        powerUp.collisionAction(character);
+        powerUp.playerGotHpPowerup(character);
         assertTrue(character.getHpprocent() == 1);
     }
 
@@ -28,7 +28,7 @@ public class PowerUpTest {
         World world = new World(vector2,false);
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
-        powerUp.collisionAction(character);
+        powerUp.playerGotHpPowerup(character);
         assertTrue(character.getHpprocent() == 1);
 
 
@@ -41,7 +41,7 @@ public class PowerUpTest {
         World world = new World(vectorWrongPos,false);
         Character character2 = new Character("TestingWrongPos",world,100,vectorWrongPos);
         character2.gotHit(50);
-        powerUp.collisionAction(character2);
+        powerUp.playerGotHpPowerup(character2);
         assertTrue(character2.getHpprocent() != 1);
 
     }

@@ -3,7 +3,7 @@ package model;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * predefined extension of its parent, will always be the same regardless of map.
+ * Predefined extension of its parent, will always be the same regardless of map.
  */
 public class GroundFloor extends StaticMapElements {
     /**

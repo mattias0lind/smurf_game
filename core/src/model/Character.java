@@ -36,7 +36,7 @@ public class Character {
     }
 
 
-    /** getter for name, used in drawing of textures
+    /** Getter for name, used in drawing of textures
      *
      * @return returns name of character
      */
@@ -44,7 +44,7 @@ public class Character {
         return this.name;
     }
 
-    /**getter for playermovement, stores all physical properties as well as logic for movement. used to access it
+    /**Getter for playermovement, stores all physical properties as well as logic for movement. Used to access it
      *
      * @return returns the object
      */
@@ -54,9 +54,9 @@ public class Character {
 
 
 
-    /** has punch logic. compares position and deals damage with local variable. calls gotHit method of second character
+    /** Has punch logic. Compares position and deals damage with local variable. Calls gotHit method of second character
      *
-     * @param character takes other character as parameter so compare position and deal damage
+     * @param character takes other character as parameter to compare position and deal damage
      */
     public void punch(Character character) {
         float yDiff = character.getPlayerMovement().getBody().getPosition().y - playerMovement.getBody().getPosition().y;
@@ -74,7 +74,7 @@ public class Character {
 
     }
 
-    /** used when displaying sprites, sets punch.
+    /** Used when displaying sprites, sets punch.
      *
      * @param t true or false
      */
@@ -82,7 +82,7 @@ public class Character {
         punching = t;
     }
 
-    /** checks if punching to know what sprite to display.
+    /** Checks if punching to know what sprite to display.
      *
      * @return returns true or false punching
      */
@@ -90,14 +90,14 @@ public class Character {
         return punching;
     }
 
-    /** used in combination with health powerup to restore hp
+    /** Used in combination with health powerup to restore hp
      *
      */
     public void restoreHP() {
         hp = maxHp;
     }
 
-    /** gives percent of hp left
+    /** Gives percent of hp left
      *
      * @return returns float in percent for display
      */
@@ -105,7 +105,7 @@ public class Character {
        return hp/maxHp;
     }
 
-    /** deals damage to player along with handling logic for lives and what happens when
+    /** Deals damage to player along with handling logic for lives and what happens when
      * hp gets to 0
      *
      * @param attackDamage what is used when subtracting damage

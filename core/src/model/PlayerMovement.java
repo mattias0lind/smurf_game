@@ -18,7 +18,7 @@ public class PlayerMovement {
 
     private boolean moveLeft, moveRight, moveUp, moveDown, lookingLeft;
 
-    /**constructor for creating movement and physics for character.
+    /**Constructor for creating movement and physics for character.
      *
      * @param world passed as parameter to initialize body in world, box2d
      * @param startPosition initalises starting position in world
@@ -48,7 +48,7 @@ public class PlayerMovement {
 
 
     /**
-     * modifies position of body, calls on every step of game and decided by controller
+     * Modifies position of body, calls on every step of game and decided by controller
      */
     public void updatePlayerPosition() {
         float speed = 100;
@@ -109,7 +109,7 @@ public class PlayerMovement {
 
 
 
-    /** helps in drawing direction of texture
+    /** Helps in drawing direction of texture
      * @return state of looking
      */
     public boolean isLookingLeft() {
