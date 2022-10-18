@@ -15,13 +15,14 @@ import java.util.Objects;
 public class MoonMap {
     private final Texture moonStone = new Texture(ImagePaths.MOONSTONE.label);
     private final Texture groundFloor = new Texture(ImagePaths.MOONGROUND.label);
+    private boolean powerUpBoolean;
 
     private static final Texture healthPowerup = new Texture(ImagePaths.HEALTHPOWERUP.label);
 
     /**
      * Boolean to check if the powerup still exists on the map
      */
-    public static Boolean powerUpExists = true;
+
 
     private final Texture backgroundTexture;
     private final Sprite backgroundSprite;
@@ -56,10 +57,15 @@ public class MoonMap {
         drawPlatforms(sb);
 
         sb.draw(groundFloor, 0, mapModel.getGroundFloor().getPosY(),mapModel.getGroundFloor().getWidth(),mapModel.getGroundFloor().getHeight()+30);
-        if(MoonMap.powerUpExists) {
+        if(powerUpBoolean) {
             sb.draw(healthPowerup, 430, mapModel.getPlatForms().get(2).getPosY()+70);
         }
 
+
+    }
+
+    public void drawPowerUp(boolean t){
+            powerUpBoolean = t;
 
     }
 

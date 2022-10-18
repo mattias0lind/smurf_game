@@ -44,6 +44,7 @@ public class PlayState extends AbstractState {
 
 
     private RoundTimer roundTimer;
+    private PowerupController powerupController;
 
     private final DrawCharacterSprite drawCharactersSprite1;
     private final DrawCharacterSprite drawCharactersSprite2;
@@ -76,11 +77,13 @@ public class PlayState extends AbstractState {
         GameController gameController = new GameController();
         Gdx.input.setInputProcessor(gameController);
 
-        //TODO detta kan bryta mot MVC
+
         gameController.movementLogic(characterOne.getPlayerMovement(), characterTwo.getPlayerMovement());
         gameController.punchLogic(characterOne,characterTwo);
 
         roundTimer = new RoundTimer();
+
+        powerupController = new PowerupController();
 
         font = new BitmapFont();
     }
@@ -121,6 +124,8 @@ public class PlayState extends AbstractState {
     public void update(float dt) {
         handleInput();
         world.step(dt,6,2);
+        powerupController.checkIfPlayerGotPowerup(characterOne);
+        powerupController.checkIfPlayerGotPowerup(characterTwo);
 
     }
 
@@ -152,16 +157,9 @@ public class PlayState extends AbstractState {
 
         float time = roundTimer.roundTimer(deltaTime, characterOne, characterTwo);
 
-        if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
-            PowerupController.playerGotHpPowerup(characterOne);
-            MoonMap.powerUpExists = false;
-        }
 
-        if(Powerups.checkIfPlayerGotPowerup(characterTwo)) {
-            PowerupController.playerGotHpPowerup(characterTwo);
-            MoonMap.powerUpExists = false;
-        }
         sb.begin();
+        map.drawPowerUp(powerupController.checkIfPowerUpIsStillActive());
         map.drawMap(sb);
         frameboard.drawBoard(sb,characterOne,characterTwo);
         drawTimer(sb, time);
