@@ -43,15 +43,6 @@ public class EndGameState extends AbstractState {
     }
 
     /**
-     * Inherited method
-     * @param dt Delta Time
-     */
-    @Override
-    public void update(float dt) {
-    }
-
-
-    /**
      * Method used to draw the graphic of the EndGameState
      * @param db the spritebatch
      */
