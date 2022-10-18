@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 public class MapModel{
-    private final GroundFloor groundFloor;
+    private final StaticMapElements groundFloor;
     private final StaticMapElements invisibleWall1,invisibleWall2;
     private final StaticMapElements plattForm1, plattForm2, plattForm3;
     List<StaticMapElements> platForms = new ArrayList<>();
@@ -21,7 +21,7 @@ public class MapModel{
      * @param world passed as to initialise created objects in simulated world
      */
     public MapModel(World world){
-        groundFloor = new GroundFloor(world);
+        groundFloor = new StaticMapElements(world, 640, -20, 1280, 100);
         invisibleWall1 = new StaticMapElements(world, 0, 0, 20, 2000);
         invisibleWall2 = new StaticMapElements(world, 1250, 0, 20, 2000);
         plattForm1 = new StaticMapElements(world,240,158,56,10);
@@ -52,7 +52,7 @@ public class MapModel{
     /**
      * @return ground floor
      */
-    public GroundFloor getGroundFloor() {return groundFloor;}
+    public StaticMapElements getGroundFloor() {return groundFloor;}
 
 
 
