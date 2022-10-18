@@ -1,5 +1,6 @@
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import controller.PowerupController;
 import model.Character;
 import model.Powerups;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class PowerUpTest {
         World world = new World(vector2,false);
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
-        powerUp.playerGotHpPowerup(character);
+        PowerupController.playerGotHpPowerup(character);
         assertTrue(character.getHpprocent() == 1);
     }
 
@@ -28,7 +29,7 @@ public class PowerUpTest {
         World world = new World(vector2,false);
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
-        powerUp.playerGotHpPowerup(character);
+        PowerupController.playerGotHpPowerup(character);
         assertTrue(character.getHpprocent() == 1);
 
 
@@ -41,7 +42,7 @@ public class PowerUpTest {
         World world = new World(vectorWrongPos,false);
         Character character2 = new Character("TestingWrongPos",world,100,vectorWrongPos);
         character2.gotHit(50);
-        powerUp.playerGotHpPowerup(character2);
+        PowerupController.playerGotHpPowerup(character2);
         assertTrue(character2.getHpprocent() != 1);
 
     }

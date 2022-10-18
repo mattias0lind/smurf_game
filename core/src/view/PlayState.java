@@ -4,6 +4,7 @@ package view;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import controller.GameController;
+import controller.PowerupController;
 import controller.RoundTimer;
 import model.*;
 import com.badlogic.gdx.Gdx;
@@ -152,12 +153,12 @@ public class PlayState extends AbstractState {
         float time = roundTimer.roundTimer(deltaTime, characterOne, characterTwo);
 
         if(Powerups.checkIfPlayerGotPowerup(characterOne)) {
-            Powerups.playerGotHpPowerup(characterOne);
+            PowerupController.playerGotHpPowerup(characterOne);
             MoonMap.powerUpExists = false;
         }
 
         if(Powerups.checkIfPlayerGotPowerup(characterTwo)) {
-            Powerups.playerGotHpPowerup(characterTwo);
+            PowerupController.playerGotHpPowerup(characterTwo);
             MoonMap.powerUpExists = false;
         }
         sb.begin();
