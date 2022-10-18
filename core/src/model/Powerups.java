@@ -1,5 +1,7 @@
 package model;
 
+import view.MoonMap;
+
 /**
  * Powerup class, used to handle the logic for powerups
  */
@@ -18,7 +20,7 @@ public class Powerups {
      * @param player is passed to check if that player is at the powerup
      */
     public static boolean checkIfPlayerGotPowerup(Character player) {
-            if(player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){
+            if(MoonMap.powerUpExists && player.getPlayerMovement().getBody().getPosition().x > 400 && player.getPlayerMovement().getBody().getPosition().x < 450){
                 if(player.getPlayerMovement().getBody().getPosition().y > 230 && player.getPlayerMovement().getBody().getPosition().y < 250) {
                     return true;
                 }
