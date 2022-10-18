@@ -42,10 +42,7 @@ public class RoundTimer{
                 character1.gotHit(100);
                 character2.restoreHP();
             }
-            else {
-                character1.restoreHP();
-                character2.restoreHP();
-            }
+
             time = 15;
         }
         return time;
