@@ -13,7 +13,7 @@ public class MapTest {
     public void testStaticMapElements() {
         Vector2 position = new Vector2();
         World world = new World(position,false);
-        MapModel mapModel = new MapModel(world);
+
         StaticMapElements mapElements = new StaticMapElements(world,100,100,100,100);
         assertTrue(mapElements.getWidth()+mapElements.getHeight()+mapElements.getPosY()+mapElements.getPosX() == 400);
     }

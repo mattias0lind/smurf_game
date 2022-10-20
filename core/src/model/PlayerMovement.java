@@ -64,7 +64,7 @@ public class PlayerMovement {
         }
         if (moveUp) {
             if (body.getLinearVelocity().y == 0) {
-                body.applyLinearImpulse(0, 10000000, 0, 0, true);
+                body.applyLinearImpulse(0, 1000000000, 0, 0, true);
             }
         }
         if (moveDown) {
@@ -79,6 +79,7 @@ public class PlayerMovement {
     public void moveLeft(boolean t) {
         moveLeft = t;
         lookingLeft = true;
+        moveRight = false;
 
     }
 
@@ -88,6 +89,7 @@ public class PlayerMovement {
     public void moveRight(boolean t) {
         moveRight = t;
         lookingLeft = false;
+        moveLeft = false;
 
     }
 
@@ -96,6 +98,7 @@ public class PlayerMovement {
      */
     public void moveUp(boolean t) {
         moveUp = t;
+        moveDown = false;
 
     }
 
@@ -104,6 +107,7 @@ public class PlayerMovement {
      */
     public void moveDown(boolean t) {
         moveDown = t;
+        moveUp = false;
 
     }
 

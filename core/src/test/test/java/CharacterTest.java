@@ -34,7 +34,11 @@ public class CharacterTest {
         Vector2 vector = new Vector2(0,0);
         World world = new World(vector,false);
         Character character = new Character("Test",world,100,vector);
-        assertTrue(character.getLives() == 3);
+        character.gotHit(100);
+        character.gotHit(100);
+        character.gotHit(100);
+        character.gotHit(100);
+        assertTrue(character.getLives() == 0);
 
     }
 
@@ -73,6 +77,18 @@ public class CharacterTest {
         character1.getPlayerMovement().moveLeft(true);
         character1.punch(character2);
         assertTrue(character2.getHpprocent() != 1 );
+
+    }
+
+    @Test
+    public void testJump(){
+        Vector2 vector = new Vector2(0,0);
+        Vector2 character1Position = new Vector2(0,0);
+        World world = new World(vector,false);
+        Character character1 = new Character("Test",world,100,character1Position);
+        character1.getPlayerMovement().moveUp(true);
+        character1.getPlayerMovement().updatePlayerPosition();
+        assertTrue(character1.getPlayerMovement().getBody().getPosition() != vector);
 
     }
 
