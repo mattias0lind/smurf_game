@@ -10,7 +10,7 @@ public class Powerups {
     private boolean isPowerUpActive = true;
 
 
-    public boolean getisPowerUpActive(){
+    public boolean getIsPowerUpActive(){
         return isPowerUpActive;
     }
     /**

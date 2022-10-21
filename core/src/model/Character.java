@@ -13,7 +13,6 @@ public class Character {
     private final PlayerMovement playerMovement;
     private final String name;
     private boolean punching = false;
-
     private float hp;
     private final float maxHp;
     private int lives;
