@@ -30,7 +30,6 @@ public class PlayState extends AbstractState {
     private float playerOneLastKnownHP;
     private float playerTwoLastKnownHP;
 
-
     private final Sound robloxSound = Gdx.audio.newSound(Gdx.files.internal(ImagePaths.HITSOUND.label));
     private Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal(ImagePaths.GAMESOUND.label));
 
@@ -59,8 +58,8 @@ public class PlayState extends AbstractState {
     public PlayState(GameStateManager gsm, int count1 , int count2){
         super(gsm);
         CharacterFactory characterFactory = new CharacterFactory();
-        this.characterOne = Objects.requireNonNull(characterFactory.getCharacter(count1, world, START_POSITION_1));
-        this.characterTwo = Objects.requireNonNull(characterFactory.getCharacter(count2, world, STARTPOSITION_2));
+        this.characterOne = Objects.requireNonNull(characterFactory.createCharacter(count1, world, START_POSITION_1));
+        this.characterTwo = Objects.requireNonNull(characterFactory.createCharacter(count2, world, STARTPOSITION_2));
 
         startGameMusic();
         playerOneLastKnownHP = characterOne.getHpprocent();

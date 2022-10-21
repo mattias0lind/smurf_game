@@ -29,7 +29,7 @@ public class CharacterFactory {
      * @param playerPosition the starting position, used in character
      * @return returns character object
      */
-    public Character getCharacter(int count, World world, Vector2 playerPosition){
+    public Character createCharacter(int count, World world, Vector2 playerPosition){
         return new Character(allCharacterNames.get(count), world,100, playerPosition);
     }
 
