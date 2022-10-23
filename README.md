@@ -1,5 +1,8 @@
 # smurf_game
 
+
+**How to run the game:**
+
 Step 1 (Windows Guide):
 Make sure you have a Java JDK and Gradle installed.
 Check this by writing the following in your Command Prompt.
@@ -25,3 +28,11 @@ Now in your command line type the following:
 gradle run
 
 And the program should run!
+
+---
+
+**Game controls:**
+
+Player 1 uses the W, A, S, D buttons to move around and the F button to punch
+
+Player 2 uses the arrow keys to move around and the M button to punch
