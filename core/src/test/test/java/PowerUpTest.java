@@ -18,7 +18,7 @@ public class PowerUpTest {
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
         powerUp.checkIfPlayerGotPowerup(character);
-        assertTrue(powerUp.getisPowerUpActive() == false);
+        assertTrue(powerUp.getIsPowerUpActive() == false);
     }
 
     @Test

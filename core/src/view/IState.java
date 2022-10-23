@@ -16,9 +16,9 @@ public interface IState {
     /**
      * Render draws the textures of a state. Such as a states UI, characters or a stage. Used in classes
      * implementing the interface
-     * @param db the spritebatch
+     * @param sb the spritebatch
      */
-    void render(SpriteBatch db);
+    void render(SpriteBatch sb);
 
     /**
      * Dispose is used to erase a states textures. Often used as the current state changes.

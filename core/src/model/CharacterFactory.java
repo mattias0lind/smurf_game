@@ -26,11 +26,11 @@ public class CharacterFactory {
     /**
      * @param count which character to pull from list
      * @param world initialise in world
-     * @param playerPosition the starting position, used in character
+     * @param startPosition the starting position, used in character
      * @return returns character object
      */
-    public Character getCharacter(int count, World world, Vector2 playerPosition){
-        return new Character(allCharacterNames.get(count), world,100, playerPosition);
+    public Character createCharacter(int count, World world, Vector2 startPosition){
+        return new Character(allCharacterNames.get(count), world,100, startPosition);
     }
 
 

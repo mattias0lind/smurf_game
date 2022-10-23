@@ -4,6 +4,7 @@ import model.Character;
 import org.junit.Test;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -14,7 +15,7 @@ public class CharacterTest {
         World world = new World(vector,false);
         Character character = new Character("Test",world,100,vector);
         character.getPlayerMovement();
-        assertTrue(character.getNameOfCharacter() == "Test");  // The logical check
+        assertEquals("Test", character.getNameOfCharacter());
     }
 
     @Test

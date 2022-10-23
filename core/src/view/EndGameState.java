@@ -44,19 +44,19 @@ public class EndGameState extends AbstractState {
 
     /**
      * Method used to draw the graphic of the EndGameState
-     * @param db the spritebatch
+     * @param sb the spritebatch
      */
     @Override
-    public void render(SpriteBatch db) {
+    public void render(SpriteBatch sb) {
         handleInput();
-        db.begin();
+        sb.begin();
         handleInput();
         if(numberOfPlayerThatWon == 0){
-            db.draw(winner2Sprite,0,0);
+            sb.draw(winner2Sprite,0,0);
         }else{
-            db.draw(winner1Sprite,0,0);
+            sb.draw(winner1Sprite,0,0);
         }
-        db.end();
+        sb.end();
 
     }
 

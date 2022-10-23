@@ -18,6 +18,6 @@ public class PowerupController {
     }
 
     public boolean checkIfPowerUpIsStillActive(){
-        return powerUp.getisPowerUpActive();
+        return powerUp.getIsPowerUpActive();
     }
 }
