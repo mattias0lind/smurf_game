@@ -4,8 +4,7 @@ import model.Character;
 import model.Powerups;
 import org.junit.Test;
 
-
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PowerUpTest {
 
@@ -18,7 +17,7 @@ public class PowerUpTest {
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
         powerUp.checkIfPlayerGotPowerup(character);
-        assertTrue(powerUp.getIsPowerUpActive() == false);
+        assertFalse(powerUp.getIsPowerUpActive());
     }
 
     @Test
@@ -29,7 +28,7 @@ public class PowerUpTest {
         Character character = new Character("Test",world,100,vector2);
         character.gotHit(50);
         powerUp.checkIfPlayerGotPowerup(character);
-        assertTrue(character.getHpprocent() == 1);
+        assertEquals(1,character.getHpprocent(),0);
 
 
     }
@@ -42,7 +41,7 @@ public class PowerUpTest {
         Character character2 = new Character("TestingWrongPos",world,100,vectorWrongPos);
         character2.gotHit(50);
         powerUp.checkIfPlayerGotPowerup(character2);
-        assertTrue(character2.getHpprocent() != 1);
+        assertEquals(0.5,character2.getHpprocent(),0);
 
     }
 

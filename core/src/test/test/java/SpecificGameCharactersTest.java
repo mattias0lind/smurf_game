@@ -5,8 +5,7 @@ import model.Character;
 import org.junit.Test;
 
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
 public class SpecificGameCharactersTest {
 
 
@@ -16,7 +15,7 @@ public class SpecificGameCharactersTest {
         Vector2 position = new Vector2();
         World world = new World(position,false);
         Character sanic = new Character("sanic",world,100 ,position);
-        assertTrue(sanic.getNameOfCharacter() == "sanic");
+        assertEquals("sanic",sanic.getNameOfCharacter());
     }
 
     @Test
@@ -24,7 +23,7 @@ public class SpecificGameCharactersTest {
         Vector2 position = new Vector2();
         World world = new World(position,false);
         Character lillamy = new Character("lillamy", world, 100,position);
-        assertTrue(lillamy.getNameOfCharacter() == "lillamy");
+        assertEquals("lillamy",lillamy.getNameOfCharacter());
     }
 
     @Test
@@ -32,7 +31,7 @@ public class SpecificGameCharactersTest {
         Vector2 position = new Vector2();
         World world = new World(position,false);
         Character evilsmurf = new Character("evilsmurf",world,100,position);
-        assertTrue(evilsmurf.getNameOfCharacter() == "evilsmurf");
+        assertEquals("evilsmurf",evilsmurf.getNameOfCharacter());
     }
 
 

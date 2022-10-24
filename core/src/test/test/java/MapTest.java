@@ -5,7 +5,7 @@ import model.StaticMapElements;
 import org.junit.Test;
 
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class MapTest {
 
@@ -15,7 +15,7 @@ public class MapTest {
         World world = new World(position,false);
 
         StaticMapElements mapElements = new StaticMapElements(world,100,100,100,100);
-        assertTrue(mapElements.getWidth()+mapElements.getHeight()+mapElements.getPosY()+mapElements.getPosX() == 400);
+        assertEquals(400,mapElements.getWidth()+mapElements.getHeight()+mapElements.getPosY()+mapElements.getPosX());
     }
 
     @Test
@@ -23,7 +23,7 @@ public class MapTest {
         Vector2 position = new Vector2();
         World world = new World(position,false);
         MapModel mapModel = new MapModel(world);
-        assertTrue(mapModel.getPlatForms().size() == 3 );
+        assertEquals(3,mapModel.getPlatForms().size());
 
     }
 
@@ -32,7 +32,7 @@ public class MapTest {
         Vector2 position = new Vector2();
         World world = new World(position,false);
         MapModel mapModel = new MapModel(world);
-       assertTrue(mapModel.getGroundFloor().getWidth() + mapModel.getGroundFloor().getHeight() == 1380);
+       assertEquals(1380,mapModel.getGroundFloor().getWidth() + mapModel.getGroundFloor().getHeight());
 
     }
 
@@ -41,7 +41,7 @@ public class MapTest {
         Vector2 position = new Vector2();
         World world = new World(position,false);
         MapModel mapModel = new MapModel(world);
-        assertTrue(mapModel.getInvisibleWall().size() == 2 );
+        assertEquals(2,mapModel.getInvisibleWall().size());
     }
 
 

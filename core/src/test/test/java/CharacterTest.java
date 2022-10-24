@@ -3,9 +3,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import model.Character;
 import org.junit.Test;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class CharacterTest {
@@ -25,7 +23,7 @@ public class CharacterTest {
         Character character = new Character("Test",world,100,vector);
         character.gotHit(50);
         character.restoreHP();
-        assertTrue(character.getHpprocent() == 1 );
+        assertEquals(1,character.getHpprocent(), 0 );
 
 
     }
@@ -39,7 +37,7 @@ public class CharacterTest {
         character.gotHit(100);
         character.gotHit(100);
         character.gotHit(100);
-        assertTrue(character.getLives() == 0);
+        assertEquals(0,character.getLives(),0);
 
     }
 
@@ -63,7 +61,7 @@ public class CharacterTest {
     Character character1 = new Character("Test",world,100,character1Position);
     Character character2 = new Character("Test",world,100,character2Position);
     character1.punch(character2);
-    assertTrue(character2.getHpprocent() != 1 );
+    assertEquals(0.9,character2.getHpprocent(),0.1 );
 
     }
 
@@ -77,7 +75,7 @@ public class CharacterTest {
         Character character2 = new Character("Test",world,100,character2Position);
         character1.getPlayerMovement().moveLeft(true);
         character1.punch(character2);
-        assertTrue(character2.getHpprocent() != 1 );
+        assertEquals(0.9,character2.getHpprocent(),0.1 );
 
     }
 
@@ -89,7 +87,7 @@ public class CharacterTest {
         Character character1 = new Character("Test",world,100,character1Position);
         character1.getPlayerMovement().moveUp(true);
         character1.getPlayerMovement().updatePlayerPosition();
-        assertTrue(character1.getPlayerMovement().getBody().getPosition() != vector);
+        assertNotSame(vector,character1.getPlayerMovement().getBody().getPosition());
 
     }
 
